@@ -18,9 +18,32 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Baba Sriharsha Asapu — AI Full-Stack Developer",
+  title: "Baba Sriharsha Asapu | AI & Full-Stack Portfolio",
   description:
-    "Modern, minimal portfolio of AI Builder & Data Explorer, Baba Sriharsha Asapu.",
+    "Explore projects in Artificial Intelligence, Data Analytics, and Web Development — by Baba Sriharsha Asapu.",
+  openGraph: {
+    title: "Baba Sriharsha Asapu | AI & Full-Stack Portfolio",
+    description:
+      "Portfolio showcasing AI, Data Analytics, and Web Development projects.",
+    url: "https://www.harshaasapu.com",
+    siteName: "Harsha Asapu Portfolio",
+    images: [
+      {
+        url: "https://www.harshaasapu.com/og-image.png", // Place og-image.png in /public
+        width: 1200,
+        height: 630,
+        alt: "Baba Sriharsha Asapu Portfolio",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Baba Sriharsha Asapu | AI & Full-Stack Portfolio",
+    description:
+      "Explore projects in Artificial Intelligence, Data Analytics, and Web Development.",
+    images: ["https://www.harshaasapu.com/og-image.png"],
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
