@@ -41,7 +41,7 @@ export default function Header() {
         }
 
         // Pick the section with the highest visible ratio
-        let bestId = SECTION_IDS[0];
+        let bestId: typeof SECTION_IDS[number] = SECTION_IDS[0];
         let bestRatio = -1;
 
         for (const id of SECTION_IDS) {
