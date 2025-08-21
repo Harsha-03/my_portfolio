@@ -6,19 +6,35 @@ import { Home, FolderGit2, Sparkles, Mail } from "lucide-react";
 import ThemeToggle from "@/app/components/ThemeToggle";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 
-/** DOM ids that exist on the page.
- * NOTE: Contact section DOM id is #contactfancy, but the nav key is "contact".
- */
+
 const SECTION_IDS = ["home", "projects", "skills", "contactfancy"] as const;
 
-/** Map DOM section id -> nav key used in Header links */
+
 function idToNavKey(id: string) {
   return id === "contactfancy" ? "contact" : id;
 }
 
+
+function navKeyToDomId(navKey: "home" | "projects" | "skills" | "contact") {
+  return navKey === "contact" ? "contactfancy" : navKey;
+}
+
 export default function Header() {
   const [activeId, setActiveId] = useState<string>("home");
-  const ratiosRef = useRef<Record<string, number>>({}); // id -> latest intersectionRatio
+  const ratiosRef = useRef<Record<string, number>>({}); 
+
+  // Smooth scroll + immediate active state on click
+  const handleNavClick = (navKey: "home" | "projects" | "skills" | "contact") => {
+    const domId = navKeyToDomId(navKey);
+    const el = document.getElementById(domId);
+    if (!el) return;
+
+    // Immediately mark as active so the glow/rainbow starts right away
+    setActiveId(navKey);
+
+    // Smooth scroll to the section
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
   useEffect(() => {
     const els = SECTION_IDS
@@ -26,22 +42,21 @@ export default function Header() {
       .filter(Boolean) as HTMLElement[];
     if (!els.length) return;
 
-    // Start with home so we never show nothing on first paint
+    // Initialize with "home" visible so nothing appears inactive on first paint
     ratiosRef.current = Object.fromEntries(SECTION_IDS.map((i) => [i, i === "home" ? 1 : 0]));
 
-    // A range of thresholds gives smoother updates as more/less of a section is visible
-    const thresholds = Array.from({ length: 21 }, (_, i) => i / 20); // [0, 0.05, ..., 1]
+    // Smoother updates as visibility changes
+    const thresholds = Array.from({ length: 21 }, (_, i) => i / 20);
 
     const obs = new IntersectionObserver(
       (entries) => {
-        // Update ratios map with the latest visibility info
         for (const e of entries) {
           const id = (e.target as HTMLElement).id;
           ratiosRef.current[id] = e.intersectionRatio;
         }
 
-        // Pick the section with the highest visible ratio
-        let bestId: typeof SECTION_IDS[number] = SECTION_IDS[0];
+        // Pick most‑visible section (with slight center bias via rootMargin)
+        let bestId: (typeof SECTION_IDS)[number] = SECTION_IDS[0];
         let bestRatio = -1;
 
         for (const id of SECTION_IDS) {
@@ -52,16 +67,13 @@ export default function Header() {
           }
         }
 
-        // If nothing is visible (e.g., at extreme edges), keep previous value.
-        // Otherwise map to the nav key and set active.
         if (bestRatio >= 0) {
           setActiveId(idToNavKey(bestId));
         }
       },
       {
-        // Bias a little toward the viewport center so the "middle" section wins
         root: null,
-        rootMargin: "-20% 0px -20% 0px",
+        rootMargin: "-20% 0px -20% 0px", // bias to viewport center
         threshold: thresholds,
       }
     );
@@ -106,25 +118,41 @@ export default function Header() {
             icon={<Home className="h-5 w-5" />}
             label="Home"
             active={activeId === "home"}
+            onClick={(e) => {
+              e.preventDefault();
+              handleNavClick("home");
+            }}
           />
           <SidebarLink
             href="#projects"
             icon={<FolderGit2 className="h-5 w-5" />}
             label="Projects"
             active={activeId === "projects"}
+            onClick={(e) => {
+              e.preventDefault();
+              handleNavClick("projects");
+            }}
           />
           <SidebarLink
             href="#skills"
             icon={<Sparkles className="h-5 w-5" />}
             label="Skills"
             active={activeId === "skills"}
+            onClick={(e) => {
+              e.preventDefault();
+              handleNavClick("skills");
+            }}
           />
-          {/* Contact link points to #contact (your anchor), activeId maps from #contactfancy */}
+          {/* Contact link points to #contact (anchor), activeId maps from #contactfancy */}
           <SidebarLink
             href="#contact"
             icon={<Mail className="h-5 w-5" />}
             label="Contact"
             active={activeId === "contact"}
+            onClick={(e) => {
+              e.preventDefault();
+              handleNavClick("contact");
+            }}
           />
         </nav>
 
@@ -156,24 +184,40 @@ export default function Header() {
           label="Home"
           icon={<Home className="h-5 w-5" />}
           active={activeId === "home"}
+          onClick={(e) => {
+            e.preventDefault();
+            handleNavClick("home");
+          }}
         />
         <MobileLink
           href="#projects"
           label="Projects"
           icon={<FolderGit2 className="h-5 w-5" />}
           active={activeId === "projects"}
+          onClick={(e) => {
+            e.preventDefault();
+            handleNavClick("projects");
+          }}
         />
         <MobileLink
           href="#skills"
           label="Skills"
           icon={<Sparkles className="h-5 w-5" />}
           active={activeId === "skills"}
+          onClick={(e) => {
+            e.preventDefault();
+            handleNavClick("skills");
+          }}
         />
         <MobileLink
           href="#contact"
           label="Contact"
           icon={<Mail className="h-5 w-5" />}
           active={activeId === "contact"}
+          onClick={(e) => {
+            e.preventDefault();
+            handleNavClick("contact");
+          }}
         />
 
         {/* Theme toggle on mobile */}
@@ -191,15 +235,18 @@ function SidebarLink({
   icon,
   label,
   active = false,
+  onClick,
 }: {
   href: string;
   icon: ReactNode;
   label: string;
   active?: boolean;
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
 }) {
   return (
     <Link
       href={href}
+      onClick={onClick}
       aria-label={label}
       aria-current={active ? "page" : undefined}
       className={`
@@ -218,7 +265,7 @@ function SidebarLink({
       <span
         className={`
           inline-flex items-center justify-center transition-transform
-          ${active ? "scale-110 icon-rainbow" : "scale-100 group-hover:icon-rainbow"}
+          ${active ? "scale-110 icon-rainbow" : "scale-100"}
         `}
       >
         {icon}
@@ -246,15 +293,18 @@ function MobileLink({
   icon,
   label,
   active = false,
+  onClick,
 }: {
   href: string;
   icon: ReactNode;
   label: string;
   active?: boolean;
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
 }) {
   return (
     <Link
       href={href}
+      onClick={onClick}
       aria-label={label}
       aria-current={active ? "page" : undefined}
       className={`
@@ -271,11 +321,12 @@ function MobileLink({
       <span
         className={`
           inline-flex h-6 w-6 items-center justify-center
-          ${active ? "icon-rainbow" : "group-hover:icon-rainbow"}
+          ${active ? "icon-rainbow" : ""}
         `}
       >
         {icon}
       </span>
+
       <span className="mt-0.5 leading-none">{label}</span>
     </Link>
   );

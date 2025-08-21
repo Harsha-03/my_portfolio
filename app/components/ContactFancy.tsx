@@ -8,7 +8,7 @@ export default function ContactFancy() {
   const [view, setView] = useState<"email" | "form">("email");
   const formRef = useRef<HTMLFormElement | null>(null);
 
-  // ⬅️ Replace this with your real Formspree ID
+ 
   const FORMSPREE_ENDPOINT = "https://formspree.io/f/xzzvnzvw";
 
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
@@ -52,7 +52,7 @@ export default function ContactFancy() {
   }
 
   return (
-    <section id="contact" className="section">
+    <section id="contactfancy" className="section">
       <div className="container">
         <h2 className="text-center text-3xl font-extrabold">Get In Touch</h2>
         <p className="mt-2 text-center text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">

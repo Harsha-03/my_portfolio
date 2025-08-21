@@ -29,6 +29,7 @@ html:focus-within { scroll-behavior: smooth; }
   .no-scrollbar::-webkit-scrollbar { display: none; }
   .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 }
+
 /* Smooth theme switcher */
 html.theme-change *, 
 html.theme-change *::before, 
@@ -36,6 +37,8 @@ html.theme-change *::after {
   transition: color .35s ease, background-color .35s ease, border-color .35s ease,
               fill .35s ease, stroke .35s ease, box-shadow .35s ease !important;
 }
+
+/* === ICON EFFECTS === */
 @keyframes iconRainbow {
   0%   { color: #ef4444; }  /* red-500 */
   25%  { color: #a855f7; }  /* purple-500 */
@@ -44,6 +47,14 @@ html.theme-change *::after {
   100% { color: #ef4444; }
 }
 
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+
 @layer utilities {
+  /* rainbow cycle for hover/active */
   .icon-rainbow { animation: iconRainbow 1.2s linear infinite; }
+
+  /* gentle slow spin (used only on active icons) */
+  .icon-spin { animation: spin-slow 8s linear infinite; }
 }
