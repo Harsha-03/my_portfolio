@@ -29,3 +29,21 @@ html:focus-within { scroll-behavior: smooth; }
   .no-scrollbar::-webkit-scrollbar { display: none; }
   .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 }
+/* Smooth theme switcher */
+html.theme-change *, 
+html.theme-change *::before, 
+html.theme-change *::after {
+  transition: color .35s ease, background-color .35s ease, border-color .35s ease,
+              fill .35s ease, stroke .35s ease, box-shadow .35s ease !important;
+}
+@keyframes iconRainbow {
+  0%   { color: #ef4444; }  /* red-500 */
+  25%  { color: #a855f7; }  /* purple-500 */
+  50%  { color: #22c55e; }  /* green-500 */
+  75%  { color: #eab308; }  /* yellow-500 */
+  100% { color: #ef4444; }
+}
+
+@layer utilities {
+  .icon-rainbow { animation: iconRainbow 1.2s linear infinite; }
+}

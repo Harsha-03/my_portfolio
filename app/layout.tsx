@@ -5,6 +5,7 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import Providers from "@/app/components/Providers";
 import dynamic from "next/dynamic";
+import AppShell from "@/app/components/Appshell";
 
 // Client-only for starfield
 const Starfield = dynamic(() => import("@/app/components/Starfield"), { ssr: false });
@@ -28,7 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body
         className={
           `${jakarta.variable} font-sans antialiased ` +
-          " text-zinc-900 dark:text-zinc-100 " +
+          " text-zinc-900 dark:text-zinc-100 transition-colors duration-300 " +
           " bg-[radial-gradient(1200px_600px_at_0%_0%,rgba(99,102,241,0.06),transparent_60%)] " +
           " dark:bg-[radial-gradient(1200px_600px_at_0%_0%,rgba(59,130,246,0.12),transparent_60%)] " +
           " bg-white dark:bg-zinc-950 overflow-x-hidden"
@@ -40,7 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Starfield />
             <div className="relative z-10">
               <Header />
-              <main id="home">{children}</main>
+              <AppShell>{children}</AppShell>
               <Footer />
             </div>
           </div>

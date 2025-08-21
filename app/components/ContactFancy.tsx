@@ -8,6 +8,12 @@ export default function ContactFancy() {
   const [view, setView] = useState<"email" | "form">("email");
   const formRef = useRef<HTMLFormElement | null>(null);
 
+  // ⬅️ Replace this with your real Formspree ID
+  const FORMSPREE_ENDPOINT = "https://formspree.io/f/xzzvnzvw";
+
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [error, setError] = useState("");
+
   const showEmail = () => setView("email");
   const showForm = () => {
     setView("form");
@@ -15,6 +21,35 @@ export default function ContactFancy() {
       formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
     });
   };
+
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus("submitting");
+    setError("");
+
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        body: data,
+        headers: { Accept: "application/json" },
+      });
+
+      if (res.ok) {
+        setStatus("success");
+        form.reset();
+      } else {
+        const json = await res.json().catch(() => ({}));
+        setError(json?.errors?.[0]?.message || "Something went wrong. Please try again.");
+        setStatus("error");
+      }
+    } catch {
+      setError("Network error. Please try again.");
+      setStatus("error");
+    }
+  }
 
   return (
     <section id="contact" className="section">
@@ -82,7 +117,7 @@ export default function ContactFancy() {
                     </a>
                   </div>
 
-                  {/* New GitHub + LinkedIn buttons */}
+                  {/* GitHub + LinkedIn */}
                   <div className="mt-6 flex gap-4">
                     <a
                       href="https://github.com/Harsha-03"
@@ -109,14 +144,38 @@ export default function ContactFancy() {
                     Write me a quick message, and I’ll reach out soon.
                   </p>
 
+                  {/* Success / Error banners */}
+                  {status === "success" && (
+                    <div
+                      role="status"
+                      aria-live="polite"
+                      className="mt-4 rounded-lg bg-emerald-500/10 px-3 py-2 text-sm text-emerald-300 border border-emerald-500/30"
+                    >
+                      Thanks! Your message has been sent.
+                    </div>
+                  )}
+                  {status === "error" && (
+                    <div
+                      role="alert"
+                      className="mt-4 rounded-lg bg-rose-500/10 px-3 py-2 text-sm text-rose-300 border border-rose-500/30"
+                    >
+                      {error}
+                    </div>
+                  )}
+
                   {/* Form */}
                   <form
                     id="contact-form"
                     ref={formRef}
                     className="mt-6 grid gap-3 sm:max-w-xl"
-                    action="https://formspree.io/f/YOUR_ID"
-                    method="POST"
+                    onSubmit={onSubmit}
                   >
+                    {/* Honeypot (spam trap) */}
+                    <input type="text" name="_gotcha" className="hidden" tabIndex={-1} autoComplete="off" />
+                    {/* Optional: subject & redirect */}
+                    <input type="hidden" name="_subject" value="New message from portfolio site" />
+                    {/* <input type="hidden" name="_redirect" value="https://your-domain.com/thanks" /> */}
+
                     <div className="grid gap-1">
                       <label className="text-sm text-zinc-700 dark:text-zinc-400">Your Name</label>
                       <input
@@ -131,7 +190,7 @@ export default function ContactFancy() {
                       <label className="text-sm text-zinc-700 dark:text-zinc-400">Your Email</label>
                       <div className="relative">
                         <input
-                          name="email"
+                          name="email" // Formspree expects 'email'
                           type="email"
                           required
                           placeholder="you@example.com"
@@ -154,10 +213,11 @@ export default function ContactFancy() {
 
                     <button
                       type="submit"
-                      className="mt-2 btn-primary inline-flex items-center justify-center gap-2 rounded-xl w-full sm:w-auto px-6 py-3"
+                      disabled={status === "submitting"}
+                      className="mt-2 btn-primary inline-flex items-center justify-center gap-2 rounded-xl w-full sm:w-auto px-6 py-3 disabled:opacity-60 disabled:cursor-not-allowed"
                     >
                       <Send className="w-4 h-4" />
-                      Send Message
+                      {status === "submitting" ? "Sending..." : "Send Message"}
                     </button>
                   </form>
                 </>

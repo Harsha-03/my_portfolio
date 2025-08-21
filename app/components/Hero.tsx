@@ -27,15 +27,15 @@ export default function Hero() {
         {/* Left: text */}
         <div>
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.6 }}
-            className="text-1xl sm:text-4xl md:text-5xl font-bold leading-tight 
-              bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 
-              dark:from-red-400 dark:via-purple-400 dark:to-blue-400 
-              bg-clip-text text-transparent"
-          >
-            Baba Sriharsha Asapu
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.6 }}
+              className="text-1xl sm:text-4xl md:text-5xl font-bold leading-tight
+                          bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500
+                          dark:from-red-400 dark:via-purple-400 dark:to-blue-400
+                          bg-clip-text text-transparent mb-3"
+              >
+              Baba Sriharsha Asapu
           </motion.h1>
 
           {/* Typed roles */}
@@ -47,7 +47,7 @@ export default function Hero() {
             aria-label="Roles"
           >
             <TypedNoSSR
-              strings={["AI Builder", "Data Explorer"]}
+              strings={["AI Builder", "Front-End Developer", "Data Explorer"]}
               typeSpeed={60}
               backSpeed={40}
               backDelay={1300}
