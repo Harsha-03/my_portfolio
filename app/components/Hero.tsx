@@ -85,8 +85,8 @@ export default function Hero() {
                 href="#projects"
                 className="inline-flex items-center justify-center gap-2
                            px-4 py-2 text-sm font-medium
-                           rounded-md bg-brand text-white
-                           hover:bg-blue-600 transition"
+                           rounded-md bg-red-500 text-white
+                           hover:bg-red-800 transition"
               >
                 Explore Projects
               </a>
