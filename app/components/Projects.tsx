@@ -20,12 +20,35 @@ export default function Projects() {
           All projects are deployed and ready to explore
         </p>
 
-        {/* Grid: 3 per row on large screens */}
+        {/* Featured Projects */}
         <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.slice(0, 3).map((p, i) => (
-            <ProjectCard key={p.title} project={p} index={i} />
-          ))}
+          {projects
+            .filter((p) => p.featured)
+            .map((p, i) => (
+              <ProjectCard key={p.title} project={p} index={i} />
+            ))}
         </div>
+
+        {/* In Progress / Upcoming Projects */}
+        {projects.some((p) => !p.featured) && (
+          <div className="mt-14">
+            <h3 className="text-center text-xl font-semibold mb-6 text-zinc-300">
+              In Progress & Upcoming
+            </h3>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {projects
+                .filter((p) => !p.featured)
+                .map((p, i) => (
+                  <ProjectCard
+                    key={p.title}
+                    project={p}
+                    index={i}
+                  />
+                ))}
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

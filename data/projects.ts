@@ -10,6 +10,22 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+
+  {
+    title: "SLU Alumni Connect",
+    description:
+      "A full-stack alumni engagement platform built for Saint Louis University, enabling students, alumni, mentors, and administrators to connect through role-based dashboards, events, mentorship programs, and analytics.",
+    image: "/projects/slu-alumni-connect.png",
+    tags: [
+      "Next.js (React, App Router)",
+      "Python Libraries",
+      "NextJS API Routes",
+      "Node.js",
+    ],
+    demo: "https://slu-alumni-connect-main.vercel.app/",
+    source: "https://github.com/Harsha-03/slu-alumni-connect",
+    featured: true,
+  },
   {
     title: "AI Resume Editor",
     description:
@@ -20,6 +36,7 @@ export const projects: Project[] = [
     source: "https://github.com/Harsha-03/resume-ai-editor",
     featured: true,
   },
+
   {
     title: "Airline Performance Tracker (Power BI)",
     description:
@@ -29,6 +46,7 @@ export const projects: Project[] = [
     source: "https://github.com/Harsha-03/Airplane-Performance-Tracker-PowerBI",
     featured: true,
   },
+
   {
     title: "Next Project — Coming Soon",
     description:
