@@ -18,11 +18,11 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Baba Sriharsha Asapu | AI & Full-Stack Portfolio",
+  title: "Baba Sriharsha Asapu | Portfolio",
   description:
     "Explore projects in Artificial Intelligence, Data Analytics, and Web Development — by Baba Sriharsha Asapu.",
   openGraph: {
-    title: "Baba Sriharsha Asapu | AI & Full-Stack Portfolio",
+    title: "Baba Sriharsha Asapu | Portfolio",
     description:
       "Portfolio showcasing AI, Data Analytics, and Web Development projects.",
     url: "https://www.harshaasapu.com",
