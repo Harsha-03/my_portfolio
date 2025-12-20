@@ -1,4 +1,4 @@
-# 🌌 My Portfolio — Baba Sriharsha Asapu
+# 🌌 My Portfolio 
 
 A modern, responsive, and theme-aware developer portfolio built with **Next.js 14**, **TypeScript**, and **Tailwind CSS**.  
 It showcases my journey, projects, and skills in **AI, Data Analytics, and Full-Stack Development**, with unique features like a **starfield background**, animated hero section, and dark/light mode.
