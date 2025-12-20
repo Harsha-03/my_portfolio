@@ -23,7 +23,7 @@ export const projects: Project[] = [
       "Node.js",
     ],
     demo: "https://slu-alumni-connect-main.vercel.app/",
-    source: "https://github.com/Harsha-03/slu-alumni-connect",
+    source: "https://github.com/Harsha-03/slu-alumni-connect-main",
     featured: true,
   },
   {
