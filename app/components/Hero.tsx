@@ -1,151 +1,100 @@
 "use client";
 
-import { motion } from "framer-motion";
-import Image from "next/image";
-import Starfield from "./Starfield";
-import { Github, Linkedin, FileText } from "lucide-react";
-import dynamic from "next/dynamic";
-import TerminalCard from "./TerminalCard";
-
-// Use the named export ReactTyped, but only on client
-const TypedNoSSR = dynamic(
-  () => import("react-typed").then((m) => m.ReactTyped),
-  { ssr: false }
-);
+import { Github, Linkedin } from "lucide-react";
+import { useEffect, useState } from "react";
 
 export default function Hero() {
+  const [time, setTime] = useState("");
+
+  useEffect(() => {
+    const update = () =>
+      setTime(
+        new Date().toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        })
+      );
+
+    update();
+    const t = setInterval(update, 1000);
+    return () => clearInterval(t);
+  }, []);
+
   return (
-    <section
-      id="home"
-      className="section bg-transparent text-zinc-900 dark:text-zinc-100 relative"
-    >
-      {/* Background */}
-      <Starfield />
+    <section id="home" className="section relative">
+      <div className="container relative">
+        {/* Top-right status */}
+        <div className="absolute top-0 right-0 flex items-center gap-3 text-xs text-zinc-400">
+          <span className="flex items-center gap-2 rounded-full bg-green-500/10 px-3 py-1 text-green-400">
+            <span className="h-2 w-2 rounded-full bg-green-400 animate-pulse" />
+            Open to work
+          </span>
+          <span>{time}</span>
+        </div>
 
-      {/* Content with gap from top */}
-      <div className="container grid md:grid-cols-2 gap-10 items-center pt-20">
-        {/* Left: text */}
-        <div>
-          <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.6 }}
-              className="text-1xl sm:text-4xl md:text-5xl font-bold leading-tight
-                          bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500
-                          dark:from-red-400 dark:via-purple-400 dark:to-blue-400
-                          bg-clip-text text-transparent mb-3"
-              >
-              Baba Sriharsha Asapu
-          </motion.h1>
+        {/* Hero content */}
+        <div className="pt-28 max-w-4xl">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight">
+            {/* Name */}
+            <span className="block hero-name">
+              Hello, I’m{" "}
+              <span className="text-brand">Harsha Asapu</span>.
+            </span>
 
-          {/* Typed roles */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.15, duration: 0.6 }}
-            className="mt-3 text-xl font-medium text-brand"
-            aria-label="Roles"
-          >
-            <TypedNoSSR
-              strings={["AI Builder", "Front-End Developer", "Data Explorer"]}
-              typeSpeed={60}
-              backSpeed={40}
-              backDelay={1300}
-              smartBackspace
-              loop
-              showCursor
-              cursorChar="| "
-            />
-          </motion.p>
+            {/* Line 2 – Part 1 */}
+            <span className="block hero-line hero-line-1">
+              I design & engineer
+            </span>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.25, duration: 0.6 }}
-            className="mt-5 text-lg text-zinc-600 dark:text-zinc-300 max-w-prose"
-          >
-            I’m a Full-Stack Developer with a background in Information Systems (M.S.) and
-            Computer Science (B.Tech). My passion lies in creating interactive web
-            experiences, building AI automations that simplify workflows, and designing
-            data-driven dashboards in Power BI. Whether it’s front-end interfaces,
-            back-end systems, or data insights, I focus on turning ideas into products that
-            are both impactful and intuitive.
-          </motion.p>
+            {/* Line 2 – Part 2 */}
+            <span className="block hero-line hero-line-2 text-zinc-400">
+              thoughtful digital experiences.
+            </span>
+          </h1>
 
-          {/* CTA + socials */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.35, duration: 0.5 }}
-            className="mt-6"
-          >
-            <div className="flex flex-wrap gap-4">
-              {/* Explore Projects */}
+          {/* Paragraph + Actions */}
+          <div className="hero-content mt-6">
+            <p className="max-w-2xl text-base md:text-lg text-zinc-400">
+              I’m a frontend-focused developer with a strong foundation in
+              full-stack systems, passionate about building fast, accessible,
+              and thoughtfully engineered products that solve real problems.
+            </p>
+
+            <div className="mt-8 flex items-center gap-4">
               <a
                 href="#projects"
-                className="inline-flex items-center justify-center gap-2
-                           px-4 py-2 text-sm font-medium
-                           rounded-md bg-red-500 text-white
-                           hover:bg-red-800 transition"
+                className="rounded-xl bg-red-500 px-5 py-3 text-sm font-semibold text-white hover:bg-red-600 transition"
               >
                 Explore Projects
               </a>
 
-              {/* Resume */}
               <a
-                href="/cv.pdf"
-                target="_blank"
-                rel="noopener"
-                className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium
-                           rounded-md border border-zinc-300 dark:border-zinc-700
-                           bg-zinc-900/80 text-white hover:bg-zinc-800
-                           shadow-sm backdrop-blur transition
-                           focus:outline-none focus:ring-2 focus:ring-blue-600"
-              >
-                <FileText className="h-4 w-4" />
-                Resume
-              </a>
-            </div>
-
-            {/* Socials under the button */}
-            <div className="mt-4 flex items-center gap-3">
-              {/* GitHub */}
-              <motion.a
                 href="https://github.com/Harsha-03"
                 target="_blank"
-                rel="noopener"
-                aria-label="GitHub"
-                whileHover={{ scale: 1.06 }}
-                whileTap={{ scale: 0.98 }}
-                className="inline-flex h-11 w-11 items-center justify-center rounded-full
-                           border border-zinc-300 bg-white text-zinc-900
-                           hover:bg-zinc-100 focus:outline-none focus:ring-2 focus:ring-blue-500
-                           dark:border-zinc-700 dark:bg-zinc-900 dark:text-white dark:hover:bg-zinc-800"
+                rel="noopener noreferrer"
+                className="h-11 w-11 flex items-center justify-center rounded-xl bg-zinc-900 ring-1 ring-white/10 hover:bg-zinc-800 transition"
               >
-                <Github className="h-5 w-5" />
-              </motion.a>
+                <Github size={20} />
+              </a>
 
-              {/* Linkedin */}
-              <motion.a
-                href="https://www.linkedin.com/in/baba-sriharsha-asapu/"
+              <a
+                href="https://linkedin.com"
                 target="_blank"
-                rel="noopener"
-                aria-label="LinkedIn"
-                whileHover={{ scale: 1.06 }}
-                whileTap={{ scale: 0.98 }}
-                className="inline-flex h-11 w-11 items-center justify-center rounded-full
-                           bg-[#0077B5] text-white hover:bg-[#005582]
-                           focus:outline-none focus:ring-2 focus:ring-[#005582]"
+                rel="noopener noreferrer"
+                className="h-11 w-11 flex items-center justify-center rounded-xl bg-[#0A66C2] hover:bg-[#004182] transition"
               >
-                <Linkedin className="h-5 w-5" />
-              </motion.a>
+                <Linkedin size={20} />
+              </a>
             </div>
-          </motion.div>
-        </div>
+          </div>
 
-        {/* Right: Terminal box */}
-        <div className="justify-self-center">
-          <TerminalCard />
+          {/* Scroll indicator */}
+          <div className="mt-20 flex flex-col items-center gap-2 text-zinc-500">
+            <span className="text-xs tracking-wide">Scroll</span>
+            <div className="flex h-10 w-6 items-start justify-center rounded-full border border-white/20">
+              <span className="mt-2 h-2 w-2 rounded-full bg-white/60 animate-bounce" />
+            </div>
+          </div>
         </div>
       </div>
     </section>

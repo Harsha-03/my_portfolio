@@ -18,13 +18,30 @@ export default function AppShell({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (!pathname) return;
     setLoading(true);
-    const t = setTimeout(() => setLoading(false), 500);
+    const t = setTimeout(() => setLoading(false), 350);
     return () => clearTimeout(t);
   }, [pathname]);
 
-  return loading ? (
-    <SplashLoader />
-  ) : (
-    <main id="home">{children}</main>
+  if (loading) return <SplashLoader />;
+
+  return (
+    <main
+      className="
+        relative z-[1] min-h-screen
+        pb-24 md:pb-0
+      "
+    >
+      {/* Desktop & tablet */}
+      <div className="hidden md:block">
+        <div className="mx-auto max-w-8xl px-4">
+          {children}
+        </div>
+      </div>
+
+      {/* Mobile */}
+      <div className="md:hidden px-4">
+        {children}
+      </div>
+    </main>
   );
 }

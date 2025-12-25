@@ -1,55 +1,57 @@
 "use client";
 
+import { useState } from "react";
 import ProjectCard from "./ProjectCard";
-import { projects } from "@/data/projects";
+import ComingSoonCard from "./ComingSoonCard";
+import ProjectCaseStudy from "./ProjectCaseStudy";
+import { projects, Project } from "@/data/projects";
 
 export default function Projects() {
+  const [activeProject, setActiveProject] = useState<Project | null>(null);
+  const featured = projects.filter((p) => p.featured);
+
   return (
     <section id="projects" className="section">
       <div className="container">
-        {/* Overline */}
-        <p className="text-center text-xs md:text-sm tracking-wide text-brand/80 font-semibold">
+        <p className="text-center text-xs tracking-wide text-brand/80 font-semibold">
           PROJECTS
         </p>
 
-        {/* Title + subtitle */}
         <h2 className="mt-1 text-center text-3xl md:text-4xl font-extrabold">
           Live Projects Portfolio
         </h2>
-        <p className="mt-2 text-center text-sm md:text-base text-zinc-500 dark:text-zinc-400 max-w-2xl mx-auto">
-          All projects are deployed and ready to explore
+
+        <p className="mt-2 text-center text-sm text-zinc-400 max-w-2xl mx-auto">
+          Selected products I’ve designed, built, and shipped.
         </p>
 
-        {/* Featured Projects */}
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects
-            .filter((p) => p.featured)
-            .map((p, i) => (
-              <ProjectCard key={p.title} project={p} index={i} />
+        {/* Horizontal scroll */}
+        <div className="mt-12 relative">
+          <div className="flex gap-8 overflow-x-auto pb-6">
+            {featured.map((project) => (
+              <div
+                key={project.slug}
+                className="shrink-0 w-[85%] sm:w-[70%] md:w-[420px]"
+              >
+                <ProjectCard
+                  project={project}
+                  onOpen={setActiveProject}
+                />
+              </div>
             ))}
-        </div>
 
-        {/* In Progress / Upcoming Projects */}
-        {projects.some((p) => !p.featured) && (
-          <div className="mt-14">
-            <h3 className="text-center text-xl font-semibold mb-6 text-zinc-300">
-              In Progress & Upcoming
-            </h3>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {projects
-                .filter((p) => !p.featured)
-                .map((p, i) => (
-                  <ProjectCard
-                    key={p.title}
-                    project={p}
-                    index={i}
-                  />
-                ))}
+            <div className="shrink-0 w-[85%] sm:w-[70%] md:w-[420px]">
+              <ComingSoonCard />
             </div>
           </div>
-        )}
+        </div>
       </div>
+
+      {/* Modal */}
+      <ProjectCaseStudy
+        project={activeProject}
+        onClose={() => setActiveProject(null)}
+      />
     </section>
   );
 }

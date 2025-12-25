@@ -4,33 +4,62 @@ import { motion } from "framer-motion";
 
 export default function SplashLoader() {
   return (
-    <div
-      className="fixed inset-0 z-[100] grid place-items-center
-                 bg-white dark:bg-zinc-950"
-      role="status"
-      aria-live="polite"
-      aria-label="Loading"
+    <motion.div
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-zinc-950 overflow-hidden"
+      initial={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.6, ease: "easeInOut" }}
     >
-      {/* subtle backdrop accent that matches your theme */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(1200px_600px_at_50%_0%,rgba(59,130,246,0.12),transparent_60%)]" />
-
+      {/* Ambient radial glow */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.96 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.35, ease: "easeOut" }}
-        className="flex flex-col items-center gap-4"
-      >
-        {/* spinner */}
-        <div className="relative h-12 w-12">
-          <span className="absolute inset-0 rounded-full border-4 border-zinc-300 dark:border-zinc-800" />
-          <span className="absolute inset-0 rounded-full border-4 border-transparent border-t-blue-500 animate-spin" />
-        </div>
+        className="pointer-events-none absolute inset-0
+                   bg-[radial-gradient(500px_220px_at_50%_55%,rgba(59,130,246,0.18),transparent_65%)]"
+        animate={{ opacity: [0.4, 0.7, 0.4] }}
+        transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+      />
 
-        {/* brand text */}
-        <p className="text-sm sm:text-base font-medium text-zinc-700 dark:text-zinc-300">
-          Loading portfolio…
-        </p>
+      {/* Signature container */}
+      <motion.div
+        initial={{ y: 8, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        exit={{ y: -6, opacity: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="relative"
+      >
+        {/* Signature draw-on */}
+        <motion.div
+          initial={{
+            clipPath: "inset(0 100% 0 0)",
+            opacity: 1,
+          }}
+          animate={{
+            clipPath: "inset(0 0% 0 0)",
+            opacity: 1,
+          }}
+          transition={{
+            duration: 0.25,
+            ease: "easeOut",
+          }}
+          className="
+            signature-font
+            text-4xl sm:text-5xl
+            text-white
+            tracking-wide
+            relative
+          "
+        >
+          Harsha Asapu
+        </motion.div>
+
+        {/* Soft underline shimmer */}
+        <motion.div
+          className="mx-auto mt-2 h-[1px] w-28
+                     bg-gradient-to-r from-transparent via-blue-500/60 to-transparent"
+          initial={{ opacity: 0, scaleX: 0 }}
+          animate={{ opacity: 1, scaleX: 1 }}
+          transition={{ delay: 1.6, duration: 0.7, ease: "easeOut" }}
+        />
       </motion.div>
-    </div>
+    </motion.div>
   );
 }
