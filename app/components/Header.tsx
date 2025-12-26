@@ -19,17 +19,32 @@ const NAV_ITEMS = [
 ];
 
 export default function Header() {
-  const [date, setDate] = useState<string>("");
+  const [dateTime, setDateTime] = useState<string>("");
   const [active, setActive] = useState("home");
 
   useEffect(() => {
-    setDate(
-      new Date().toLocaleDateString("en-US", {
+    const updateTime = () => {
+      const now = new Date();
+
+      const date = now.toLocaleDateString("en-US", {
         year: "numeric",
         month: "2-digit",
         day: "2-digit",
-      })
-    );
+      });
+
+      const time = now.toLocaleTimeString("en-US", {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+      });
+
+      setDateTime(`${date} · ${time}`);
+    };
+
+    updateTime(); // initial run
+    const interval = setInterval(updateTime, 1000); // update every second
+
+    return () => clearInterval(interval);
   }, []);
 
   const scrollTo = (id: string) => {
@@ -41,7 +56,7 @@ export default function Header() {
 
   return (
     <aside className="hidden md:block fixed left-5 top-24 z-40">
-      {/* Floating Profile (OUTSIDE BOX) */}
+      {/* Floating Profile */}
       <div className="relative z-50 mb-4 flex items-center gap-4 px-2">
         <div className="h-24 w-24 rounded-full overflow-hidden ring-2 ring-white/20">
           <img
@@ -88,7 +103,7 @@ export default function Header() {
                 transition
                 ${
                   active === item.id
-                    ? "bg-white/10 text-white shadow-[0_0_12px_rgba(255,255,255,0.15)]"
+                    ? "bg-slate-500/15 text-white shadow-[0_0_12px_rgba(100,116,139,0.35)]"
                     : "text-zinc-400 hover:text-white hover:bg-white/5"
                 }
               `}
@@ -102,11 +117,20 @@ export default function Header() {
         {/* Spacer */}
         <div className="h-8" />
 
-        {/* Location + Date */}
-        <div className="mb-3 rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-xs text-zinc-400">
-          <p>United States</p>
-          <p>{date || "—"}</p>
+        {/* Location + Date + Time */}
+        <div className="mb-3 rounded-xl border border-white/10 bg-white/5 px-3 py-3 text-xs text-zinc-400">
+          <p className="mb-1">Missouri, USA</p>
+
+          {dateTime ? (
+            <div className="flex flex-col gap-0.5">
+              <span>{dateTime.split("|")[0]}</span>
+              <span>{dateTime.split("|")[1]}</span>
+            </div>
+          ) : (
+            "—"
+          )}
         </div>
+
 
         {/* Resume */}
         <a
