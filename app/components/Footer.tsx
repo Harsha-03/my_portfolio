@@ -12,7 +12,7 @@ function QuoteLoop() {
   const [cycle, setCycle] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => setCycle((c) => c + 1), 10000);
+    const interval = setInterval(() => setCycle((c) => c + 1), 5000);
     return () => clearInterval(interval);
   }, []);
 
@@ -53,14 +53,26 @@ function QuoteLoop() {
 function ThankYou() {
   return (
     <div
-      className="relative z-0 pointer-events-none text-center footer-thankyou"
+      className="
+        relative z-0 pointer-events-none text-center footer-thankyou
+        [mask-image:linear-gradient(to_top,black_0%,black_35%,transparent_85%)]
+        [-webkit-mask-image:linear-gradient(to_top,black_0%,black_35%,transparent_95%)]
+      "
     >
-      <span className="block font-playfair text-[7.5vw] leading-none tracking-[0.12em] text-white select-none">
+      <span
+        className="
+          block font-playfair
+          text-[7.5vw] leading-none tracking-[0.12em]
+          text-white/25 select-none
+        "
+      >
         THANK YOU
       </span>
     </div>
   );
 }
+
+
 
 /* ---------------- Footer ---------------- */
 
