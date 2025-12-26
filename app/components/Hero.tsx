@@ -29,7 +29,7 @@ export default function Hero() {
             <span className="h-2 w-2 rounded-full bg-green-400 animate-pulse" />
             Open to work
           </span>
-          <span>{time}</span>
+          
         </div>
 
         {/* Hero content */}
