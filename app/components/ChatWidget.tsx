@@ -14,7 +14,7 @@ function uid() {
   return Math.random().toString(36).slice(2) + Date.now().toString(36);
 }
 
-const SUGGESTED = [
+const QUICK_QUESTIONS = [
   "Give me your timeline in 20 seconds.",
   "What are your top projects?",
   "Explain the airline dashboard thing.",
@@ -24,49 +24,47 @@ const SUGGESTED = [
 ];
 
 function renderFormattedAnswer(text: string) {
-  const lines = text
+  return text
     .split("\n")
     .map((l) => l.trim())
-    .filter(Boolean);
+    .filter(Boolean)
+    .map((line, i) => {
+      if (line.endsWith(":") && line.length < 60) {
+        return (
+          <div
+            key={i}
+            className="mt-3 mb-1 text-xs uppercase tracking-wider text-blue-400"
+          >
+            {line.replace(":", "")}
+          </div>
+        );
+      }
 
-  return lines.map((line, i) => {
-    // Section header (ends with :)
-    if (line.endsWith(":") && line.length < 60) {
+      if (/^[-•]\s+/.test(line)) {
+        return (
+          <div key={i} className="flex gap-2 pl-2 text-sm leading-relaxed">
+            <span className="mt-[2px] text-emerald-400">•</span>
+            <span>{line.replace(/^[-•]\s+/, "")}</span>
+          </div>
+        );
+      }
+
       return (
-        <div
-          key={i}
-          className="mt-4 mb-1 text-sm font-semibold tracking-wide opacity-90"
-        >
-          {line.replace(":", "")}
+        <div key={i} className="text-sm leading-relaxed opacity-90">
+          {line}
         </div>
       );
-    }
-
-    // Bullet-like lines
-    if (/^[-•]\s+/.test(line)) {
-      return (
-        <div key={i} className="flex gap-2 pl-2 text-sm leading-relaxed">
-          <span className="mt-[3px] opacity-60">•</span>
-          <span>{line.replace(/^[-•]\s+/, "")}</span>
-        </div>
-      );
-    }
-
-    // Normal paragraph
-    return (
-      <div key={i} className="text-sm leading-relaxed opacity-90">
-        {line}
-      </div>
-    );
-  });
+    });
 }
-
 
 export default function ChatWidget() {
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const panelRef = useRef<HTMLDivElement | null>(null);
+  const listRef = useRef<HTMLDivElement | null>(null);
 
   const debug = useMemo(() => {
     if (typeof window === "undefined") return false;
@@ -77,33 +75,57 @@ export default function ChatWidget() {
     if (typeof window === "undefined") return [];
     try {
       const raw = window.localStorage.getItem("portfolio_chat_messages");
-      return raw ? (JSON.parse(raw) as ChatMsg[]) : [];
+      return raw ? JSON.parse(raw) : [];
     } catch {
       return [];
     }
   });
 
-  const listRef = useRef<HTMLDivElement | null>(null);
-
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      window.localStorage.setItem("portfolio_chat_messages", JSON.stringify(messages));
-    }
+    window.localStorage.setItem(
+      "portfolio_chat_messages",
+      JSON.stringify(messages)
+    );
   }, [messages]);
 
   useEffect(() => {
-    listRef.current?.scrollTo({ top: listRef.current.scrollHeight, behavior: "smooth" });
+    listRef.current?.scrollTo({
+      top: listRef.current.scrollHeight,
+      behavior: "smooth",
+    });
   }, [messages, open, loading]);
+
+  // Click outside + ESC
+  useEffect(() => {
+    if (!open) return;
+
+    function handleClickOutside(e: MouseEvent) {
+      if (panelRef.current && !panelRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    }
+
+    function handleEsc(e: KeyboardEvent) {
+      if (e.key === "Escape") setOpen(false);
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleEsc);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleEsc);
+    };
+  }, [open]);
 
   async function send(q?: string) {
     const question = (q ?? input).trim();
     if (!question || loading) return;
 
-    setError(null);
     setLoading(true);
+    setError(null);
 
-    const userMsg: ChatMsg = { id: uid(), role: "user", content: question };
-    setMessages((prev) => [...prev, userMsg]);
+    setMessages((m) => [...m, { id: uid(), role: "user", content: question }]);
     setInput("");
 
     try {
@@ -117,16 +139,17 @@ export default function ChatWidget() {
 
       const data = await res.json();
 
-      const assistantMsg: ChatMsg = {
-        id: uid(),
-        role: "assistant",
-        content:
-          data?.answer?.trim() ||
-          data?.follow_up_question?.trim() ||
-          "I don’t have enough information from the portfolio content for that.",
-      };
-
-      setMessages((prev) => [...prev, assistantMsg]);
+      setMessages((m) => [
+        ...m,
+        {
+          id: uid(),
+          role: "assistant",
+          content:
+            data.answer ||
+            data.follow_up_question ||
+            "I don’t have enough information to answer that.",
+        },
+      ]);
     } catch {
       setError("Something went wrong. Try again.");
     } finally {
@@ -136,90 +159,75 @@ export default function ChatWidget() {
 
   function clearChat() {
     setMessages([]);
-    if (typeof window !== "undefined") {
-      window.localStorage.removeItem("portfolio_chat_messages");
-    }
+    window.localStorage.removeItem("portfolio_chat_messages");
   }
 
   return (
     <>
-      {/* Floating Chat FAB */}
+      {/* Floating FAB */}
       <button
-      onClick={() => setOpen((v) => !v)}
-      aria-label="Open AI assistant chat"
-      className="
-        fixed bottom-5 right-5 z-50
-        w-14 h-14 sm:w-16 sm:h-16
-        rounded-full
-        flex items-center justify-center
-        transition-transform duration-300
-        hover:scale-110 active:scale-95
+        onClick={() => setOpen((v) => !v)}
+        aria-label="Open portfolio assistant"
+        className="
+          fixed bottom-5 right-5 z-50
+          w-14 h-14 sm:w-16 sm:h-16
+          rounded-full
+          flex items-center justify-center
+          transition-all duration-300
+          hover:scale-110 active:scale-95
         "
       >
-        {/* Light theme AI agent */}
-        <img
-          src="/images/ai-agent-light.png"
-          alt="AI Assistant"
-          className="
-            absolute w-full h-full rounded-full
-            animate-[idlePulse_5s_ease-in-out_infinite]
-            hover:animate-[hoverFloat_1.8s_ease-in-out_infinite]
-            dark:hidden
-          "
-        />
-
-        {/* Dark theme AI agent */}
         <img
           src="/images/ai-agent-dark.png"
           alt="AI Assistant"
-          className="
-            absolute w-full h-full rounded-full
-            animate-[idlePulse_5s_ease-in-out_infinite,glowPulse_4s_ease-in-out_infinite]
-            hover:animate-[hoverFloat_1.8s_ease-in-out_infinite,glowPulse_4s_ease-in-out_infinite]
-            hidden dark:block
-          "
+          className="absolute w-full h-full rounded-full ai-idle ai-hover"
         />
       </button>
 
-
-      {/* Chat Panel */}
       {open && (
         <div
+          ref={panelRef}
           className="
             fixed bottom-20 right-5 z-50
             w-[94vw] max-w-md
             rounded-2xl
-            backdrop-blur shadow-2xl
-            border
-
-            bg-white/90 text-black border-black/10
-            dark:bg-zinc-900/90 dark:text-white dark:border-white/10
+            bg-zinc-900/95 text-white
+            border border-white/10
+            ring-1 ring-blue-500/30
+            shadow-2xl backdrop-blur
           "
         >
           {/* Header */}
-          <div className="flex items-center justify-between px-4 py-3 border-b border-black/10 dark:border-white/10">
+          <div className="flex items-center justify-between px-4 py-3 border-b border-white/10">
             <div>
-              <div className="font-semibold">Harsha’s Portfolio Assistant</div>
-              <div className="text-xs opacity-70">Grounded answers from documented projects.</div>
+              <div className="font-semibold">
+                Harsha’s Portfolio Assistant
+              </div>
+              <div className="text-xs opacity-70">
+                Grounded answers from documented projects.
+              </div>
             </div>
             <button
               onClick={clearChat}
-              className="text-xs px-2 py-1 rounded-md border border-black/10 dark:border-white/10 hover:bg-black/5 dark:hover:bg-white/10"
+              className="text-xs px-2 py-1 rounded-md border border-white/10 hover:bg-white/10"
             >
               Clear
             </button>
           </div>
 
-          {/* Suggestions */}
-          <div className="px-4 py-3 border-b border-black/10 dark:border-white/10">
+          {/* Quick questions */}
+          <div className="px-4 py-3 border-b border-white/10">
             <div className="text-xs opacity-70 mb-2">Quick questions</div>
             <div className="flex flex-wrap gap-2">
-              {SUGGESTED.map((q) => (
+              {QUICK_QUESTIONS.map((q) => (
                 <button
                   key={q}
                   onClick={() => send(q)}
-                  disabled={loading}
-                  className="text-xs px-2 py-1 rounded-full border border-black/10 dark:border-white/10 hover:bg-black/5 dark:hover:bg-white/10 disabled:opacity-50"
+                  className="
+                    text-xs px-2 py-1 rounded-full
+                    border border-white/10
+                    hover:bg-white/10
+                  "
                 >
                   {q}
                 </button>
@@ -228,75 +236,70 @@ export default function ChatWidget() {
           </div>
 
           {/* Messages */}
-          <div ref={listRef} className="max-h-[52vh] overflow-y-auto px-4 py-3 space-y-3">
+          <div
+            ref={listRef}
+            className="max-h-[52vh] overflow-y-auto px-4 py-3 space-y-3"
+          >
             {messages.length === 0 && (
               <div className="text-sm opacity-70">
-                Ask about my projects, timeline, or what I did on each one.
+                Ask about my projects, timeline, or what I worked on.
               </div>
             )}
 
             {messages.map((m) => (
-              <div key={m.id} className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>
+              <div
+                key={m.id}
+                className={`flex ${
+                  m.role === "user" ? "justify-end" : "justify-start"
+                }`}
+              >
                 <div
-                  className={`max-w-[85%] rounded-2xl px-3 py-2 text-sm border ${
+                  className={`max-w-[85%] rounded-2xl px-3 py-2 text-sm ${
                     m.role === "user"
-                      ? "bg-black text-white dark:bg-white dark:text-black"
-                      : "bg-black/5 text-black dark:bg-white/5 dark:text-white"
+                      ? "bg-blue-500 text-black"
+                      : "bg-white/5 text-white border border-white/10"
                   }`}
                 >
-                  {m.role === "assistant" ? (
-                    <div className="space-y-2">
-                    {renderFormattedAnswer(m.content)}
-                    </div>
-                  ) : (
-                    <span className="whitespace-pre-wrap">{m.content}</span>
-                  )}
+                  {m.role === "assistant"
+                    ? renderFormattedAnswer(m.content)
+                    : m.content}
                 </div>
               </div>
             ))}
 
             {loading && (
-                <div className="flex items-center gap-1 text-sm opacity-70">
-                <span>Typing</span>
-                <span className="animate-pulse motion-reduce:animate-none">▍</span>
-                </div>
+              <div className="text-xs opacity-60">Thinking…</div>
             )}
 
             {error && (
-              <div className="text-xs text-red-500">{error}</div>
+              <div className="text-xs text-red-400">{error}</div>
             )}
           </div>
 
           {/* Input */}
-          <div className="px-4 py-3 border-t border-black/10 dark:border-white/10">
-            <div className="flex gap-2">
-              <input
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && send()}
-                disabled={loading}
-                placeholder="Ask a quick question…"
-                className="
-                  flex-1 rounded-xl px-3 py-2 text-sm outline-none
-                  bg-white/80 border border-black/10
-                  focus:border-black/30
-
-                  dark:bg-zinc-900/80 dark:border-white/10 dark:focus:border-white/30
-                "
-              />
-              <button
-                onClick={() => send()}
-                disabled={loading || !input.trim()}
-                className="
-                  rounded-xl px-3 py-2 text-sm font-medium
-                  bg-black text-white hover:bg-black/80
-                  dark:bg-white dark:text-black dark:hover:bg-white/80
-                  disabled:opacity-50
-                "
-              >
-                Send
-              </button>
-            </div>
+          <div className="px-4 py-3 border-t border-white/10 flex gap-2">
+            <input
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && send()}
+              placeholder="Ask a question…"
+              className="
+                flex-1 rounded-xl px-3 py-2 text-sm
+                bg-zinc-800 border border-white/10
+                focus:border-blue-400 outline-none
+              "
+            />
+            <button
+              onClick={() => send()}
+              disabled={!input.trim() || loading}
+              className="
+                px-3 py-2 rounded-xl text-sm font-medium
+                bg-blue-400 text-black
+                hover:bg-blue-300 disabled:opacity-50
+              "
+            >
+              Send
+            </button>
           </div>
         </div>
       )}

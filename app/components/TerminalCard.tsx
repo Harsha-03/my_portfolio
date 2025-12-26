@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
 
 // Client-only import for react-typed
 const TypedNoSSR = dynamic(
@@ -10,12 +10,18 @@ const TypedNoSSR = dynamic(
 );
 
 export default function TerminalCard() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    // trigger entrance animation after mount
+    const t = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(t);
+  }, []);
+
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.95, y: 8 }}
-      animate={{ opacity: 1, scale: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: "easeOut", delay: 0.15 }}
-      className="
+    <div
+      aria-label="Portfolio terminal"
+      className={`
         relative rounded-2xl
         border border-white/10
         bg-white/8 dark:bg-zinc-900/60
@@ -23,19 +29,20 @@ export default function TerminalCard() {
         shadow-[0_30px_80px_-20px_rgba(0,0,0,0.55)]
         overflow-hidden
         w-[min(85vw,480px)] sm:w-[420px] md:w-[460px] lg:w-[480px]
-      "
-      aria-label="Portfolio terminal"
+        transform-gpu transition-all duration-500 ease-out
+        ${mounted ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-[0.95] translate-y-2"}
+      `}
     >
       {/* Title bar */}
       <div
         className="
           flex items-center justify-between
           px-4 py-2
-          bg-gradient-to-b from-white/10 to-white/5 dark:from-zinc-800/80 dark:to-zinc-800/50
+          bg-gradient-to-b from-white/10 to-white/5
+          dark:from-zinc-800/80 dark:to-zinc-800/50
           border-b border-white/10
         "
       >
-        {/* Windows PowerShell symbol instead of circles */}
         <div className="flex items-center gap-2 text-blue-500 font-bold text-sm">
           <span>{">_"}</span>
         </div>
@@ -62,14 +69,14 @@ export default function TerminalCard() {
           <Line prompt="$" text="whoami" />
           <TypedBlock
             strings={[
-              `<span class='text-brand font-semibold'>Baba Sriharsha Asapu</span> — AI Full-Stack developer (MIS @ SLU). I build accessible, data-driven apps.`,
+              `<span class='text-brand font-semibold'>Baba Sriharsha Asapu</span> — frontend-focused engineer (MIS @ SLU) building thoughtful, accessible products.`,
             ]}
           />
 
           <Line prompt="$" text="projects" />
           <TypedBlock
             strings={[
-              `• <a href="#projects" class="underline decoration-dotted hover:no-underline">AI Resume Editor</a> — Tailoring, match scores, cover letters.`,
+              `• <a href="#projects" class="underline decoration-dotted hover:no-underline">AI Resume Editor</a> — tailoring, match scores, cover letters.`,
               `• <a href="#projects" class="underline decoration-dotted hover:no-underline">Airline Performance Tracker</a> — Power BI, DAX, insights.`,
               `• Next up: <span class='opacity-80'>Coming soon…</span>`,
             ]}
@@ -86,10 +93,10 @@ export default function TerminalCard() {
           <Line prompt="$" text="skills" />
           <TypedBlock
             strings={[
-              `• Frontend: React/Next.js, TypeScript, Tailwind`,
+              `• Frontend: React, Next.js, TypeScript, Tailwind`,
               `• Backend: Flask, Node.js, REST, Firebase`,
               `• Data: SQL, Python, Power BI`,
-              `• AI: OpenAI APIs, RAG basics`,
+              `• AI: OpenAI APIs, RAG fundamentals`,
             ]}
           />
 
@@ -102,7 +109,7 @@ export default function TerminalCard() {
           />
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
 
@@ -116,7 +123,7 @@ function Line({ prompt, text }: { prompt: string; text: string }) {
   );
 }
 
-/** Typed block: continuous, slower, endless */
+/** Typed block */
 function TypedBlock({ strings }: { strings: string[] }) {
   return (
     <div className="pl-5">
@@ -125,7 +132,7 @@ function TypedBlock({ strings }: { strings: string[] }) {
         typeSpeed={85}
         backSpeed={0}
         backDelay={1000}
-        loop={true}
+        loop
         smartBackspace
         showCursor
         cursorChar="▋"
