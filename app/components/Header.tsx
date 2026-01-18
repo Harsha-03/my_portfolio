@@ -73,7 +73,7 @@ export default function Header() {
           >
             Harsha Asapu
           </p>
-          <p className="text-sm text-zinc-400">Developer</p>
+          <p className="text-sm text-zinc-400">Designer</p>
         </div>
       </div>
 
