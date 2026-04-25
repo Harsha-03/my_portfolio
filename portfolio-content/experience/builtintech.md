@@ -1,102 +1,61 @@
-# BuiltinTech — Co-Founder & Lead (IT Services)
+# BuiltinTech — Co-Founder, Product Designer & Frontend Engineer
 
 ## Overview
 
-BuiltinTech was an early-stage IT services initiative co-founded in India. The focus was acquiring real clients, translating business needs into workable solutions, and delivering paid web/application projects with accountability.
-
-This experience emphasized delivery discipline, client trust, and end-to-end ownership.
+BuiltinTech was a client-facing IT services startup co-founded in India.
+Harsha led product design, UI implementation, and client relationships across
+10+ paid projects. This was his first experience owning a product from first
+conversation to production.
 
 ---
 
-## Timeline and Context
+## Timeline
 
-- **Period:** December 2022 – December 2023
+- **Period:** January 2023 – December 2023
 - **Location:** India
-- **Role:** Co-Founder & Lead
-
-This work followed Areksoft Technologies and preceded my graduate studies in the U.S.
+- **Role:** Co-Founder, Product Designer & Frontend Engineer
 
 ---
 
-## Founding and Collaboration
+## Design Responsibilities
 
-BuiltinTech was co-founded with a clear division of responsibility:
-
-- **My focus**
-
-  - client acquisition and relationship management
-  - cold calling and in-person outreach
-  - requirement discovery and scoping
-  - explaining solutions to non-technical clients
-  - coordinating delivery timelines
-
-- **Co-founder focus (Himmalay)**
-  - backend and system-level implementation
-  - supporting application architecture
+- Designed user flows and interface layouts for client-facing web products
+- Translated business requirements into clear, usable interfaces
+- Built responsive UI components using HTML, CSS, and JavaScript
+- Iterated on designs based on direct client feedback
+- Prioritized usability and clarity in every client delivery
 
 ---
 
-## Client Acquisition and Deal Closure
+## Client Acquisition and Delivery
 
-I led client acquisition directly:
-
-- engaged businesses through storefront visits and cold calls
-- discovered needs through practical conversation
-- closed deals based on clarity and trust, often securing advance payments
-
----
-
-## Project Scope and Delivery
-
-BuiltinTech delivered **10+ paid client projects**, including:
-
-- client-requested application builds
-- web solutions tailored to specific business needs
-
-Each engagement required clear scoping, functional delivery, and accountability for outcomes.
+- Led cold outreach: storefront visits, cold calls, requirement discovery
+- Closed deals based on clarity and trust, often securing advance payments
+- Owned full project lifecycle: research → design → development → deployment → support
+- Delivered 10+ paid client projects across local businesses
 
 ---
 
-## End-to-End Ownership
+## Team Leadership
 
-Projects covered the full lifecycle:
-
-- research and requirement understanding
-- development coordination
-- deployment
-- production support and iteration
+- Recruited and managed paid interns from KL University
+- Issued internship letters and coordinated real-project experience
+- Co-founder (Himmalay) handled backend and system architecture
 
 ---
 
-## Technical Contribution
+## Why This Matters for UX
 
-My technical contribution focused on frontend execution:
+This experience built Harsha's ability to:
 
-- built interfaces using HTML, CSS, and JavaScript
-- prioritized usability and responsiveness
-- collaborated closely with backend services implemented by my co-founder
-
----
-
-## Team Leadership and Internships
-
-- recruited students from KL University
-- issued internship letters and provided paid opportunities
-- coordinated tasks and ensured practical experience through real client work
+- Extract design requirements from non-technical clients
+- Design under real constraints with accountability for outcomes
+- Understand how design decisions affect delivery and client satisfaction
+- Own work end-to-end without a team safety net
 
 ---
 
 ## Organizational Pause
 
-BuiltinTech was paused at the end of 2023 due to limitations in scaling services and product direction. Both co-founders transitioned to graduate study to build deeper systems knowledge.
-
----
-
-## Why This Experience Matters
-
-BuiltinTech demonstrates my ability to:
-
-- co-found and lead a real client-facing initiative
-- acquire and manage clients directly
-- translate business needs into technical delivery
-- own work from first conversation to production support
+Paused December 2023 when both co-founders relocated abroad for graduate study.
+All client work was completed and delivered before closure.

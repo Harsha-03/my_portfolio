@@ -8,19 +8,19 @@ export default function AppShell({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const [loading, setLoading] = useState(true);
 
-  // Initial splash on first load
+  // Initial splash on first load — match SplashLoader duration
   useEffect(() => {
-    const t = setTimeout(() => setLoading(false), 900);
+    const t = setTimeout(() => setLoading(false), 4000);
     return () => clearTimeout(t);
   }, []);
 
-  // Optional: show splash briefly on route changes
-  useEffect(() => {
-    if (!pathname) return;
-    setLoading(true);
-    const t = setTimeout(() => setLoading(false), 350);
-    return () => clearTimeout(t);
-  }, [pathname]);
+  // Skip splash on route changes — only on initial load
+  // useEffect(() => {
+  //   if (!pathname) return;
+  //   setLoading(true);
+  //   const t = setTimeout(() => setLoading(false), 350);
+  //   return () => clearTimeout(t);
+  // }, [pathname]);
 
   if (loading) return <SplashLoader />;
 
@@ -39,7 +39,7 @@ export default function AppShell({ children }: { children: ReactNode }) {
       </div>
 
       {/* Mobile */}
-      <div className="md:hidden px-4">
+      <div className="md:hidden px-4 pt-16">
         {children}
       </div>
     </main>

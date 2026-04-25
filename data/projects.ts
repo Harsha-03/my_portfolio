@@ -6,6 +6,7 @@ export type Project = {
   shortDescription: string;
   image?: string;
   tags?: string[];
+  caseStudy?: string;
   status?: "Shipped" | "In Progress";
   year?: string;
 
@@ -31,9 +32,10 @@ export const projects: Project[] = [
     slug: "slu-alumni-connect",
     title: "SLU Alumni Connect",
     shortDescription:
-      "A full-stack alumni engagement platform enabling students, alumni, mentors, and administrators to connect through role-based dashboards and analytics.",
+      "A production-ready alumni engagement platform designed around clear role-based dashboards.",
     image: "/projects/slu-alumni-connect.png",
-    tags: ["Next.js", "React", "Node.js", "Python", "PostgreSQL"],
+    tags: ["UX Research & User Flows","Design Systems","Next.js/React"],
+    caseStudy: "/case-studies/slu-alumni-connect",
     status: "Shipped",
     year: "2024",
     demo: "https://slu-alumni-connect-main.vercel.app/",
@@ -41,14 +43,16 @@ export const projects: Project[] = [
     featured: true,
 
     overview:
-      "SLU Alumni Connect is a centralized alumni engagement platform built for Saint Louis University. It replaces fragmented spreadsheets and manual workflows with a role-based system for mentorship, events, and analytics.",
+      "SLU Alumni Connect is a centralized alumni engagement platform designed to replace fragmented spreadsheets and manual workflows with a clear, role-based experience for students, alumni, mentors, and administrators.",
 
-    role: "Full-Stack Developer",
+    role: "UI/UX Designer & Frontend Engineer",
     timeframe: "3 months",
     platform: "Web",
     tools: [
+      "Figma",
+      "UX Research & User Flows",
+      "Design Systems",
       "Next.js (App Router)",
-      "Node.js",
       "Python",
       "PostgreSQL",
       "Prisma",
@@ -56,14 +60,14 @@ export const projects: Project[] = [
 
     problems: [
       "Alumni data was fragmented across spreadsheets and disconnected tools",
-      "No structured way for students to discover mentors",
-      "Manual tracking of events and engagement by administrators",
+      "No clear or intuitive way for students to discover mentors",
+      "Manual tracking of events and engagement created operational overhead for administrators",
     ],
 
     solutions: [
-      "Designed a role-based alumni engagement platform",
-      "Built dashboards for students, alumni, and administrators",
-      "Implemented analytics to track mentorship and participation",
+      "Designed a role-based alumni engagement experience tailored to distinct user needs",
+      "Created dashboards that support discovery, participation, and administrative oversight",
+      "Integrated analytics to surface engagement trends and mentorship activity",
     ],
   },
 
@@ -71,9 +75,10 @@ export const projects: Project[] = [
     slug: "ai-resume-editor",
     title: "AI Resume Editor",
     shortDescription:
-      "An AI-powered resume optimization tool that scores resumes against job descriptions and generates tailored content.",
+      "An AI-powered resume editor designed to make feedback clear and user-controlled.",
     image: "/projects/project_1.png",
-    tags: ["Python", "Streamlit", "OpenAI", "Firebase"],
+    tags: ["UX Flow Design","Python", "Streamlit", "OpenAI"],
+    caseStudy: "/case-studies/ai-resume-editor",
     status: "Shipped",
     year: "2024",
     demo: "https://resume-ai-editor-harsha-asapu.streamlit.app/",
@@ -81,21 +86,21 @@ export const projects: Project[] = [
     featured: true,
 
     overview:
-      "AI Resume Editor helps job seekers tailor resumes more effectively by matching them against job descriptions and generating optimized content using LLMs.",
+      "AI Resume Editor is a UX-focused productivity tool designed to help job seekers understand, improve, and tailor their resumes against job descriptions through clear feedback, transparency, and guided interactions.",
 
-    role: "AI Application Developer",
+    role: "UI/UX Designer & AI Tooling",
     timeframe: "2 weeks",
     platform: "Web",
-    tools: ["Python", "Streamlit", "OpenAI API", "Firebase"],
+    tools: ["UX Flow Design","Python", "Streamlit", "OpenAI API", "Firebase"],
 
     problems: [
-      "Manual resume tailoring was repetitive and time-consuming",
-      "Applicants struggled to optimize resumes for ATS systems",
+      "Resume tailoring was repetitive, opaque, and time-consuming",
+      "Job seekers lacked clear feedback on how resumes perform against ATS systems",
     ],
 
     solutions: [
-      "Implemented resume–job matching using NLP techniques",
-      "Automated resume and cover letter generation using LLMs",
+      "Designed a transparent resume–job matching flow that highlights gaps and alignment",
+      "Built guided resume and cover-letter generation focused on clarity rather than black-box output",
     ],
   },
 
@@ -138,5 +143,38 @@ export const projects: Project[] = [
     image: "/projects/coming_soon.jpg",
     tags: ["In Progress"],
     status: "In Progress",
+  },
+  {
+    slug: "lifeos",
+    title: "LifeOS — Personal Productivity System",
+    shortDescription:
+      "A behavioral design project exploring how people can manage daily execution and weekly reflection without guilt or performance pressure.",
+    image: "/projects/project_2.png",
+    tags: ["Product Design", "Behavioral UX", "Figma", "UX Research"],
+    caseStudy: "/lifeos-case-study.pdf",
+    status: "In Progress",
+    year: "2025",
+    featured: true,
+
+    overview:
+      "LifeOS is a self-initiated product design project targeting students and early-career professionals (20–28) who struggle to align daily actions with long-term priorities. Most productivity tools track activity but don't support decision-making, reflection, or recovery from missed plans.",
+
+    role: "Product Designer",
+    timeframe: "Ongoing",
+    platform: "Web / Mobile",
+    tools: ["Figma", "UX Research", "Behavioral Design", "User Journey Mapping"],
+
+    problems: [
+      "Users abandon productivity tools mid-week due to guilt after falling behind",
+      "Existing tools optimize for output tracking, not decision quality or recovery",
+      "Overplanning and energy fluctuation cause consistent execution failure",
+    ],
+
+    solutions: [
+      "Designed a weekly focus model capped at 3 priorities to reduce decision fatigue",
+      "Built a reflection-first recovery flow so users re-engage without punishment",
+      "Created an Insights layer surfacing behavioral patterns, not performance scores",
+      "Designed flexible daily execution tied to weekly priorities without forced completion",
+    ],
   },
 ];

@@ -1,86 +1,121 @@
-# Personal Portfolio Website — Frontend System with RAG Integration
+# Portfolio Website — UX Case Study
 
 ## Overview
 
-This portfolio was designed as a transparent, structured representation of my work—not a static gallery. The site includes an AI assistant that answers questions strictly from documented portfolio content, preventing timeline drift, exaggeration, or hallucinated claims.
+Harsha designed and shipped his personal portfolio as a production-ready product,
+then documented the design decisions as a formal UX case study in Figma.
+The case study covers five areas: context, design goals, information architecture,
+interaction design, and visual system.
+
+The portfolio itself is a live, shipped product and his primary UX case study.
 
 ---
 
-## Timeline and Context
+## Context
 
-- **Period:** July 2025 – August 2025
-- **Location:** United States
-- **Context:** Master’s in Information Systems
-- **Status:** Actively maintained
+The portfolio is visited by users under time pressure — hiring managers, designers,
+engineers, and collaborators who need to quickly understand who Harsha is,
+what he does, and what he has built.
 
----
+Earlier versions prioritized visual exploration and motion-heavy interactions.
+While engaging, this increased cognitive load and made it harder for users to
+quickly verify relevance and credibility.
 
-## Problem Statement
-
-Traditional portfolios force visitors to infer context from scattered descriptions. That leads to:
-
-- misinterpretation of experience
-- timeline confusion
-- shallow “buzzword” impressions
-- unclear ownership and contribution
-
-The goal was to build a portfolio that explains work **accurately and contextually**, not through marketing.
+Key mindset shift: designing for comprehension, not impressing.
 
 ---
 
-## My Role and Ownership
+## Problem
 
-Full ownership across the system:
+Users struggled to quickly understand Harsha's role, experience, and credibility due to:
 
-- frontend architecture and UI implementation
-- content structure and documentation
-- AI assistant design and integration (RAG)
-- deployment and iteration
-
----
-
-## Frontend Architecture
-
-- React + Next.js (App Router)
-- component-driven layout
-- responsive and theme-aware UI
-- clear separation between UI and content
-
-Visual design supports usability and clarity rather than being the core product.
+- Excessive visual noise and animation
+- Unclear hierarchy of information
+- Limited immediate proof of shipped work
+- Friction for users who wanted fast answers before deciding to explore deeper
 
 ---
 
-## RAG Assistant (Generation Control by Design)
+## Design Goals
 
-The AI assistant uses Retrieval-Augmented Generation (RAG) to avoid hallucinations and keep answers timeline-safe.
+- Help users understand role and focus within the first 10 seconds
+- Reduce cognitive load by simplifying layout, motion, and hierarchy
+- Present projects as shipped, verifiable work — not concepts
+- Balance personality with clarity, avoiding visual gimmicks
+
+---
+
+## Success Criteria
+
+- Users can quickly identify: what Harsha does, what he has built, what to explore next
+- Navigation feels predictable and easy to scan
+- Projects communicate outcomes and responsibility, not just visuals
+- The portfolio feels stable, intentional, and trustworthy
+
+---
+
+## Information Architecture
+
+Single-page experience with a persistent sidebar for fast scanning and predictable navigation.
+Structure: Home (role + positioning) → Projects (shipped work with live proof) →
+Experience (background and context) → Skills (grouped and scannable) → Contact (clear CTA).
+
+Single-page navigation chosen to:
+
+- Align with natural scrolling behavior
+- Avoid unnecessary page loads and context switching
+- Keep users oriented at all times
+- Support both quick skims and deeper exploration
+
+---
+
+## Interaction Design — Trust & Verification
+
+**Interaction Problem:** Traditional portfolios rely on self-written descriptions,
+forcing users to hunt through sections to verify claims.
+
+**Design Decision:** A conversational RAG assistant that allows users to ask natural
+questions about Harsha's work, experience, and background. Responses are strictly
+grounded in documented project content to ensure accuracy.
+
+**Why this builds trust:**
+
+- Reduces need to hunt through sections
+- Prevents exaggerated or hallucinated answers
+- Aligns responses with visible proof
+- Supports both quick checks and deeper exploration
+
+---
+
+## Visual System & Restraint
+
+Visual direction intentionally prioritizes clarity, contrast, and restraint over decoration.
 
 Key decisions:
 
-- portfolio knowledge is stored as markdown files
-- content is chunked deterministically and embedded
-- relevant context is retrieved per question
-- the assistant answers strictly from retrieved content (controlled generation)
+- Dark-first interface for reduced glare and focus
+- Limited color palette to reinforce hierarchy
+- Subtle motion only where it supports meaning
+- Typography chosen for readability over personality
 
-Outcome:
+What was removed after deployment:
 
-- accurate, defensible answers
-- no fabricated projects or roles
-- recruiter-friendly clarity without overclaiming
-
----
-
-## Deployment and Workflow
-
-- deployed on Vercel
-- version-controlled via GitHub
-- iterated as projects and experience evolve
+- Animated backgrounds and glowing elements
+- Continuous motion effects
+  Reason: they competed with content, increased cognitive load, and distracted from the work.
 
 ---
 
-## Scope Clarification
+## Tools
 
-This is a frontend system + applied AI integration project.
-It is not:
+- Figma (5-page case study document)
+- Next.js, React, Tailwind CSS, TypeScript (implementation)
+- OpenAI API + RAG system (portfolio assistant)
+- Vercel (deployment)
 
-- a general-purpose chatbot
-- an AI research project
+---
+
+## Status
+
+Live and deployed at harshaasapu.com.
+Case study documented in Figma across 5 structured pages.

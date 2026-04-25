@@ -1,146 +1,104 @@
 # Global Timeline — Harsha Asapu
 
-This file defines the authoritative timeline for all experience, skills, and projects
-represented in this portfolio and its AI assistant.
-
-All other documents must align with this timeline.
-If a skill or tool is not valid for a time period, it must not be implied.
+Authoritative career timeline. All other documents must align with this.
 
 ---
 
 ## Phase 1 — Early Professional Exposure (India)
 
-**Aug 2022 – Dec 2022**
+**Aug 2022 – Dec 2022 | Areksoft Technologies | Frontend Developer Intern**
 
-**Organization:** Areksoft Technologies  
-**Academic context:** Fourth-year Bachelor’s student
-
-### Focus
-
-- First exposure to how a technology company operates in practice
-- Understanding how engineering work connects to business and clients
-
-### Technical Exposure
-
-- Frontend: HTML, CSS, JavaScript
-- Backend: Python and Flask (first exposure)
-
-### Additional Learning
-
-- How clients are identified and approached
-- Importance of networking and professional connections
-- Social media reach and targeting
-- UI/UX basics through poster and outreach design
-- Tools used: Figma, Canva
-
-This phase reshaped my understanding of real-world software development
-and motivated me to pursue independent work.
+- First exposure to enterprise software delivery and client-facing workflows
+- Built and modified web interfaces using HTML, CSS, JavaScript
+- First exposure to Python and Flask (backend request/response flows)
+- Used Figma and Canva for UI and outreach materials
+- Observed how clients are acquired, approached, and managed
+- This phase directly motivated co-founding BuiltinTech
 
 ---
 
-## Phase 2 — Entrepreneurship & Delivery (India)
+## Phase 2 — Entrepreneurship & Product Delivery (India)
 
-**Dec 2022 – Dec 2023**
+**Jan 2023 – Dec 2023 | BuiltinTech | Co-Founder, Product Designer & Frontend Engineer**
 
-**Organization:** BuiltinTech  
-**Role:** Co-Founder
-
-### Focus
-
-- Client acquisition and direct business interaction
-- Translating business needs into technical solutions
-- End-to-end project ownership
-
-### Responsibilities
-
-- Cold calling and in-person outreach to local businesses
-- Explaining technical solutions to non-technical clients
-- Closing projects with advance payments
-- Coordinating development and delivery
-- Leading and mentoring interns from KL University
-
-### Delivery Scope
-
-- ~12 total projects delivered
-- 3 funded web applications (for close or mutual contacts)
-- Full lifecycle ownership:
-  - Research
-  - Development
-  - Deployment
-  - Production support
-
-### Technical Stack (during this phase)
-
-- Frontend: HTML, CSS, JavaScript
-
-BuiltinTech was paused at the end of 2023 as both co-founders transitioned
-to graduate study for deeper technical and systems knowledge.
+- Co-founded an IT services startup focused on local business clients
+- Led client acquisition: cold calling, in-person outreach, requirement discovery
+- Designed user flows, responsive layouts, and UI components for client products
+- Owned full product lifecycle: research → design → development → deployment → support
+- Delivered 10+ paid client projects; managed interns from KL University
+- Technical stack: HTML, CSS, JavaScript (frontend); co-founder handled backend
+- Paused end of 2023 as both founders relocated for graduate studies
 
 ---
 
-## Phase 3 — Graduate Study & Advanced Systems (United States)
+## Phase 3 — Graduate Study & UX Transition (United States)
 
-**Jan 2024 – Dec 2025**
+**Jan 2024 – Dec 2025 | MS in Information Systems, Saint Louis University**
 
-**Education:** Master’s in Information Systems  
-**Status:** Degree completed
+- Structured shift from frontend engineering to UX-first product design
+- Focused on information architecture, interaction design, and usability
+- Built production-ready systems: SLU Alumni Connect, AI Resume Editor, Portfolio + RAG
+- Data exposure: SPSS (Feb 2025) → Power BI — informs data-aware UI design
+- Completed degree December 2025
 
-### Focus
+### Projects Built During This Phase:
 
-- Structured frontend engineering
-- System-level thinking
-- Data-driven interfaces
-
-### Technical Direction
-
-- Frontend: React, Next.js
-- Emphasis on component-driven architecture
-- Building dashboards and workflow-oriented interfaces
-
-### Projects Built During This Phase
-
-- SLU Alumni Connect
-- AI Resume Editor
-- Personal portfolio platform (this site)
+- SLU Alumni Connect (Aug–Dec 2025)
+- AI Resume Editor (Jun–Jul 2025)
+- Portfolio Website + RAG Assistant (Jul–Aug 2025)
+- Airline Performance Tracker (Feb–May 2025)
+- LifeOS — Personal Productivity App Design (in progress, 2025)
+- Portfolio UX Case Study (Figma, 2025)
 
 ---
 
-## Data & Analytics Exposure
+## Phase 4 — Active UX Practice (Current)
 
-**Early 2025 (February)**
+**Feb 2026 – Present | Community Dreams Foundation | UI/UX Designer (Volunteer, Remote)**
 
-- Worked with SPSS for statistical analysis as part of coursework
-- Learned how structured data is analyzed and interpreted
-- This exposure led to exploring Power BI
-- Focused on dashboards and data visualization
-
-This experience informs how I design data-aware user interfaces,
-not as a data science specialization.
-
----
-
-## Hard Project Timeline Map (Authoritative)
-
-- **Feb 2025:** SPSS exposure → Power BI exploration begins
-- **Feb 2025 – May 2025:** Airline Performance Tracker (Power BI)
-- **Jun 2025 – Jul 2025:** AI Resume Editor (Python, Streamlit, OpenAI API, Firebase)
-- **Jul 2025 – Aug 2025:** Portfolio Website (Next.js) + RAG Assistant
-- **Aug 2025 – Dec 2025:** SLU Alumni Connect (React/Next.js dashboards)
+- Designing end-to-end user experiences for the DreamStream platform
+- Creating wireframes, interactive prototypes, and high-fidelity UI in Figma
+- Collaborating with PMs and developers in an Agile, Slack-based workflow
+- Conducting usability testing and iterating on user flows
+- Defining interaction patterns and responsive layouts for cross-device consistency
+- Advocating for user-centered design across community, business, and technical requirements
 
 ---
 
-## Tool Validity Rules (Do Not Violate)
+## Hard Project Timeline Map
 
-- **2022–2023 (India):** HTML, CSS, JavaScript; early exposure to Python/Flask only during Areksoft.
-- **React/Next.js:** Valid only during U.S. Master’s phase (2024+).
-- **Power BI:** Valid from Feb 2025 onward (triggered by SPSS exposure).
-- **AI / OpenAI API:** Valid during AI Resume Editor (Jun–Jul 2025) and Portfolio RAG (Jul–Aug 2025).
-- Do not imply tools outside their valid time windows.
+- Aug 2022 – Dec 2022: Areksoft Technologies (internship)
+- Jan 2023 – Dec 2023: BuiltinTech (co-founder, 10+ client projects)
+- Feb 2025 – May 2025: Airline Performance Tracker (Power BI)
+- Jun 2025 – Jul 2025: AI Resume Editor (Python, Streamlit, OpenAI, Firebase)
+- Jul 2025 – Aug 2025: Portfolio Website + RAG Assistant (Next.js)
+- Aug 2025 – Dec 2025: SLU Alumni Connect (React/Next.js)
+- 2025 (ongoing): LifeOS Product Design (Figma)
+- 2025 (ongoing): Portfolio UX Case Study (Figma)
+- Feb 2026 – Present: Community Dreams Foundation (DreamStream platform)
 
 ---
 
-## Status
+## Tool Validity Rules
 
-- All U.S.-based work occurred during the Master’s program
-- Degree completed recently
-- Portfolio reflects completed academic and professional work
+- HTML, CSS, JavaScript: Valid from Aug 2022 onward
+- Python, Flask: Valid from Aug 2022 (Areksoft), used in AI Resume Editor
+- Figma: Valid from Aug 2022 onward (deepened significantly in Master's phase)
+- React, Next.js, Tailwind: Valid from 2024 onward (Master's phase)
+- Power BI: Valid from Feb 2025 onward
+- OpenAI API: Valid Jun 2025 onward
+- Agile/Jira/Slack-based workflows: Valid from Feb 2026 (Community Dreams Foundation)
+
+---
+
+## Current Status
+
+- Degree completed: December 2025
+- Currently volunteering as UI/UX Designer at Community Dreams Foundation (Feb 2026–present)
+- Actively job searching
+- Open to: UI/UX Designer, Product Designer, Web Designer roles
+- Also open to: React Developer roles (foundational strength)
+- Work authorization: OPT Authorized
+- Preference: Full-time, Remote
+- Location: Reno, Nevada, USA
+- In progress: Google UX Design Certificate (Coursera, Foundations of UX), A/B Testing (Udacity)

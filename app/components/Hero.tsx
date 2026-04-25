@@ -1,101 +1,221 @@
 "use client";
 
-import { Github, Linkedin } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Github, Linkedin, ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
 
+/* ── Cycling descriptors ── */
+const CYCLING_TAGS = [
+  "Interaction Design",
+  "Product Thinking",
+  "UX Research",
+  "Design Systems",
+  "Frontend Engineering",
+  "AI Integration",
+];
+
+const FADE = {
+  initial: { opacity: 0, y: 6 },
+  animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -6 },
+};
+
+/* ── Stagger container ── */
+const container = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 24 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, ease: [0.25, 0.1, 0.25, 1] },
+  },
+};
+
+/* ════════════════════════════════
+   COMPONENT
+════════════════════════════════ */
 export default function Hero() {
-  const [time, setTime] = useState("");
+  const [tagIndex, setTagIndex] = useState(0);
 
+  /* cycle tags every 2.2s */
   useEffect(() => {
-    const update = () =>
-      setTime(
-        new Date().toLocaleTimeString([], {
-          hour: "2-digit",
-          minute: "2-digit",
-        })
-      );
-
-    update();
-    const t = setInterval(update, 1000);
+    const t = setInterval(
+      () => setTagIndex((i) => (i + 1) % CYCLING_TAGS.length),
+      2200
+    );
     return () => clearInterval(t);
   }, []);
 
   return (
     <section id="home" className="section relative">
       <div className="container relative">
-        {/* Top-right status */}
-        <div className="absolute top-0 right-0 flex items-center gap-3 text-xs text-zinc-400">
-          <span className="flex items-center gap-2 rounded-full bg-green-500/10 px-3 py-1 text-green-400">
-            <span className="h-2 w-2 rounded-full bg-green-400 animate-pulse" />
+
+        {/* Open to work badge */}
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.05 }}
+          className="absolute top-0 right-0"
+        >
+          <span className="relative flex items-center gap-2 rounded-full
+                           bg-green-500/10 px-3 py-1 text-xs text-green-400">
+            <motion.span
+              className="h-2 w-2 rounded-full bg-green-400"
+              animate={{ scale: [1, 1.4, 1], opacity: [1, 0.5, 1] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            />
             Open to work
           </span>
-          
-        </div>
+        </motion.div>
 
-        {/* Hero content */}
-        <div className="pt-28 max-w-4xl">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight">
-            {/* Name */}
-            <span className="block hero-name">
-              Hello, I’m{" "}
+        {/* Hero content — staggered */}
+        <motion.div
+          className="pt-24 max-w-4xl"
+          variants={container}
+          initial="hidden"
+          animate="show"
+        >
+          {/* Name + headline */}
+          <motion.h1
+          variants={item}
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight"
+          style={{ fontFamily: "var(--font-heading)" }}
+        >
+            <span className="block">
+              Hello, I'm{" "}
               <span className="text-brand">Harsha Asapu</span>.
             </span>
 
-            {/* Line 2 – Part 1 */}
-            <span className="block hero-line hero-line-1">
-              I design & engineer
+            <span className="block mt-1">
+              I design clear, usable,
             </span>
 
-            {/* Line 2 – Part 2 */}
-            <span className="block hero-line hero-line-2 text-zinc-400">
-              thoughtful digital experiences.
+            <span className="block text-zinc-400">
+              production-ready digital experiences.
             </span>
-          </h1>
+          </motion.h1>
 
-          {/* Paragraph + Actions */}
-          <div className="hero-content mt-6">
-            <p className="max-w-2xl text-base md:text-lg text-zinc-400">
-              I’m a frontend-focused developer with a strong foundation in
-              full-stack systems, passionate about building fast, accessible,
-              and thoughtfully engineered products that solve real problems.
-            </p>
+          {/* Paragraph */}
+          <motion.p
+            variants={item}
+            className="mt-4 max-w-2xl text-sm md:text-base lg:text-lg text-zinc-400"
+          >
+            UI/UX designer with a frontend foundation — focused on clarity,
+            usability, and interaction systems that translate directly into
+            shipped, production-ready products.
+          </motion.p>
 
-            <div className="mt-8 flex items-center gap-4">
-              <a
-                href="#projects"
-                className="rounded-xl bg-red-500 px-5 py-3 text-sm font-semibold text-white hover:bg-red-600 transition"
+          {/* Static tags + cycling tag */}
+          <motion.div
+            variants={item}
+            className="mt-4 flex flex-wrap items-center gap-2 text-sm"
+          >
+            {["UI Design", "UX Design", "Frontend Development"].map((tag) => (
+              <span
+                key={tag}
+                className="rounded-full bg-white/10 px-3 py-1
+                           ring-1 ring-white/30 text-white/90"
               >
-                Explore Projects
-              </a>
+                {tag}
+              </span>
+            ))}
 
-              <a
-                href="https://github.com/Harsha-03"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="h-11 w-11 flex items-center justify-center rounded-xl bg-zinc-900 ring-1 ring-white/10 hover:bg-zinc-800 transition"
-              >
-                <Github size={20} />
-              </a>
+            {/* Animated cycling tag */}
+            <span className="relative rounded-full bg-blue-500/15 px-3 py-1
+                             ring-1 ring-blue-400/40 text-blue-300
+                             min-w-[160px] h-[30px]
+                             flex items-center overflow-hidden">
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={tagIndex}
+                  variants={FADE}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  transition={{ duration: 0.3 }}
+                  className="absolute whitespace-nowrap text-xs font-medium"
+                >
+                  + {CYCLING_TAGS[tagIndex]}
+                </motion.span>
+              </AnimatePresence>
+            </span>
+          </motion.div>
 
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="h-11 w-11 flex items-center justify-center rounded-xl bg-[#0A66C2] hover:bg-[#004182] transition"
+          {/* CTAs */}
+          <motion.div
+            variants={item}
+            className="mt-8 flex items-center gap-4"
+          >
+            <motion.a
+              href="#projects"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              className="group flex items-center gap-2 rounded-xl
+                         bg-red-500 px-5 py-3 text-sm font-semibold
+                         text-white hover:bg-red-600 transition-colors"
+            >
+              Explore Projects
+              <motion.span
+                className="inline-block"
+                initial={{ x: 0 }}
+                whileHover={{ x: 3 }}
+                transition={{ type: "spring", stiffness: 400 }}
               >
-                <Linkedin size={20} />
-              </a>
-            </div>
-          </div>
+                <ArrowRight size={15} />
+              </motion.span>
+            </motion.a>
+
+            <motion.a
+              href="https://github.com/Harsha-03"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.08, backgroundColor: "rgba(255,255,255,0.12)" }}
+              whileTap={{ scale: 0.95 }}
+              className="h-12 w-12 flex items-center justify-center
+                         rounded-xl bg-zinc-900 ring-1 ring-white/10 transition-colors"
+            >
+              <Github size={20} />
+            </motion.a>
+
+            <motion.a
+              href="https://linkedin.com/in/baba-sriharsha-asapu"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.95 }}
+              className="h-11 w-11 flex items-center justify-center
+                         rounded-xl bg-[#0A66C2] hover:bg-[#004182] transition-colors"
+            >
+              <Linkedin size={20} />
+            </motion.a>
+          </motion.div>
 
           {/* Scroll indicator */}
-          <div className="mt-20 flex flex-col items-center gap-2 text-zinc-500">
+          <motion.div
+            variants={item}
+            className="mt-12 flex flex-col items-center gap-2 text-zinc-500"
+          >
             <span className="text-xs tracking-wide">Scroll</span>
-            <div className="flex h-10 w-6 items-start justify-center rounded-full border border-white/20">
-              <span className="mt-2 h-2 w-2 rounded-full bg-white/60 animate-bounce" />
+            <div className="flex h-10 w-6 items-start justify-center
+                            rounded-full border border-white/20">
+              <motion.span
+                className="mt-2 h-2 w-2 rounded-full bg-white/60"
+                animate={{ y: [0, 12, 0] }}
+                transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
+              />
             </div>
-          </div>
-        </div>
+          </motion.div>
+
+        </motion.div>
       </div>
     </section>
   );

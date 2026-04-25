@@ -1,277 +1,284 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 import {
-  Code2,
-  Brain,
-  Database,
-  MonitorSmartphone,
-  Cloud,
-  Cog,
-  Server,
-  Terminal,
-  BarChart3,
+  Search, Target, PenTool,
+  Play, Code2, Rocket, ArrowRight,
+} from "lucide-react";
+import {
+  SiFigma, SiReact, SiNextdotjs,
+  SiTailwindcss, SiFramer, SiJira,
+  SiVercel, SiGithub,
+} from "react-icons/si";
+import {
+  Layers, Route, Wand2, MonitorSmartphone,
+  Accessibility, Brain, BarChart3, Layout,
 } from "lucide-react";
 
-import {
-  SiPython,
-  SiJavascript,
-  SiHtml5,
-  SiCss3,
-  SiMysql,
-  SiReact,
-  SiNextdotjs,
-  SiNodedotjs,
-  SiTailwindcss,
-  SiBootstrap,
-  SiFlask,
-  SiOpenai,
-  SiPandas,
-  SiNumpy,
-  SiScikitlearn,
-  SiStreamlit,
-  SiTableau,
-  SiFirebase,
-  SiVercel,
-  SiGit,
-  SiGithub,
-  SiPycharm,
-  SiFigma,
-  SiNotion,
-  SiCanva,
-  SiFramer,
-  SiAdobe,
-} from "react-icons/si";
-
-/* ---------------- TYPES ---------------- */
-
-type Cat = {
-  key: string;
-  label: string;
+/* ── Types ── */
+type Skill = {
+  name: string;
   icon: React.ReactNode;
-  items: string[];
+  usedIn?: string;
+  primary?: boolean;
 };
 
-/* ---------------- ICON MAP ---------------- */
-
-const ICONS: Record<string, JSX.Element> = {
-  Python: <SiPython />,
-  JavaScript: <SiJavascript />,
-  HTML: <SiHtml5 />,
-  CSS: <SiCss3 />,
-  SQL: <SiMysql />,
-  React: <SiReact />,
-  "Next.js": <SiNextdotjs />,
-  "Node.js": <SiNodedotjs />,
-  "Tailwind CSS": <SiTailwindcss />,
-  Bootstrap: <SiBootstrap />,
-  Flask: <SiFlask />,
-  "OpenAI API": <SiOpenai />,
-  Pandas: <SiPandas />,
-  NumPy: <SiNumpy />,
-  "Scikit-learn": <SiScikitlearn />,
-  Streamlit: <SiStreamlit />,
-  Tableau: <SiTableau />,
-  Firebase: <SiFirebase />,
-  Vercel: <SiVercel />,
-  Git: <SiGit />,
-  GitHub: <SiGithub />,
-  PyCharm: <SiPycharm />,
-  Figma: <SiFigma />,
-  Notion: <SiNotion />,
-  Canva: <SiCanva />,
-  Framer: <SiFramer />,
-  "Adobe XD": <SiAdobe />,
-
-  // Neutral / system icons
-  "Power BI": <BarChart3 />,
-  "AWS (basics)": <Server />,
-  "Azure DevOps": <Cloud />,
-  "VS Code": <Terminal />,
+type Phase = {
+  id: string;
+  phase: string;
+  icon: React.ReactNode;
+  color: string;
+  glow: string;
+  border: string;
+  skills: Skill[];
 };
 
-/* ---------------- CATEGORIES ---------------- */
-
-const RAW_CATS: Cat[] = [
+/* ── Pipeline data ── */
+const PIPELINE: Phase[] = [
   {
-    key: "lang",
-    label: "Programming Languages",
-    icon: <Code2 className="w-4 h-4" />,
-    items: ["Python", "JavaScript", "HTML", "CSS", "SQL"],
-  },
-  {
-    key: "ai",
-    label: "AI & Machine Learning",
-    icon: <Brain className="w-4 h-4" />,
-    items: ["OpenAI API", "Pandas", "NumPy", "Scikit-learn", "Streamlit"],
-  },
-  {
-    key: "data",
-    label: "Data & Visualization",
-    icon: <Database className="w-4 h-4" />,
-    items: ["Power BI", "Tableau"],
-  },
-  {
-    key: "web",
-    label: "Web & App Development",
-    icon: <MonitorSmartphone className="w-4 h-4" />,
-    items: [
-      "Next.js",
-      "React",
-      "Node.js",
-      "Tailwind CSS",
-      "Bootstrap",
-      "Flask",
+    id: "discover",
+    phase: "Discover",
+    icon: <Search size={15} />,
+    color: "text-violet-400",
+    glow: "rgba(167,139,250,0.15)",
+    border: "rgba(167,139,250,0.25)",
+    skills: [
+      { name: "User Research",    icon: <Brain className="w-4 h-4" />,   usedIn: "LifeOS",            primary: true },
+      { name: "Usability Testing",icon: <Target className="w-4 h-4" />,  usedIn: "Portfolio AI",       primary: true },
+      { name: "User Flows",       icon: <Route className="w-4 h-4" />,   usedIn: "SLU Alumni Connect" },
     ],
   },
   {
-    key: "cloud",
-    label: "Cloud & DevOps",
-    icon: <Cloud className="w-4 h-4" />,
-    items: ["Firebase", "Vercel", "AWS (basics)", "Azure DevOps"],
+    id: "define",
+    phase: "Define",
+    icon: <Target size={15} />,
+    color: "text-blue-400",
+    glow: "rgba(96,165,250,0.15)",
+    border: "rgba(96,165,250,0.25)",
+    skills: [
+      { name: "Info Architecture", icon: <Layers className="w-4 h-4" />,        usedIn: "SLU Alumni Connect", primary: true },
+      { name: "Design Systems",    icon: <Layout className="w-4 h-4" />,         usedIn: "CDF" },
+      { name: "Jira & Agile",      icon: <SiJira className="w-4 h-4" />,        usedIn: "CDF" },
+    ],
   },
   {
-    key: "tools",
-    label: "Tools & Platforms",
-    icon: <Cog className="w-4 h-4" />,
-    items: [
-      "Figma",
-      "Framer",
-      "Canva",
-      "Notion",
-      "Adobe XD",
-      "Git",
-      "GitHub",
-      "VS Code",
-      "PyCharm",
+    id: "design",
+    phase: "Design",
+    icon: <PenTool size={15} />,
+    color: "text-pink-400",
+    glow: "rgba(244,114,182,0.15)",
+    border: "rgba(244,114,182,0.25)",
+    skills: [
+      { name: "Figma",         icon: <SiFigma className="w-4 h-4" />,          usedIn: "All projects",       primary: true },
+      { name: "Auto Layout",   icon: <Layout className="w-4 h-4" />,            usedIn: "CDF" },
+      { name: "Responsive UI", icon: <MonitorSmartphone className="w-4 h-4" />, usedIn: "Portfolio" },
+      { name: "Accessibility", icon: <Accessibility className="w-4 h-4" />,     usedIn: "CDF" },
+    ],
+  },
+  {
+    id: "prototype",
+    phase: "Prototype",
+    icon: <Play size={15} />,
+    color: "text-amber-400",
+    glow: "rgba(251,191,36,0.15)",
+    border: "rgba(251,191,36,0.25)",
+    skills: [
+      { name: "Figma Prototype", icon: <Wand2 className="w-4 h-4" />,    usedIn: "LifeOS",      primary: true },
+      { name: "Framer Motion",   icon: <SiFramer className="w-4 h-4" />, usedIn: "Portfolio" },
+    ],
+  },
+  {
+    id: "build",
+    phase: "Build",
+    icon: <Code2 size={15} />,
+    color: "text-emerald-400",
+    glow: "rgba(52,211,153,0.15)",
+    border: "rgba(52,211,153,0.25)",
+    skills: [
+      { name: "React / Next.js",  icon: <SiNextdotjs className="w-4 h-4" />,    usedIn: "SLU Alumni Connect", primary: true },
+      { name: "Tailwind CSS",     icon: <SiTailwindcss className="w-4 h-4" />,  usedIn: "Portfolio" },
+      { name: "TypeScript",       icon: <Code2 className="w-4 h-4" />,          usedIn: "Portfolio" },
+    ],
+  },
+  {
+    id: "ship",
+    phase: "Ship",
+    icon: <Rocket size={15} />,
+    color: "text-cyan-400",
+    glow: "rgba(34,211,238,0.15)",
+    border: "rgba(34,211,238,0.25)",
+    skills: [
+      { name: "Vercel",   icon: <SiVercel className="w-4 h-4" />,  usedIn: "Portfolio & SLU", primary: true },
+      { name: "GitHub",   icon: <SiGithub className="w-4 h-4" />,  usedIn: "All projects" },
+      { name: "Power BI", icon: <BarChart3 className="w-4 h-4" />, usedIn: "Airline Tracker" },
     ],
   },
 ];
 
-const buildCategories = (raw: Cat[]) =>
-  raw.map((c) => ({
-    ...c,
-    labelWithCount: `${c.label} (${c.items.length})`,
-  }));
+/* ── Skill card ── */
+function SkillCard({ skill, color, glow, border }: {
+  skill: Skill;
+  color: string;
+  glow: string;
+  border: string;
+}) {
+  const [hovered, setHovered] = useState(false);
 
-/* ---------------- COMPONENT ---------------- */
+  return (
+    <motion.div
+      onHoverStart={() => setHovered(true)}
+      onHoverEnd={() => setHovered(false)}
+      whileHover={{ y: -3, scale: 1.02 }}
+      transition={{ type: "spring", stiffness: 350, damping: 22 }}
+      className="relative rounded-xl px-3 py-2.5 cursor-default overflow-hidden"
+      style={{
+        background: hovered ? glow : "rgba(255,255,255,0.04)",
+        border: `1px solid ${hovered ? border : "rgba(255,255,255,0.08)"}`,
+        transition: "background 0.2s, border 0.2s",
+      }}
+    >
+      <div className="flex items-center gap-2.5">
+        <span className={`${color} shrink-0`}>{skill.icon}</span>
+        <span className="text-[13px] font-medium text-zinc-300 leading-tight">
+          {skill.name}
+        </span>
+        {skill.primary && (
+          <span className="ml-auto h-1.5 w-1.5 rounded-full bg-current opacity-60 shrink-0"
+                style={{ color: color.replace("text-", "") }} />
+        )}
+      </div>
 
+      {/* Tooltip on hover */}
+      <AnimatePresence>
+        {hovered && skill.usedIn && (
+          <motion.div
+            initial={{ opacity: 0, y: 4 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 4 }}
+            transition={{ duration: 0.15 }}
+            className="mt-1.5 flex items-center gap-1 text-[11px] text-zinc-500"
+          >
+            <ArrowRight size={9} />
+            {skill.usedIn}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  );
+}
+
+/* ── Phase column ── */
+function PhaseColumn({ phase, index }: { phase: Phase; index: number }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 28 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.5, delay: index * 0.08, ease: [0.25, 0.1, 0.25, 1] }}
+      className="flex flex-col gap-2 min-w-[160px]"
+    >
+      {/* Phase header */}
+      <div className="flex items-center gap-2 mb-1">
+        <span className={phase.color}>{phase.icon}</span>
+        <span className={`text-xs font-semibold tracking-wide ${phase.color}`}>
+          {phase.phase}
+        </span>
+      </div>
+
+      {/* Skills */}
+      <div className="flex flex-col gap-2">
+        {phase.skills.map((skill) => (
+          <SkillCard
+            key={skill.name}
+            skill={skill}
+            color={phase.color}
+            glow={phase.glow}
+            border={phase.border}
+          />
+        ))}
+      </div>
+    </motion.div>
+  );
+}
+
+/* ════════════════════════════════
+   MAIN COMPONENT
+════════════════════════════════ */
 export default function Skills() {
-  const CATS = useMemo(() => buildCategories(RAW_CATS), []);
-  const [active, setActive] = useState("lang");
-  const current = CATS.find((c) => c.key === active)!;
-
   return (
     <section id="skills" className="section">
       <div className="container">
-        <p className="text-center text-sm tracking-widest text-blue-500 font-semibold">
-          SKILLS
-        </p>
-        <h2 className="text-center text-3xl font-extrabold mt-2">
-          Technical Expertise
-        </h2>
 
-        {/* Category pills */}
-        <div className="mt-6 flex flex-wrap justify-center gap-2.5">
-          {CATS.map((cat) => {
-            const selected = cat.key === active;
-            return (
-              <button
-                key={cat.key}
-                onClick={() => setActive(cat.key)}
-                className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-[13px] ring-1 transition ${
-                  selected
-                    ? "bg-blue-600 text-white ring-blue-500 shadow-[0_0_0_3px_rgba(37,99,235,.25)]"
-                    : "text-zinc-300 bg-white/10 ring-white/10 hover:bg-white/15"
-                }`}
-              >
-                {cat.icon}
-                {cat.labelWithCount}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Skills */}
-        <div className="mt-14 flex justify-center">
-          <div
-            key={active}
-            className="skills-fade grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-10 gap-x-20 w-fit"
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <p className="text-xs tracking-widest text-blue-500 font-semibold">
+            SKILLS & PROCESS
+          </p>
+          <h2
+            className="mt-2 text-2xl sm:text-3xl md:text-4xl font-extrabold"
+            style={{ fontFamily: "var(--font-heading)" }}
           >
-            {current.items.map((item, i) => (
-              <div
-                key={item}
-                className="skill-orbit flex items-center gap-6"
-                style={{ animationDelay: `${i * 0.6}s` }}
-              >
-                <span className="skill-icon text-blue-500 text-xl">
-                  {ICONS[item] ?? <Code2 />}
-                </span>
-                <span className="skill-text font-medium whitespace-nowrap text-zinc-300">
-                  {item}
-                </span>
-              </div>
-            ))}
+            How I work, end to end.
+          </h2>
+          <p className="mt-3 text-sm text-zinc-500 max-w-lg">
+            Skills aren't a list — they're a workflow. Each phase maps to how
+            I actually move from problem to shipped product.
+            <span className="text-zinc-600"> Hover a skill to see where it was used.</span>
+          </p>
+        </motion.div>
+
+        {/* Pipeline — horizontal scroll on mobile */}
+        <div className="mt-12 relative">
+
+          {/* Connecting line */}
+          <motion.div
+            className="absolute top-[18px] left-0 h-px bg-gradient-to-r
+                       from-violet-500/40 via-pink-500/30 via-amber-500/30
+                       via-emerald-500/30 to-cyan-500/40"
+            initial={{ scaleX: 0, originX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.1, ease: "easeOut", delay: 0.2 }}
+            style={{ width: "100%" }}
+          />
+
+          {/* Phase columns */}
+          <div className="overflow-x-auto pb-4">
+            <div className="flex gap-4 min-w-max">
+              {PIPELINE.map((phase, i) => (
+                <div key={phase.id} className="flex items-start gap-4">
+                  <PhaseColumn phase={phase} index={i} />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
+
+        {/* Bottom legend */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.6 }}
+          className="mt-8 flex items-center gap-6 text-[11px] text-zinc-600"
+        >
+          <div className="flex items-center gap-1.5">
+            <span className="h-1.5 w-1.5 rounded-full bg-zinc-400" />
+            Core skill — used across multiple projects
+          </div>
+          <div className="flex items-center gap-1.5">
+            <ArrowRight size={9} />
+            Hover to see project context
+          </div>
+        </motion.div>
+
       </div>
-
-      {/* Animations */}
-      <style jsx>{`
-        /* Fade on category switch */
-        .skills-fade {
-          animation: fade 0.35s ease both;
-        }
-
-        @keyframes fade {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
-        }
-
-        /* Orbital drift (icons only) */
-        .skill-orbit {
-          animation: orbit 7s ease-in-out infinite;
-        }
-
-        @keyframes orbit {
-          0% {
-            transform: translate(0px, 0px);
-          }
-          25% {
-            transform: translate(6px, -4px);
-          }
-          50% {
-            transform: translate(0px, -8px);
-          }
-          75% {
-            transform: translate(-6px, -4px);
-          }
-          100% {
-            transform: translate(0px, 0px);
-          }
-        }
-
-        /* Soft glow breathing */
-        .skill-icon {
-          animation: glow 6s ease-in-out infinite;
-        }
-
-        @keyframes glow {
-          0%,
-          100% {
-            transform: scale(1);
-            filter: drop-shadow(0 0 0 rgba(59, 130, 246, 0));
-          }
-          50% {
-            transform: scale(1.18);
-            filter: drop-shadow(0 0 22px rgba(59, 130, 246, 0.65));
-          }
-        }
-      `}</style>
     </section>
   );
 }
