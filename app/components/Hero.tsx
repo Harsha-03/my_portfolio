@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
+import type { Variants } from "framer-motion";
 import { Github, Linkedin, ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -21,7 +22,7 @@ const FADE = {
 };
 
 /* ── Stagger container ── */
-const container = {
+const container: Variants = {
   hidden: {},
   show: {
     transition: {
@@ -31,7 +32,7 @@ const container = {
   },
 };
 
-const item = {
+const item: Variants = {
   hidden: { opacity: 0, y: 24 },
   show: {
     opacity: 1,

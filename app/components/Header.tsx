@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import type { Variants } from "framer-motion";
 import {
   Home,
   FolderGit2,
@@ -20,7 +21,7 @@ const NAV_ITEMS = [
 ];
 
 /* sidebar entrance */
-const sidebarVariants = {
+const sidebarVariants: Variants = {
   hidden: { opacity: 0, x: -24 },
   show: {
     opacity: 1,
@@ -29,7 +30,7 @@ const sidebarVariants = {
   },
 };
 
-const childVariant = {
+const childVariant: Variants = {
   hidden: { opacity: 0, x: -12 },
   show:  { opacity: 1, x: 0, transition: { duration: 0.4, ease: "easeOut" } },
 };

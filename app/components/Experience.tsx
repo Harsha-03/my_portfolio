@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import type { Variants } from "framer-motion";
 import { useRef } from "react";
 
 /* ── Timeline data ── */
@@ -50,7 +51,7 @@ const EXPERIENCES = [
 ];
 
 /* ── Variants ── */
-const sectionVariant = {
+const sectionVariant: Variants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
@@ -58,7 +59,7 @@ const sectionVariant = {
   },
 };
 
-const cardVariant = {
+const cardVariant: Variants = {
   hidden: { opacity: 0, y: 32 },
   show: {
     opacity: 1,

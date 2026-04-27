@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
+import type { Variants } from "framer-motion";
 import { useState } from "react";
 import {
   Search, Target, PenTool,
