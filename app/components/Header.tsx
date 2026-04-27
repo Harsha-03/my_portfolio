@@ -25,7 +25,7 @@ const sidebarVariants = {
   show: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.55, ease: [0.25, 0.1, 0.25, 1], staggerChildren: 0.07, delayChildren: 0.15 },
+    transition: { duration: 0.55, ease: [0.25, 0.1, 0.25, 1] as const, staggerChildren: 0.07, delayChildren: 0.15 },
   },
 };
 

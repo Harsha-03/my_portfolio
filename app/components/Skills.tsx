@@ -175,7 +175,7 @@ function PhaseColumn({ phase, index }: { phase: Phase; index: number }) {
       initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.5, delay: index * 0.08, ease: [0.25, 0.1, 0.25, 1] }}
+      transition={{ duration: 0.5, delay: index * 0.08, ease: [0.25, 0.1, 0.25, 1] as const }}
       className="flex flex-col gap-2 min-w-[160px]"
     >
       {/* Phase header */}

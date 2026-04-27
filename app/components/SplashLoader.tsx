@@ -11,7 +11,7 @@ const letterVariant = {
   show: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.18, duration: 0.5, ease: [0.25, 0.1, 0.25, 1] },
+    transition: { delay: i * 0.18, duration: 0.5, ease: [0.25, 0.1, 0.25, 1] as const },
   }),
   exit: (i: number) => ({
     opacity: 0,
