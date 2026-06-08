@@ -13,6 +13,7 @@ import AppShell from "@/app/components/Appshell";
 import ChatWidget from "@/app/components/ChatWidget";
 import ShootingStars from "@/app/components/ShootingStars";
 import MobileNav from "@/app/components/MobileNav";
+import SplashGate from "@/app/components/SplashGate";
 
 /* ---------------- Fonts ---------------- */
 
@@ -71,7 +72,7 @@ export const metadata: Metadata = {
         url: "https://harshaasapu.com/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Harsha Asapu — UI/UX Designer",
+        alt: "Harsha Asapu - UI/UX Designer",
       },
     ],
   },
@@ -98,11 +99,17 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${bricolage.variable} ${figtree.variable} ${instrumentSerif.variable} ${pinyonScript.variable}`}
-      
+      className={
+        bricolage.variable +
+        " " +
+        figtree.variable +
+        " " +
+        instrumentSerif.variable +
+        " " +
+        pinyonScript.variable
+      }
     >
       <body>
-        
         {/* Background layers */}
         <div className="starfield" aria-hidden="true" />
         <ShootingStars />
@@ -121,6 +128,9 @@ export default function RootLayout({
 
         {/* Global floating UI */}
         <ChatWidget />
+
+        {/* Splash gate — covers EVERYTHING on first load, forces scroll-to-top */}
+        <SplashGate />
       </body>
     </html>
   );

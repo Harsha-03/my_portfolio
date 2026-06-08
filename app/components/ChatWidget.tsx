@@ -1,18 +1,25 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { Send, X, Trash2, Sparkles } from "lucide-react";
+import {
+  AnimatePresence,
+  motion,
+  useMotionValue,
+  animate,
+  type PanInfo,
+} from "framer-motion";
+import { Send, X, Trash2, Sparkles, GripVertical } from "lucide-react";
 
 /* ── Types ── */
 type Role = "user" | "assistant";
 type ChatMsg = { id: string; role: Role; content: string };
+type Corner = "tl" | "tr" | "bl" | "br";
 
 function uid() {
   return Math.random().toString(36).slice(2) + Date.now().toString(36);
 }
 
-/* ── Constants (outside component is fine for these) ── */
+/* ── Constants ── */
 const QUICK_QUESTIONS = [
   "What roles is Harsha open to?",
   "Tell me about LifeOS.",
@@ -22,14 +29,19 @@ const QUICK_QUESTIONS = [
 
 const ALIVE_THOUGHTS = [
   "Curious about my design process?",
-  "Ask me about LifeOS →",
+  "Ask me about LifeOS \u2192",
   "What roles am I targeting?",
   "How do I approach UX research?",
   "What's the story behind this portfolio?",
-  "Ask me anything — I'm grounded in real work.",
+  "Ask me anything \u2014 I'm grounded in real work.",
 ];
 
-const STATUS_CYCLE = ["online", "ready", "ask me →"];
+const STATUS_CYCLE = ["online", "ready", "ask me \u2192"];
+
+const MARGIN = 24;
+const FAB_FALLBACK_W = 200;
+const FAB_FALLBACK_H = 60;
+const PANEL_OFFSET = 80; // gap between FAB and chat panel
 
 /* ── Typing dots ── */
 function TypingIndicator() {
@@ -60,11 +72,11 @@ function renderFormattedAnswer(text: string) {
             {line.replace(":", "")}
           </div>
         );
-      if (/^[-•]\s+/.test(line))
+      if (/^[-\u2022]\s+/.test(line))
         return (
           <div key={i} className="flex gap-2 pl-2 text-sm leading-relaxed">
-            <span className="mt-[2px] text-emerald-400">•</span>
-            <span>{line.replace(/^[-•]\s+/, "")}</span>
+            <span className="mt-[2px] text-emerald-400">{"\u2022"}</span>
+            <span>{line.replace(/^[-\u2022]\s+/, "")}</span>
           </div>
         );
       return (
@@ -79,20 +91,92 @@ function renderFormattedAnswer(text: string) {
    MAIN COMPONENT
 ════════════════════════════════════════════ */
 export default function ChatWidget() {
-  const [open,         setOpen]         = useState(false);
-  const [input,        setInput]        = useState("");
-  const [loading,      setLoading]      = useState(false);
-  const [error,        setError]        = useState<string | null>(null);
-  const [nudge,        setNudge]        = useState(false);
-  const [thought,      setThought]      = useState<string | null>(null);
+  const [open, setOpen] = useState(false);
+  const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [nudge, setNudge] = useState(false);
+  const [thought, setThought] = useState<string | null>(null);
   const [thoughtIndex, setThoughtIndex] = useState(0);
-  const [statusIdx,    setStatusIdx]    = useState(0);
+  const [statusIdx, setStatusIdx] = useState(0);
+  const [corner, setCorner] = useState<Corner>("br");
+  const [isDragging, setIsDragging] = useState(false);
 
   const panelRef = useRef<HTMLDivElement>(null);
-  const listRef  = useRef<HTMLDivElement>(null);
+  const listRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const fabRef = useRef<HTMLDivElement>(null);
 
-  /* persist messages */
+  // Motion values for FAB position (in viewport coords)
+  const fabX = useMotionValue(0);
+  const fabY = useMotionValue(0);
+
+  /* ── Helpers ── */
+  function getCornerCoords(c: Corner) {
+    if (typeof window === "undefined") return { x: 0, y: 0 };
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    const rect = fabRef.current?.getBoundingClientRect();
+    const fabW = rect?.width ?? FAB_FALLBACK_W;
+    const fabH = rect?.height ?? FAB_FALLBACK_H;
+    return {
+      x: c.endsWith("l") ? MARGIN : w - fabW - MARGIN,
+      y: c.startsWith("t") ? MARGIN : h - fabH - MARGIN,
+    };
+  }
+
+  function snapToCorner(c: Corner, withSpring = true) {
+    const { x, y } = getCornerCoords(c);
+    if (withSpring) {
+      animate(fabX, x, { type: "spring", stiffness: 280, damping: 28 });
+      animate(fabY, y, { type: "spring", stiffness: 280, damping: 28 });
+    } else {
+      fabX.set(x);
+      fabY.set(y);
+    }
+  }
+
+  /* ── Init: load corner, set initial position ── */
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const saved = (localStorage.getItem("chat_fab_corner") as Corner) || "br";
+    setCorner(saved);
+    // Defer slightly so fabRef is measured
+    requestAnimationFrame(() => snapToCorner(saved, false));
+  }, []);
+
+  /* ── Resize: re-snap to current corner ── */
+  useEffect(() => {
+    function onResize() {
+      const { x, y } = getCornerCoords(corner);
+      animate(fabX, x, { duration: 0.25 });
+      animate(fabY, y, { duration: 0.25 });
+    }
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, [corner]);
+
+  /* ── Drag end: pick nearest corner, snap, persist ── */
+  function handleDragEnd(_: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) {
+    setIsDragging(false);
+    if (typeof window === "undefined") return;
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    const px = info.point.x;
+    const py = info.point.y;
+
+    let next: Corner = "br";
+    if (px < w / 2 && py < h / 2) next = "tl";
+    else if (px >= w / 2 && py < h / 2) next = "tr";
+    else if (px < w / 2 && py >= h / 2) next = "bl";
+    else next = "br";
+
+    setCorner(next);
+    localStorage.setItem("chat_fab_corner", next);
+    snapToCorner(next, true);
+  }
+
+  /* ── persist messages ── */
   const [messages, setMessages] = useState<ChatMsg[]>(() => {
     if (typeof window === "undefined") return [];
     try {
@@ -158,7 +242,7 @@ export default function ChatWidget() {
     };
   }, [open]);
 
-  /* status cycle — every 3s while closed */
+  /* status cycle */
   useEffect(() => {
     if (open) return;
     const t = setInterval(() => {
@@ -167,7 +251,7 @@ export default function ChatWidget() {
     return () => clearInterval(t);
   }, [open]);
 
-  /* send message */
+  /* send */
   async function send(q?: string) {
     const question = (q ?? input).trim();
     if (!question || loading) return;
@@ -206,42 +290,78 @@ export default function ChatWidget() {
     window.localStorage.removeItem("portfolio_chat_messages");
   }
 
-  /* ── Render ── */
+  /* Derived layout flags */
+  const isTop = corner.startsWith("t");
+  const isLeft = corner.endsWith("l");
+
+  // Panel position style based on current corner
+  const panelStyle: React.CSSProperties = {
+    position: "fixed",
+    zIndex: 50,
+    [isTop ? "top" : "bottom"]: MARGIN + PANEL_OFFSET + "px",
+    [isLeft ? "left" : "right"]: MARGIN + "px",
+  };
+
   return (
     <>
-      {/* ── FAB pill ── */}
-      <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2">
-
+      {/* ── Draggable FAB container ── */}
+      {/* Fixed overlay container — provides positioned parent for the draggable.
+          pointer-events: none so it doesn't intercept clicks on the page;
+          the draggable child re-enables them via pointer-events: auto. */}
+      <div
+        style={{
+          position: "fixed",
+          inset: 0,
+          pointerEvents: "none",
+          zIndex: 50,
+        }}
+      >
+        <motion.div
+          ref={fabRef}
+          drag
+          dragMomentum={false}
+          onDragStart={() => setIsDragging(true)}
+          onDragEnd={handleDragEnd}
+          whileDrag={{ scale: 1.04 }}
+          style={{
+            x: fabX,
+            y: fabY,
+            position: "absolute",
+            top: 0,
+            left: 0,
+            touchAction: "none",
+            pointerEvents: "auto",
+          }}
+          className={
+            "flex gap-2 select-none " +
+            (isTop ? "flex-col-reverse " : "flex-col ") +
+            (isLeft ? "items-start" : "items-end")
+          }
+        >
         {/* Initial nudge */}
         <AnimatePresence>
-          {nudge && !open && (
+          {nudge && !open && !isDragging && (
             <motion.div
               initial={{ opacity: 0, y: 6, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 6, scale: 0.95 }}
               transition={{ duration: 0.25 }}
-              className="mb-1 max-w-[220px] rounded-2xl
-                         bg-zinc-800 border border-white/10
-                         px-4 py-2 text-sm text-zinc-200 shadow-xl"
+              className="max-w-[220px] rounded-2xl bg-zinc-800 border border-white/10 px-4 py-2 text-sm text-zinc-200 shadow-xl"
             >
-              👋 Ask me anything about Harsha
+              {"\uD83D\uDC4B"} Ask me anything about Harsha
             </motion.div>
           )}
         </AnimatePresence>
 
-        {/* Persistent rotating thoughts */}
+        {/* Rotating thoughts */}
         <AnimatePresence>
-          {thought && !nudge && !open && (
+          {thought && !nudge && !open && !isDragging && (
             <motion.div
               initial={{ opacity: 0, y: 8, scale: 0.93 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 8, scale: 0.93 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
-              className="mb-1 max-w-[210px] rounded-2xl
-                         bg-zinc-900/95 border border-blue-500/20
-                         px-3.5 py-2 text-xs text-blue-300
-                         shadow-[0_4px_20px_rgba(59,130,246,0.15)]
-                         backdrop-blur"
+              className="max-w-[210px] rounded-2xl bg-zinc-900/95 border border-blue-500/20 px-3.5 py-2 text-xs text-blue-300 shadow-[0_4px_20px_rgba(59,130,246,0.15)] backdrop-blur"
             >
               <span className="flex items-center gap-1.5">
                 <motion.span
@@ -257,15 +377,15 @@ export default function ChatWidget() {
 
         {/* Pill button */}
         <motion.button
-          onClick={() => { setOpen((v) => !v); setNudge(false); }}
+          onClick={() => {
+            if (isDragging) return;
+            setOpen((v) => !v);
+            setNudge(false);
+          }}
           aria-label="Open portfolio assistant"
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.96 }}
-          className="relative flex items-center gap-2 rounded-full
-                     bg-zinc-900 border border-white/15
-                     pl-1.5 pr-3 py-1.5 md:pl-2 md:pr-5 md:py-2 md:gap-3
-                     shadow-[0_4px_24px_rgba(0,0,0,0.5)]
-                     overflow-hidden backdrop-blur"
+          className="relative flex items-center gap-2 rounded-full bg-zinc-900 border border-white/15 pl-1.5 pr-3 py-1.5 md:pl-2 md:pr-5 md:py-2 md:gap-3 shadow-[0_4px_24px_rgba(0,0,0,0.5)] overflow-hidden backdrop-blur cursor-grab active:cursor-grabbing"
         >
           {/* Shimmer */}
           <motion.span
@@ -294,8 +414,8 @@ export default function ChatWidget() {
             <motion.img
               src="/images/ai-agent-dark.png"
               alt="AI"
-              className="relative z-10 h-9 w-9 md:h-11 md:w-11 rounded-full object-cover
-                         ring-1 ring-blue-400/30"
+              draggable={false}
+              className="relative z-10 h-9 w-9 md:h-11 md:w-11 rounded-full object-cover ring-1 ring-blue-400/30 pointer-events-none"
               animate={{
                 boxShadow: [
                   "0 0 0px rgba(96,165,250,0)",
@@ -310,7 +430,7 @@ export default function ChatWidget() {
           {/* Label + status */}
           <span className="flex flex-col items-start leading-tight">
             <span className="text-[11px] md:text-[13px] text-zinc-300 font-medium tracking-wide">
-              Ask Harsha's AI
+              Ask Harsha&apos;s AI
             </span>
             <span className="flex items-center gap-1 text-[10px] md:text-[11px] text-emerald-400 min-w-[52px]">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
@@ -328,38 +448,39 @@ export default function ChatWidget() {
             </span>
           </span>
 
-          {/* Sparkle */}
-          <motion.span
-            animate={{ rotate: [0, 15, -15, 0], scale: [1, 1.2, 1] }}
-            transition={{ duration: 2.5, repeat: Infinity, repeatDelay: 4, ease: "easeInOut" }}
-          >
-            <Sparkles size={13} className="text-blue-400 ml-0.5" />
-          </motion.span>
+          {/* Drag handle hint (subtle) + sparkle */}
+          <span className="flex items-center gap-0.5 ml-0.5">
+            <GripVertical
+              size={11}
+              className="text-zinc-600 opacity-60"
+              aria-hidden="true"
+            />
+            <motion.span
+              animate={{ rotate: [0, 15, -15, 0], scale: [1, 1.2, 1] }}
+              transition={{ duration: 2.5, repeat: Infinity, repeatDelay: 4, ease: "easeInOut" }}
+            >
+              <Sparkles size={13} className="text-blue-400" />
+            </motion.span>
+          </span>
         </motion.button>
+      </motion.div>
       </div>
 
-      {/* ── Chat panel ── */}
+      {/* ── Chat panel (positions itself to FAB corner) ── */}
       <AnimatePresence>
         {open && (
           <motion.div
             ref={panelRef}
             key="chat-panel"
-            initial={{ opacity: 0, y: 20, scale: 0.97 }}
+            initial={{ opacity: 0, y: isTop ? -20 : 20, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.97 }}
+            exit={{ opacity: 0, y: isTop ? -20 : 20, scale: 0.97 }}
             transition={{ type: "spring", stiffness: 340, damping: 28 }}
-            className="fixed bottom-24 right-6 z-50
-                       w-[94vw] max-w-[420px]
-                       rounded-2xl
-                       bg-zinc-900/95 text-white
-                       border border-white/10
-                       shadow-[0_8px_48px_rgba(0,0,0,0.6)]
-                       backdrop-blur-xl
-                       overflow-hidden"
+            style={panelStyle}
+            className="w-[94vw] max-w-[420px] rounded-2xl bg-zinc-900/95 text-white border border-white/10 shadow-[0_8px_48px_rgba(0,0,0,0.6)] backdrop-blur-xl overflow-hidden"
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-4 py-3
-                            border-b border-white/8 bg-white/3">
+            <div className="flex items-center justify-between px-4 py-3 border-b border-white/8 bg-white/3">
               <div className="flex items-center gap-3">
                 <img
                   src="/images/ai-agent-dark.png"
@@ -367,7 +488,7 @@ export default function ChatWidget() {
                   className="h-8 w-8 rounded-full object-cover"
                 />
                 <div className="leading-tight">
-                  <p className="text-sm font-semibold">Harsha's Portfolio AI</p>
+                  <p className="text-sm font-semibold">Harsha&apos;s Portfolio AI</p>
                   <p className="text-[11px] text-zinc-400">
                     Grounded answers from my actual work
                   </p>
@@ -378,8 +499,7 @@ export default function ChatWidget() {
                   onClick={clearChat}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
-                  className="p-2 rounded-xl text-zinc-400 hover:text-white
-                             hover:bg-white/8 transition"
+                  className="p-2 rounded-xl text-zinc-400 hover:text-white hover:bg-white/8 transition"
                   aria-label="Clear chat"
                 >
                   <Trash2 size={14} />
@@ -388,8 +508,7 @@ export default function ChatWidget() {
                   onClick={() => setOpen(false)}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
-                  className="p-2 rounded-xl text-zinc-400 hover:text-white
-                             hover:bg-white/8 transition"
+                  className="p-2 rounded-xl text-zinc-400 hover:text-white hover:bg-white/8 transition"
                   aria-label="Close"
                 >
                   <X size={14} />
@@ -409,9 +528,7 @@ export default function ChatWidget() {
                     onClick={() => send(q)}
                     whileHover={{ scale: 1.03, backgroundColor: "rgba(255,255,255,0.1)" }}
                     whileTap={{ scale: 0.97 }}
-                    className="text-[11px] px-3 py-1.5 rounded-full
-                               border border-white/10 text-zinc-300
-                               bg-white/5 transition-colors"
+                    className="text-[11px] px-3 py-1.5 rounded-full border border-white/10 text-zinc-300 bg-white/5 transition-colors"
                   >
                     {q}
                   </motion.button>
@@ -422,8 +539,7 @@ export default function ChatWidget() {
             {/* Messages */}
             <div
               ref={listRef}
-              className="max-h-[48vh] overflow-y-auto px-4 py-4 space-y-3
-                         scrollbar-thin scrollbar-thumb-white/10"
+              className="max-h-[48vh] overflow-y-auto px-4 py-4 space-y-3 scrollbar-thin scrollbar-thumb-white/10"
             >
               {messages.length === 0 && (
                 <p className="text-sm text-zinc-500 text-center py-4">
@@ -438,14 +554,15 @@ export default function ChatWidget() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.22 }}
-                    className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}
+                    className={"flex " + (m.role === "user" ? "justify-end" : "justify-start")}
                   >
                     <div
-                      className={`max-w-[85%] rounded-2xl px-3.5 py-2.5 text-sm
-                        ${m.role === "user"
+                      className={
+                        "max-w-[85%] rounded-2xl px-3.5 py-2.5 text-sm " +
+                        (m.role === "user"
                           ? "bg-blue-500 text-white rounded-br-sm"
-                          : "bg-white/6 text-zinc-100 border border-white/10 rounded-bl-sm"
-                        }`}
+                          : "bg-white/6 text-zinc-100 border border-white/10 rounded-bl-sm")
+                      }
                     >
                       {m.role === "assistant"
                         ? renderFormattedAnswer(m.content)
@@ -467,9 +584,7 @@ export default function ChatWidget() {
                 </motion.div>
               )}
 
-              {error && (
-                <p className="text-xs text-red-400 text-center">{error}</p>
-              )}
+              {error && <p className="text-xs text-red-400 text-center">{error}</p>}
             </div>
 
             {/* Input */}
@@ -479,21 +594,15 @@ export default function ChatWidget() {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && send()}
-                placeholder="Ask anything about Harsha…"
-                className="flex-1 rounded-xl px-3.5 py-2.5 text-sm
-                           bg-zinc-800/80 border border-white/10
-                           focus:border-blue-500/60 focus:outline-none
-                           placeholder:text-zinc-600 transition-colors"
+                placeholder={"Ask anything about Harsha\u2026"}
+                className="flex-1 rounded-xl px-3.5 py-2.5 text-sm bg-zinc-800/80 border border-white/10 focus:border-blue-500/60 focus:outline-none placeholder:text-zinc-600 transition-colors"
               />
               <motion.button
                 onClick={() => send()}
                 disabled={!input.trim() || loading}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-3.5 py-2.5 rounded-xl
-                           bg-blue-500 text-white
-                           hover:bg-blue-400 disabled:opacity-40
-                           transition-colors flex items-center justify-center"
+                className="px-3.5 py-2.5 rounded-xl bg-blue-500 text-white hover:bg-blue-400 disabled:opacity-40 transition-colors flex items-center justify-center"
               >
                 <Send size={15} />
               </motion.button>
