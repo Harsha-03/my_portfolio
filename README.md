@@ -82,4 +82,4 @@ node scripts/ingest-portfolio.js
 
 ## Positioning
 
-Product Designer who codes. Junior/associate level. Open to full-time remote roles — UI/UX Design, Product Design, Web Design. OPT authorized, Reno Nevada.
+Product Designer who codes. Open to full-time remote roles — UI/UX Design, Product Design, Web Design. OPT authorized, Reno Nevada.
