@@ -22,7 +22,7 @@ export default function Contact() {
           </div>
           <div className="pt-2 text-sm text-zinc-600 dark:text-zinc-400">
             <div className="flex gap-4">
-              <a href="https://www.linkedin.com/in/baba-sriharsha-asapu/" className="underline" target="_blank" rel="noopener">LinkedIn</a>
+              <a href="https://www.linkedin.com/in/harsha-asapu/" className="underline" target="_blank" rel="noopener">LinkedIn</a>
               <a href="https://github.com/Harsha-03" className="underline" target="_blank" rel="noopener">GitHub</a>
               <a href="https://twitter.com" className="underline" target="_blank" rel="noopener">Twitter</a>
             </div>

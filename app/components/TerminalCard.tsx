@@ -104,7 +104,7 @@ export default function TerminalCard() {
           <TypedBlock
             strings={[
               `• <a href="mailto:harshaasapu.b@gmail.com" class="underline decoration-dotted hover:no-underline">harshaasapu.b@gmail.com</a>`,
-              `• <a href="https://github.com/Harsha-03" target="_blank" rel="noopener" class="underline decoration-dotted hover:no-underline">GitHub</a>  |  <a href="https://www.linkedin.com/in/baba-sriharsha-asapu/" target="_blank" rel="noopener" class="underline decoration-dotted hover:no-underline">LinkedIn</a>`,
+              `• <a href="https://github.com/Harsha-03" target="_blank" rel="noopener" class="underline decoration-dotted hover:no-underline">GitHub</a>  |  <a href="https://www.linkedin.com/in/harsha-asapu/" target="_blank" rel="noopener" class="underline decoration-dotted hover:no-underline">LinkedIn</a>`,
             ]}
           />
         </div>

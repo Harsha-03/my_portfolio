@@ -1,136 +1,104 @@
-# LifeOS — Personal Productivity App Design
+# LifeOS — Product Design Case Study
 
 ## Overview
 
-LifeOS is a personal productivity system designed by Harsha as an independent
-product design project. It is a Figma-based case study exploring how people
-can manage daily execution, weekly reflection, and behavioral self-awareness
-without being overwhelmed by metrics or performance pressure.
+LifeOS is a self-initiated product design case study — a behavioral productivity system designed for students and early-career professionals aged 20–28. The project ran from January 2026 to March 2026.
 
-The project is currently in progress.
+The thesis: continued engagement comes from adaptation, not motivation.
 
 ---
 
-## Problem
+## Timeline
 
-Most productivity tools focus on output tracking — completed tasks, streaks,
-productivity scores. This creates two problems:
-
-- Users disengage when faced with judgmental feedback
-- Tracking outputs does not address the patterns causing low output
-
-LifeOS was designed around a different premise: surface recurring patterns,
-not performance scores.
+- **Period:** January 2026 – March 2026
+- **Type:** Self-initiated product design case study
+- **Tools:** Figma, behavioral design research
 
 ---
 
-## Design Philosophy
+## The Problem
 
-Inspired by behavioral design principles:
+Most productivity tools track activity but don't help with the harder work: deciding what matters, recovering when plans break, and learning from the gap between what you planned and what actually happened.
 
-- Users make better decisions when they recognize patterns, not when they feel judged
-- Reflection drives longer-term behavior change more than motivation or gamification
-- Insights should be qualitative and lightweight — prompts for adaptation, not evaluation
-- The goal is to improve decision quality over time, not optimize raw output
-
----
-
-## Three Core Views
-
-### 1. Daily Execution
-
-- "Today" view showing this week's priorities pulled forward
-- Three action slots for today's focus
-- Minimal, distraction-free layout
-- Keeps the user anchored to weekly context without context-switching
-
-### 2. Weekly Review
-
-- Reflect on last week's priorities with completion status
-- Structured prompts: what worked, what didn't, what got in the way
-- Auto-generated insights from the week's patterns
-- Three slots for next week's focus
-- Closing the loop between reflection and forward planning
-
-### 3. Insights
-
-- Surfaces behavioral patterns, not productivity metrics
-- Example patterns detected: "Overplanning midweek", "Low energy after late nights",
-  "Health goals skipped first during busy weeks"
-- Suggested adjustments: "Limit weekly priorities to 2–3 items",
-  "Schedule lighter tasks midweek", "Protect one health habit during busy weeks"
-- Validation hypothesis: if users see recurring blockers, they set more realistic
-  priorities and reduce abandonment vs traditional task-based systems
+Research findings across early users:
+1. Planning abandonment mid-week — users disengage once plans break, not once motivation disappears
+2. Guilt-driven avoidance — missing tasks causes guilt, guilt causes users to stop opening the app entirely
+3. Overplanning vs execution gap — users create more plans than their real week can absorb
+4. Lack of reflection — users rarely review past weeks, repeating the same planning mistakes
 
 ---
 
-## Design Decisions
+## The Insight
 
-- Minimal visual hierarchy — no charts, no performance dashboards
-- Pattern labels (Pattern, Blocker, Trend) provide context without judgment
-- Suggested adjustments are offered, not enforced
-- Designed as a Notion-like structure but with behavioral intelligence layered in
+Continued engagement comes from adaptation, not motivation. Users don't need more features. They need a system that expects plans to break and treats that as normal data, not failure.
 
 ---
 
-## Tools
+## Four-Layer Architecture
 
-- Figma (wireframes, high-fidelity screens, page structure)
-- Behavioral design research as theoretical foundation
+### Layer 01: Decision (Weekly Review)
+- Review previous week outcomes
+- Identify what worked / didn't work
+- Adjust priorities without guilt
+- Set 1–3 focus areas for the next week
+
+### Layer 02: Action (Daily Execution)
+- Focused view of today's actions
+- Every task must link to a weekly priority — no orphan to-dos
+- Flexible execution based on capacity
+- Skipped tasks deferred, not punished
+
+### Layer 03: Feedback (Reflection)
+- Lightweight daily or weekly reflection
+- Reality Check field: reframes missed goals as context (workload, energy, meetings)
+- Captures friction, energy, and blockers as data
+
+### Layer 04: Learning (Insights)
+- Surfaces behavioral patterns after 3–4 weeks of real data
+- Honest empty state — no fake intelligence on day one
+- Pattern types: Pattern, Blocker, Trend
+- Suggested Adjustments recommend, never override
 
 ---
-
-## Research Findings
-
-Target users: students and early career professionals aged 20–28.
-
-Core problem:
-
-- Users struggle to align daily actions with long-term priorities
-- Existing tools track activity but don't support decision-making, reflection, or adaptation
-
-Non-goals: not a habit tracker, not a to-do list, not a finance app, not a Notion replacement.
-
-## User Research
-
-User #1 profile: 22-year-old Master's student, part-time job, uses Notion + Apple Reminders.
-
-- "I plan every Sunday but stop checking by Wednesday"
-- "When I fall behind, I feel guilty and avoid the app"
-- Pain points: guilt after missing plans, overplanning vs execution gap
-
-User journey stages:
-
-1. Overwhelm — anxious, scattered, too many tools, no direction
-2. Weekly Review — relief and clarity, needs non-judgmental reflection
-3. Daily Execution — focused and realistic, needs adaptability to real life
-4. Reflection & Feedback — insightful, less guilty, needs learning not punishment
-5. Adaptation — in control, outcome: sustained engagement
 
 ## Key Design Decisions
 
-Decision 01: Weekly focus capped at 3 priorities.
-Why: Decision fatigue and guilt from long lists cause abandonment.
+**Decision 01: Hard cap of 1–3 weekly priorities**
+Rejected: full task list, Eisenhower matrix
+Why: decision fatigue and guilt from long lists cause abandonment. The cap is the product.
 
-Decision 02: Reflection-first recovery flow before next week planning.
-Why: Guilt and avoidance are primary abandonment drivers, not lack of motivation.
+**Decision 02: Reflection-first recovery before next week planning**
+Rejected: streak-based tracking, automatic rescheduling
+Why: guilt and avoidance are primary abandonment drivers. Reflection normalizes missed plans.
 
-Decision 03: Flexible daily capacity planning instead of fixed task completion.
-Why: Users fail due to energy and external constraints, not motivation.
+**Decision 03: Capacity-based daily planning**
+Rejected: time-blocking only, fixed daily completion quotas
+Why: users fail due to energy and external constraints, not lack of motivation.
 
-Decision 04: Combined daily execution + weekly review loop.
-Why: Daily reflects real constraints; weekly allows re-alignment without guilt.
-
-## Status
-
-In progress. Daily Execution, Weekly Review, and Insights screens designed.
-Full system and handoff in development.
+**Decision 04: Insights require 3–4 weeks before surfacing**
+Rejected: placeholder insights, AI-generated suggestions from day one
+Why: fake patterns on day one erode trust. The honest empty state is the correct design.
 
 ---
 
-## What This Shows
+## Screens Designed
 
-- Harsha's ability to define a product problem from first principles
-- Applying behavioral design theory to interaction decisions
-- Designing for emotional experience, not just task completion
-- Independent product thinking without a brief or client
+1. Cover
+2. Daily Execution — Desktop
+3. Daily Execution — Mobile
+4. Weekly Review — Desktop
+5. Insights — Patterns (populated state)
+6. Insights — Empty State
+7. System Architecture Diagram
+
+---
+
+## Non-Goals
+
+- Not a habit tracker
+- Not a to-do list
+- Not a calendar replacement
+- Not a Notion replacement
+- No streaks, badges, or gamification
+- No AI-generated plans
+- No social features

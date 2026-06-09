@@ -27,7 +27,7 @@ const SOCIALS: SocialLink[] = [
   },
   {
     label: "LinkedIn",
-    href: "https://www.linkedin.com/in/baba-sriharsha-asapu/",
+    href: "https://www.linkedin.com/in/harsha-asapu/",
     icon: <Linkedin size={18} />,
     hoverBg: "#0A66C2",
   },

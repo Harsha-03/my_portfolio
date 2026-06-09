@@ -213,7 +213,7 @@ export default function ContactFancy() {
                     </motion.a>
 
                     <motion.a
-                      href="https://www.linkedin.com/in/baba-sriharsha-asapu/"
+                      href="https://www.linkedin.com/in/harsha-asapu/"
                       target="_blank"
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.06 }}

@@ -1,100 +1,85 @@
-# 🌌 My Portfolio
+# Harsha Asapu — Portfolio
 
-A **production-deployed personal portfolio** built with **Next.js (App Router)**, **React**, and **Tailwind CSS**, designed to be **stable, minimal, and recruiter-focused**.
+**Live:** [harshaasapu.com](https://harshaasapu.com)
 
-This is not a demo or playground.  
-It’s a real system that prioritizes **clarity, correctness, and long-term maintainability**.
-
----
-
-## 🎯 Purpose
-
-This portfolio exists to:
-
-- Clearly communicate my experience and projects
-- Avoid exaggeration or buzzwords
-- Remain stable under real traffic
-- Reflect how I approach production frontend systems
-
-The UI and architecture were **intentionally refined**, not over-designed.
+A production-deployed personal portfolio and design showcase. Built as a product, not a template — every component was designed and engineered from scratch.
 
 ---
 
-## ✨ Key Features
+## Stack
 
-### Refined UI & UX
-
-- Dark-only, minimal design
-- Clean visual hierarchy optimized for recruiters
-- Intentional spacing and typography
-- No unnecessary decoration
-
-### CSS-Only Motion (Production-Safe)
-
-- Custom splash loader with cinematic timing
-- Ambient background effects
-- All animations implemented with **pure CSS**
-- No animation libraries, no hydration risk
-
-### RAG-Powered Portfolio Chat
-
-- Retrieval-Augmented Generation (RAG) system
-- Answers questions **only from my documented background and projects**
-- Short, grounded responses (2–3 sentences max)
-- Honest handling of unknowns (no fabricated experience)
-
-### Navigation & Layout
-
-- Fixed sidebar navigation with active state highlighting
-- Smooth, predictable scrolling
-- Clear section boundaries
+- **Framework:** Next.js 16 (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS
+- **Motion:** Framer Motion
+- **Icons:** Lucide React + React Icons
+- **AI / Chat:** RAG system — OpenAI GPT-4.1-mini + text-embedding-3-small, custom knowledge base
+- **Deployment:** Vercel (GitHub → CI/CD)
 
 ---
 
-## 🧠 Design Philosophy
+## Features
 
-- Remove more than you add
-- Prefer correctness over novelty
-- Constrain AI intentionally
-- Optimize for trust, not flash
-- Ship only what can survive production
+### RAG-Powered Portfolio Chatbot
+Custom AI assistant trained on 8 markdown knowledge files covering career history, projects, UX process, and open-to-work status. Answers are grounded in real content — no hallucination. The chatbot is a draggable widget that corner-snaps on release and persists position in localStorage.
 
----
+### Case Studies
+Deep, chapter-structured case studies for each project — research, decisions, rejected ideas, and what to test next. Currently live:
+- Starbucks Mobile Order Redesign
+- LifeOS
+- SLU Alumni Connect
+- This Portfolio
 
-## 🛠️ Tech Stack
+### Motion System
+Framer Motion throughout — scroll-tied parallax, staggered entrance animations, spring-physics interactions. Skills section uses a horizontal carousel (desktop) and vertical stacked phases (mobile) with hover-to-reveal project context.
 
-- **Framework**: Next.js (App Router)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **Animations**: CSS keyframes only
-- **Icons**: Lucide Icons
-- **AI / Chat**: RAG (retrieval-based, constrained generation)
-- **Deployment**: Vercel (GitHub → Vercel CI/CD)
+### Mobile-First Architecture
+Full mobile redesign at 375px as primary viewport. Mobile and desktop project cards are distinct components, not the same component with responsive overrides. MobileNav drawer with profile photo, signature font, open-to-work pill, live time, and social links.
 
----
-
-## 🚫 Explicitly Avoided
-
-- Framer Motion (removed due to runtime & hydration issues)
-- JS-based animation timing
-- Over-engineered UI patterns
-- AI features without clear value
+### Design Language
+Dark Depth: `#0a0a0a` canvas, indigo accents, hairline borders. Typography: Bricolage Grotesque (headings), Figtree (body), Instrument Serif (editorial), Pinyon Script (signature). Editorial restraint over maximalism.
 
 ---
 
-## 🌐 Live Site
+## Project Structure
 
-https://www.harshaasapu.com
+```
+app/
+  components/       # All UI components
+  case-studies/     # Deep case study pages
+  motion/           # Motion design gallery
+  api/chat/         # RAG chat API route
+data/
+  projects.ts       # Project data
+  motion.ts         # Motion piece data
+portfolio-content/  # Markdown knowledge base for RAG
+public/
+  case-studies/     # Screen images per project
+  projects/         # Project cover images
+  images/           # Profile, AI agent, OG image
+```
 
 ---
 
-## 🧩 Notes
+## Local Development
 
-This portfolio has gone through multiple refinement passes, including:
+```bash
+npm install
+npm run dev
+```
 
-- UI simplification
-- Animation hardening
-- Dependency removal
-- Post-deployment stability checks
+Requires `.env.local` with:
+```
+OPENAI_API_KEY=your_key
+```
 
-It’s intentionally boring in the best way — **predictable, honest, and reliable**.
+To re-ingest RAG embeddings after updating portfolio-content:
+```bash
+node scripts/ingest-portfolio.js
+```
+
+---
+
+## Positioning
+
+Product Designer who codes. Junior/associate level. Open to full-time remote roles — UI/UX Design, Product Design, Web Design. OPT authorized, Reno Nevada.

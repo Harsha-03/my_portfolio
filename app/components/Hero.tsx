@@ -101,7 +101,7 @@ type SocialDef = {
   },
   {
     label: "LinkedIn",
-    href: "https://www.linkedin.com/in/baba-sriharsha-asapu/",
+    href: "https://www.linkedin.com/in/harsha-asapu/",
     icon: (s) => <Linkedin size={s} />,
     brandColor: "#0A66C2",
     hoverBg: "#0A66C2",
