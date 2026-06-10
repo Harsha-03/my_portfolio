@@ -45,7 +45,7 @@ const pinyonScript = Pinyon_Script({
 /* ---------------- Metadata ---------------- */
 
 export const metadata: Metadata = {
-  title: "Harsha Asapu | UI/UX Designer & Product Designer",
+  title: "Harsha Asapu",
   description:
     "UI/UX Designer based in Reno, Nevada. Designing clear, production-ready digital products. Open to full-time roles in UI/UX, Product Design, and Web Design. OPT Authorized.",
   keywords: [
@@ -60,12 +60,16 @@ export const metadata: Metadata = {
     "Portfolio",
   ],
   authors: [{ name: "Harsha Asapu" }],
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+  },
   openGraph: {
-    title: "Harsha Asapu | UI/UX Designer",
+    title: "Harsha Asapu",
     description:
       "Designing clear, usable, production-ready digital experiences. Open to UI/UX, Product Designer, and Web Designer roles.",
     url: "https://harshaasapu.com",
-    siteName: "Harsha Asapu Portfolio",
+    siteName: "Harsha Asapu",
     type: "website",
     images: [
       {
@@ -78,7 +82,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Harsha Asapu | UI/UX Designer",
+    title: "Harsha Asapu",
     description:
       "Designing clear, usable, production-ready digital experiences.",
     images: ["https://harshaasapu.com/og-image.png"],

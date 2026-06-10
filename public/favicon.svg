@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" shape-rendering="crispEdges">
+  <rect width="32" height="32" rx="6" fill="#09090b"/>
+  <!-- Ghost body -->
+  <rect x="10" y="6" width="12" height="2" fill="#bae6fd"/>
+  <rect x="8" y="8" width="16" height="2" fill="#bae6fd"/>
+  <rect x="6" y="10" width="20" height="2" fill="#bae6fd"/>
+  <rect x="6" y="12" width="20" height="2" fill="#bae6fd"/>
+  <rect x="6" y="14" width="20" height="2" fill="#bae6fd"/>
+  <rect x="6" y="16" width="20" height="2" fill="#bae6fd"/>
+  <rect x="6" y="18" width="20" height="2" fill="#bae6fd"/>
+  <rect x="6" y="20" width="20" height="2" fill="#bae6fd"/>
+  <rect x="6" y="22" width="20" height="2" fill="#bae6fd"/>
+  <!-- Wavy bottom -->
+  <rect x="6" y="24" width="2" height="2" fill="#bae6fd"/>
+  <rect x="10" y="24" width="4" height="2" fill="#bae6fd"/>
+  <rect x="16" y="24" width="4" height="2" fill="#bae6fd"/>
+  <rect x="22" y="24" width="4" height="2" fill="#bae6fd"/>
+  <!-- Eyes (deep ethereal blue, not harsh black) -->
+  <rect x="10" y="12" width="4" height="4" fill="#1e3a8a"/>
+  <rect x="18" y="12" width="4" height="4" fill="#1e3a8a"/>
+  <!-- Eye highlight (gives "soul" feel) -->
+  <rect x="12" y="12" width="2" height="2" fill="#3b82f6"/>
+  <rect x="20" y="12" width="2" height="2" fill="#3b82f6"/>
+</svg>

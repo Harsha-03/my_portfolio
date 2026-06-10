@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useRouter, usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Variants } from "framer-motion";
-import { Home, FolderGit2, Briefcase, User, Mail, FileText, Film, Download } from "lucide-react";
+import { Home, FolderGit2, Briefcase, User, Mail, Film, Download } from "lucide-react";
 
 const NAV_ITEMS = [
   { id: "home",         label: "Home",       icon: <Home size={16} /> },
@@ -28,30 +29,35 @@ const childVariant: Variants = {
 };
 
 export default function Header() {
-  const [dateTime, setDateTime]   = useState("");
-  const [active, setActive]       = useState("home");
+  const router   = useRouter();
+  const pathname = usePathname();
+
+  const [active, setActive]           = useState("home");
   const [resumePulse, setResumePulse] = useState(false);
   const indicatorRef = useRef<HTMLSpanElement>(null);
   const navRefs      = useRef<Record<string, HTMLButtonElement | null>>({});
+  const [parts, setParts] = useState({ date: "", time: "" });
 
+  /* Clock */
   useEffect(() => {
     const tick = () => {
-      const now  = new Date();
-      const date = now.toLocaleDateString("en-US", { year: "numeric", month: "2-digit", day: "2-digit" });
-      const time = now.toLocaleTimeString("en-US", {
-                    timeZone: "America/Los_Angeles",
-                    hour: "2-digit",
-                    minute: "2-digit",
-                    second: "2-digit",
-                  });
-      setDateTime(date + "\u00b7" + time);
+      const now = new Date();
+      setParts({
+        date: now.toLocaleDateString("en-US", { year: "numeric", month: "2-digit", day: "2-digit" }),
+        time: now.toLocaleTimeString("en-US", {
+          timeZone: "America/Los_Angeles",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+        }),
+      });
     };
     tick();
     const id = setInterval(tick, 1000);
     return () => clearInterval(id);
   }, []);
 
-  /* Pulse the resume button once after 3s to draw attention */
+  /* Pulse the resume button once after 3s */
   useEffect(() => {
     const t = setTimeout(() => {
       setResumePulse(true);
@@ -60,6 +66,7 @@ export default function Header() {
     return () => clearTimeout(t);
   }, []);
 
+  /* Slide indicator */
   useEffect(() => {
     const btn = navRefs.current[active];
     const ind = indicatorRef.current;
@@ -68,24 +75,15 @@ export default function Header() {
     ind.style.height    = btn.offsetHeight + "px";
   }, [active]);
 
-  const scrollTo = (id: string) => {
+  /* Smart nav: scroll on homepage, redirect on other pages */
+  const handleNav = (id: string) => {
     setActive(id);
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (pathname === "/") {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      router.push("/#" + id);
+    }
   };
-
-  const [parts, setParts] = useState({ date: "", time: "" });
-  useEffect(() => {
-    const tick = () => {
-      const now = new Date();
-      setParts({
-        date: now.toLocaleDateString("en-US", { year: "numeric", month: "2-digit", day: "2-digit" }),
-        time: now.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit", second: "2-digit" }),
-      });
-    };
-    tick();
-    const id = setInterval(tick, 1000);
-    return () => clearInterval(id);
-  }, []);
 
   return (
     <motion.aside
@@ -125,7 +123,7 @@ export default function Header() {
             <button
               key={navItem.id}
               ref={(el) => { navRefs.current[navItem.id] = el; }}
-              onClick={() => scrollTo(navItem.id)}
+              onClick={() => handleNav(navItem.id)}
               className={
                 "relative z-10 flex items-center gap-3 rounded-xl px-3 py-2 text-sm transition-colors duration-150 " +
                 (active === navItem.id ? "text-white" : "text-zinc-400 hover:text-white")
@@ -153,9 +151,8 @@ export default function Header() {
           <p>{parts.time}</p>
         </motion.div>
 
-        {/* ── Resume button with entrance highlight + hover animation ── */}
+        {/* ── Resume button ── */}
         <motion.div variants={childVariant} className="relative">
-          {/* Attention pulse ring — fires once at 3s */}
           <AnimatePresence>
             {resumePulse && (
               <motion.span
@@ -192,7 +189,6 @@ export default function Header() {
             transition={{ duration: 0.25 }}
             className="relative flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-zinc-200 transition-colors hover:text-emerald-300 hover:bg-emerald-500/8 group"
           >
-            {/* Subtle shimmer on hover */}
             <motion.span
               className="pointer-events-none absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
               style={{
