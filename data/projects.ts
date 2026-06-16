@@ -111,33 +111,37 @@ export const projects: Project[] = [
   },
 
   {
-    slug: "ai-resume-editor",
-    title: "AI Resume Editor",
+    slug: "resume-tailor",
+    title: "Resume Tailor",
     shortDescription:
-      "An AI-powered resume editor designed to make feedback clear and user-controlled.",
-    image: "/projects/project_1.png",
-    tags: ["UX Flow Design", "Python", "Streamlit", "OpenAI"],
-    caseStudy: "/case-studies/ai-resume-editor",
+      "An AI resume tool rebuilt from a Streamlit prototype into a real product, with honest scoring and an output that doesn't read like AI wrote it.",
+    image: "/projects/resume-tailor-cover.png",
+    tags: ["Next.js", "TypeScript", "OpenAI", "Product Design"],
+    caseStudy: "/case-studies/resume-tailor",
     status: "Shipped",
-    year: "2024",
-    demo: "https://resume-ai-editor-harsha-asapu.streamlit.app/",
-    source: "https://github.com/Harsha-03/resume-ai-editor",
+    year: "2026",
+    demo: "https://resumetailor-liart.vercel.app/",
+    source: "https://github.com/Harsha-03/resume-tailor",
     featured: true,
     overview:
-      "AI Resume Editor is a UX-focused productivity tool designed to help job seekers understand, improve, and tailor their resumes against job descriptions through clear feedback, transparency, and guided interactions.",
-    role: "UI/UX Designer & AI Tooling",
+      "Resume Tailor is an AI-powered resume tailoring product, rebuilt from a sleeping Streamlit prototype into a Next.js product on Vercel. It matches resumes to job descriptions honestly, surfaces real gaps instead of flattering scores, and exports tailored DOCX and PDF files that read like a person wrote them.",
+    role: "Product Designer & Builder",
     timeframe: "2 weeks",
     platform: "Web",
-    tools: ["UX Flow Design", "Python", "Streamlit", "OpenAI API", "Firebase"],
+    tools: ["Next.js", "TypeScript", "Tailwind", "OpenAI", "Upstash Redis", "jsPDF", "Vercel"],
     problems: [
-      "Resume tailoring was repetitive, opaque, and time-consuming",
-      "Job seekers lacked clear feedback on how resumes perform against ATS systems",
+      "The original Streamlit prototype slept after 24 hours and broke trust on first click",
+      "Existing AI resume tools either fabricated keywords or hid the real gap behind a flattering score",
+      "AI-generated resumes carried visual tells (em dashes, generic phrasing) that recruiters now filter on",
     ],
     solutions: [
-      "Designed a transparent resume–job matching flow that highlights gaps and alignment",
-      "Built guided resume and cover-letter generation focused on clarity rather than black-box output",
+      "Rebuilt on Next.js + Vercel with serverless functions, eliminating cold-start failure entirely",
+      "Designed honest scoring with legitimate reframing: bridge JD vocabulary gaps without inventing skills",
+      "Built three layers of em-dash defense (prompt + post-process + renderer) so output reads human-written",
+      "Local-first PDF parsing so the resume never leaves the browser until the user clicks Tailor",
     ],
   },
+
 
   {
     slug: "airline-performance-tracker",

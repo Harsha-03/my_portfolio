@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
-import { useRef } from "react";
 
 /* ── Timeline data ── */
 const EXPERIENCES = [
@@ -23,7 +22,7 @@ const EXPERIENCES = [
   {
     id: "builtintech",
     role: "Product Designer & Frontend Engineer",
-    company: "BuiltinTech — Co-Founder",
+    company: "BuiltinTech: Co-Founder",
     period: "Jan 2023 – Dec 2023",
     location: "India",
     current: false,
@@ -48,6 +47,20 @@ const EXPERIENCES = [
       "First professional exposure to client-driven product delivery and enterprise team workflows",
     ],
   },
+  {
+    id: "nri-wellbeing",
+    role: "UI/UX Designer & Frontend Developer Intern",
+    company: "NRI Wellbeing Services",
+    period: "Jan 2022 – Jul 2022",
+    location: "India",
+    current: false,
+    highlights: [
+      "Designed and built nriwellbeing.com end-to-end for an ISO-certified services company",
+      "Owned information architecture across 10+ service categories including property, healthcare, logistics, and financial support",
+      "Created a service-first homepage hierarchy so first-time visitors could quickly find the right offering",
+      "First production project where I owned both the design decisions and the code that shipped",
+    ],
+  },
 ];
 
 /* ── Variants ── */
@@ -55,16 +68,42 @@ const sectionVariant: Variants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
-    transition: { staggerChildren: 0.15 },
+    transition: {
+      staggerChildren: 0.14,
+      delayChildren: 0.05,
+    },
   },
 };
 
 const cardVariant: Variants = {
-  hidden: { opacity: 0, y: 32 },
+  hidden: {
+    opacity: 0,
+    y: 34,
+    filter: "blur(6px)",
+  },
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.55, ease: [0.25, 0.1, 0.25, 1] as const },
+    filter: "blur(0px)",
+    transition: {
+      duration: 0.58,
+      ease: [0.25, 0.1, 0.25, 1] as const,
+    },
+  },
+};
+
+const bulletVariant: Variants = {
+  hidden: {
+    opacity: 0,
+    x: -8,
+  },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.35,
+      ease: "easeOut",
+    },
   },
 };
 
@@ -75,16 +114,26 @@ function Dot({ current }: { current: boolean }) {
       {current && (
         <motion.span
           className="absolute h-5 w-5 rounded-full bg-blue-500/30"
-          animate={{ scale: [1, 1.6, 1], opacity: [0.6, 0, 0.6] }}
-          transition={{ duration: 2, repeat: Infinity }}
+          animate={{
+            scale: [1, 1.65, 1],
+            opacity: [0.55, 0, 0.55],
+          }}
+          transition={{
+            duration: 2.2,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
         />
       )}
-      <span
-        className={`h-3 w-3 rounded-full border-2 z-10
-          ${current
+
+      <motion.span
+        className={`h-3 w-3 rounded-full border-2 z-10 ${
+          current
             ? "bg-blue-400 border-blue-400"
             : "bg-zinc-700 border-zinc-500"
-          }`}
+        }`}
+        whileHover={{ scale: 1.25 }}
+        transition={{ type: "spring", stiffness: 320, damping: 18 }}
       />
     </div>
   );
@@ -102,41 +151,68 @@ export default function Experience() {
     >
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-[360px_1fr] gap-14 items-start">
-
           {/* LEFT — sticky context */}
           <motion.div
             className="lg:sticky lg:top-28"
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: -22 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.5 }}
+            transition={{
+              duration: 0.55,
+              ease: [0.25, 0.1, 0.25, 1],
+            }}
           >
-            <p className="text-xs tracking-wide text-brand/80 font-semibold">
+            <motion.p
+              className="text-xs tracking-wide text-brand/80 font-semibold"
+              initial={{ opacity: 0, y: 8 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.05 }}
+            >
               EXPERIENCE
-            </p>
-            <h2
+            </motion.p>
+
+            <motion.h2
               id="experience-heading"
               className="mt-2 text-2xl sm:text-3xl md:text-4xl font-extrabold"
               style={{ fontFamily: "var(--font-heading)" }}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.45, delay: 0.1 }}
             >
               Professional Experience
-            </h2>
-            <p className="mt-4 text-sm md:text-base text-zinc-400 leading-relaxed">
+            </motion.h2>
+
+            <motion.p
+              className="mt-4 text-sm md:text-base text-zinc-400 leading-relaxed"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.45, delay: 0.16 }}
+            >
               From co-founding a startup to designing live products — a timeline
               of real work, shipped systems, and hands-on UX practice.
-            </p>
+            </motion.p>
 
             {/* Mini legend */}
-            <div className="mt-8 flex flex-col gap-2 text-xs text-zinc-500">
+            <motion.div
+              className="mt-8 flex flex-col gap-2 text-xs text-zinc-500"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.45, delay: 0.22 }}
+            >
               <div className="flex items-center gap-2">
                 <span className="h-2.5 w-2.5 rounded-full bg-blue-400" />
                 Current role
               </div>
+
               <div className="flex items-center gap-2">
                 <span className="h-2.5 w-2.5 rounded-full bg-zinc-600 border border-zinc-500" />
                 Previous role
               </div>
-            </div>
+            </motion.div>
           </motion.div>
 
           {/* RIGHT — vertical timeline */}
@@ -153,7 +229,11 @@ export default function Experience() {
               initial={{ scaleY: 0, originY: 0 }}
               whileInView={{ scaleY: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.9, ease: "easeOut", delay: 0.1 }}
+              transition={{
+                duration: 0.95,
+                ease: "easeOut",
+                delay: 0.1,
+              }}
             />
 
             <div className="flex flex-col gap-12 pl-10">
@@ -169,12 +249,21 @@ export default function Experience() {
                   </div>
 
                   {/* Card */}
-                  <motion.div
-                    whileHover={{ x: 4 }}
-                    transition={{ type: "spring", stiffness: 300, damping: 24 }}
-                    className="rounded-2xl border border-white/8
-                               bg-white/3 px-6 py-5
-                               hover:border-white/15 hover:bg-white/5
+                  <motion.article
+                    whileHover={{
+                      y: -5,
+                      scale: 1.01,
+                      borderColor: "rgba(96, 165, 250, 0.35)",
+                      backgroundColor: "rgba(255, 255, 255, 0.045)",
+                      boxShadow: "0 24px 80px rgba(37, 99, 235, 0.10)",
+                    }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 260,
+                      damping: 24,
+                    }}
+                    className="rounded-2xl border border-white/[0.08]
+                               bg-white/[0.03] px-6 py-5
                                transition-colors duration-200"
                   >
                     {/* Header */}
@@ -186,6 +275,7 @@ export default function Experience() {
                         >
                           {exp.role}
                         </h3>
+
                         <p className="text-sm text-blue-400 mt-0.5">
                           {exp.company}
                         </p>
@@ -193,32 +283,52 @@ export default function Experience() {
 
                       <div className="text-right shrink-0">
                         <p className="text-xs text-zinc-400">{exp.period}</p>
-                        <p className="text-xs text-zinc-600 mt-0.5">{exp.location}</p>
+                        <p className="text-xs text-zinc-600 mt-0.5">
+                          {exp.location}
+                        </p>
                       </div>
                     </div>
 
                     {/* Current badge */}
                     {exp.current && (
-                      <div className="mt-3">
-                        <span className="inline-flex items-center gap-1.5 rounded-full
-                                         bg-blue-500/10 border border-blue-500/20
-                                         px-2.5 py-0.5 text-[11px] text-blue-400">
+                      <motion.div
+                        className="mt-3"
+                        initial={{ opacity: 0, scale: 0.96 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.35, delay: 0.1 }}
+                      >
+                        <span
+                          className="inline-flex items-center gap-1.5 rounded-full
+                                     bg-blue-500/10 border border-blue-500/20
+                                     px-2.5 py-0.5 text-[11px] text-blue-400"
+                        >
                           <span className="h-1.5 w-1.5 rounded-full bg-blue-400 animate-pulse" />
                           Active
                         </span>
-                      </div>
+                      </motion.div>
                     )}
 
                     {/* Highlights */}
-                    <ul className="mt-4 space-y-2">
+                    <motion.ul
+                      className="mt-4 space-y-2"
+                      variants={sectionVariant}
+                      initial="hidden"
+                      whileInView="show"
+                      viewport={{ once: true, amount: 0.25 }}
+                    >
                       {exp.highlights.map((point, i) => (
-                        <li key={i} className="flex gap-2 text-sm text-zinc-400 leading-relaxed">
+                        <motion.li
+                          key={i}
+                          variants={bulletVariant}
+                          className="flex gap-2 text-sm text-zinc-400 leading-relaxed"
+                        >
                           <span className="mt-[6px] h-1.5 w-1.5 shrink-0 rounded-full bg-zinc-600" />
-                          {point}
-                        </li>
+                          <span>{point}</span>
+                        </motion.li>
                       ))}
-                    </ul>
-                  </motion.div>
+                    </motion.ul>
+                  </motion.article>
                 </motion.div>
               ))}
             </div>
