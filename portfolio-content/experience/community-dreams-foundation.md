@@ -61,4 +61,4 @@ This role demonstrates:
 
 Harsha is currently volunteering here while actively searching for a paid, full-time role.
 He is open to UI/UX Designer, Product Designer, and Web Designer positions.
-He is OPT authorized and prefers remote or hybrid work.
+He is OPT authorized and open to full-time, contract, freelance/project-based, remote, hybrid, onsite, and relocation-based opportunities depending on role fit.
