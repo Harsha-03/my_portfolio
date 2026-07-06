@@ -101,6 +101,7 @@ export default function ChatWidget() {
   const [statusIdx, setStatusIdx] = useState(0);
   const [corner, setCorner] = useState<Corner>("br");
   const [isDragging, setIsDragging] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const panelRef = useRef<HTMLDivElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
@@ -143,6 +144,37 @@ export default function ChatWidget() {
     setCorner(saved);
     // Defer slightly so fabRef is measured
     requestAnimationFrame(() => snapToCorner(saved, false));
+  }, []);
+
+  /* ── Mobile mode + nav-triggered open ── */
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const media = window.matchMedia("(max-width: 767px)");
+    const sync = () => setIsMobile(media.matches);
+
+    sync();
+
+    if (typeof media.addEventListener === "function") {
+      media.addEventListener("change", sync);
+      return () => media.removeEventListener("change", sync);
+    }
+
+    media.addListener(sync);
+    return () => media.removeListener(sync);
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const openFromNav = () => {
+      setOpen(true);
+      setNudge(false);
+      setThought(null);
+    };
+
+    window.addEventListener("open-chat-widget", openFromNav);
+    return () => window.removeEventListener("open-chat-widget", openFromNav);
   }, []);
 
   /* ── Resize: re-snap to current corner ── */
@@ -294,13 +326,22 @@ export default function ChatWidget() {
   const isTop = corner.startsWith("t");
   const isLeft = corner.endsWith("l");
 
-  // Panel position style based on current corner
-  const panelStyle: React.CSSProperties = {
-    position: "fixed",
-    zIndex: 50,
-    [isTop ? "top" : "bottom"]: MARGIN + PANEL_OFFSET + "px",
-    [isLeft ? "left" : "right"]: MARGIN + "px",
-  };
+  // Panel position style based on current corner.
+  // Mobile opens from the bottom nav instead of the draggable FAB.
+  const panelStyle: React.CSSProperties = isMobile
+    ? {
+        position: "fixed",
+        zIndex: 65,
+        left: "1rem",
+        right: "1rem",
+        bottom: "6.5rem",
+      }
+    : {
+        position: "fixed",
+        zIndex: 50,
+        [isTop ? "top" : "bottom"]: MARGIN + PANEL_OFFSET + "px",
+        [isLeft ? "left" : "right"]: MARGIN + "px",
+      };
 
   return (
     <>
@@ -309,6 +350,7 @@ export default function ChatWidget() {
           pointer-events: none so it doesn't intercept clicks on the page;
           the draggable child re-enables them via pointer-events: auto. */}
       <div
+        className="hidden md:block"
         style={{
           position: "fixed",
           inset: 0,
@@ -477,7 +519,7 @@ export default function ChatWidget() {
             exit={{ opacity: 0, y: isTop ? -20 : 20, scale: 0.97 }}
             transition={{ type: "spring", stiffness: 340, damping: 28 }}
             style={panelStyle}
-            className="w-[94vw] max-w-[420px] rounded-2xl bg-zinc-900/95 text-white border border-white/10 shadow-[0_8px_48px_rgba(0,0,0,0.6)] backdrop-blur-xl overflow-hidden"
+            className="w-auto max-w-none rounded-2xl bg-zinc-900/95 text-white border border-white/10 shadow-[0_8px_48px_rgba(0,0,0,0.6)] backdrop-blur-xl overflow-hidden md:w-[94vw] md:max-w-[420px]"
           >
             {/* Header */}
             <div className="flex items-center justify-between px-4 py-3 border-b border-white/8 bg-white/3">
@@ -539,7 +581,7 @@ export default function ChatWidget() {
             {/* Messages */}
             <div
               ref={listRef}
-              className="max-h-[48vh] overflow-y-auto px-4 py-4 space-y-3 scrollbar-thin scrollbar-thumb-white/10"
+              className="max-h-[42vh] overflow-y-auto px-4 py-4 space-y-3 scrollbar-thin scrollbar-thumb-white/10 md:max-h-[48vh]"
             >
               {messages.length === 0 && (
                 <p className="text-sm text-zinc-500 text-center py-4">

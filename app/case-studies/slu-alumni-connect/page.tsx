@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, ExternalLink, Github } from "lucide-react";
+import { RevealBlock } from "../../components/MotionPattern";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -11,38 +12,44 @@ export const metadata: Metadata = {
 
 export default function SLUAlumniCaseStudy() {
   return (
-    <main className="min-h-screen bg-[#0a0a0a] text-zinc-200 md:pl-[300px]">
-      {/* Sticky top bar */}
-      <div className="sticky top-0 z-30 backdrop-blur-xl bg-[#0a0a0a]/70 border-b border-white/5">
-        <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link href="/#projects" className="flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors">
-            <ArrowLeft size={16} />
-            <span>Back to projects</span>
-          </Link>
-          <div className="flex items-center gap-4">
-            <a
-              href="https://slu-alumni-connect-main.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors"
-            >
-              <span>Live site</span>
-              <ExternalLink size={14} />
-            </a>
-            <a
-              href="https://github.com/Harsha-03/slu-alumni-connect-main"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors"
-            >
-              <span>GitHub</span>
-              <Github size={14} />
-            </a>
-          </div>
+    <main className="min-h-screen bg-[#0a0a0a] pt-32 text-zinc-200">
+      {/* Case-study actions */}
+      <div className="fixed left-4 top-4 z-50">
+        <Link
+          href="/#projects"
+          className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-zinc-950/88 px-4 py-2.5 text-xs font-medium text-zinc-300 shadow-2xl shadow-black/35 backdrop-blur-xl transition-colors hover:bg-white/[0.06] hover:text-white"
+        >
+          <ArrowLeft size={14} />
+          <span>Back to projects</span>
+        </Link>
+      </div>
+
+      <div className="fixed right-4 top-4 z-50">
+        <div className="flex max-w-[calc(100vw-2rem)] items-center gap-1 overflow-x-auto rounded-full border border-white/10 bg-zinc-950/88 px-2 py-2 shadow-2xl shadow-black/35 backdrop-blur-xl">
+<a
+            href="https://slu-alumni-connect-main.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full px-3.5 py-2 text-xs font-medium text-zinc-300 transition-colors hover:bg-white/[0.06] hover:text-white"
+          >
+            <span>Live site</span>
+            <ExternalLink size={13} />
+          </a>
+
+          <a
+            href="https://github.com/Harsha-03/slu-alumni-connect-main"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full px-3.5 py-2 text-xs font-medium text-zinc-300 transition-colors hover:bg-white/[0.06] hover:text-white"
+          >
+            <span>GitHub</span>
+            <Github size={13} />
+          </a>
         </div>
       </div>
 
       {/* HERO */}
+      <RevealBlock>
       <section className="max-w-5xl mx-auto px-6 pt-20 pb-16">
         <p className="text-xs tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-6">
           Case Study &middot; 2024
@@ -75,8 +82,10 @@ export default function SLUAlumniCaseStudy() {
           ))}
         </div>
       </section>
+      </RevealBlock>
 
       {/* COVER */}
+      <RevealBlock>
       <section className="max-w-7xl mx-auto px-6 mb-32">
         <div className="rounded-2xl overflow-hidden border border-white/10">
           <Image
@@ -89,8 +98,10 @@ export default function SLUAlumniCaseStudy() {
           />
         </div>
       </section>
+      </RevealBlock>
 
       {/* CHAPTER 01 — THE PROBLEM */}
+      <RevealBlock>
       <section className="max-w-3xl mx-auto px-6 mb-32">
         <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">Chapter 01</p>
         <h2 className="text-3xl md:text-5xl font-bold mb-12" style={{ fontFamily: "var(--font-heading)" }}>
@@ -132,8 +143,10 @@ export default function SLUAlumniCaseStudy() {
           ))}
         </div>
       </section>
+      </RevealBlock>
 
       {/* CHAPTER 02 — RESEARCH */}
+      <RevealBlock>
       <section className="max-w-5xl mx-auto px-6 mb-32">
         <div className="max-w-3xl">
           <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">Chapter 02</p>
@@ -178,8 +191,10 @@ export default function SLUAlumniCaseStudy() {
           </p>
         </div>
       </section>
+      </RevealBlock>
 
       {/* CHAPTER 03 — SOLUTION */}
+      <RevealBlock>
       <section className="max-w-5xl mx-auto px-6 mb-32">
         <div className="max-w-3xl">
           <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">Chapter 03</p>
@@ -211,8 +226,10 @@ export default function SLUAlumniCaseStudy() {
           />
         </div>
       </section>
+      </RevealBlock>
 
       {/* CHAPTER 04 — DESIGN DECISIONS */}
+      <RevealBlock>
       <section className="max-w-3xl mx-auto px-6 mb-32">
         <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">Chapter 04</p>
         <h2 className="text-3xl md:text-5xl font-bold mb-6" style={{ fontFamily: "var(--font-heading)" }}>
@@ -263,8 +280,10 @@ export default function SLUAlumniCaseStudy() {
           ))}
         </div>
       </section>
+      </RevealBlock>
 
       {/* CHAPTER 05 — OUTCOMES */}
+      <RevealBlock>
       <section className="max-w-3xl mx-auto px-6 mb-32">
         <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">Chapter 05</p>
         <h2 className="text-3xl md:text-5xl font-bold mb-12" style={{ fontFamily: "var(--font-heading)" }}>
@@ -297,8 +316,10 @@ export default function SLUAlumniCaseStudy() {
           ))}
         </div>
       </section>
+      </RevealBlock>
 
       {/* CHAPTER 06 — WHAT I'D TEST NEXT */}
+      <RevealBlock>
       <section className="max-w-3xl mx-auto px-6 mb-32">
         <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">Chapter 06</p>
         <h2 className="text-3xl md:text-5xl font-bold mb-12" style={{ fontFamily: "var(--font-heading)" }}>
@@ -318,8 +339,10 @@ export default function SLUAlumniCaseStudy() {
           ))}
         </div>
       </section>
+      </RevealBlock>
 
       {/* CLOSING */}
+      <RevealBlock>
       <section className="max-w-3xl mx-auto px-6 pb-32 pt-16 border-t border-white/10">
         <p className="text-[11px] tracking-[0.2em] text-zinc-500 font-semibold uppercase mb-4">Next</p>
         <Link href="/#projects" className="group block">
@@ -328,6 +351,7 @@ export default function SLUAlumniCaseStudy() {
           </p>
         </Link>
       </section>
+      </RevealBlock>
     </main>
   );
 }

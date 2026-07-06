@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import { RevealBlock } from "../../components/MotionPattern";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -10,21 +11,20 @@ export const metadata: Metadata = {
 
 export default function PortfolioCaseStudy() {
   return (
-    <main className="min-h-screen bg-[#0a0a0a] text-zinc-200 md:pl-[300px]">
-      {/* Sticky top bar */}
-      <div className="sticky top-0 z-30 backdrop-blur-xl bg-[#0a0a0a]/70 border-b border-white/5">
-        <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link
-            href="/#projects"
-            className="flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors"
-          >
-            <ArrowLeft size={16} />
-            <span>Back to projects</span>
-          </Link>
-        </div>
+    <main className="min-h-screen bg-[#0a0a0a] pt-32 text-zinc-200">
+      {/* Case-study actions */}
+      <div className="fixed left-4 top-4 z-50">
+        <Link
+          href="/#projects"
+          className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-zinc-950/88 px-4 py-2.5 text-xs font-medium text-zinc-300 shadow-2xl shadow-black/35 backdrop-blur-xl transition-colors hover:bg-white/[0.06] hover:text-white"
+        >
+          <ArrowLeft size={14} />
+          <span>Back to projects</span>
+        </Link>
       </div>
 
       {/* HERO */}
+      <RevealBlock>
       <section className="max-w-5xl mx-auto px-6 pt-20 pb-16">
         <p className="text-xs tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-6">
           Case Study &middot; 2024&ndash;2025
@@ -62,8 +62,10 @@ export default function PortfolioCaseStudy() {
           ))}
         </div>
       </section>
+      </RevealBlock>
 
       {/* PHASE OVERVIEW */}
+      <RevealBlock>
       <section className="max-w-5xl mx-auto px-6 mb-32">
         <div className="grid sm:grid-cols-3 gap-4">
           {[
@@ -113,8 +115,10 @@ export default function PortfolioCaseStudy() {
           ))}
         </div>
       </section>
+      </RevealBlock>
 
       {/* CHAPTER 01 — THE PROBLEM WITH PORTFOLIOS */}
+      <RevealBlock>
       <section className="max-w-3xl mx-auto px-6 mb-32">
         <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
           Chapter 01
@@ -148,8 +152,10 @@ export default function PortfolioCaseStudy() {
           </p>
         </div>
       </section>
+      </RevealBlock>
 
       {/* CHAPTER 02 — PHASE 1 */}
+      <RevealBlock>
       <section className="max-w-3xl mx-auto px-6 mb-32">
         <p className="text-[11px] tracking-[0.2em] text-zinc-500 font-semibold uppercase mb-4">
           Chapter 02 &mdash; Phase 1
@@ -197,8 +203,10 @@ export default function PortfolioCaseStudy() {
           </div>
         </div>
       </section>
+      </RevealBlock>
 
       {/* CHAPTER 03 — PHASE 2 */}
+      <RevealBlock>
       <section className="max-w-3xl mx-auto px-6 mb-32">
         <p className="text-[11px] tracking-[0.2em] text-blue-400/80 font-semibold uppercase mb-4">
           Chapter 03 &mdash; Phase 2
@@ -268,8 +276,10 @@ export default function PortfolioCaseStudy() {
           ))}
         </div>
       </section>
+      </RevealBlock>
 
       {/* CHAPTER 04 — PHASE 3 */}
+      <RevealBlock>
       <section className="max-w-3xl mx-auto px-6 mb-32">
         <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
           Chapter 04 &mdash; Phase 3
@@ -353,8 +363,10 @@ export default function PortfolioCaseStudy() {
           ))}
         </div>
       </section>
+      </RevealBlock>
 
       {/* CHAPTER 05 — DECISIONS */}
+      <RevealBlock>
       <section className="max-w-3xl mx-auto px-6 mb-32">
         <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
           Chapter 05
@@ -399,8 +411,10 @@ export default function PortfolioCaseStudy() {
           ))}
         </div>
       </section>
+      </RevealBlock>
 
       {/* CHAPTER 06 — WHAT'S NEXT */}
+      <RevealBlock>
       <section className="max-w-3xl mx-auto px-6 mb-32">
         <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
           Chapter 06
@@ -428,8 +442,10 @@ export default function PortfolioCaseStudy() {
           ))}
         </div>
       </section>
+      </RevealBlock>
 
       {/* CLOSING */}
+      <RevealBlock>
       <section className="max-w-3xl mx-auto px-6 pb-32 pt-16 border-t border-white/10">
         <p className="text-[11px] tracking-[0.2em] text-zinc-500 font-semibold uppercase mb-4">
           Live
@@ -448,6 +464,7 @@ export default function PortfolioCaseStudy() {
           </p>
         </a>
       </section>
+      </RevealBlock>
     </main>
   );
 }

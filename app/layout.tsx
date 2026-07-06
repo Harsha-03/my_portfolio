@@ -5,6 +5,7 @@ import {
   Figtree,
   Instrument_Serif,
   Pinyon_Script,
+  Space_Grotesk,
 } from "next/font/google";
 
 import Header from "@/app/components/Header";
@@ -14,8 +15,7 @@ import ChatWidget from "@/app/components/ChatWidget";
 import ShootingStars from "@/app/components/ShootingStars";
 import MobileNav from "@/app/components/MobileNav";
 import SplashGate from "@/app/components/SplashGate";
-
-/* ---------------- Fonts ---------------- */
+import ChatHint from "@/app/components/ChatHint";
 
 const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
@@ -42,21 +42,25 @@ const pinyonScript = Pinyon_Script({
   weight: ["400"],
 });
 
-/* ---------------- Metadata ---------------- */
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-wordmark",
+  weight: ["500", "600", "700"],
+});
 
 export const metadata: Metadata = {
   title: "Harsha Asapu",
   description:
-    "UI/UX Designer based in Reno, Nevada. Designing clear, production-ready digital products. Open to full-time roles in UI/UX, Product Design, and Web Design. OPT Authorized.",
+    "UX Designer building products that actually ship. UI/UX and Product Design work — Starbucks, LifeOS, SLU Alumni Connect, Resume Tailor.",
   keywords: [
+    "UX Designer",
     "UI/UX Designer",
     "Product Designer",
-    "Web Designer",
     "Harsha Asapu",
-    "Reno Nevada",
-    "Frontend Engineer",
     "Figma",
-    "React",
+    "Design Systems",
+    "Interaction Design",
+    "AI Product Design",
     "Portfolio",
   ],
   authors: [{ name: "Harsha Asapu" }],
@@ -67,7 +71,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Harsha Asapu",
     description:
-      "Designing clear, usable, production-ready digital experiences. Open to UI/UX, Product Designer, and Web Designer roles.",
+      "UX Designer building products that actually ship. Identifying the real break, not the surface bug.",
     url: "https://harshaasapu.com",
     siteName: "Harsha Asapu",
     type: "website",
@@ -76,7 +80,7 @@ export const metadata: Metadata = {
         url: "https://harshaasapu.com/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Harsha Asapu - UI/UX Designer",
+        alt: "Harsha Asapu — UX Designer",
       },
     ],
   },
@@ -84,7 +88,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Harsha Asapu",
     description:
-      "Designing clear, usable, production-ready digital experiences.",
+      "UX Designer building products that actually ship.",
     images: ["https://harshaasapu.com/og-image.png"],
   },
   robots: {
@@ -92,8 +96,6 @@ export const metadata: Metadata = {
     follow: true,
   },
 };
-
-/* ---------------- Layout ---------------- */
 
 export default function RootLayout({
   children,
@@ -110,30 +112,25 @@ export default function RootLayout({
         " " +
         instrumentSerif.variable +
         " " +
-        pinyonScript.variable
+        pinyonScript.variable +
+        " " +
+        spaceGrotesk.variable
       }
     >
       <body>
-        {/* Background layers */}
         <div className="starfield" aria-hidden="true" />
         <ShootingStars />
 
-        {/* Mobile navigation */}
         <MobileNav />
-
-        {/* Desktop sidebar */}
         <Header />
 
-        {/* Main app shell */}
         <AppShell>{children}</AppShell>
 
-        {/* Footer */}
         <Footer />
 
-        {/* Global floating UI */}
         <ChatWidget />
+        
 
-        {/* Splash gate — covers EVERYTHING on first load, forces scroll-to-top */}
         <SplashGate />
       </body>
     </html>

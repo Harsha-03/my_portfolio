@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, ExternalLink, Github } from "lucide-react";
+import { RevealBlock } from "../../components/MotionPattern";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -11,41 +12,44 @@ export const metadata: Metadata = {
 
 export default function ResumeTailorCaseStudy() {
   return (
-    <main className="min-h-screen bg-[#0a0a0a] text-zinc-200 md:pl-[300px]">
-      {/* Sticky top bar */}
-      <div className="sticky top-0 z-30 backdrop-blur-xl bg-[#0a0a0a]/70 border-b border-white/5">
-        <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link
-            href="/#projects"
-            className="flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors"
+    <main className="min-h-screen bg-[#0a0a0a] pt-32 text-zinc-200">
+      {/* Case-study actions */}
+      <div className="fixed left-4 top-4 z-50">
+        <Link
+          href="/#projects"
+          className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-zinc-950/88 px-4 py-2.5 text-xs font-medium text-zinc-300 shadow-2xl shadow-black/35 backdrop-blur-xl transition-colors hover:bg-white/[0.06] hover:text-white"
+        >
+          <ArrowLeft size={14} />
+          <span>Back to projects</span>
+        </Link>
+      </div>
+
+      <div className="fixed right-4 top-4 z-50">
+        <div className="flex max-w-[calc(100vw-2rem)] items-center gap-1 overflow-x-auto rounded-full border border-white/10 bg-zinc-950/88 px-2 py-2 shadow-2xl shadow-black/35 backdrop-blur-xl">
+<a
+            href="https://github.com/Harsha-03/resume-tailor"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full px-3.5 py-2 text-xs font-medium text-zinc-300 transition-colors hover:bg-white/[0.06] hover:text-white"
           >
-            <ArrowLeft size={16} />
-            <span>Back to projects</span>
-          </Link>
-          <div className="flex items-center gap-6">
-            <a
-              href="https://github.com/Harsha-03/resume-tailor"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors"
-            >
-              <Github size={14} />
-              <span>Source</span>
-            </a>
-            <a
-              href="https://resumetailor-liart.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors"
-            >
-              <span>Live demo</span>
-              <ExternalLink size={14} />
-            </a>
-          </div>
+            <Github size={13} />
+            <span>Source</span>
+          </a>
+
+          <a
+            href="https://resumetailor-liart.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full px-3.5 py-2 text-xs font-medium text-zinc-300 transition-colors hover:bg-white/[0.06] hover:text-white"
+          >
+            <span>Live demo</span>
+            <ExternalLink size={13} />
+          </a>
         </div>
       </div>
 
       {/* HERO */}
+      <RevealBlock>
       <section className="max-w-5xl mx-auto px-6 pt-20 pb-16">
         <p className="text-xs tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-6">
           Case Study · 2026
@@ -81,8 +85,10 @@ export default function ResumeTailorCaseStudy() {
           ))}
         </div>
       </section>
+      </RevealBlock>
 
       {/* COVER IMAGE */}
+      <RevealBlock>
       <section className="max-w-7xl mx-auto px-6 mb-32">
         <div className="rounded-2xl overflow-hidden border border-white/10">
           <Image
@@ -95,8 +101,10 @@ export default function ResumeTailorCaseStudy() {
           />
         </div>
       </section>
+      </RevealBlock>
 
       {/* CHAPTER 01 — THE PROBLEM */}
+      <RevealBlock>
       <section className="max-w-3xl mx-auto px-6 mb-32">
         <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
           Chapter 01
@@ -125,8 +133,10 @@ export default function ResumeTailorCaseStudy() {
           </p>
         </div>
       </section>
+      </RevealBlock>
 
       {/* COLD-START IMAGE */}
+      <RevealBlock>
       <section className="max-w-4xl mx-auto px-6 mb-12">
         <div className="rounded-2xl overflow-hidden border border-white/10 bg-white">
           <Image
@@ -142,7 +152,9 @@ export default function ResumeTailorCaseStudy() {
           available when it&apos;s needed isn&apos;t a tool.
         </p>
       </section>
+      </RevealBlock>
 
+      <RevealBlock>
       <section className="max-w-3xl mx-auto px-6 mb-32">
         <div className="space-y-6 text-lg text-zinc-300 leading-relaxed">
           <p>
@@ -157,8 +169,10 @@ export default function ResumeTailorCaseStudy() {
           </p>
         </div>
       </section>
+      </RevealBlock>
 
       {/* CHAPTER 02 — WHAT SURVIVED */}
+      <RevealBlock>
       <section className="max-w-5xl mx-auto px-6 mb-32">
         <div className="max-w-3xl">
           <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
@@ -266,8 +280,10 @@ export default function ResumeTailorCaseStudy() {
           A rewrite isn&apos;t a port. It&apos;s a chance to delete.
         </p>
       </section>
+      </RevealBlock>
 
       {/* CHAPTER 03 — DECISIONS */}
+      <RevealBlock>
       <section className="max-w-3xl mx-auto px-6 mb-32">
         <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
           Chapter 03
@@ -309,8 +325,10 @@ export default function ResumeTailorCaseStudy() {
           />
         </div>
       </section>
+      </RevealBlock>
 
       {/* CHAPTER 04 — THE MATCH MOMENT */}
+      <RevealBlock>
       <section className="max-w-5xl mx-auto px-6 mb-32">
         <div className="max-w-3xl">
           <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
@@ -358,8 +376,10 @@ export default function ResumeTailorCaseStudy() {
           </p>
         </div>
       </section>
+      </RevealBlock>
 
       {/* CHAPTER 05 — THE BUILD JOURNEY */}
+      <RevealBlock>
       <section className="max-w-3xl mx-auto px-6 mb-32">
         <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
           Chapter 05
@@ -412,8 +432,10 @@ export default function ResumeTailorCaseStudy() {
           the product became. That&apos;s why they&apos;re in the case study.
         </p>
       </section>
+      </RevealBlock>
 
       {/* CHAPTER 06 — WHAT SHIPS */}
+      <RevealBlock>
       <section className="max-w-5xl mx-auto px-6 mb-32">
         <div className="max-w-3xl">
           <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
@@ -450,8 +472,10 @@ export default function ResumeTailorCaseStudy() {
           image="/case-studies/resume-tailor/cover-letter.png"
         />
       </section>
+      </RevealBlock>
 
       {/* CHAPTER 07 — WHAT'S NEXT */}
+      <RevealBlock>
       <section className="max-w-3xl mx-auto px-6 mb-32">
         <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
           Chapter 07
@@ -505,8 +529,10 @@ export default function ResumeTailorCaseStudy() {
           </p>
         </div>
       </section>
+      </RevealBlock>
 
       {/* FOOTER NAV */}
+      <RevealBlock>
       <section className="max-w-5xl mx-auto px-6 pb-24">
         <div className="flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center pt-12 border-t border-white/10">
           <Link
@@ -538,6 +564,7 @@ export default function ResumeTailorCaseStudy() {
           </div>
         </div>
       </section>
+      </RevealBlock>
     </main>
   );
 }

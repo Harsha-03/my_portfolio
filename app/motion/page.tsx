@@ -2,97 +2,127 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowLeft } from "lucide-react";
+import { RevealBlock, smoothEase } from "../components/MotionPattern";
+import { ArrowLeft, Play } from "lucide-react";
 import { motionPieces, type MotionPiece } from "@/data/motion";
 
 function visibleTags(tags?: string[]) {
   if (!tags) return [];
-  return tags.filter((t) => t.toLowerCase() !== "after effects");
+  return tags.filter((tag) => tag.toLowerCase() !== "after effects");
 }
 
 function StatusPill({ status }: { status: MotionPiece["status"] }) {
-  if (status === "Shipped") return null;
+  if (status === "Shipped") {
+    return (
+      <span className="inline-flex items-center gap-1.5 rounded-full border border-blue-400/25 bg-blue-500/10 px-3 py-1 text-[11px] font-medium text-blue-300 backdrop-blur-md">
+        <span className="h-1.5 w-1.5 rounded-full bg-blue-300" />
+        Shipped
+      </span>
+    );
+  }
+
   const isProgress = status === "In Progress";
-  const label = isProgress ? "Currently Building" : "Concept";
+
   return (
     <span
       className={
-        "inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-medium backdrop-blur-md " +
+        "inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-[11px] font-medium backdrop-blur-md " +
         (isProgress
-          ? "bg-amber-500/20 text-amber-300 border border-amber-500/30"
-          : "bg-sky-500/20 text-sky-300 border border-sky-500/30")
+          ? "border-amber-400/30 bg-amber-500/10 text-amber-300"
+          : "border-white/10 bg-white/10 text-zinc-300")
       }
     >
       <span
         className={
           "h-1.5 w-1.5 rounded-full " +
-          (isProgress ? "bg-amber-400 animate-pulse" : "bg-sky-400")
+          (isProgress ? "animate-pulse bg-amber-300" : "bg-zinc-300")
         }
       />
-      {label}
+      {isProgress ? "Currently Building" : "Concept"}
     </span>
   );
 }
 
-function PieceBlock({ piece, index }: { piece: MotionPiece; index: number }) {
+function MotionPieceCard({
+  piece,
+  index,
+}: {
+  piece: MotionPiece;
+  index: number;
+}) {
   return (
     <motion.article
       id={piece.slug}
-      initial={{ opacity: 0, y: 32 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.6, delay: index * 0.05, ease: [0.25, 0.1, 0.25, 1] }}
-      className="group scroll-mt-24"
+      initial={{ opacity: 0, y: 16, filter: "blur(6px)" }}
+      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+      viewport={{ once: true, margin: "0px", amount: 0.05 }}
+      transition={{
+        duration: 0.52,
+        delay: index * 0.025,
+        ease: smoothEase,
+      }}
+      className="scroll-mt-32"
     >
-      <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-zinc-900 aspect-[16/9]">
-        <video
-          src={piece.video}
-          poster={piece.poster}
-          muted
-          loop
-          autoPlay
-          playsInline
-          preload="metadata"
-          className="absolute inset-0 h-full w-full object-cover"
-        />
+      <div className="grid gap-6 lg:grid-cols-[minmax(0,1.25fr)_minmax(320px,0.75fr)] lg:items-end">
+        <motion.div
+          whileHover={{ y: -4, scale: 1.006 }}
+          transition={{ type: "spring", stiffness: 240, damping: 24 }}
+          className="group relative aspect-[16/9] overflow-hidden rounded-[1.75rem] border border-white/10 bg-zinc-950 shadow-2xl shadow-black/30"
+        >
+          <video
+            src={piece.video}
+            poster={piece.poster}
+            muted
+            loop
+            autoPlay
+            playsInline
+            preload="metadata"
+            className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.025]"
+          />
 
-        {piece.status !== "Shipped" && (
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent pointer-events-none" />
-        )}
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-zinc-950/70 via-zinc-950/18 to-transparent" />
 
-        {piece.status !== "Shipped" && (
-          <div className="absolute top-4 left-4">
+          <div className="absolute left-4 top-4 z-10 flex items-center gap-2">
+            <span className="rounded-full border border-white/10 bg-black/35 px-3 py-1 text-[11px] font-semibold tracking-[0.14em] text-zinc-300 backdrop-blur-md">
+              {String(index + 1).padStart(2, "0")} / {String(motionPieces.length).padStart(2, "0")}
+            </span>
             <StatusPill status={piece.status} />
           </div>
-        )}
-      </div>
 
-      <div className="mt-6 max-w-3xl">
-        <p className="text-[10px] tracking-[0.2em] text-zinc-500 uppercase font-medium">
-          {piece.client} &middot; {piece.year}
-        </p>
-        <h3
-          className="mt-2 font-bold text-white leading-tight text-3xl md:text-4xl lg:text-5xl"
-          style={{ fontFamily: "var(--font-heading)" }}
-        >
-          {piece.title}
-        </h3>
-        <p className="mt-3 text-zinc-400 leading-relaxed text-base md:text-lg">
-          {piece.shortDescription}
-        </p>
-
-        {visibleTags(piece.tags).length > 0 && (
-          <div className="mt-4 flex flex-wrap gap-2">
-            {visibleTags(piece.tags).map((tag) => (
-              <span
-                key={tag}
-                className="rounded-full bg-white/5 px-2.5 py-1 text-[11px] text-zinc-400 border border-white/8"
-              >
-                {tag}
-              </span>
-            ))}
+          <div className="absolute right-4 top-4 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white text-zinc-950 opacity-0 shadow-xl shadow-black/20 transition-opacity duration-300 group-hover:opacity-100">
+            <Play size={15} fill="currentColor" />
           </div>
-        )}
+        </motion.div>
+
+        <div className="lg:pb-2">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-blue-300/85">
+            {piece.client} · {piece.year}
+          </p>
+
+          <h2
+            className="mt-3 text-3xl font-extrabold leading-tight tracking-tight text-white md:text-4xl"
+            style={{ fontFamily: "var(--font-heading)" }}
+          >
+            {piece.title}
+          </h2>
+
+          <p className="mt-4 max-w-xl text-sm leading-relaxed text-zinc-400 md:text-base">
+            {piece.shortDescription}
+          </p>
+
+          {visibleTags(piece.tags).length > 0 && (
+            <div className="mt-5 flex flex-wrap gap-2">
+              {visibleTags(piece.tags).map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs text-zinc-400"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </motion.article>
   );
@@ -100,65 +130,87 @@ function PieceBlock({ piece, index }: { piece: MotionPiece; index: number }) {
 
 export default function MotionGalleryPage() {
   return (
-    <main className="min-h-screen bg-[#0a0a0a] text-zinc-200 md:pl-[300px]">
-      <div className="sticky top-0 z-30 backdrop-blur-xl bg-[#0a0a0a]/70 border-b border-white/5">
-        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link
-            href="/#motion"
-            className="flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors"
-          >
-            <ArrowLeft size={16} />
-            <span>Back to home</span>
-          </Link>
-          <p className="text-xs tracking-[0.2em] text-zinc-500 uppercase font-medium">
-            Motion / Gallery
-          </p>
-        </div>
-      </div>
-
-      <section className="max-w-6xl mx-auto px-6 pt-20 pb-16">
-        <p className="text-xs tracking-[0.2em] text-brand/80 font-semibold uppercase mb-6">
-          Motion Design
-        </p>
-        <h1
-          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[1.05] tracking-tight"
-          style={{ fontFamily: "var(--font-heading)" }}
+    <main className="relative min-h-screen bg-[#0a0a0a] text-zinc-200">
+      {/* Page controls: same idea as case-study pages, but centered to the current global navbar */}
+      <RevealBlock className="mx-auto flex w-full max-w-7xl items-center justify-between px-5 pb-10 pt-32 sm:px-6 lg:px-8">
+        <Link
+          href="/#motion"
+          className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-zinc-950/70 px-4 py-2 text-sm text-zinc-400 shadow-xl shadow-black/20 backdrop-blur-md transition-colors hover:border-blue-400/30 hover:text-white"
         >
-          Motion that
-          <br />
-          earns its place.
-        </h1>
-        <p className="mt-8 max-w-2xl text-lg md:text-xl text-zinc-400 leading-relaxed">
-          Short-form motion pieces &mdash; type, brand, and concept work where
-          timing carries the idea. Each piece is a study in what moves, what
-          stays still, and why.
-        </p>
+          <ArrowLeft size={15} />
+          Back to home
+        </Link>
+
+        <div className="hidden rounded-full border border-white/10 bg-zinc-950/70 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.24em] text-zinc-500 shadow-xl shadow-black/20 backdrop-blur-md sm:block">
+          Motion / Gallery
+        </div>
+      </RevealBlock>
+
+      {/* Hero */}
+      <section className="mx-auto w-full max-w-7xl px-5 pb-20 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 28, filter: "blur(12px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.75, ease: smoothEase }}
+          className="mx-auto max-w-5xl text-center"
+        >
+          <p className="mb-5 text-[11px] font-semibold uppercase tracking-[0.26em] text-blue-400/85">
+            Motion Design
+          </p>
+
+          <h1
+            className="mx-auto max-w-5xl text-5xl font-extrabold leading-[0.98] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl"
+            style={{ fontFamily: "var(--font-heading)" }}
+          >
+            Motion that earns its place.
+          </h1>
+
+          <p className="mx-auto mt-7 max-w-3xl text-base leading-relaxed text-zinc-400 md:text-lg">
+            Short-form motion pieces — type, brand, and concept work where timing
+            carries the idea. Each piece is a study in what moves, what stays
+            still, and why.
+          </p>
+        </motion.div>
       </section>
 
-      <section className="max-w-6xl mx-auto px-6 pb-32">
-        <div className="space-y-32">
-          {motionPieces.map((piece, i) => (
-            <PieceBlock key={piece.slug} piece={piece} index={i} />
+      {/* Gallery */}
+      <section className="mx-auto w-full max-w-7xl px-5 pb-32 sm:px-6 lg:px-8">
+        <div className="space-y-24">
+          {motionPieces.map((piece, index) => (
+            <MotionPieceCard
+              key={piece.slug}
+              piece={piece}
+              index={index}
+            />
           ))}
         </div>
       </section>
 
-      <section className="max-w-3xl mx-auto px-6 pb-32 pt-16 border-t border-white/10">
-        <p className="text-[11px] tracking-[0.2em] text-zinc-500 font-semibold uppercase mb-4">
-          More in motion
-        </p>
-        <p className="text-lg text-zinc-400 leading-relaxed mb-8">
-          New pieces are added as concepts finish. If you&apos;re curious about
-          process or commissioning work, the contact section is below.
-        </p>
-        <Link href="/#contactfancy" className="group inline-block">
-          <p
-            className="text-3xl md:text-4xl font-bold text-zinc-300 group-hover:text-white transition-colors"
-            style={{ fontFamily: "var(--font-heading)" }}
-          >
-            Get in touch &rarr;
+      {/* Bottom CTA */}
+      <section className="mx-auto w-full max-w-4xl px-5 pb-32 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 14, filter: "blur(6px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          viewport={{ once: true, margin: "0px", amount: 0.06 }}
+          transition={{ duration: 0.52, ease: smoothEase }}
+          className="border-t border-white/10 pt-12 text-center"
+        >
+          <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-zinc-500">
+            More in motion
           </p>
-        </Link>
+
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-zinc-400 md:text-lg">
+            New pieces are added as concepts finish. If you&apos;re curious about
+            the process, the contact section is right below.
+          </p>
+
+          <Link
+            href="/#contact"
+            className="mt-7 inline-flex items-center rounded-full border border-white/10 bg-white/[0.04] px-5 py-2.5 text-sm font-medium text-zinc-300 transition-colors hover:border-blue-400/30 hover:text-white"
+          >
+            Get in touch →
+          </Link>
+        </motion.div>
       </section>
     </main>
   );

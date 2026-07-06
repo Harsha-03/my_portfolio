@@ -6,45 +6,47 @@ import type { Variants } from "framer-motion";
 /* ── Timeline data ── */
 const EXPERIENCES = [
   {
-    id: "cdf",
-    role: "UI/UX Designer",
-    company: "Community Dreams Foundation",
+    id: "phoenix-ai-cdf",
+    role: "UI/UX Designer · Volunteer",
+    company: "Phoenix AI · Community Dreams Foundation",
     period: "Feb 2026 – Present",
     location: "Remote, USA",
     current: true,
     highlights: [
-      "Designing end-to-end UX for the DreamStream platform — wireframes, prototypes, and high-fidelity UI in Figma",
-      "Collaborating with PMs and engineers in an Agile, Slack-based workflow",
-      "Conducting usability testing and iterating on user flows for accessibility and engagement",
-      "Defining interaction patterns and responsive layouts for cross-device consistency",
+      "Designing UI/UX across three healthcare products under Community Dreams Foundation, with Phoenix AI as the lead platform.",
+      "Phoenix AI brings wearable, sleep, activity, step, and lab-report data into one healthcare tracking experience that turns raw inputs into actionable insights.",
+      "Improving the existing platform and mobile app with a final polish layer — clearer screens, more cohesive flows, stronger state visibility, and product-quality UI before launch.",
+      "Building brand cohesion across the platform, mobile app, website, LinkedIn, Instagram, and other digital surfaces so the product feels like one trusted healthcare system.",
+      "Creating low- and high-fidelity Figma flows, prototypes, UI direction, motion/interaction ideas, and async design reviews through Slack with the team.",
     ],
   },
   {
     id: "builtintech",
-    role: "Product Designer & Frontend Engineer",
-    company: "BuiltinTech: Co-Founder",
+    role: "Co-Founder, UI/UX Designer",
+    company: "BuiltinTech",
     period: "Jan 2023 – Dec 2023",
     location: "India",
     current: false,
     highlights: [
-      "Co-founded an IT services startup; led UI design and frontend implementation for 10+ paid client projects",
-      "Designed user flows, responsive layouts, and scalable UI components from discovery to production",
-      "Owned client relationships — cold outreach, requirement scoping, feedback iteration, and delivery",
-      "Recruited and managed paid interns from KL University through real project workflows",
+      "Co-founded an IT services startup and owned end-to-end design for 10+ paid client web products — discovery, wireframes, responsive UI, implementation, deployment, and post-launch iteration.",
+      "Translated unstructured client briefs into practical user flows, page hierarchies, and component-driven interfaces that could actually be built and shipped.",
+      "Personally handled the design-to-build bridge on client projects, which meant balancing UX clarity, client expectations, technical constraints, and delivery timelines.",
+      "Drove a large part of client acquisition through direct outreach, scoping conversations, and trust-building before the design work even started.",
+      "Recruited and guided KL University interns through live project workflows, giving them real delivery responsibilities instead of simulated tasks.",
     ],
   },
   {
     id: "areksoft",
-    role: "Frontend Developer Intern",
+    role: "UI Designer & Frontend Developer",
     company: "Areksoft Technologies",
     period: "Aug 2022 – Dec 2022",
     location: "India",
     current: false,
     highlights: [
-      "Built and refined production web interfaces using HTML, CSS, JavaScript, Python, and Flask",
-      "Collaborated across teams to implement UI requirements and support frontend/backend feature delivery",
-      "Used Figma and Canva for UI and outreach design tasks",
-      "First professional exposure to client-driven product delivery and enterprise team workflows",
+      "Designed and built responsive web interfaces in a production environment, gaining early exposure to how engineering teams turn requirements into working screens.",
+      "Worked with HTML, CSS, JavaScript, Python, and Flask while learning how frontend decisions connect with backend request-response flows.",
+      "Supported brand and digital campaign work through Figma, Canva, and social asset design, giving me a stronger understanding of visual consistency beyond the product screen.",
+      "Learned how client requests, business expectations, feasibility, and delivery pressure shape the final user experience.",
     ],
   },
   {
@@ -55,10 +57,10 @@ const EXPERIENCES = [
     location: "India",
     current: false,
     highlights: [
-      "Designed and built nriwellbeing.com end-to-end for an ISO-certified services company",
-      "Owned information architecture across 10+ service categories including property, healthcare, logistics, and financial support",
-      "Created a service-first homepage hierarchy so first-time visitors could quickly find the right offering",
-      "First production project where I owned both the design decisions and the code that shipped",
+      "Designed and shipped nriwellbeing.com end-to-end for an ISO-certified services company, taking the project from zero-to-one across design, structure, and frontend implementation.",
+      "Owned information architecture across 10+ service categories including property, healthcare, logistics, financial, and NRI support services.",
+      "Created a service-first homepage hierarchy so first-time visitors could quickly understand what the company offered and find the right service without prior context.",
+      "Learned that good UX is not just visual polish — it is the clarity that helps people understand a business, trust it, and take the next step.",
     ],
   },
 ];
@@ -110,10 +112,10 @@ const bulletVariant: Variants = {
 /* ── Timeline dot ── */
 function Dot({ current }: { current: boolean }) {
   return (
-    <div className="relative flex items-center justify-center">
+    <div className="relative flex h-5 w-5 items-center justify-center">
       {current && (
         <motion.span
-          className="absolute h-5 w-5 rounded-full bg-blue-500/30"
+          className="absolute h-6 w-6 rounded-full bg-blue-500/30"
           animate={{
             scale: [1, 1.65, 1],
             opacity: [0.55, 0, 0.55],
@@ -127,10 +129,10 @@ function Dot({ current }: { current: boolean }) {
       )}
 
       <motion.span
-        className={`h-3 w-3 rounded-full border-2 z-10 ${
+        className={`relative z-10 h-3.5 w-3.5 rounded-full border-2 ${
           current
-            ? "bg-blue-400 border-blue-400"
-            : "bg-zinc-700 border-zinc-500"
+            ? "border-blue-200 bg-blue-400 shadow-[0_0_22px_rgba(96,165,250,0.55)]"
+            : "border-zinc-500 bg-zinc-700"
         }`}
         whileHover={{ scale: 1.25 }}
         transition={{ type: "spring", stiffness: 320, damping: 18 }}
@@ -150,10 +152,10 @@ export default function Experience() {
       aria-labelledby="experience-heading"
     >
       <div className="container">
-        <div className="grid grid-cols-1 lg:grid-cols-[360px_1fr] gap-14 items-start">
+        <div className="experience-grid grid grid-cols-1 gap-12 items-start md:gap-14">
           {/* LEFT — sticky context */}
           <motion.div
-            className="lg:sticky lg:top-28"
+            className="experience-left"
             initial={{ opacity: 0, x: -22 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
@@ -163,7 +165,7 @@ export default function Experience() {
             }}
           >
             <motion.p
-              className="text-xs tracking-wide text-brand/80 font-semibold"
+              className="text-xs tracking-wide text-blue-400/80 font-semibold"
               initial={{ opacity: 0, y: 8 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -185,14 +187,15 @@ export default function Experience() {
             </motion.h2>
 
             <motion.p
-              className="mt-4 text-sm md:text-base text-zinc-400 leading-relaxed"
+              className="mt-4 max-w-xl text-sm md:text-base text-zinc-400 leading-relaxed"
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.45, delay: 0.16 }}
             >
-              From co-founding a startup to designing live products — a timeline
-              of real work, shipped systems, and hands-on UX practice.
+              From healthcare product work at Phoenix AI to co-founding a startup,
+              client delivery, and production websites — a timeline of real work,
+              shipped systems, and hands-on UX practice.
             </motion.p>
 
             {/* Mini legend */}
@@ -204,12 +207,12 @@ export default function Experience() {
               transition={{ duration: 0.45, delay: 0.22 }}
             >
               <div className="flex items-center gap-2">
-                <span className="h-2.5 w-2.5 rounded-full bg-blue-400" />
+                <span className="inline-block h-3.5 w-3.5 shrink-0 rounded-full bg-blue-400 ring-4 ring-blue-400/15 shadow-[0_0_18px_rgba(96,165,250,0.65)]" />
                 Current role
               </div>
 
               <div className="flex items-center gap-2">
-                <span className="h-2.5 w-2.5 rounded-full bg-zinc-600 border border-zinc-500" />
+                <span className="inline-block h-3.5 w-3.5 shrink-0 rounded-full border border-zinc-500 bg-zinc-600 ring-4 ring-white/5" />
                 Previous role
               </div>
             </motion.div>
@@ -217,34 +220,27 @@ export default function Experience() {
 
           {/* RIGHT — vertical timeline */}
           <motion.div
-            className="relative"
+            className="experience-right relative pb-32 md:pb-0"
             variants={sectionVariant}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.1 }}
           >
-            {/* Vertical line */}
             <motion.div
-              className="absolute left-[5px] top-2 bottom-2 w-px bg-white/10"
-              initial={{ scaleY: 0, originY: 0 }}
-              whileInView={{ scaleY: 1 }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.95,
-                ease: "easeOut",
-                delay: 0.1,
-              }}
-            />
-
-            <div className="flex flex-col gap-12 pl-10">
+              className="experience-track"
+              variants={sectionVariant}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.1 }}
+            >
               {EXPERIENCES.map((exp) => (
                 <motion.div
                   key={exp.id}
                   variants={cardVariant}
-                  className="relative"
+                  className="experience-row"
                 >
-                  {/* Timeline dot — positioned on the line */}
-                  <div className="absolute -left-10 top-1">
+                  {/* Timeline dot */}
+                  <div className="experience-dot">
                     <Dot current={exp.current} />
                   </div>
 
@@ -263,11 +259,11 @@ export default function Experience() {
                       damping: 24,
                     }}
                     className="rounded-2xl border border-white/[0.08]
-                               bg-white/[0.03] px-6 py-5
+                               bg-white/[0.03] px-4 py-5 sm:px-5 md:px-6
                                transition-colors duration-200"
                   >
                     {/* Header */}
-                    <div className="flex flex-wrap items-start justify-between gap-2">
+                    <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                       <div>
                         <h3
                           className="text-base font-semibold text-white"
@@ -276,12 +272,12 @@ export default function Experience() {
                           {exp.role}
                         </h3>
 
-                        <p className="text-sm text-blue-400 mt-0.5">
+                        <p className="text-sm text-blue-400 mt-0.5 leading-relaxed">
                           {exp.company}
                         </p>
                       </div>
 
-                      <div className="text-right shrink-0">
+                      <div className="text-left sm:text-right shrink-0">
                         <p className="text-xs text-zinc-400">{exp.period}</p>
                         <p className="text-xs text-zinc-600 mt-0.5">
                           {exp.location}
@@ -311,7 +307,7 @@ export default function Experience() {
 
                     {/* Highlights */}
                     <motion.ul
-                      className="mt-4 space-y-2"
+                      className="mt-4 space-y-2.5 md:space-y-2"
                       variants={sectionVariant}
                       initial="hidden"
                       whileInView="show"
@@ -321,7 +317,7 @@ export default function Experience() {
                         <motion.li
                           key={i}
                           variants={bulletVariant}
-                          className="flex gap-2 text-sm text-zinc-400 leading-relaxed"
+                          className="flex gap-2 text-[13px] sm:text-sm text-zinc-400 leading-relaxed"
                         >
                           <span className="mt-[6px] h-1.5 w-1.5 shrink-0 rounded-full bg-zinc-600" />
                           <span>{point}</span>
@@ -331,10 +327,103 @@ export default function Experience() {
                   </motion.article>
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>
+
+      <style>{`
+        @media (min-width: 900px) {
+          .experience-grid {
+            display: grid;
+            grid-template-columns: 360px minmax(0, 1fr);
+            column-gap: 3.5rem;
+            align-items: start;
+          }
+
+          .experience-left {
+            position: sticky;
+            top: 7rem;
+            align-self: start;
+            min-width: 0;
+          }
+
+          .experience-right {
+            min-width: 0;
+          }
+        }
+
+        .experience-track {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          gap: 2.25rem;
+        }
+
+        .experience-track::before {
+          content: "";
+          position: absolute;
+          left: 9px;
+          top: 10px;
+          bottom: 10px;
+          width: 1px;
+          background: linear-gradient(
+            to bottom,
+            rgba(96, 165, 250, 0.55),
+            rgba(255, 255, 255, 0.16) 22%,
+            rgba(255, 255, 255, 0.14) 72%,
+            rgba(255, 255, 255, 0.08)
+          );
+          box-shadow: 0 0 20px rgba(96, 165, 250, 0.12);
+          transform-origin: top;
+        }
+
+        .experience-row {
+          position: relative;
+          display: grid;
+          grid-template-columns: 20px minmax(0, 1fr);
+          column-gap: 0.85rem;
+          align-items: start;
+        }
+
+        .experience-dot {
+          position: relative;
+          z-index: 2;
+          display: flex;
+          justify-content: center;
+          padding-top: 0.25rem;
+        }
+
+        @media (min-width: 640px) {
+          .experience-track {
+            gap: 2.75rem;
+          }
+
+          .experience-row {
+            grid-template-columns: 22px minmax(0, 1fr);
+            column-gap: 1.25rem;
+          }
+
+          .experience-track::before {
+            left: 10px;
+          }
+        }
+
+        @media (min-width: 900px) {
+          .experience-track {
+            gap: 3rem;
+          }
+
+          .experience-row {
+            grid-template-columns: 22px minmax(0, 1fr);
+            column-gap: 1.55rem;
+          }
+
+          .experience-track::before {
+            left: 10px;
+          }
+        }
+      `}</style>
     </section>
   );
 }
