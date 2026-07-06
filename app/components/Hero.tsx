@@ -207,12 +207,23 @@ export default function Hero() {
             Identifying the real break, not the surface bug.
           </motion.p>
 
-          <motion.p
+          <motion.div
             variants={item}
-            className="mt-3 max-w-2xl font-mono text-xs uppercase tracking-wider text-zinc-500 md:mt-4 md:text-sm"
+            className="mt-6 max-w-2xl border-l-2 border-emerald-500/40 pl-4 md:mt-8"
           >
-            <span className="text-emerald-400">Currently exploring:</span> interaction design for tools that let others create.
-          </motion.p>
+            
+            <div className="space-y-1.5 font-mono text-xs text-zinc-400 md:text-sm">
+              <p>
+                <span className="text-emerald-400">Exploring:</span> Interaction design for tools that let others create.
+              </p>
+              <p>
+                <span className="text-emerald-400">Recent:</span> Shipped portfolio v3, published two pieces in Design Bootcamp.
+              </p>
+              <p>
+                <span className="text-emerald-400">Reading:</span>  Don Norman on discoverability, and every YouTube Effects designer&apos;s Medium.
+              </p>
+            </div>
+          </motion.div>
 
           <motion.div
             variants={item}
