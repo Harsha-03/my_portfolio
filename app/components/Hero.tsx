@@ -207,6 +207,13 @@ export default function Hero() {
             Identifying the real break, not the surface bug.
           </motion.p>
 
+          <motion.p
+            variants={item}
+            className="mt-3 max-w-2xl font-mono text-xs uppercase tracking-wider text-zinc-500 md:mt-4 md:text-sm"
+          >
+            <span className="text-emerald-400">Currently exploring:</span> interaction design for tools that let others create.
+          </motion.p>
+
           <motion.div
             variants={item}
             className="mt-8 flex flex-wrap items-center gap-3 md:mt-10 md:gap-4"
