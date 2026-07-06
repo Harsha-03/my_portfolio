@@ -86,12 +86,11 @@ const SOCIALS = [
 
 function Field({ children }: { children: ReactNode }) {
   return (
-    <motion.div whileFocusWithin={{ scale: 1.01 }} className="relative">
+    <div className="relative transition-transform duration-300 focus-within:scale-[1.01]">
       {children}
-    </motion.div>
+    </div>
   );
 }
-
 export default function ContactFancy() {
   const [view, setView] = useState<View>("email");
   const [status, setStatus] = useState<Status>("idle");
