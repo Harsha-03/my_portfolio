@@ -109,7 +109,7 @@ function SocialButton({ social }: { social: SocialDef }) {
       whileHover={social.hoverAnim}
       whileTap={{ scale: 0.92 }}
       transition={{ duration: 0.4, ease: "easeInOut" }}
-      className="relative h-10 w-10 md:h-11 md:w-11 flex items-center justify-center rounded-xl ring-1 ring-white/10 hover:ring-white/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30 overflow-hidden"
+      className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl ring-1 ring-white/10 hover:ring-white/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30 md:h-11 md:w-11"
     >
       <span
         className="absolute inset-0 rounded-xl transition-all duration-200"
@@ -129,7 +129,7 @@ function SocialButton({ social }: { social: SocialDef }) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 4 }}
             transition={{ duration: 0.15 }}
-            className="pointer-events-none absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-zinc-950/90 border border-white/10 px-2 py-1 text-[10px] tracking-wide text-zinc-300 backdrop-blur z-20"
+            className="pointer-events-none absolute -bottom-8 left-1/2 z-20 -translate-x-1/2 whitespace-nowrap rounded-md border border-white/10 bg-zinc-950/90 px-2 py-1 text-[10px] tracking-wide text-zinc-300 backdrop-blur"
           >
             {social.label}
           </motion.span>
@@ -149,9 +149,9 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 0.05 }}
           className="absolute right-5 top-[4.75rem] md:right-0 md:top-0"
         >
-          <span className="relative flex items-center gap-2 rounded-full bg-green-500/10 border border-green-500/20 px-2.5 py-1 text-[10px] md:text-xs text-green-400">
+          <span className="relative flex items-center gap-2 rounded-full border border-green-500/20 bg-green-500/10 px-2.5 py-1 text-[10px] text-green-400 md:text-xs">
             <motion.span
-              className="h-1.5 w-1.5 md:h-2 md:w-2 rounded-full bg-green-400"
+              className="h-1.5 w-1.5 rounded-full bg-green-400 md:h-2 md:w-2"
               animate={{ scale: [1, 1.4, 1], opacity: [1, 0.5, 1] }}
               transition={{ duration: 2, repeat: Infinity }}
             />
@@ -167,9 +167,22 @@ export default function Hero() {
         >
           <motion.p
             variants={item}
-            className="mb-4 text-base italic text-zinc-400 sm:text-lg md:mb-6 md:text-xl"
+            className="mb-4 flex items-center text-base italic text-zinc-400 sm:text-lg md:mb-6 md:text-xl"
             style={{ fontFamily: "var(--font-serif)" }}
           >
+            <motion.span
+              aria-hidden="true"
+              className="mr-2 inline-block origin-bottom"
+              animate={{ rotate: [0, 14, -8, 10, -4, 0] }}
+              transition={{
+                duration: 1.7,
+                repeat: Infinity,
+                repeatDelay: 1.8,
+                ease: "easeInOut",
+              }}
+            >
+              👋
+            </motion.span>
             Hey, I&apos;m Harsha
           </motion.p>
 
@@ -202,7 +215,7 @@ export default function Hero() {
               href="#projects"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              className="group inline-flex items-center gap-2 rounded-xl bg-red-500 px-5 py-3 text-sm font-semibold text-white hover:bg-red-600 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-red-400/60"
+              className="group inline-flex items-center gap-2 rounded-xl bg-red-500 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-red-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-400/60"
             >
               Explore Projects
               <motion.span
@@ -221,7 +234,9 @@ export default function Hero() {
               animate="show"
               className="flex items-center gap-2 md:gap-2.5"
             >
-              {SOCIALS.map((s) => <SocialButton key={s.label} social={s} />)}
+              {SOCIALS.map((s) => (
+                <SocialButton key={s.label} social={s} />
+              ))}
             </motion.div>
           </motion.div>
         </motion.div>
