@@ -212,12 +212,12 @@ export default function Hero() {
             className="mt-8 flex flex-wrap items-center gap-3 md:mt-10 md:gap-4"
           >
             <motion.a
-              href="#projects"
+              href="#about"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
               className="group inline-flex items-center gap-2 rounded-xl bg-red-500 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-red-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-400/60"
             >
-              Explore Projects
+              Meet Me
               <motion.span
                 className="inline-block"
                 initial={{ x: 0 }}
