@@ -1,98 +1,159 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
-import type { KeyboardEvent, ReactNode } from "react";
+import { useMemo, useState } from "react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, ExternalLink, Github, Lock } from "lucide-react";
+import { motion } from "framer-motion";
+import {
+  ArrowRight,
+  ExternalLink,
+  Github,
+  Lock,
+  Zap,
+  Clock,
+  Layers,
+  Rocket,
+  CheckCircle,
+  BadgeCheck,
+} from "lucide-react";
 
 import ProjectCaseStudy from "./ProjectCaseStudy";
 import { projects, type Project } from "@/data/projects";
 import { RevealBlock, SectionLabel } from "./MotionPattern";
 
+/* — Card display order (top to bottom) — */
 const CASE_STUDY_ORDER = [
+  "builtintech-delivery",
+  "nri-wellbeing",
+  "resume-tailor",
+  "portfolio",
   "starbucks-mobile-order",
   "lifeos",
   "slu-alumni-connect",
-  "resume-tailor",
   "airline-performance-tracker",
-  "portfolio",
 ];
 
-const CARD_COLORS: Record<string, { bg: string; accent: string }> = {
-  "starbucks-mobile-order": { bg: "#1E3932", accent: "#8FD6BD" },
-  lifeos: { bg: "#1E1B4B", accent: "#A5B4FC" },
-  "slu-alumni-connect": { bg: "#13294B", accent: "#93C5FD" },
-  "resume-tailor": { bg: "#292524", accent: "#FCD34D" },
-  "airline-performance-tracker": { bg: "#1E293B", accent: "#7DD3FC" },
-  portfolio: { bg: "#0B0F1A", accent: "#93C5FD" },
+type IconName = "zap" | "clock" | "layers" | "rocket" | "check" | "badge";
+
+type CardData = {
+  wordmark: string;
+  tags: string[];
+  headline: string;
+  description: string;
+  metrics: { value: string; label: string; icon: IconName }[];
+  bg: string;
+  accent: string;
+  isConcept?: boolean;
 };
 
-const FALLBACK_COLORS = { bg: "#18181B", accent: "#93C5FD" };
-
-type CaseCopy = {
-  eyebrow: string;
-  hook: string;
-  detail: string;
-  decision: string;
-  outcome: string;
-  signal: string;
-};
-
-const CASE_COPY: Record<string, CaseCopy> = {
-  "starbucks-mobile-order": {
-    eyebrow: "Mobile order",
-    hook: "Replacing a vague pickup status with visible truth.",
-    detail:
-      "The wait was not the real problem. The anxiety came from not knowing whether the drink was queued, being made, ready, or forgotten.",
-    decision: "Four real states, tied to the pickup moment.",
-    outcome: "More trust between order, wait, and handoff.",
-    signal: "hidden wait → visible state",
+const CARD_COPY: Record<string, CardData> = {
+  "builtintech-delivery": {
+    wordmark: "BuiltinTech",
+    tags: ["Client Work", "Systems Design", "Delivery"],
+    headline: "10+ client products, 4 verticals, one delivery pattern.",
+    description:
+      "Cofounded BuiltinTech in 2023. Drove 80% of client acquisition. Built a repeatable intake to ship pipeline across construction, minerals, fitness, and infrastructure clients.",
+    metrics: [
+      { value: "10+", label: "Products shipped", icon: "rocket" },
+      { value: "4", label: "Verticals delivered", icon: "layers" },
+    ],
+    bg: "#1A1512",
+    accent: "#F59E0B",
   },
-  lifeos: {
-    eyebrow: "Behavioral productivity",
-    hook: "A productivity system built around recovery, not guilt.",
-    detail:
-      "Most tools punish people when plans break. LifeOS assumes the week will change and turns that gap into feedback instead of failure.",
-    decision: "Cap priorities and make reflection part of the loop.",
-    outcome: "A calmer system for adapting without overcorrecting.",
-    signal: "broken plan → useful feedback",
-  },
-  "slu-alumni-connect": {
-    eyebrow: "Alumni platform",
-    hook: "Role-based dashboards for fragmented alumni workflows.",
-    detail:
-      "Students, alumni, mentors, and admins needed different answers from the same system. The design challenge was clarity by role.",
-    decision: "Separate user paths before polishing screens.",
-    outcome: "A cleaner platform for discovery, engagement, and admin visibility.",
-    signal: "fragmented data → role clarity",
+  "nri-wellbeing": {
+    wordmark: "NRI Wellbeing",
+    tags: ["Service Site", "IA", "Frontend"],
+    headline: "Services above the fold. Company story below.",
+    description:
+      "ISO certified services company with 10+ categories. First time visitors needed to find the right service in 30 seconds without reading company history first. Live at nriwellbeing.com since 2022.",
+    metrics: [
+      { value: "Since 2022", label: "Live 4+ years", icon: "badge" },
+      { value: "10+", label: "Service categories", icon: "layers" },
+    ],
+    bg: "#0F1F26",
+    accent: "#22D3EE",
   },
   "resume-tailor": {
-    eyebrow: "AI career tool",
-    hook: "An AI resume product rebuilt around trust and control.",
-    detail:
-      "AI resume tools lose credibility when they over-flatter or fabricate. This product makes the gap visible before it rewrites anything.",
-    decision: "Show covered and missing keywords separately.",
-    outcome: "A guided workflow that improves resumes without inventing experience.",
-    signal: "unclear fit → honest score",
-  },
-  "airline-performance-tracker": {
-    eyebrow: "Decision dashboard",
-    hook: "Turning raw flight data into operational answers.",
-    detail:
-      "The goal was not more charts. It was helping someone understand reliability, delay patterns, and bottlenecks without fighting the data first.",
-    decision: "Overview first, trends second, details when needed.",
-    outcome: "A dashboard that supports faster operational decisions.",
-    signal: "raw data → decision surface",
+    wordmark: "Resume Tailor",
+    tags: ["AI Product", "UX", "Shipped"],
+    headline: "A tool for people who write their own resumes.",
+    description:
+      "AI resume tools lose credibility when they over flatter or fabricate. This product makes the gap visible before it rewrites anything. Honest scoring, real ATS checks, files never leave the browser.",
+    metrics: [
+      { value: "8", label: "Deterministic ATS checks", icon: "check" },
+      { value: "Local first", label: "Files never leave browser", icon: "zap" },
+    ],
+    bg: "#292524",
+    accent: "#FCD34D",
   },
   portfolio: {
-    eyebrow: "Portfolio system",
-    hook: "A portfolio treated as a product, not a static page.",
-    detail:
-      "Recruiters scan fast. The site has to prove role, judgment, shipped work, and credibility before asking anyone to dig deeper.",
-    decision: "Clear IA, restrained motion, shipped proof, and a grounded AI assistant.",
-    outcome: "A portfolio that can be browsed, questioned, and verified.",
-    signal: "scattered proof → askable system",
+    wordmark: "harshaasapu.com",
+    tags: ["Product", "RAG", "Interaction Design"],
+    headline: "A portfolio treated as a product, not a static page.",
+    description:
+      "Recruiters scan fast. The site has to prove role, judgment, shipped work, and credibility before asking anyone to dig deeper. Grounded RAG assistant, restrained motion, shipped proof.",
+    metrics: [
+      { value: "8", label: "RAG knowledge files", icon: "layers" },
+      { value: "3", label: "Shipped iterations", icon: "rocket" },
+    ],
+    bg: "#0B0F1A",
+    accent: "#93C5FD",
+  },
+  "starbucks-mobile-order": {
+    wordmark: "Starbucks",
+    tags: ["Concept", "Interaction", "State Design"],
+    headline: "One reusable state card, four downstream surfaces.",
+    description:
+      "The wait was not the real problem. The anxiety came from not knowing whether the drink was queued, being made, ready, or forgotten. A single reusable state card absorbed all four surfaces. CEO independently named mobile pickup a priority in the Oct 2024 earnings call.",
+    metrics: [
+      { value: "1", label: "Reusable state card", icon: "layers" },
+      { value: "4", label: "Downstream surfaces", icon: "clock" },
+    ],
+    bg: "#1E3932",
+    accent: "#8FD6BD",
+    isConcept: true,
+  },
+  lifeos: {
+    wordmark: "LifeOS",
+    tags: ["Concept", "Behavioral UX", "Product"],
+    headline: "One dashboard scales 1 to 30 habits, no UI re architecture.",
+    description:
+      "Most tools punish people when plans break. LifeOS assumes the week will change and turns that gap into feedback instead of failure. The interaction pattern absorbs volume without new components.",
+    metrics: [
+      { value: "1 to 30", label: "Habits, same UI", icon: "layers" },
+      { value: "4", label: "Layer behavioral loop", icon: "zap" },
+    ],
+    bg: "#1E1B4B",
+    accent: "#A5B4FC",
+    isConcept: true,
+  },
+  "slu-alumni-connect": {
+    wordmark: "SLU Alumni Connect",
+    tags: ["Concept", "Multi Role", "Platform"],
+    headline: "Four user roles, one platform, no confusion.",
+    description:
+      "Students, alumni, mentors, and admins needed different answers from the same system. The design challenge was clarity by role. FERPA compliant scope, role based dashboards.",
+    metrics: [
+      { value: "4", label: "User roles", icon: "layers" },
+      { value: "FERPA", label: "Compliant scope", icon: "badge" },
+    ],
+    bg: "#13294B",
+    accent: "#93C5FD",
+    isConcept: true,
+  },
+  "airline-performance-tracker": {
+    wordmark: "Airline Tracker",
+    tags: ["Concept", "Data Viz", "Dashboard"],
+    headline: "Raw flight data into operational answers.",
+    description:
+      "The goal was not more charts. It was helping someone understand reliability, delay patterns, and bottlenecks without fighting the data first. Overview first, trends second, details when needed.",
+    metrics: [
+      { value: "3", label: "View layers", icon: "layers" },
+      { value: "Decision", label: "Operational surface", icon: "check" },
+    ],
+    bg: "#1E293B",
+    accent: "#7DD3FC",
+    isConcept: true,
   },
 };
 
@@ -100,140 +161,24 @@ function isInternalCaseStudy(url?: string) {
   return Boolean(url && url.startsWith("/") && !url.endsWith(".pdf"));
 }
 
-function displayTitle(project: Project) {
-  return project.slug === "resume-tailor" ? "Resume Tailor" : project.title;
+function iconFor(name: IconName, className = "h-4 w-4") {
+  switch (name) {
+    case "zap":
+      return <Zap className={className} />;
+    case "clock":
+      return <Clock className={className} />;
+    case "layers":
+      return <Layers className={className} />;
+    case "rocket":
+      return <Rocket className={className} />;
+    case "check":
+      return <CheckCircle className={className} />;
+    case "badge":
+      return <BadgeCheck className={className} />;
+  }
 }
 
-function getCopy(project: Project) {
-  return (
-    CASE_COPY[project.slug] ?? {
-      eyebrow: "Case study",
-      hook: project.shortDescription,
-      detail:
-        "A focused product decision designed around clarity, momentum, and real user behavior.",
-      decision: "Reduce ambiguity and make the next step easier to understand.",
-      outcome: "A clearer path from problem to usable product.",
-      signal: "friction → clarity",
-    }
-  );
-}
-
-function getColors(project: Project) {
-  return CARD_COLORS[project.slug] ?? FALLBACK_COLORS;
-}
-
-function projectInitial(project: Project) {
-  if (project.slug === "starbucks-mobile-order") return "S";
-  if (project.slug === "slu-alumni-connect") return "SLU";
-  if (project.slug === "resume-tailor") return "RT";
-  if (project.slug === "airline-performance-tracker") return "A";
-  if (project.slug === "portfolio") return "H";
-  return displayTitle(project).slice(0, 1);
-}
-
-function StatusPill({ status, accent }: { status?: string; accent: string }) {
-  if (!status) return null;
-
-  const shipped = status.toLowerCase() === "shipped";
-
-  return (
-    <span
-      className={
-        "inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5 text-[9px] font-medium backdrop-blur-md sm:px-2.5 sm:py-1 sm:text-[10px] " +
-        (shipped
-          ? "border-white/15 bg-black/40 text-white/80"
-          : "border-amber-400/30 bg-amber-950 text-amber-300")
-      }
-    >
-      <span
-        className={
-          "h-1.5 w-1.5 rounded-full " +
-          (shipped ? "" : "bg-amber-300 animate-pulse")
-        }
-        style={shipped ? { backgroundColor: accent } : undefined}
-      />
-      {status}
-    </span>
-  );
-}
-
-function ActionLink({
-  href,
-  icon,
-  label,
-}: {
-  href?: string;
-  icon: ReactNode;
-  label: string;
-}) {
-  if (!href) return null;
-
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      onClick={(event) => event.stopPropagation()}
-      className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-black/30 px-2.5 py-1.5 text-[11px] font-medium text-white/75 transition-colors hover:border-white/30 hover:bg-black/45 hover:text-white sm:px-3 sm:text-xs"
-    >
-      {icon}
-      {label}
-    </a>
-  );
-}
-
-function DesktopProjectIdentity({
-  project,
-  accent,
-}: {
-  project: Project;
-  accent: string;
-}) {
-  const copy = getCopy(project);
-
-  return (
-    <div className="pointer-events-none absolute left-5 top-4 z-30 hidden max-w-[calc(100%-11rem)] items-center md:flex">
-      <div className="min-w-0 rounded-full border border-white/15 bg-black/45 px-4 py-1.5 text-[11px] text-white/70 backdrop-blur-md">
-        <span className="font-semibold text-white/90">
-          {displayTitle(project)}
-        </span>
-        <span className="mx-2 text-white/30">/</span>
-        <span style={{ color: accent, opacity: 0.85 }}>{copy.signal}</span>
-      </div>
-    </div>
-  );
-}
-
-function MobileProjectIdentity({
-  project,
-  accent,
-}: {
-  project: Project;
-  accent: string;
-}) {
-  const copy = getCopy(project);
-
-  return (
-    <div className="pointer-events-none absolute left-4 right-4 top-14 z-20 flex items-center gap-2 md:hidden">
-      <span
-        className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/15 bg-black/45 text-[10px] font-bold text-white backdrop-blur-md"
-        style={{ color: accent }}
-      >
-        {projectInitial(project)}
-      </span>
-
-      <div className="min-w-0 flex-1 rounded-full border border-white/15 bg-black/45 px-3 py-1.5 backdrop-blur-md">
-        <p className="truncate text-[11px] font-semibold leading-none text-white/90">
-          {displayTitle(project)}
-        </p>
-        <p className="mt-1 truncate text-[9px] leading-none text-white/45">
-          {copy.eyebrow} · {copy.signal}
-        </p>
-      </div>
-    </div>
-  );
-}
-
+/* — Individual card — */
 function CaseStudyCard({
   project,
   index,
@@ -243,260 +188,242 @@ function CaseStudyCard({
   index: number;
   onOpen: (project: Project) => void;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const isLead = index === 0;
+  const copy = CARD_COPY[project.slug];
   const hasCaseStudy = isInternalCaseStudy(project.caseStudy);
-  const copy = getCopy(project);
-  const colors = getColors(project);
+  const isShipped = project.status === "Shipped";
 
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start 88%", "end 18%"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 0.2, 0.62, 1], [120, 0, 0, -64]);
-  const scale = useTransform(
-    scrollYProgress,
-    [0, 0.2, 0.62, 1],
-    [0.97, 1, 1, 0.94],
-  );
-  const opacity = useTransform(
-    scrollYProgress,
-    [0, 0.12, 0.72, 1],
-    [0, 1, 1, 0.9],
-  );
-  const rotateX = useTransform(
-    scrollYProgress,
-    [0, 0.2, 0.7, 1],
-    [3, 0, 0, -2],
-  );
-  const imageScale = useTransform(
-    scrollYProgress,
-    [0, 0.2, 1],
-    [1.06, 1, 1.025],
-  );
-  const textY = useTransform(
-    scrollYProgress,
-    [0, 0.18, 0.82, 1],
-    [18, 0, 0, -6],
-  );
-  const dim = useTransform(
-    scrollYProgress,
-    [0, 0.22, 0.72, 1],
-    [0.8, 0.64, 0.64, 0.52],
-  );
-  const cardFilter = useTransform(
-    scrollYProgress,
-    [0, 0.2, 0.72, 1],
-    [
-      "blur(7px) brightness(0.78)",
-      "blur(0px) brightness(0.96)",
-      "blur(0px) brightness(0.96)",
-      "blur(1.25px) brightness(1.08)",
-    ],
-  );
+  if (!copy) return null;
 
   function handleOpen() {
     onOpen(project);
   }
 
-  function handleKeyDown(event: KeyboardEvent<HTMLElement>) {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
-      handleOpen();
-    }
-  }
+  const revealDelay = index * 0.09;
 
   return (
-    <div
-      id={`case-card-${project.slug}`}
-      ref={ref}
-      className={
-        "relative min-h-[104svh] scroll-mt-24 md:min-h-[118vh] md:scroll-mt-28 " +
-        (index === 0 ? "mt-10" : "-mt-[16vh] md:-mt-[42vh]")
-      }
-      style={{ position: "relative", perspective: "1200px" }}
+    <motion.div
+      initial={{ opacity: 0, y: 28 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-40px 0px" }}
+      transition={{
+        duration: 0.55,
+        delay: revealDelay,
+        ease: [0.22, 1, 0.36, 1],
+      }}
     >
       <motion.article
+        onClick={handleOpen}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            handleOpen();
+          }
+        }}
         role="button"
         tabIndex={0}
-        onClick={handleOpen}
-        onKeyDown={handleKeyDown}
-        style={{
-          y,
-          scale,
-          opacity,
-          rotateX,
-          filter: cardFilter,
-          top: `calc(var(--case-card-top) + ${Math.min(index, 5) * 10}px)`,
-          zIndex: 20 + index,
-          transformStyle: "preserve-3d",
-          backgroundColor: colors.bg,
-          borderColor: `${colors.accent}${isLead ? "40" : "26"}`,
+        aria-label={`Open case study: ${project.title}`}
+        initial={{ y: 0, boxShadow: "0 0 0 rgba(0,0,0,0)" }}
+        whileHover={{
+          y: -4,
+          boxShadow: `0 24px 48px -24px ${copy.accent}33`,
         }}
-        className="group sticky h-[72svh] min-h-[520px] max-h-[640px] overflow-hidden rounded-[1.65rem] border outline-none shadow-2xl shadow-black/55 transition-[box-shadow] duration-300 focus-visible:ring-2 focus-visible:ring-white/30 [--case-card-top:4.75rem] md:h-[78vh] md:min-h-[620px] md:max-h-none md:rounded-[2rem] md:[--case-card-top:6.15rem]"
+        whileTap={{ scale: 0.97 }}
+        transition={{ type: "spring", stiffness: 260, damping: 24, mass: 0.6 }}
+        style={{ willChange: "transform" }}
+        className="group relative h-full overflow-hidden rounded-xl border border-white/10 bg-zinc-950/60 p-2.5 outline-none transition-colors duration-300 hover:border-white/20 hover:bg-zinc-950/80 focus-visible:ring-2 focus-visible:ring-white/30 cursor-pointer md:p-4"
       >
-        <div className="absolute inset-0" style={{ backgroundColor: colors.bg }}>
-          {project.image ? (
-            <motion.img
-              src={project.image}
-              alt={displayTitle(project)}
-              style={{ scale: imageScale }}
-              className="absolute inset-0 h-full w-full object-cover opacity-70 md:opacity-100"
-            />
-          ) : (
-            <div
-              className="absolute inset-0"
-              style={{
-                background: `radial-gradient(circle at 70% 30%, ${colors.accent}22, transparent 45%)`,
-              }}
-            />
-          )}
-
-          <motion.div
-            style={{ opacity: dim, backgroundColor: colors.bg }}
-            className="absolute inset-0"
-          />
+        {/* — MOBILE: short-wide horizontal layout — */}
+        <div className="flex items-stretch gap-3 md:hidden">
+          {/* Thumbnail — left */}
           <div
-            className="absolute inset-0"
-            style={{
-              background: `linear-gradient(to right, ${colors.bg} 0%, ${colors.bg}D9 52%, ${colors.bg}45 100%)`,
-            }}
-          />
-          <div
-            className="absolute inset-0"
-            style={{
-              background: `linear-gradient(to top, ${colors.bg}E6 0%, transparent 58%, ${colors.bg}38 100%)`,
-            }}
-          />
-          <div
-            className="absolute inset-0"
-            style={{
-              background: `radial-gradient(circle at 78% 35%, ${colors.accent}24, transparent 36%)`,
-            }}
-          />
-        </div>
-
-        <DesktopProjectIdentity project={project} accent={colors.accent} />
-
-        <div className="absolute left-4 right-4 top-4 z-20 flex items-center justify-between gap-3 md:left-auto md:right-8 md:top-8">
-          <StatusPill status={project.status} accent={colors.accent} />
-        </div>
-
-        <MobileProjectIdentity project={project} accent={colors.accent} />
-
-        <motion.div
-          style={{ y: textY }}
-          className="relative z-10 flex h-full items-center p-4 md:items-end md:p-8 lg:p-10"
-        >
-          <div
-            className={
-              (isLead
-                ? "max-w-[21rem] sm:max-w-3xl"
-                : "max-w-[21rem] sm:max-w-2xl") +
-              " w-full rounded-[1.25rem] border border-white/10 bg-black/38 p-4 shadow-2xl shadow-black/45 backdrop-blur-md sm:p-5 md:rounded-[1.65rem] md:p-8 lg:p-10"
-            }
+            className="relative h-[96px] w-[96px] shrink-0 overflow-hidden rounded-lg"
+            style={{ backgroundColor: copy.bg }}
           >
-            <div className="mb-3 flex flex-wrap items-center gap-1.5 md:mb-5 md:gap-2">
-              <p
-                className="text-[9px] font-semibold uppercase tracking-[0.2em] md:text-[11px] md:tracking-[0.24em]"
-                style={{ color: colors.accent }}
+            {project.image ? (
+              <Image
+                src={project.image}
+                alt={project.title}
+                fill
+                sizes="96px"
+                className="object-cover transition-transform duration-[500ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
+                priority={false}
+              />
+            ) : (
+              <div
+                className="flex h-full w-full items-center justify-center text-[10px] font-semibold"
+                style={{ color: copy.accent }}
               >
-                Case Study
-              </p>
-              <span className="text-[10px] text-white/30 md:text-xs">
-                &middot;
+                {copy.wordmark}
+              </div>
+            )}
+          </div>
+
+          {/* Content — right */}
+          <div className="flex min-w-0 flex-1 flex-col justify-between py-0.5">
+            {/* Wordmark row */}
+            <div className="flex items-center gap-1.5">
+              {isShipped ? (
+                <motion.span
+                  className="inline-block h-1.5 w-1.5 shrink-0 rounded-full"
+                  style={{ backgroundColor: copy.accent }}
+                  aria-hidden
+                  animate={{ opacity: [1, 0.45, 1], scale: [1, 1.35, 1] }}
+                  transition={{
+                    duration: 2.2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                />
+              ) : (
+                <span
+                  className="inline-block h-1.5 w-1.5 shrink-0 rounded-full opacity-60"
+                  style={{ backgroundColor: copy.accent }}
+                  aria-hidden
+                />
+              )}
+              <span className="truncate text-[10px] font-semibold uppercase tracking-wide text-zinc-400">
+                {copy.wordmark}
               </span>
-              <p className="text-[10px] text-white/55 md:text-xs">
-                {copy.eyebrow}
-              </p>
-              <span className="hidden text-xs text-white/30 sm:inline">
-                &middot;
-              </span>
-              <p className="hidden text-xs text-white/55 sm:block">
-                {copy.signal}
-              </p>
             </div>
 
+            {/* Headline */}
             <h3
-              className={
-                (isLead
-                  ? "text-[1.55rem] sm:text-4xl md:text-5xl lg:text-6xl"
-                  : "text-[1.45rem] sm:text-3xl md:text-4xl lg:text-5xl") +
-                " font-extrabold leading-[1.03] tracking-tight text-white"
-              }
+              className="mt-1 line-clamp-2 text-[13px] font-bold leading-snug text-white"
               style={{ fontFamily: "var(--font-heading)" }}
             >
-              {displayTitle(project)}
+              {copy.headline}
             </h3>
 
-            <div className="mt-3 h-px w-full bg-white/10 md:mt-6" />
+            {/* Description + arrow */}
+            <div className="mt-1 flex items-end justify-between gap-2">
+              <p className="line-clamp-1 flex-1 text-[10px] leading-relaxed text-zinc-500">
+                {copy.description}
+              </p>
+              <motion.span
+                className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/[0.04] text-zinc-300"
+                aria-hidden
+                initial={{ x: 0 }}
+                whileInView={hasCaseStudy ? { x: [0, 5, 0] } : {}}
+                viewport={{ once: true, margin: "-20% 0px" }}
+                transition={{
+                  duration: 0.7,
+                  delay: revealDelay + 0.45,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+              >
+                {hasCaseStudy ? <ArrowRight size={11} /> : <Lock size={10} />}
+              </motion.span>
+            </div>
+          </div>
+        </div>
 
-            <div className="mt-3 flex flex-wrap gap-1.5 md:mt-5 md:gap-2">
-              {project.tags?.slice(0, isLead ? 5 : 4).map((tag, tagIndex) => (
+        {/* — DESKTOP: existing vertical layout — */}
+        <div className="hidden md:block">
+          {/* Header row — wordmark left, tags right */}
+          <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
+            <div className="flex items-center gap-1.5 text-xs font-semibold text-white">
+              {isShipped ? (
+                <motion.span
+                  className="inline-block h-1.5 w-1.5 rounded-full"
+                  style={{ backgroundColor: copy.accent }}
+                  aria-hidden
+                  animate={{ opacity: [1, 0.45, 1], scale: [1, 1.35, 1] }}
+                  transition={{
+                    duration: 2.2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                />
+              ) : (
+                <span
+                  className="inline-block h-1.5 w-1.5 rounded-full opacity-60"
+                  style={{ backgroundColor: copy.accent }}
+                  aria-hidden
+                />
+              )}
+              {copy.wordmark}
+            </div>
+
+            <div className="flex flex-wrap gap-1">
+              {copy.tags.map((tag) => (
                 <span
                   key={tag}
-                  className={
-                    (tagIndex >= 3 ? "hidden sm:inline-flex " : "inline-flex ") +
-                    "rounded-full border border-white/12 bg-white/[0.07] px-2 py-1 text-[10px] text-white/80 md:px-3 md:py-1.5 md:text-xs"
-                  }
+                  className="rounded-full border border-white/10 bg-white/[0.03] px-2 py-0.5 text-[9px] font-medium tracking-wide text-zinc-400"
                 >
                   {tag}
                 </span>
               ))}
             </div>
+          </div>
 
-            <p
-              className={
-                (isLead
-                  ? "text-sm text-white/90 md:text-lg"
-                  : "text-sm text-white/85 md:text-base") +
-                " mt-3 max-w-2xl font-medium leading-relaxed md:mt-5"
-              }
+          {/* Image */}
+          <div
+            className="relative aspect-[16/10] w-full overflow-hidden rounded-lg mb-4"
+            style={{ backgroundColor: copy.bg }}
+          >
+            {project.image ? (
+              <Image
+                src={project.image}
+                alt={project.title}
+                fill
+                sizes="45vw"
+                className="object-cover transition-all duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04] group-hover:brightness-105"
+                priority={false}
+              />
+            ) : (
+              <div
+                className="flex h-full w-full items-center justify-center text-sm"
+                style={{ color: copy.accent }}
+              >
+                {copy.wordmark}
+              </div>
+            )}
+          </div>
+
+          {/* Content */}
+          <div className="flex flex-col">
+            <h3
+              className="text-base font-bold leading-snug text-white md:text-lg"
+              style={{ fontFamily: "var(--font-heading)" }}
             >
-              {copy.hook}
+              {copy.headline}
+            </h3>
+
+            <p className="mt-2 text-xs leading-relaxed text-zinc-400 line-clamp-3">
+              {copy.description}
             </p>
 
-            <p className="mt-2 line-clamp-3 max-w-2xl text-[12px] leading-relaxed text-white/55 md:mt-3 md:line-clamp-none md:text-sm">
-              {copy.detail}
-            </p>
+            <div className="my-4 border-t border-white/10" />
 
-            <div className="mt-4 grid gap-2 sm:grid-cols-2 md:mt-7 md:gap-3">
-              <div className="rounded-xl border border-white/10 bg-black/25 p-3 md:rounded-2xl md:p-4">
-                <p
-                  className="text-[9px] font-semibold uppercase tracking-[0.16em] md:text-[10px] md:tracking-[0.18em]"
-                  style={{ color: colors.accent, opacity: 0.85 }}
-                >
-                  Decision
-                </p>
-                <p className="mt-1.5 text-[11px] leading-relaxed text-white/60 md:mt-2 md:text-xs">
-                  {copy.decision}
-                </p>
-              </div>
-
-              <div className="hidden rounded-xl border border-white/10 bg-black/25 p-3 sm:block md:rounded-2xl md:p-4">
-                <p
-                  className="text-[9px] font-semibold uppercase tracking-[0.16em] md:text-[10px] md:tracking-[0.18em]"
-                  style={{ color: colors.accent, opacity: 0.85 }}
-                >
-                  Result
-                </p>
-                <p className="mt-1.5 text-[11px] leading-relaxed text-white/60 md:mt-2 md:text-xs">
-                  {copy.outcome}
-                </p>
-              </div>
+            <div className="grid grid-cols-2 gap-3">
+              {copy.metrics.map((metric, i) => (
+                <div key={i} className="flex flex-col gap-0.5">
+                  <div style={{ color: copy.accent }}>
+                    {iconFor(metric.icon, "h-3.5 w-3.5")}
+                  </div>
+                  <div
+                    className="text-sm font-bold leading-tight"
+                    style={{ color: copy.accent }}
+                  >
+                    {metric.value}
+                  </div>
+                  <div className="text-[10px] leading-tight text-zinc-500">
+                    {metric.label}
+                  </div>
+                </div>
+              ))}
             </div>
 
-            <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between md:mt-8 md:gap-4">
-              <div className="flex flex-wrap items-center gap-2">
+            <div className="mt-5 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex flex-wrap items-center gap-1.5">
                 <ActionLink
                   href={project.demo}
-                  icon={<ExternalLink size={12} />}
+                  icon={<ExternalLink size={10} />}
                   label="Live"
                 />
                 <ActionLink
                   href={project.source}
-                  icon={<Github size={12} />}
+                  icon={<Github size={10} />}
                   label="Code"
                 />
               </div>
@@ -507,21 +434,46 @@ function CaseStudyCard({
                   event.stopPropagation();
                   handleOpen();
                 }}
-                className="group/cta inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white px-3 py-2 text-xs font-semibold text-zinc-950 transition-transform hover:scale-[1.02] active:scale-[0.98] md:gap-3 md:px-4 md:py-2.5 md:text-sm"
+                className="group/cta inline-flex w-fit items-center gap-1.5 rounded-full border border-white/15 bg-white px-3 py-1.5 text-[11px] font-semibold text-zinc-950 transition-transform hover:scale-[1.02] active:scale-[0.98]"
               >
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-zinc-950 text-white transition-transform group-hover/cta:translate-x-0.5 md:h-7 md:w-7">
-                  {hasCaseStudy ? <ArrowRight size={13} /> : <Lock size={12} />}
-                </span>
                 {hasCaseStudy ? "View Case Study" : "View Details"}
+                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-zinc-950 text-white transition-transform group-hover/cta:translate-x-0.5">
+                  {hasCaseStudy ? <ArrowRight size={11} /> : <Lock size={10} />}
+                </span>
               </button>
             </div>
           </div>
-        </motion.div>
+        </div>
       </motion.article>
-    </div>
+    </motion.div>
   );
 }
 
+function ActionLink({
+  href,
+  icon,
+  label,
+}: {
+  href?: string;
+  icon: React.ReactNode;
+  label: string;
+}) {
+  if (!href) return null;
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={(e) => e.stopPropagation()}
+      className="inline-flex items-center gap-1 rounded-full border border-white/10 bg-white/[0.03] px-2 py-1 text-[9px] font-medium text-zinc-400 transition-colors hover:border-white/20 hover:text-white"
+    >
+      {icon}
+      {label}
+    </a>
+  );
+}
+
+/* — Main export — */
 export default function Projects() {
   const router = useRouter();
   const [activeProject, setActiveProject] = useState<Project | null>(null);
@@ -539,36 +491,31 @@ export default function Projects() {
       router.push(project.caseStudy as string);
       return;
     }
-
     setActiveProject(project);
   }
 
   return (
-    <section
-      id="projects"
-      className="relative py-20 md:py-32"
-      style={{ position: "relative" }}
-    >
-      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <RevealBlock className="mx-auto max-w-6xl">
+    <section id="projects" className="relative py-12 md:py-24">
+      <div className="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
+        <RevealBlock>
           <SectionLabel>Case Studies</SectionLabel>
 
-          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+          <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <h2
-              className="max-w-4xl text-[2.55rem] font-extrabold leading-[1.02] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl"
+              className="max-w-3xl text-3xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-4xl md:text-5xl"
               style={{ fontFamily: "var(--font-heading)" }}
             >
               Making hidden friction visible.
             </h2>
 
-            <p className="max-w-sm text-sm leading-relaxed text-zinc-500 md:text-base">
-              Solid file cards for the work that shaped my product decisions —
-              readable first, layered second.
+            <p className="max-w-xs text-xs leading-relaxed text-zinc-500 md:text-sm">
+              Real shipped work first. Concepts second. Every card built to
+              read without a click.
             </p>
           </div>
         </RevealBlock>
 
-        <div className="mt-16 md:mt-24">
+        <div className="mt-8 grid gap-3 md:mt-14 md:grid-cols-2 md:gap-5">
           {caseStudies.map((project, index) => (
             <CaseStudyCard
               key={project.slug}

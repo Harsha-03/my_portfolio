@@ -64,7 +64,7 @@ function MotionTile({
 
         <h3
           className={
-            (large ? "text-3xl md:text-5xl" : "text-xl md:text-2xl") +
+            (large ? "text-xl md:text-3xl" : "text-lg md:text-xl") +
             " mt-2 font-extrabold leading-tight text-white"
           }
           style={{ fontFamily: "var(--font-heading)" }}
@@ -118,21 +118,21 @@ export default function MotionPreview() {
   return (
     <section
       id="motion"
-      className="relative overflow-hidden py-20 md:py-32"
+      className="relative overflow-hidden py-16 md:py-24"
       style={{ position: "relative" }}
     >
-      <div className="mx-auto w-full max-w-[1320px] px-4 sm:px-6 lg:px-8">
-        <RevealBlock className="mx-auto max-w-6xl">
+      <div className="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
+        <RevealBlock className="mx-auto max-w-4xl">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div>
               <SectionLabel>Motion</SectionLabel>
               <h2
-                className="text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl md:text-6xl"
+                className="text-2xl font-extrabold leading-tight tracking-tight text-white sm:text-3xl md:text-4xl"
                 style={{ fontFamily: "var(--font-heading)" }}
               >
                 Motion Design
               </h2>
-              <p className="mt-4 max-w-2xl text-base leading-relaxed text-zinc-500 md:text-lg">
+              <p className="mt-3 max-w-xl text-sm leading-relaxed text-zinc-500 md:text-base">
                 Short-form motion pieces — type, brand, and concept work where timing earns its place.
               </p>
             </div>
@@ -147,14 +147,14 @@ export default function MotionPreview() {
           </div>
         </RevealBlock>
 
-        <div className="relative mt-14 flex flex-col gap-7 xl:flex-row xl:items-start xl:gap-8">
+        <div className="relative mt-10 flex flex-col gap-5 xl:flex-row xl:items-start xl:gap-6">
           {lead && (
             <motion.div
               initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
+              viewport={{ once: true, margin: "0px" }}
               transition={{ duration: 0.58, ease: smoothEase }}
-              className="min-w-0 flex-1 xl:max-w-[820px]"
+              className="min-w-0 flex-1 xl:max-w-[640px]"
             >
               <MotionTile
                 piece={lead}
@@ -167,7 +167,7 @@ export default function MotionPreview() {
             </motion.div>
           )}
 
-          <div className="grid min-w-0 shrink-0 gap-7 xl:w-[420px]">
+          <div className="grid min-w-0 shrink-0 gap-5 xl:w-[340px]">
             {second && (
               <motion.div
                 initial={{ opacity: 0, x: 14 }}

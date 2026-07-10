@@ -7,7 +7,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Resume Tailor — Harsha Asapu",
   description:
-    "Rebuilding an AI resume tool from a Streamlit prototype into a real product. The story of what survived the rewrite, what didn't, and why.",
+    "A tool for people who write their own resumes. Rebuilt from a Streamlit prototype into a real product. What survived, what didn't, and why.",
 };
 
 export default function ResumeTailorCaseStudy() {
@@ -61,9 +61,9 @@ export default function ResumeTailorCaseStudy() {
           Resume Tailor
         </h1>
         <p className="mt-8 max-w-2xl text-lg md:text-xl text-zinc-400 leading-relaxed">
-          An AI resume tool rebuilt from a Streamlit prototype into a real
-          product. The story of what survived the rewrite, what didn&apos;t,
-          and why.
+          A tool for people who write their own resumes. Rebuilt from a
+          Streamlit prototype into a real product. The story of what a
+          maker&apos;s tool actually needs, and what I threw away to get there.
         </p>
 
         <div className="mt-12 flex flex-wrap gap-x-12 gap-y-6 pt-8 border-t border-white/10">
@@ -184,10 +184,14 @@ export default function ResumeTailorCaseStudy() {
           >
             What survived the rewrite
           </h2>
-          <p className="text-lg text-zinc-300 leading-relaxed mb-12">
+          <p className="text-lg text-zinc-300 leading-relaxed mb-6">
             A rewrite is a chance to throw away the parts that were only there
             because they were easy. I went through the old app and asked one
             question of every feature: would I add this again from scratch?
+          </p>
+          <p className="text-lg text-zinc-400 italic leading-relaxed mb-12">
+            A maker&apos;s tool shouldn&apos;t ask the user to know things they
+            don&apos;t need to know.
           </p>
         </div>
 
@@ -366,8 +370,9 @@ export default function ResumeTailorCaseStudy() {
             className="text-2xl md:text-4xl font-bold leading-[1.2] text-white border-l-2 border-emerald-500/50 pl-8"
             style={{ fontFamily: "var(--font-heading)" }}
           >
-            The honest gap is more useful than a flattering score. The product
-            is built around showing what&apos;s actually missing.
+            A tool for makers has to be able to say &quot;this isn&apos;t
+            there yet&quot; without pretending. That&apos;s what earns the
+            trust to keep using it.
           </blockquote>
           <p className="mt-8 text-lg text-zinc-400 leading-relaxed pl-8">
             A user looking at this screen sees exactly which JD concepts they
@@ -442,11 +447,15 @@ export default function ResumeTailorCaseStudy() {
             Chapter 06
           </p>
           <h2
-            className="text-3xl md:text-5xl font-bold mb-12"
+            className="text-3xl md:text-5xl font-bold mb-6"
             style={{ fontFamily: "var(--font-heading)" }}
           >
             What ships
           </h2>
+          <p className="text-lg text-zinc-400 leading-relaxed mb-12">
+            Three things ship. Each one designed so the person using the tool
+            sees the receipts, not just the verdict.
+          </p>
         </div>
 
         <ScreenSection
@@ -523,9 +532,9 @@ export default function ResumeTailorCaseStudy() {
 
         <div className="mt-20 pt-12 border-t border-white/10">
           <p className="text-lg text-zinc-300 leading-relaxed italic">
-            Design doesn&apos;t ship perfect. It ships, gets used, reveals
-            what&apos;s wrong, and improves. Resume Tailor is one rewrite
-            into that loop and ready for the next.
+            A tool for other people to create with has to keep proving it
+            deserves the space on their screen. Resume Tailor is one rewrite
+            into that proof. The next round is already in the backlog.
           </p>
         </div>
       </section>

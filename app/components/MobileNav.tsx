@@ -157,13 +157,11 @@ export default function MobileNav() {
   const activeGlow = (
     <motion.span
       layoutId="mobile-nav-active"
-      className="pointer-events-none absolute -inset-x-2 -inset-y-1.5 rounded-[1.65rem]"
+      className="pointer-events-none absolute inset-0 rounded-full"
       style={{
         background:
-          "radial-gradient(circle at 50% 50%, rgba(148,163,184,0.26) 0%, rgba(100,116,139,0.16) 42%, rgba(100,116,139,0.06) 58%, rgba(100,116,139,0) 78%)",
-        boxShadow:
-          "0 0 22px rgba(100,116,139,0.30), inset 0 1px 0 rgba(255,255,255,0.06)",
-        filter: "blur(0.2px)",
+          "radial-gradient(circle at 50% 50%, rgba(148,163,184,0.20) 0%, rgba(100,116,139,0.13) 48%, rgba(100,116,139,0.03) 75%)",
+        boxShadow: "0 0 14px rgba(100,116,139,0.24)",
       }}
       transition={{ type: "spring", stiffness: 420, damping: 34 }}
     />
@@ -173,7 +171,7 @@ export default function MobileNav() {
     <motion.nav
       initial={{ opacity: 0, y: 24, scale: 0.96 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ type: "spring", stiffness: 320, damping: 26, mass: 0.9 }}
       className="fixed inset-x-0 z-[60] flex justify-center px-3 md:hidden pointer-events-none isolate"
       style={{
         bottom: "max(1.35rem, calc(env(safe-area-inset-bottom) + 1rem))",
@@ -184,7 +182,7 @@ export default function MobileNav() {
       aria-label="Mobile navigation"
     >
       <div
-        className="pointer-events-auto flex h-[78px] max-w-[calc(100vw-20px)] items-center gap-3 rounded-full border px-3.5"
+        className="pointer-events-auto flex h-[66px] max-w-[calc(100vw-20px)] items-center gap-1 rounded-full border px-2"
         style={{
           background: "#050506",
           borderColor: "rgba(255,255,255,0.26)",
@@ -205,7 +203,7 @@ export default function MobileNav() {
         >
           {active === "home" && activeGlow}
 
-          <span className="relative z-10 block h-[46px] w-[46px] shrink-0 overflow-hidden rounded-full bg-zinc-900 ring-1 ring-white/25">
+          <span className="relative z-10 block h-[42px] w-[42px] shrink-0 overflow-hidden rounded-full bg-zinc-900 ring-1 ring-white/25">
             <img
               src="/images/memoji.png"
               alt="Harsha"
@@ -244,7 +242,7 @@ export default function MobileNav() {
           className="relative flex h-[56px] w-[56px] shrink-0 items-center justify-center rounded-full text-zinc-200 transition-colors hover:text-white"
           style={{ touchAction: "manipulation" }}
         >
-          <span className="relative z-10 flex h-[44px] w-[44px] items-center justify-center overflow-hidden rounded-full bg-blue-500/10 text-[10px] font-semibold text-blue-200 ring-1 ring-blue-400/40">
+          <span className="relative z-10 flex h-[40px] w-[40px] items-center justify-center overflow-hidden rounded-full bg-blue-500/10 text-[10px] font-semibold text-blue-200 ring-1 ring-blue-400/40">
             <span className="absolute inset-0 flex items-center justify-center">
               AI
             </span>
@@ -265,10 +263,42 @@ export default function MobileNav() {
           aria-label="Open resume"
           title="Resume"
           whileTap={{ scale: 0.92 }}
-          className="relative flex h-[56px] w-[56px] shrink-0 items-center justify-center rounded-full text-zinc-200 transition-colors hover:text-white"
+          className="relative flex h-[50px] w-[50px] shrink-0 items-center justify-center rounded-full transition-colors"
           style={{ touchAction: "manipulation" }}
         >
-          <Download size={23} strokeWidth={2.25} />
+          <motion.span
+            aria-hidden
+            className="absolute inset-1 rounded-full"
+            style={{
+              background:
+                "radial-gradient(circle at 50% 50%, rgba(244,63,94,0.22) 0%, rgba(244,63,94,0.08) 55%, rgba(244,63,94,0) 80%)",
+              boxShadow: "0 0 18px rgba(244,63,94,0.25)",
+            }}
+            initial={{ opacity: 0.55, scale: 1 }}
+            animate={{
+              opacity: [0.55, 1, 0.55, 1, 0.55],
+              scale: [1, 1.08, 1, 1.08, 1],
+            }}
+            transition={{
+              duration: 4,
+              times: [0, 0.2, 0.4, 0.6, 1],
+              ease: "easeInOut",
+              repeat: 0,
+            }}
+          />
+          <span
+            className="relative z-10 flex h-[40px] w-[40px] items-center justify-center rounded-full ring-1 ring-rose-400/40"
+            style={{
+              background:
+                "linear-gradient(180deg, rgba(244,63,94,0.14), rgba(244,63,94,0.06))",
+            }}
+          >
+            <Download
+              size={20}
+              strokeWidth={2.25}
+              className="text-rose-200"
+            />
+          </span>
         </motion.a>
       </div>
     </motion.nav>

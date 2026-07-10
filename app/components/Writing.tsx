@@ -56,15 +56,15 @@ export default function Writing() {
   const doubled = posts.length > 0 ? [...posts, ...posts] : [];
 
   return (
-    <section id="writing" className="relative py-20 md:py-32 overflow-hidden">
-      <div className="mx-auto w-full max-w-6xl mb-10 md:mb-14">
+    <section id="writing" className="relative py-16 md:py-24 overflow-hidden">
+      <div className="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8 mb-8 md:mb-10">
         <motion.p initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.5 }} className="text-[11px] tracking-[0.24em] text-blue-400/80 font-semibold uppercase mb-4 flex items-center gap-2">
           <span className="h-px w-8 bg-blue-400/40" />
           Writing
         </motion.p>
 
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-          <motion.h2 initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.55, delay: 0.05 }} className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight tracking-tight max-w-3xl" style={{ fontFamily: "var(--font-heading)" }}>
+          <motion.h2 initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.55, delay: 0.05 }} className="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight tracking-tight max-w-2xl" style={{ fontFamily: "var(--font-heading)" }}>
             Notes on design, mostly on{" "}
             <span className="italic text-blue-400" style={{ fontFamily: "var(--font-serif)", fontWeight: 400 }}>Bootcamp.</span>
           </motion.h2>
@@ -83,7 +83,7 @@ export default function Writing() {
         {loading && (
           <div className="flex gap-4 px-4 opacity-40">
             {[0, 1, 2, 3].map((i) => (
-              <div key={i} className="h-56 w-72 shrink-0 rounded-2xl border border-white/10 bg-zinc-900/40 animate-pulse" />
+              <div key={i} className="h-48 w-64 shrink-0 rounded-2xl border border-white/10 bg-zinc-900/40 animate-pulse" />
             ))}
           </div>
         )}
@@ -97,7 +97,7 @@ export default function Writing() {
         {!loading && posts.length > 0 && (
           <motion.div ref={trackRef} style={{ x }} className="flex gap-4 will-change-transform">
             {doubled.map((p, i) => (
-              <a key={i} href={p.link} target="_blank" rel="noopener noreferrer" className="group shrink-0 w-72 md:w-80 rounded-2xl border border-white/10 bg-zinc-900/50 backdrop-blur-sm overflow-hidden hover:border-blue-400/40 hover:bg-zinc-900/80 transition-colors">
+              <a key={i} href={p.link} target="_blank" rel="noopener noreferrer" className="group shrink-0 w-64 md:w-72 rounded-2xl border border-white/10 bg-zinc-900/50 backdrop-blur-sm overflow-hidden hover:border-blue-400/40 hover:bg-zinc-900/80 transition-colors">
                 <div className="relative aspect-[16/9] bg-zinc-950 overflow-hidden">
                   {p.thumbnail ? (
                     <img src={p.thumbnail} alt="" className="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-500" />

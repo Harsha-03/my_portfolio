@@ -77,13 +77,13 @@ function RagArrow() {
 
 export default function About() {
   return (
-    <section id="about" className="relative py-20 md:py-32" style={{ position: "relative" }}>
-      <div className="mx-auto w-full max-w-6xl">
+    <section id="about" className="relative py-6 md:py-24" style={{ position: "relative" }}>
+      <div className="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
         <RevealBlock>
           <SectionLabel>About</SectionLabel>
 
           <h2
-            className="max-w-4xl text-3xl font-extrabold leading-[1.05] tracking-tight sm:text-4xl md:text-5xl lg:text-6xl"
+            className="max-w-3xl text-2xl font-extrabold leading-[1.1] tracking-tight sm:text-3xl md:text-4xl lg:text-5xl"
             style={{ fontFamily: "var(--font-heading)" }}
           >
             <ScrollSentence text="I don't just design screens. I design" />{" "}
@@ -100,7 +100,7 @@ export default function About() {
           </h2>
         </RevealBlock>
 
-        <div className="mt-12 grid grid-cols-1 gap-8 md:mt-16 md:grid-cols-12 md:gap-12">
+        <div className="mt-8 grid grid-cols-1 gap-6 md:mt-12 md:grid-cols-12 md:gap-10">
           <RevealBlock delay={0.08} className="md:col-span-5">
             <motion.div
               whileHover={{ scale: 1.012 }}
@@ -128,15 +128,15 @@ export default function About() {
           </RevealBlock>
 
           <div className="space-y-6 md:col-span-7">
-            <p className="text-base leading-relaxed text-zinc-300 md:text-lg">
+            <p className="text-sm leading-relaxed text-zinc-300 md:text-base">
               <ScrollSentence text="I'm a UX Designer based in Reno, Nevada. I finished my MS in Information Systems at Saint Louis University in December 2025, and I'm currently on OPT looking for my next role." />
             </p>
 
-            <p className="text-base leading-relaxed text-zinc-400 md:text-lg">
+            <p className="text-sm leading-relaxed text-zinc-400 md:text-base">
               <ScrollSentence text="My path went from building client products at a startup I co-founded in India, through graduate systems work at SLU, to UX design at a nonprofit. Across all of it, the pattern was the same: find where the experience actually breaks, define the problem clearly, design a solution, ship it, keep going." />
             </p>
 
-            <p className="text-base leading-relaxed text-zinc-400 md:text-lg">
+            <p className="text-sm leading-relaxed text-zinc-400 md:text-base">
               <ScrollSentence text="Right now I'm the UI/UX Designer at Community Dreams Foundation. Alongside that, I ship self-initiated product work: Starbucks Mobile Order, LifeOS, and Resume Tailor." />
             </p>
 
@@ -147,51 +147,55 @@ export default function About() {
               transition={{ duration: 0.7, delay: 0.18, ease: smoothEase }}
               className="mt-8 border-l-2 border-blue-400/40 pl-5"
             >
-              <p className="text-lg italic leading-relaxed text-zinc-300 md:text-xl" style={{ fontFamily: "var(--font-serif)" }}>
+              <p className="text-base italic leading-relaxed text-zinc-300 md:text-lg" style={{ fontFamily: "var(--font-serif)" }}>
                 Design doesn&apos;t ship perfect. It ships, gets used, reveals what&apos;s wrong, and improves.
               </p>
             </motion.blockquote>
           </div>
         </div>
 
-        <RevealBlock delay={0.1} className="mt-16 md:mt-24">
+        <RevealBlock delay={0.1} className="mt-12 md:mt-16">
           <motion.div
             whileHover={{ scale: 1.003 }}
             transition={{ type: "spring", stiffness: 180, damping: 28, mass: 1 }}
-            className="relative overflow-hidden rounded-3xl border border-blue-400/15 bg-gradient-to-br from-blue-500/8 via-zinc-900/40 to-zinc-900/40 p-6 backdrop-blur-sm md:p-10"
+            className="relative overflow-hidden rounded-2xl border border-blue-400/15 bg-gradient-to-br from-blue-500/8 via-zinc-900/40 to-zinc-900/40 p-5 backdrop-blur-sm md:p-8"
           >
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_82%_48%,rgba(52,211,153,0.08),transparent_30%)]" />
-            <div className="relative z-10 flex flex-col gap-6 md:flex-row md:items-center md:gap-10">
-              <div className="flex-1">
-                <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.24em] text-blue-400/80">Ask my portfolio</p>
-                <h3 className="text-2xl font-bold leading-tight md:text-3xl" style={{ fontFamily: "var(--font-heading)" }}>
-                  Or just <span className="italic text-emerald-400" style={{ fontFamily: "var(--font-serif)", fontWeight: 400 }}>ask.</span>
-                </h3>
-                <p className="mt-3 max-w-lg text-sm leading-relaxed text-zinc-400 md:text-base">
-                  This site is trained on every project, every role, and every design decision I could remember. Ask it anything.
-                </p>
+            <div className="relative z-10">
+              <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.24em] text-blue-400/80">Ask my portfolio</p>
+              <h3 className="text-xl font-bold leading-tight md:text-2xl" style={{ fontFamily: "var(--font-heading)" }}>
+                Or just <span className="italic text-emerald-400" style={{ fontFamily: "var(--font-serif)", fontWeight: 400 }}>ask.</span>
+              </h3>
+              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-zinc-400 md:text-base">
+                This site is trained on every project, every role, and every design decision I could remember. Ask it anything.
+              </p>
+
+              {/* Chip buttons */}
+              <div className="mt-6 flex flex-wrap gap-2">
+                {[
+                  "What's your design process?",
+                  "Tell me about BuiltinTech",
+                  "Why the four-state Starbucks model?",
+                  "What tools do you use?",
+                  "What roles are you targeting?",
+                ].map((q) => (
+                  <button
+                    key={q}
+                    type="button"
+                    onClick={() => {
+                      const ev = new CustomEvent("open-chat-widget", {
+                        detail: { prompt: q },
+                      });
+                      window.dispatchEvent(ev);
+                    }}
+                    className="group/chip inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-[11px] font-medium text-zinc-400 transition-colors hover:border-emerald-400/40 hover:bg-emerald-500/5 hover:text-emerald-300 md:px-3.5 md:text-xs"
+                  >
+                    <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-500/60 transition-transform group-hover/chip:scale-125" />
+                    {q}
+                  </button>
+                ))}
               </div>
-
-              <motion.button
-                whileHover={{ scale: 1.012, borderColor: "rgba(59,130,246,0.5)" }}
-                whileTap={{ scale: 0.985 }}
-                transition={{ type: "spring", stiffness: 260, damping: 24, mass: 0.85 }}
-                onClick={() => {
-                  const ev = new CustomEvent("open-chat-widget");
-                  window.dispatchEvent(ev);
-                }}
-                className="group inline-flex w-full shrink-0 items-center gap-3 rounded-2xl border border-white/10 bg-zinc-950/60 px-5 py-4 backdrop-blur-md transition-colors hover:bg-blue-500/5 md:w-auto md:min-w-[360px]"
-              >
-                <span className="flex-1 text-left text-sm text-zinc-500 transition-colors group-hover:text-zinc-400">
-                  Why the four-state model on Starbucks?
-                </span>
-                <span className="flex h-8 w-8 items-center justify-center rounded-lg border border-blue-400/30 bg-blue-500/15 text-blue-300 transition-colors group-hover:bg-blue-500/25">
-                  <Send size={14} />
-                </span>
-              </motion.button>
             </div>
-
-            <RagArrow />
           </motion.div>
         </RevealBlock>
       </div>

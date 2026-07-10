@@ -150,7 +150,7 @@ export default function ContactFancy() {
           </p>
 
           <h2
-            className="mt-2 text-2xl font-extrabold sm:text-3xl md:text-4xl"
+            className="mt-2 text-xl font-extrabold sm:text-2xl md:text-3xl"
             style={{ fontFamily: "var(--font-heading)" }}
           >
             Let&apos;s{" "}
@@ -206,7 +206,7 @@ export default function ContactFancy() {
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           viewport={{ once: true }}
           transition={{ duration: 0.45, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-6 rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-8"
+          className="mt-6 rounded-2xl border border-white/10 bg-white/[0.03] p-4 sm:p-6"
         >
           <AnimatePresence mode="wait">
             {view === "email" && (
@@ -283,7 +283,7 @@ export default function ContactFancy() {
                         whileHover={{ y: -4, scale: 1.06 }}
                         whileTap={{ scale: 0.95 }}
                         transition={{ type: "spring", stiffness: 380, damping: 22 }}
-                        className={`flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.05] text-zinc-300 shadow-lg shadow-black/20 transition-colors hover:border-white/20 hover:bg-white/[0.08] ${social.className}`}
+                        className={`flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.05] text-zinc-300 shadow-lg shadow-black/20 transition-colors hover:border-white/20 hover:bg-white/[0.08] ${social.className}`}
                       >
                         {social.icon}
                       </motion.a>

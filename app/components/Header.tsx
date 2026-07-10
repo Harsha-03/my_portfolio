@@ -25,7 +25,7 @@ export default function Header() {
   const suppressObserverRef = useRef(false);
 
   const isHomePage = pathname === "/";
-  const compactMode = !isHomePage || scrolled;
+  const compactMode = false;
   const expanded = !compactMode || navOpen;
 
   // Sanjay-style collapsed pill:

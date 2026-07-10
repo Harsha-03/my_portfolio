@@ -5,6 +5,8 @@ import type { ReactNode } from "react";
 import type { TargetAndTransition, Variants } from "framer-motion";
 import { Github, Linkedin, Instagram, ArrowRight } from "lucide-react";
 import { useState } from "react";
+import BlurText from "./BlurText";
+import TextType from "./TextType";
 
 function BehanceIcon({ size = 18 }: { size?: number }) {
   return (
@@ -22,14 +24,36 @@ function MediumIcon({ size = 18 }: { size?: number }) {
   );
 }
 
+const smoothEase = [0.22, 1, 0.36, 1] as const;
+
 const container: Variants = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
+  show: { transition: { staggerChildren: 0.14, delayChildren: 0.2 } },
 };
 
 const item: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" } },
+  hidden: { opacity: 0, y: 18, filter: "blur(6px)" },
+  show: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.7, ease: smoothEase } },
+};
+
+const wordContainer: Variants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.055, delayChildren: 0 } },
+};
+
+const wordItem: Variants = {
+  hidden: { opacity: 0, y: 20, filter: "blur(8px)" },
+  show: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.65, ease: smoothEase } },
+};
+
+const lineContainer: Variants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.11, delayChildren: 0.1 } },
+};
+
+const lineItem: Variants = {
+  hidden: { opacity: 0, x: -6, filter: "blur(4px)" },
+  show: { opacity: 1, x: 0, filter: "blur(0px)", transition: { duration: 0.5, ease: smoothEase } },
 };
 
 const socialRow: Variants = {
@@ -142,12 +166,12 @@ function SocialButton({ social }: { social: SocialDef }) {
 export default function Hero() {
   return (
     <section id="home" className="relative">
-      <div className="relative flex min-h-[60svh] flex-col justify-start pb-32 pt-[11.55rem] md:min-h-[calc(100vh-5rem)] md:justify-between md:py-12">
+      <div className="relative flex min-h-[100svh] flex-col items-center justify-center px-4 pt-20 pb-36 md:min-h-[calc(100vh-5rem)] md:py-24">
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.05 }}
-          className="absolute right-5 top-[4.75rem] md:right-0 md:top-0"
+          className="fixed right-4 top-6 z-40 md:right-8 md:top-8"
         >
           <span className="relative flex items-center gap-2 rounded-full border border-green-500/20 bg-green-500/10 px-2.5 py-1 text-[10px] text-green-400 md:text-xs">
             <motion.span
@@ -160,14 +184,14 @@ export default function Hero() {
         </motion.div>
 
         <motion.div
-          className="max-w-5xl pt-0 md:pt-20"
+          className="mx-auto w-full max-w-3xl text-center"
           variants={container}
           initial="hidden"
           animate="show"
         >
           <motion.p
             variants={item}
-            className="mb-4 flex items-center text-base italic text-zinc-400 sm:text-lg md:mb-6 md:text-xl"
+            className="mb-4 flex items-center justify-center text-sm italic text-zinc-400 sm:text-base md:mb-6 md:text-lg"
             style={{ fontFamily: "var(--font-serif)" }}
           >
             <motion.span
@@ -183,57 +207,122 @@ export default function Hero() {
             >
               👋
             </motion.span>
-            Hey, I&apos;m Harsha
+            <BlurText
+              text="Hey, I'm Harsha"
+              delay={60}
+              duration={0.6}
+              animateBy="words"
+              direction="bottom"
+            />
           </motion.p>
 
-          <motion.h1
-            variants={item}
-            className="text-[2.35rem] font-extrabold leading-[1.06] tracking-tight sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl"
+          <BlurText
+            as="h1"
+            text="a UX Designer building products that actually ship."
+            delay={70}
+            duration={0.7}
+            startDelay={0.35}
+            animateBy="words"
+            direction="bottom"
+            className="text-[2rem] font-extrabold leading-[1.06] tracking-tight sm:text-4xl md:text-5xl lg:text-6xl"
             style={{ fontFamily: "var(--font-heading)" }}
-          >
-            a UX Designer building products that actually{" "}
-            <span
-              className="italic text-emerald-400"
-              style={{ fontFamily: "var(--font-serif)", fontWeight: 400 }}
-            >
-              ship.
-            </span>
-          </motion.h1>
+            renderWord={(word) => {
+              if (word === "ship.") {
+                return (
+                  <span
+                    className="italic text-emerald-400"
+                    style={{
+                      fontFamily: "var(--font-serif)",
+                      fontWeight: 400,
+                    }}
+                  >
+                    {word}
+                  </span>
+                );
+              }
+              return word;
+            }}
+          />
 
           <motion.p
             variants={item}
-            className="mt-5 max-w-2xl text-base leading-relaxed text-zinc-400 md:mt-7 md:text-lg"
+            className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-zinc-400 md:mt-5 md:text-base"
           >
-            Identifying the real break, not the surface bug.
+            <BlurText
+              text="Identifying the real break, not the surface bug."
+              delay={40}
+              duration={0.55}
+              startDelay={1.0}
+              animateBy="words"
+              direction="bottom"
+            />
           </motion.p>
 
           <motion.div
             variants={item}
-            className="mt-6 max-w-2xl border-l-2 border-emerald-500/40 pl-4 md:mt-8"
+            className="relative mx-auto mt-6 max-w-xl pl-4 text-left md:mt-8"
           >
+            <motion.div
+              initial={{ scaleY: 0 }}
+              animate={{ scaleY: 1 }}
+              transition={{ duration: 0.7, delay: 0.85, ease: smoothEase }}
+              style={{ transformOrigin: "top" }}
+              className="absolute left-0 top-0 h-full w-[2px] bg-emerald-500/40"
+            />
             
-            <div className="space-y-1.5 font-mono text-xs text-zinc-400 md:text-sm">
+            <motion.div
+              variants={lineContainer}
+              initial="hidden"
+              animate="show"
+              className="space-y-1.5 font-mono text-[11px] text-zinc-400 md:text-xs"
+            >
               <p>
-                <span className="text-emerald-400">Exploring:</span> Interaction design for tools that let others create.
+                <span className="text-emerald-400">Exploring:</span>{" "}
+                <TextType
+                  text="Interaction design for tools that let others create."
+                  typingSpeed={15}
+                  startDelay={1.0}
+                  showCursor
+                  cursorCharacter="▍"
+                  hideCursorOnComplete
+                />
               </p>
               <p>
-                <span className="text-emerald-400">Recent:</span> Shipped portfolio v3, published two pieces in Design Bootcamp.
+                <span className="text-emerald-400">Recent:</span>{" "}
+                <TextType
+                  text="Shipped portfolio v3, published two pieces in Design Bootcamp."
+                  typingSpeed={15}
+                  startDelay={1.8}
+                  showCursor
+                  cursorCharacter="▍"
+                  hideCursorOnComplete
+                />
               </p>
               <p>
-                <span className="text-emerald-400">Reading:</span>  Don Norman on discoverability, and every YouTube Effects designer&apos;s Medium.
+                <span className="text-emerald-400">Reading:</span>{" "}
+                <TextType
+                  text="Don Norman on discoverability, and every YouTube Effects designer's Medium."
+                  typingSpeed={15}
+                  startDelay={2.75}
+                  showCursor
+                  cursorCharacter="▍"
+                  hideCursorOnComplete
+                />
               </p>
-            </div>
+            </motion.div>
           </motion.div>
 
           <motion.div
-            variants={item}
-            className="mt-8 flex flex-wrap items-center gap-3 md:mt-10 md:gap-4"
+            initial={{ opacity: 0, y: 18, filter: "blur(6px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 0.7, ease: smoothEase, delay: 3.8 }}
+            className="mt-6 flex flex-wrap items-center justify-center gap-3 md:mt-8 md:gap-4"
           >
             <motion.a
               href="#about"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              className="group inline-flex items-center gap-2 rounded-xl bg-red-500 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-red-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-400/60"
+              className="group inline-flex items-center gap-2 rounded-xl bg-red-500 px-4 py-2.5 text-xs font-semibold text-white transition-colors hover:bg-red-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-400/60 md:text-sm md:px-5 md:py-3"
             >
               Meet Me
               <motion.span

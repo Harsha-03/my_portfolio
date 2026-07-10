@@ -152,7 +152,7 @@ export default function Experience() {
       aria-labelledby="experience-heading"
     >
       <div className="container">
-        <div className="experience-grid grid grid-cols-1 gap-12 items-start md:gap-14">
+        <div className="experience-grid grid grid-cols-1 gap-8 items-start md:gap-10">
           {/* LEFT — sticky context */}
           <motion.div
             className="experience-left"
@@ -176,7 +176,7 @@ export default function Experience() {
 
             <motion.h2
               id="experience-heading"
-              className="mt-2 text-2xl sm:text-3xl md:text-4xl font-extrabold"
+              className="mt-2 text-xl sm:text-2xl md:text-3xl font-extrabold"
               style={{ fontFamily: "var(--font-heading)" }}
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -187,7 +187,7 @@ export default function Experience() {
             </motion.h2>
 
             <motion.p
-              className="mt-4 max-w-xl text-sm md:text-base text-zinc-400 leading-relaxed"
+              className="mt-3 max-w-xl text-sm text-zinc-400 leading-relaxed"
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -200,7 +200,7 @@ export default function Experience() {
 
             {/* Mini legend */}
             <motion.div
-              className="mt-8 flex flex-col gap-2 text-xs text-zinc-500"
+              className="mt-6 flex flex-col gap-2 text-xs text-zinc-500"
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
