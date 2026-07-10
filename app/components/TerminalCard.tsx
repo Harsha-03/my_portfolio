@@ -77,7 +77,6 @@ export default function TerminalCard() {
           <TypedBlock
             strings={[
               `• <a href="#projects" class="underline decoration-dotted hover:no-underline">AI Resume Editor</a> — tailoring, match scores, cover letters.`,
-              `• <a href="#projects" class="underline decoration-dotted hover:no-underline">Airline Performance Tracker</a> — Power BI, DAX, insights.`,
               `• Next up: <span class='opacity-80'>Coming soon…</span>`,
             ]}
           />

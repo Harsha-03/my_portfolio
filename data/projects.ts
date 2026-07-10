@@ -3,6 +3,7 @@ export interface Project {
   title: string;
   shortDescription: string;
   image?: string;
+  video?: string;
   tags?: string[];
   caseStudy?: string;
   status?: string;
@@ -26,6 +27,7 @@ export const projects: Project[] = [
     shortDescription:
       "Shipped 10+ client products in 12 months. Same intake to ship pattern across construction, minerals, fitness, and infrastructure verticals.",
     image: "/projects/builtintech-cover.png",
+    video: "/projects/builtintech-preview.mp4",
     tags: ["Client Work", "Systems Design", "Delivery", "Frontend"],
     caseStudy: "/case-studies/builtintech-delivery",
     status: "Shipped",
@@ -56,6 +58,7 @@ export const projects: Project[] = [
     shortDescription:
       "Service first IA for 10+ service categories at an ISO certified company. Live at nriwellbeing.com since 2022.",
     image: "/projects/nri-wellbeing-cover.png",
+    video: "/projects/nri-wellbeing-preview.mp4",
     tags: ["UI/UX", "IA", "Service Website", "Frontend"],
     caseStudy: "/case-studies/nri-wellbeing",
     status: "Shipped",
@@ -85,7 +88,7 @@ export const projects: Project[] = [
     title: "Resume Tailor",
     shortDescription:
       "A tool for people who write their own resumes. Honest scoring, no invented experience. Live at resumetailor-liart.vercel.app.",
-    image: "/projects/resume-tailor-cover.png",
+    video: "/projects/resume-tailor-preview.mp4",
     tags: ["AI Product", "UX", "Shipped"],
     caseStudy: "/case-studies/resume-tailor",
     demo: "https://resumetailor-liart.vercel.app/",
@@ -117,7 +120,7 @@ export const projects: Project[] = [
     title: "Portfolio",
     shortDescription:
       "A portfolio treated as a product, not a static page. RAG chatbot trained on 8 knowledge files answers recruiter questions inline.",
-    image: "/projects/portfolio-cover.png",
+    video: "/projects/portfolio-preview.mp4",
     tags: ["Product", "RAG", "Interaction Design"],
     caseStudy: "/case-studies/portfolio",
     demo: "https://harshaasapu.com",
@@ -207,7 +210,7 @@ export const projects: Project[] = [
     title: "SLU Alumni Connect",
     shortDescription:
       "Role based dashboards for 4 user types across a 12k+ alumni ecosystem. FERPA compliant scope. Design phase.",
-    image: "/projects/slu-alumni-cover.png",
+    video: "/projects/slu-alumni-connect-preview.mp4",
     tags: ["Concept", "Multi Role", "Platform"],
     caseStudy: "/case-studies/slu-alumni-connect",
     status: "Design scope",
@@ -228,35 +231,6 @@ export const projects: Project[] = [
       "Separate user paths before polishing screens",
       "Role based dashboards with clarity by role",
       "Platform architecture designed for a 12k+ alumni ecosystem",
-    ],
-  },
-
-  {
-    slug: "airline-performance-tracker",
-    title: "Airline Performance Tracker",
-    shortDescription:
-      "Raw flight data into operational answers. A three layer decision surface for reliability, delay patterns, and bottlenecks.",
-    image: "/projects/airline-cover.png",
-    tags: ["Concept", "Data Viz", "Dashboard"],
-    caseStudy: "/case-studies/airline-performance-tracker",
-    status: "Concept",
-    year: "2025",
-    featured: false,
-    overview:
-      "The goal was not more charts. It was helping someone understand reliability, delay patterns, and bottlenecks without fighting the data first. Overview first, trends second, details when needed.",
-    role: "Product Designer",
-    timeframe: "Feb 2025 – May 2025",
-    platform: "Web",
-    tools: ["Figma", "Data Viz", "Dashboard Design"],
-    problems: [
-      "Raw flight data is not an answer",
-      "Operators need decisions, not charts",
-      "Detail overload hides the signal",
-    ],
-    solutions: [
-      "Overview first, trends second, details when needed",
-      "Three layer decision surface",
-      "Data reads as an answer, not a query",
     ],
   },
 ];

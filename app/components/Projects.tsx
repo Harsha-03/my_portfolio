@@ -1,9 +1,9 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   ArrowRight,
   ExternalLink,
@@ -30,7 +30,6 @@ const CASE_STUDY_ORDER = [
   "starbucks-mobile-order",
   "lifeos",
   "slu-alumni-connect",
-  "airline-performance-tracker",
 ];
 
 type IconName = "zap" | "clock" | "layers" | "rocket" | "check" | "badge";
@@ -141,20 +140,6 @@ const CARD_COPY: Record<string, CardData> = {
     accent: "#93C5FD",
     isConcept: true,
   },
-  "airline-performance-tracker": {
-    wordmark: "Airline Tracker",
-    tags: ["Concept", "Data Viz", "Dashboard"],
-    headline: "Raw flight data into operational answers.",
-    description:
-      "The goal was not more charts. It was helping someone understand reliability, delay patterns, and bottlenecks without fighting the data first. Overview first, trends second, details when needed.",
-    metrics: [
-      { value: "3", label: "View layers", icon: "layers" },
-      { value: "Decision", label: "Operational surface", icon: "check" },
-    ],
-    bg: "#1E293B",
-    accent: "#7DD3FC",
-    isConcept: true,
-  },
 };
 
 function isInternalCaseStudy(url?: string) {
@@ -176,6 +161,78 @@ function iconFor(name: IconName, className = "h-4 w-4") {
     case "badge":
       return <BadgeCheck className={className} />;
   }
+}
+
+
+function ProjectMedia({
+  project,
+  wordmark,
+  accent,
+  sizes,
+  className,
+  mediaQuery,
+}: {
+  project: Project;
+  wordmark: string;
+  accent: string;
+  sizes: string;
+  className: string;
+  mediaQuery: string;
+}) {
+  const reduceMotion = useReducedMotion();
+  const [videoFailed, setVideoFailed] = useState(false);
+  const [matchesViewport, setMatchesViewport] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia(mediaQuery);
+    const updateMatch = () => setMatchesViewport(media.matches);
+
+    updateMatch();
+    media.addEventListener("change", updateMatch);
+
+    return () => media.removeEventListener("change", updateMatch);
+  }, [mediaQuery]);
+
+  if (project.video && matchesViewport && !videoFailed) {
+    return (
+      <video
+        key={project.video}
+        autoPlay={!reduceMotion}
+        muted
+        loop={!reduceMotion}
+        playsInline
+        preload="metadata"
+        poster={project.image}
+        aria-label={`${project.title} website preview`}
+        className={className}
+        onError={() => setVideoFailed(true)}
+      >
+        <source src={project.video} type="video/mp4" />
+      </video>
+    );
+  }
+
+  if (project.image) {
+    return (
+      <Image
+        src={project.image}
+        alt={project.title}
+        fill
+        sizes={sizes}
+        className={className}
+        priority={false}
+      />
+    );
+  }
+
+  return (
+    <div
+      className="flex h-full w-full items-center justify-center text-sm font-semibold"
+      style={{ color: accent }}
+    >
+      {wordmark}
+    </div>
+  );
 }
 
 /* — Individual card — */
@@ -239,23 +296,14 @@ function CaseStudyCard({
             className="relative h-[96px] w-[96px] shrink-0 overflow-hidden rounded-lg"
             style={{ backgroundColor: copy.bg }}
           >
-            {project.image ? (
-              <Image
-                src={project.image}
-                alt={project.title}
-                fill
-                sizes="96px"
-                className="object-cover transition-transform duration-[500ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
-                priority={false}
-              />
-            ) : (
-              <div
-                className="flex h-full w-full items-center justify-center text-[10px] font-semibold"
-                style={{ color: copy.accent }}
-              >
-                {copy.wordmark}
-              </div>
-            )}
+            <ProjectMedia
+              project={project}
+              wordmark={copy.wordmark}
+              accent={copy.accent}
+              sizes="96px"
+              className="h-full w-full object-cover transition-transform duration-[500ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
+              mediaQuery="(max-width: 767px)"
+            />
           </div>
 
           {/* Content — right */}
@@ -361,23 +409,14 @@ function CaseStudyCard({
             className="relative aspect-[16/10] w-full overflow-hidden rounded-lg mb-4"
             style={{ backgroundColor: copy.bg }}
           >
-            {project.image ? (
-              <Image
-                src={project.image}
-                alt={project.title}
-                fill
-                sizes="45vw"
-                className="object-cover transition-all duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04] group-hover:brightness-105"
-                priority={false}
-              />
-            ) : (
-              <div
-                className="flex h-full w-full items-center justify-center text-sm"
-                style={{ color: copy.accent }}
-              >
-                {copy.wordmark}
-              </div>
-            )}
+            <ProjectMedia
+              project={project}
+              wordmark={copy.wordmark}
+              accent={copy.accent}
+              sizes="45vw"
+              className="h-full w-full object-cover transition-all duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04] group-hover:brightness-105"
+              mediaQuery="(min-width: 768px)"
+            />
           </div>
 
           {/* Content */}
