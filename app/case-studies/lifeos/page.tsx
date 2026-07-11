@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function LifeOSCaseStudy() {
   return (
-    <main className="min-h-screen bg-[#0a0a0a] pt-32 text-zinc-200">
+    <main className="min-h-screen bg-[#0a0a0a] pt-24 text-zinc-200">
       {/* Case-study actions */}
       <div className="fixed left-4 top-4 z-50">
         <Link
@@ -26,22 +26,22 @@ export default function LifeOSCaseStudy() {
 
       {/* HERO */}
       <RevealBlock>
-      <section className="max-w-5xl mx-auto px-6 pt-20 pb-16">
+      <section className="max-w-5xl mx-auto px-6 pt-12 md:pt-16 pb-10 md:pb-12">
         <p className="text-xs tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-6">
           Case Study &middot; 2025
         </p>
         <h1
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight"
           style={{ fontFamily: "var(--font-heading)" }}
         >
           LifeOS
         </h1>
-        <p className="mt-8 max-w-2xl text-lg md:text-xl text-zinc-400 leading-relaxed">
+        <p className="mt-6 max-w-2xl text-base md:text-lg text-zinc-400 leading-relaxed">
           A productivity system built on adaptation, not motivation. Four layers
           that turn reflection into the input &mdash; not the failure.
         </p>
 
-        <div className="mt-12 flex flex-wrap gap-x-12 gap-y-6 pt-8 border-t border-white/10">
+        <div className="mt-8 md:mt-10 flex flex-wrap gap-x-12 gap-y-6 pt-6 border-t border-white/10">
           {[
             { label: "Role", value: "Product Designer" },
             { label: "Type", value: "Self-initiated" },
@@ -61,7 +61,7 @@ export default function LifeOSCaseStudy() {
 
       {/* COVER IMAGE */}
       <RevealBlock>
-      <section className="max-w-7xl mx-auto px-6 mb-32">
+      <section className="max-w-5xl mx-auto px-6 mb-20 md:mb-24">
         <div className="rounded-2xl overflow-hidden border border-white/10">
           <Image
             src="/case-studies/lifeos/cover.png"
@@ -77,17 +77,17 @@ export default function LifeOSCaseStudy() {
 
       {/* CHAPTER 01 — THE PROBLEM */}
       <RevealBlock>
-      <section className="max-w-3xl mx-auto px-6 mb-32">
+      <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
         <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
           Chapter 01
         </p>
         <h2
-          className="text-3xl md:text-5xl font-bold mb-12"
+          className="text-2xl md:text-4xl font-bold mb-8 md:mb-10"
           style={{ fontFamily: "var(--font-heading)" }}
         >
           The problem
         </h2>
-        <div className="space-y-6 text-lg text-zinc-300 leading-relaxed">
+        <div className="space-y-6 text-base md:text-lg text-zinc-300 leading-relaxed">
           <p>
             Every productivity app I tried made the same implicit assumption:
             that if I just had the right system, I&apos;d follow through. Notion
@@ -138,18 +138,18 @@ export default function LifeOSCaseStudy() {
 
       {/* CHAPTER 02 — RESEARCH */}
       <RevealBlock>
-      <section className="max-w-5xl mx-auto px-6 mb-32">
+      <section className="max-w-5xl mx-auto px-6 mb-20 md:mb-24">
         <div className="max-w-3xl">
           <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
             Chapter 02
           </p>
           <h2
-            className="text-3xl md:text-5xl font-bold mb-12"
+            className="text-2xl md:text-4xl font-bold mb-8 md:mb-10"
             style={{ fontFamily: "var(--font-heading)" }}
           >
             Research &rarr; insight
           </h2>
-          <p className="text-lg text-zinc-300 leading-relaxed mb-12">
+          <p className="text-base md:text-lg text-zinc-300 leading-relaxed mb-8 md:mb-10">
             I interviewed early-career professionals and graduate students aged
             20&ndash;28. All of them used at least two productivity tools. None
             of them felt like their tools were helping them get the right things
@@ -225,25 +225,25 @@ export default function LifeOSCaseStudy() {
 
       {/* CHAPTER 03 — SYSTEM ARCHITECTURE */}
       <RevealBlock>
-      <section className="max-w-5xl mx-auto px-6 mb-32">
+      <section className="max-w-5xl mx-auto px-6 mb-20 md:mb-24">
         <div className="max-w-3xl">
           <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
             Chapter 03
           </p>
           <h2
-            className="text-3xl md:text-5xl font-bold mb-6"
+            className="text-2xl md:text-4xl font-bold mb-6"
             style={{ fontFamily: "var(--font-heading)" }}
           >
             Four layers, one loop
           </h2>
-          <p className="text-lg text-zinc-300 leading-relaxed mb-12">
+          <p className="text-base md:text-lg text-zinc-300 leading-relaxed mb-8 md:mb-10">
             The system is built around a closed loop. Each layer feeds the next.
             Insights from past weeks reshape future planning &mdash; so the
             system adapts as you do.
           </p>
         </div>
 
-        <div className="rounded-2xl overflow-hidden border border-white/10 mb-16">
+        <div className="rounded-2xl overflow-hidden border border-white/10 mb-12 md:mb-14">
           <Image
             src="/case-studies/lifeos/system-architecture.png"
             alt="LifeOS four-layer system architecture diagram"
@@ -306,13 +306,13 @@ export default function LifeOSCaseStudy() {
 
       {/* CHAPTER 04 — THE SCREENS */}
       <RevealBlock>
-      <section className="max-w-5xl mx-auto px-6 mb-32">
+      <section className="max-w-5xl mx-auto px-6 mb-20 md:mb-24">
         <div className="max-w-3xl">
           <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
             Chapter 04
           </p>
           <h2
-            className="text-3xl md:text-5xl font-bold mb-12"
+            className="text-2xl md:text-4xl font-bold mb-8 md:mb-10"
             style={{ fontFamily: "var(--font-heading)" }}
           >
             The screens
@@ -375,18 +375,18 @@ export default function LifeOSCaseStudy() {
 
       {/* CHAPTER 05 — DESIGN DECISIONS */}
       <RevealBlock>
-      <section className="max-w-3xl mx-auto px-6 mb-32">
+      <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
         <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
           Chapter 05
         </p>
         <h2
-          className="text-3xl md:text-5xl font-bold mb-6"
+          className="text-2xl md:text-4xl font-bold mb-6"
           style={{ fontFamily: "var(--font-heading)" }}
         >
           Design decisions worth naming
           <span className="block text-zinc-600">(and what I rejected)</span>
         </h2>
-        <p className="text-lg text-zinc-300 leading-relaxed mb-16">
+        <p className="text-base md:text-lg text-zinc-300 leading-relaxed mb-12 md:mb-14">
           Every design decision has a rejected alternative. Here are the four
           that shaped the product.
         </p>
@@ -455,12 +455,12 @@ export default function LifeOSCaseStudy() {
 
       {/* CHAPTER 06 — WHAT I'D TEST NEXT */}
       <RevealBlock>
-      <section className="max-w-3xl mx-auto px-6 mb-32">
+      <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
         <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
           Chapter 06
         </p>
         <h2
-          className="text-3xl md:text-5xl font-bold mb-12"
+          className="text-2xl md:text-4xl font-bold mb-8 md:mb-10"
           style={{ fontFamily: "var(--font-heading)" }}
         >
           What I&apos;d test next
@@ -532,7 +532,7 @@ function ScreenSection({
   portraitMode?: boolean;
 }) {
   return (
-    <div className="mb-24">
+    <div className="mb-16 md:mb-20">
       <div className={portraitMode ? "grid md:grid-cols-2 gap-12 items-center" : "grid md:grid-cols-2 gap-12 items-center"}>
         <div>
           <p

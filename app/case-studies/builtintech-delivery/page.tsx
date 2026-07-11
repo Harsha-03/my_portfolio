@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function BuiltinTechCaseStudy() {
   return (
-    <main className="min-h-screen bg-[#0a0a0a] pt-32 text-zinc-200">
+    <main className="min-h-screen bg-[#0a0a0a] pt-24 text-zinc-200">
       {/* Top actions */}
       <div className="fixed left-4 top-4 z-50">
         <Link
@@ -40,22 +40,22 @@ export default function BuiltinTechCaseStudy() {
 
       {/* HERO */}
       <RevealBlock>
-        <section className="max-w-5xl mx-auto px-6 pt-20 pb-16">
+        <section className="max-w-5xl mx-auto px-6 pt-12 md:pt-16 pb-10 md:pb-12">
           <p className="text-xs tracking-[0.2em] text-amber-400/80 font-semibold uppercase mb-6">
             Case Study · 2023
           </p>
           <h1
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight"
             style={{ fontFamily: "var(--font-heading)" }}
           >
             BuiltinTech Client Delivery System
           </h1>
-          <p className="mt-8 max-w-2xl text-lg md:text-xl text-zinc-400 leading-relaxed">
+          <p className="mt-6 max-w-2xl text-base md:text-lg text-zinc-400 leading-relaxed">
             Shipped 10+ client products in 12 months. Same intake to ship
             pattern across construction, minerals, fitness, and infrastructure.
           </p>
 
-          <div className="mt-12 flex flex-wrap gap-x-12 gap-y-6 pt-8 border-t border-white/10">
+          <div className="mt-8 md:mt-10 flex flex-wrap gap-x-12 gap-y-6 pt-6 border-t border-white/10">
             {[
               {
                 label: "Role",
@@ -78,7 +78,7 @@ export default function BuiltinTechCaseStudy() {
 
       {/* COVER IMAGE */}
       <RevealBlock>
-        <section className="max-w-7xl mx-auto px-6 mb-32">
+        <section className="max-w-5xl mx-auto px-6 mb-20 md:mb-24">
           <div className="rounded-2xl overflow-hidden border border-white/10">
             <Image
               src="/projects/builtintech-cover.png"
@@ -94,17 +94,17 @@ export default function BuiltinTechCaseStudy() {
 
       {/* CHAPTER 01 */}
       <RevealBlock>
-        <section className="max-w-3xl mx-auto px-6 mb-32">
+        <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
           <p className="text-[11px] tracking-[0.2em] text-amber-400/80 font-semibold uppercase mb-4">
             Chapter 01
           </p>
           <h2
-            className="text-3xl md:text-5xl font-bold mb-12"
+            className="text-2xl md:text-4xl font-bold mb-8 md:mb-10"
             style={{ fontFamily: "var(--font-heading)" }}
           >
             The setup
           </h2>
-          <div className="space-y-6 text-lg text-zinc-300 leading-relaxed">
+          <div className="space-y-6 text-base md:text-lg text-zinc-300 leading-relaxed">
             <p>
               Cofounded BuiltinTech in January 2023 with a technical partner.
               Local business clients. Cold outreach: storefront visits, cold
@@ -126,17 +126,17 @@ export default function BuiltinTechCaseStudy() {
 
       {/* CHAPTER 02 */}
       <RevealBlock>
-        <section className="max-w-3xl mx-auto px-6 mb-32">
+        <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
           <p className="text-[11px] tracking-[0.2em] text-amber-400/80 font-semibold uppercase mb-4">
             Chapter 02
           </p>
           <h2
-            className="text-3xl md:text-5xl font-bold mb-12"
+            className="text-2xl md:text-4xl font-bold mb-8 md:mb-10"
             style={{ fontFamily: "var(--font-heading)" }}
           >
             Why the pattern mattered
           </h2>
-          <div className="space-y-6 text-lg text-zinc-300 leading-relaxed">
+          <div className="space-y-6 text-base md:text-lg text-zinc-300 leading-relaxed">
             <p>
               Every client was different. Construction, minerals, fitness,
               infrastructure. Different services, different customers,
@@ -157,22 +157,22 @@ export default function BuiltinTechCaseStudy() {
 
       {/* CHAPTER 03 — Delivery pattern */}
       <RevealBlock>
-        <section className="max-w-3xl mx-auto px-6 mb-24">
+        <section className="max-w-3xl mx-auto px-6 mb-16 md:mb-20">
           <p className="text-[11px] tracking-[0.2em] text-amber-400/80 font-semibold uppercase mb-4">
             Chapter 03
           </p>
           <h2
-            className="text-3xl md:text-5xl font-bold mb-6"
+            className="text-2xl md:text-4xl font-bold mb-6"
             style={{ fontFamily: "var(--font-heading)" }}
           >
             The delivery pattern
           </h2>
-          <p className="text-lg text-zinc-400 mb-12">
+          <p className="text-base md:text-lg text-zinc-400 mb-6 md:mb-8">
             Six steps. Fixed order. The pattern was the deliverable. Each
             project got one.
           </p>
 
-          <div className="space-y-10">
+          <div className="space-y-6 md:space-y-8">
             {[
               {
                 num: "01",
@@ -230,12 +230,12 @@ export default function BuiltinTechCaseStudy() {
 
       {/* CHAPTER 04 — Featured client */}
       <RevealBlock>
-        <section className="max-w-3xl mx-auto px-6 mb-16">
+        <section className="max-w-3xl mx-auto px-6 mb-12 md:mb-14">
           <p className="text-[11px] tracking-[0.2em] text-amber-400/80 font-semibold uppercase mb-4">
             Chapter 04
           </p>
           <h2
-            className="text-3xl md:text-5xl font-bold mb-6"
+            className="text-2xl md:text-4xl font-bold mb-6"
             style={{ fontFamily: "var(--font-heading)" }}
           >
             Featured client: Dharani Minerals
@@ -257,7 +257,7 @@ export default function BuiltinTechCaseStudy() {
 
       {/* Video placeholder */}
       <RevealBlock>
-        <section className="max-w-4xl mx-auto px-6 mb-16">
+        <section className="max-w-4xl mx-auto px-6 mb-12 md:mb-14">
           <div className="rounded-2xl overflow-hidden border border-white/10 bg-zinc-900 aspect-video flex items-center justify-center">
             <p className="text-zinc-500 text-sm">
               [ 90 second walkthrough video ]
@@ -271,8 +271,8 @@ export default function BuiltinTechCaseStudy() {
       </RevealBlock>
 
       <RevealBlock>
-        <section className="max-w-3xl mx-auto px-6 mb-32">
-          <div className="space-y-6 text-lg text-zinc-300 leading-relaxed">
+        <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
+          <div className="space-y-6 text-base md:text-lg text-zinc-300 leading-relaxed">
             <p>
               B2B minerals company. Multiple product categories. Needed a site
               that helped buyers understand product range and contact fast.
@@ -301,18 +301,18 @@ export default function BuiltinTechCaseStudy() {
 
       {/* CHAPTER 05 — Other client work */}
       <RevealBlock>
-        <section className="max-w-3xl mx-auto px-6 mb-32">
+        <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
           <p className="text-[11px] tracking-[0.2em] text-amber-400/80 font-semibold uppercase mb-4">
             Chapter 05
           </p>
           <h2
-            className="text-3xl md:text-5xl font-bold mb-12"
+            className="text-2xl md:text-4xl font-bold mb-8 md:mb-10"
             style={{ fontFamily: "var(--font-heading)" }}
           >
             Other client work
           </h2>
 
-          <div className="space-y-10">
+          <div className="space-y-6 md:space-y-8">
             {[
               {
                 name: "SP Infratech",
@@ -350,17 +350,17 @@ export default function BuiltinTechCaseStudy() {
 
       {/* CHAPTER 06 — What this shows */}
       <RevealBlock>
-        <section className="max-w-3xl mx-auto px-6 mb-32">
+        <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
           <p className="text-[11px] tracking-[0.2em] text-amber-400/80 font-semibold uppercase mb-4">
             Chapter 06
           </p>
           <h2
-            className="text-3xl md:text-5xl font-bold mb-12"
+            className="text-2xl md:text-4xl font-bold mb-8 md:mb-10"
             style={{ fontFamily: "var(--font-heading)" }}
           >
             What this shows
           </h2>
-          <div className="space-y-6 text-lg text-zinc-300 leading-relaxed">
+          <div className="space-y-6 text-base md:text-lg text-zinc-300 leading-relaxed">
             <p>
               The scale story is not one client. It is the pattern that
               shipped 10+ across 4 verticals in 12 months.

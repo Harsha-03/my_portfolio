@@ -100,7 +100,7 @@ function MotionPieceCard({
           </p>
 
           <h2
-            className="mt-3 text-3xl font-extrabold leading-tight tracking-tight text-white md:text-4xl"
+            className="mt-3 text-2xl font-extrabold leading-tight tracking-tight text-white md:text-3xl"
             style={{ fontFamily: "var(--font-heading)" }}
           >
             {piece.title}
@@ -132,7 +132,7 @@ export default function MotionGalleryPage() {
   return (
     <main className="relative min-h-screen bg-[#0a0a0a] text-zinc-200">
       {/* Page controls: same idea as case-study pages, but centered to the current global navbar */}
-      <RevealBlock className="mx-auto flex w-full max-w-7xl items-center justify-between px-5 pb-10 pt-32 sm:px-6 lg:px-8">
+      <RevealBlock className="mx-auto flex w-full max-w-6xl items-center justify-between px-5 pb-6 pt-24 sm:px-6 lg:px-8">
         <Link
           href="/#motion"
           className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-zinc-950/70 px-4 py-2 text-sm text-zinc-400 shadow-xl shadow-black/20 backdrop-blur-md transition-colors hover:border-blue-400/30 hover:text-white"
@@ -147,7 +147,7 @@ export default function MotionGalleryPage() {
       </RevealBlock>
 
       {/* Hero */}
-      <section className="mx-auto w-full max-w-7xl px-5 pb-20 sm:px-6 lg:px-8">
+      <section className="mx-auto w-full max-w-6xl px-5 pb-14 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 28, filter: "blur(12px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -159,13 +159,13 @@ export default function MotionGalleryPage() {
           </p>
 
           <h1
-            className="mx-auto max-w-5xl text-5xl font-extrabold leading-[0.98] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl"
+            className="mx-auto max-w-5xl text-4xl font-extrabold leading-[1.02] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl"
             style={{ fontFamily: "var(--font-heading)" }}
           >
             Motion that earns its place.
           </h1>
 
-          <p className="mx-auto mt-7 max-w-3xl text-base leading-relaxed text-zinc-400 md:text-lg">
+          <p className="mx-auto mt-5 max-w-2xl text-sm md:text-base leading-relaxed text-zinc-400">
             Short-form motion pieces — type, brand, and concept work where timing
             carries the idea. Each piece is a study in what moves, what stays
             still, and why.
@@ -174,8 +174,8 @@ export default function MotionGalleryPage() {
       </section>
 
       {/* Gallery */}
-      <section className="mx-auto w-full max-w-7xl px-5 pb-32 sm:px-6 lg:px-8">
-        <div className="space-y-24">
+      <section className="mx-auto w-full max-w-6xl px-5 pb-14 sm:px-6 lg:px-8">
+        <div className="space-y-16 md:space-y-20">
           {motionPieces.map((piece, index) => (
             <MotionPieceCard
               key={piece.slug}
@@ -187,19 +187,19 @@ export default function MotionGalleryPage() {
       </section>
 
       {/* Bottom CTA */}
-      <section className="mx-auto w-full max-w-4xl px-5 pb-32 sm:px-6 lg:px-8">
+      <section className="mx-auto w-full max-w-4xl px-5 pb-14 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 14, filter: "blur(6px)" }}
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           viewport={{ once: true, margin: "0px", amount: 0.06 }}
           transition={{ duration: 0.52, ease: smoothEase }}
-          className="border-t border-white/10 pt-12 text-center"
+          className="border-t border-white/10 pt-8 md:pt-10 text-center"
         >
           <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-zinc-500">
             More in motion
           </p>
 
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-zinc-400 md:text-lg">
+          <p className="mx-auto mt-4 max-w-2xl text-sm md:text-base leading-relaxed text-zinc-400">
             New pieces are added as concepts finish. If you&apos;re curious about
             the process, the contact section is right below.
           </p>

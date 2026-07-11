@@ -137,12 +137,30 @@ export default function ChatWidget() {
     }
   }
 
-  /* ── Init: load corner, set initial position ── */
+  /* ── Init: load free position (new) or fall back to corner (old users) ── */
   useEffect(() => {
     if (typeof window === "undefined") return;
+
+    const savedPos = localStorage.getItem("chat_fab_pos");
+    if (savedPos) {
+      try {
+        const { x, y } = JSON.parse(savedPos);
+        requestAnimationFrame(() => {
+          fabX.set(x);
+          fabY.set(y);
+          const w = window.innerWidth;
+          const h = window.innerHeight;
+          const c: Corner =
+            y < h / 2 ? (x < w / 2 ? "tl" : "tr") : (x < w / 2 ? "bl" : "br");
+          setCorner(c);
+        });
+        return;
+      } catch {}
+    }
+
+    // First-time users or old-format fallback
     const saved = (localStorage.getItem("chat_fab_corner") as Corner) || "br";
     setCorner(saved);
-    // Defer slightly so fabRef is measured
     requestAnimationFrame(() => snapToCorner(saved, false));
   }, []);
 
@@ -167,45 +185,88 @@ export default function ChatWidget() {
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    const openFromNav = () => {
+    const openFromNav = (event: Event) => {
       setOpen(true);
       setNudge(false);
       setThought(null);
+      const custom = event as CustomEvent<{ prompt?: string }>;
+      if (custom.detail?.prompt) {
+        setInput(custom.detail.prompt);
+      }
     };
 
     window.addEventListener("open-chat-widget", openFromNav);
     return () => window.removeEventListener("open-chat-widget", openFromNav);
   }, []);
 
-  /* ── Resize: re-snap to current corner ── */
+  /* ── Resize: clamp free position back inside viewport ── */
   useEffect(() => {
     function onResize() {
-      const { x, y } = getCornerCoords(corner);
-      animate(fabX, x, { duration: 0.25 });
-      animate(fabY, y, { duration: 0.25 });
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      const rect = fabRef.current?.getBoundingClientRect();
+      const fabW = rect?.width ?? FAB_FALLBACK_W;
+      const fabH = rect?.height ?? FAB_FALLBACK_H;
+      const currentX = fabX.get();
+      const currentY = fabY.get();
+      const clampedX = Math.max(MARGIN, Math.min(currentX, w - fabW - MARGIN));
+      const clampedY = Math.max(MARGIN, Math.min(currentY, h - fabH - MARGIN));
+      if (clampedX !== currentX) animate(fabX, clampedX, { duration: 0.25 });
+      if (clampedY !== currentY) animate(fabY, clampedY, { duration: 0.25 });
+      // Update corner state for panel positioning
+      const c: Corner =
+        clampedY < h / 2
+          ? clampedX < w / 2 ? "tl" : "tr"
+          : clampedX < w / 2 ? "bl" : "br";
+      setCorner(c);
     }
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
-  }, [corner]);
-
-  /* ── Drag end: pick nearest corner, snap, persist ── */
-  function handleDragEnd(_: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) {
+  }, []);
+  /* ── Drag end: snap to nearest EDGE only, preserve other axis ── */
+  function handleDragEnd(_: MouseEvent | TouchEvent | PointerEvent, _info: PanInfo) {
     setIsDragging(false);
     if (typeof window === "undefined") return;
     const w = window.innerWidth;
     const h = window.innerHeight;
-    const px = info.point.x;
-    const py = info.point.y;
+    const rect = fabRef.current?.getBoundingClientRect();
+    const fabW = rect?.width ?? FAB_FALLBACK_W;
+    const fabH = rect?.height ?? FAB_FALLBACK_H;
 
-    let next: Corner = "br";
-    if (px < w / 2 && py < h / 2) next = "tl";
-    else if (px >= w / 2 && py < h / 2) next = "tr";
-    else if (px < w / 2 && py >= h / 2) next = "bl";
-    else next = "br";
+    const currentX = fabX.get();
+    const currentY = fabY.get();
+    const centerX = currentX + fabW / 2;
+    const centerY = currentY + fabH / 2;
 
-    setCorner(next);
-    localStorage.setItem("chat_fab_corner", next);
-    snapToCorner(next, true);
+    const distLeft = centerX;
+    const distRight = w - centerX;
+    const distTop = centerY;
+    const distBottom = h - centerY;
+    const minDist = Math.min(distLeft, distRight, distTop, distBottom);
+
+    let snapX = currentX;
+    let snapY = currentY;
+
+    if (minDist === distLeft) snapX = MARGIN;
+    else if (minDist === distRight) snapX = w - fabW - MARGIN;
+    else if (minDist === distTop) snapY = MARGIN;
+    else snapY = h - fabH - MARGIN;
+
+    // Clamp within viewport
+    snapX = Math.max(MARGIN, Math.min(snapX, w - fabW - MARGIN));
+    snapY = Math.max(MARGIN, Math.min(snapY, h - fabH - MARGIN));
+
+    animate(fabX, snapX, { type: "spring", stiffness: 280, damping: 28 });
+    animate(fabY, snapY, { type: "spring", stiffness: 280, damping: 28 });
+
+    localStorage.setItem("chat_fab_pos", JSON.stringify({ x: snapX, y: snapY }));
+
+    // Update corner so the panel opens in the right direction
+    const nextCorner: Corner =
+      snapY < h / 2
+        ? snapX < w / 2 ? "tl" : "tr"
+        : snapX < w / 2 ? "bl" : "br";
+    setCorner(nextCorner);
   }
 
   /* ── persist messages ── */

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function StarbucksCaseStudy() {
   return (
-    <main className="min-h-screen bg-[#0a0a0a] pt-32 text-zinc-200">
+    <main className="min-h-screen bg-[#0a0a0a] pt-24 text-zinc-200">
       {/* Case-study actions */}
       <div className="fixed left-4 top-4 z-50">
         <Link
@@ -40,24 +40,24 @@ export default function StarbucksCaseStudy() {
 
       {/* HERO */}
       <RevealBlock>
-      <section className="max-w-5xl mx-auto px-6 pt-20 pb-16">
+      <section className="max-w-5xl mx-auto px-6 pt-12 md:pt-16 pb-10 md:pb-12">
         <p className="text-xs tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-6">
           Case Study · 2025
         </p>
         <h1
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight"
           style={{ fontFamily: "var(--font-heading)" }}
         >
           Starbucks Mobile
           <br />
           Order Redesign
         </h1>
-        <p className="mt-8 max-w-2xl text-lg md:text-xl text-zinc-400 leading-relaxed">
+        <p className="mt-6 max-w-2xl text-base md:text-lg text-zinc-400 leading-relaxed">
           A four-state model that replaces &quot;Preparing&quot; with real-time
           visibility tied to actual barista actions. The black box, opened.
         </p>
 
-        <div className="mt-12 flex flex-wrap gap-x-12 gap-y-6 pt-8 border-t border-white/10">
+        <div className="mt-8 md:mt-10 flex flex-wrap gap-x-12 gap-y-6 pt-6 border-t border-white/10">
           {[
             { label: "Role", value: "Product Designer" },
             { label: "Timeframe", value: "2 weeks" },
@@ -77,7 +77,7 @@ export default function StarbucksCaseStudy() {
 
       {/* COVER IMAGE */}
       <RevealBlock>
-      <section className="max-w-7xl mx-auto px-6 mb-32">
+      <section className="max-w-5xl mx-auto px-6 mb-20 md:mb-24">
         <div className="rounded-2xl overflow-hidden border border-white/10">
           <Image
             src="/projects/starbucks-cover.png"
@@ -93,17 +93,17 @@ export default function StarbucksCaseStudy() {
 
       {/* CHAPTER 01 — THE PROBLEM */}
       <RevealBlock>
-      <section className="max-w-3xl mx-auto px-6 mb-32">
+      <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
         <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
           Chapter 01
         </p>
         <h2
-          className="text-3xl md:text-5xl font-bold mb-12"
+          className="text-2xl md:text-4xl font-bold mb-8 md:mb-10"
           style={{ fontFamily: "var(--font-heading)" }}
         >
           The problem
         </h2>
-        <div className="space-y-6 text-lg text-zinc-300 leading-relaxed">
+        <div className="space-y-6 text-base md:text-lg text-zinc-300 leading-relaxed">
           <p>
             In October 2024, on his first earnings call as Starbucks CEO, Brian
             Niccol laid out three near-term initiatives for the mobile ordering
@@ -134,18 +134,18 @@ export default function StarbucksCaseStudy() {
 
       {/* CHAPTER 02 — RESEARCH → INSIGHT */}
       <RevealBlock>
-      <section className="max-w-5xl mx-auto px-6 mb-32">
+      <section className="max-w-5xl mx-auto px-6 mb-20 md:mb-24">
         <div className="max-w-3xl">
           <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
             Chapter 02
           </p>
           <h2
-            className="text-3xl md:text-5xl font-bold mb-12"
+            className="text-2xl md:text-4xl font-bold mb-8 md:mb-10"
             style={{ fontFamily: "var(--font-heading)" }}
           >
             Research → insight
           </h2>
-          <p className="text-lg text-zinc-300 leading-relaxed mb-12">
+          <p className="text-base md:text-lg text-zinc-300 leading-relaxed mb-8 md:mb-10">
             I shadowed three Starbucks pickup experiences and walked through
             the existing flow with friction in mind: when do users open the
             app, what do they look for, what don&apos;t they find?
@@ -224,18 +224,18 @@ export default function StarbucksCaseStudy() {
 
       {/* CHAPTER 03 — REJECTED IDEAS */}
       <RevealBlock>
-      <section className="max-w-3xl mx-auto px-6 mb-32">
+      <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
         <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
           Chapter 03
         </p>
         <h2
-          className="text-3xl md:text-5xl font-bold mb-6"
+          className="text-2xl md:text-4xl font-bold mb-6"
           style={{ fontFamily: "var(--font-heading)" }}
         >
           Ideas I rejected
           <span className="block text-zinc-600">(and why)</span>
         </h2>
-        <p className="text-lg text-zinc-300 leading-relaxed mb-16">
+        <p className="text-base md:text-lg text-zinc-300 leading-relaxed mb-12 md:mb-14">
           The first job after defining the insight was protecting it from
           over-engineering. Three ideas reached the rejection pile in the first
           hour.
@@ -287,13 +287,13 @@ export default function StarbucksCaseStudy() {
 
       {/* CHAPTER 04 — THE 5 SCREENS */}
       <RevealBlock>
-      <section className="max-w-5xl mx-auto px-6 mb-32">
+      <section className="max-w-5xl mx-auto px-6 mb-20 md:mb-24">
         <div className="max-w-3xl">
           <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
             Chapter 04
           </p>
           <h2
-            className="text-3xl md:text-5xl font-bold mb-12"
+            className="text-2xl md:text-4xl font-bold mb-8 md:mb-10"
             style={{ fontFamily: "var(--font-heading)" }}
           >
             The new mental model
@@ -341,18 +341,18 @@ export default function StarbucksCaseStudy() {
 
       {/* CHAPTER 05 — THE MOTION MOMENT */}
       <RevealBlock>
-      <section className="max-w-3xl mx-auto px-6 mb-32">
+      <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
         <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
           Chapter 05
         </p>
         <h2
-          className="text-3xl md:text-5xl font-bold mb-12"
+          className="text-2xl md:text-4xl font-bold mb-8 md:mb-10"
           style={{ fontFamily: "var(--font-heading)" }}
         >
           The motion moment
         </h2>
 
-        <div className="space-y-6 text-lg text-zinc-300 leading-relaxed">
+        <div className="space-y-6 text-base md:text-lg text-zinc-300 leading-relaxed">
           <p>
             Frame 2 → Frame 3 is the only transition that earns animation in
             this case study.
@@ -391,18 +391,18 @@ export default function StarbucksCaseStudy() {
 
       {/* CHAPTER 06 — DESIGN DECISIONS */}
       <RevealBlock>
-      <section className="max-w-3xl mx-auto px-6 mb-32">
+      <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
         <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
           Chapter 06
         </p>
         <h2
-          className="text-3xl md:text-5xl font-bold mb-12"
+          className="text-2xl md:text-4xl font-bold mb-8 md:mb-10"
           style={{ fontFamily: "var(--font-heading)" }}
         >
           Design decisions worth naming
         </h2>
 
-        <div className="space-y-10">
+        <div className="space-y-6 md:space-y-8">
           {[
             {
               title: "Inter as a stand-in for Sodo Sans",
@@ -444,12 +444,12 @@ export default function StarbucksCaseStudy() {
 
       {/* CHAPTER 07 — WHAT I'D TEST NEXT */}
       <RevealBlock>
-      <section className="max-w-3xl mx-auto px-6 mb-32">
+      <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
         <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
           Chapter 07
         </p>
         <h2
-          className="text-3xl md:text-5xl font-bold mb-12"
+          className="text-2xl md:text-4xl font-bold mb-8 md:mb-10"
           style={{ fontFamily: "var(--font-heading)" }}
         >
           What I&apos;d test next
@@ -474,7 +474,7 @@ export default function StarbucksCaseStudy() {
 
       {/* SOURCES */}
       <RevealBlock>
-      <section className="max-w-3xl mx-auto px-6 mb-32">
+      <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
         <p className="text-[10px] tracking-[0.2em] text-zinc-600 font-semibold uppercase mb-4">
           Sources
         </p>
@@ -532,7 +532,7 @@ function ScreenSection({
   featured?: boolean;
 }) {
   return (
-    <div className="mb-24">
+    <div className="mb-16 md:mb-20">
       <div className="grid md:grid-cols-2 gap-12 items-center">
         <div>
           <p

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function SLUAlumniCaseStudy() {
   return (
-    <main className="min-h-screen bg-[#0a0a0a] pt-32 text-zinc-200">
+    <main className="min-h-screen bg-[#0a0a0a] pt-24 text-zinc-200">
       {/* Case-study actions */}
       <div className="fixed left-4 top-4 z-50">
         <Link
@@ -50,25 +50,25 @@ export default function SLUAlumniCaseStudy() {
 
       {/* HERO */}
       <RevealBlock>
-      <section className="max-w-5xl mx-auto px-6 pt-20 pb-16">
+      <section className="max-w-5xl mx-auto px-6 pt-12 md:pt-16 pb-10 md:pb-12">
         <p className="text-xs tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-6">
           Case Study &middot; 2024
         </p>
         <h1
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight"
           style={{ fontFamily: "var(--font-heading)" }}
         >
           SLU Alumni
           <br />
           Connect
         </h1>
-        <p className="mt-8 max-w-2xl text-lg md:text-xl text-zinc-400 leading-relaxed">
+        <p className="mt-6 max-w-2xl text-base md:text-lg text-zinc-400 leading-relaxed">
           A production-ready alumni engagement platform designed to replace
           fragmented spreadsheets and manual workflows with clear, role-based
           experiences for every stakeholder.
         </p>
 
-        <div className="mt-12 flex flex-wrap gap-x-12 gap-y-6 pt-8 border-t border-white/10">
+        <div className="mt-8 md:mt-10 flex flex-wrap gap-x-12 gap-y-6 pt-6 border-t border-white/10">
           {[
             { label: "Role", value: "Lead UI/UX Designer & Frontend Engineer" },
             { label: "Team", value: "5-person academic project" },
@@ -86,7 +86,7 @@ export default function SLUAlumniCaseStudy() {
 
       {/* COVER */}
       <RevealBlock>
-      <section className="max-w-7xl mx-auto px-6 mb-32">
+      <section className="max-w-7xl mx-auto px-6 mb-20 md:mb-24">
         <div className="rounded-2xl overflow-hidden border border-white/10">
           <Image
             src="/projects/slu-alumni-connect.png"
@@ -102,12 +102,12 @@ export default function SLUAlumniCaseStudy() {
 
       {/* CHAPTER 01 — THE PROBLEM */}
       <RevealBlock>
-      <section className="max-w-3xl mx-auto px-6 mb-32">
+      <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
         <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">Chapter 01</p>
-        <h2 className="text-3xl md:text-5xl font-bold mb-12" style={{ fontFamily: "var(--font-heading)" }}>
+        <h2 className="text-2xl md:text-4xl font-bold mb-8 md:mb-10" style={{ fontFamily: "var(--font-heading)" }}>
           The problem
         </h2>
-        <div className="space-y-6 text-lg text-zinc-300 leading-relaxed">
+        <div className="space-y-6 text-base md:text-lg text-zinc-300 leading-relaxed">
           <p>
             Saint Louis University has 142,000+ living alumni. Despite that network,
             alumni data lived in disconnected spreadsheets, email threads, and legacy
@@ -147,13 +147,13 @@ export default function SLUAlumniCaseStudy() {
 
       {/* CHAPTER 02 — RESEARCH */}
       <RevealBlock>
-      <section className="max-w-5xl mx-auto px-6 mb-32">
+      <section className="max-w-5xl mx-auto px-6 mb-20 md:mb-24">
         <div className="max-w-3xl">
           <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">Chapter 02</p>
-          <h2 className="text-3xl md:text-5xl font-bold mb-12" style={{ fontFamily: "var(--font-heading)" }}>
+          <h2 className="text-2xl md:text-4xl font-bold mb-8 md:mb-10" style={{ fontFamily: "var(--font-heading)" }}>
             Research &rarr; insight
           </h2>
-          <p className="text-lg text-zinc-300 leading-relaxed mb-12">
+          <p className="text-base md:text-lg text-zinc-300 leading-relaxed mb-8 md:mb-10">
             I led the design workstream across an 8-week Agile cycle. Before wireframing
             anything, I mapped the stakeholder landscape and benchmarked against peer
             institutions that had solved this problem at scale.
@@ -161,7 +161,7 @@ export default function SLUAlumniCaseStudy() {
         </div>
 
         {/* Benchmarks */}
-        <div className="grid sm:grid-cols-3 gap-4 mb-16">
+        <div className="grid sm:grid-cols-3 gap-4 mb-12 md:mb-14">
           {[
             { school: "U. of Michigan", stat: "45% annual engagement", method: "Integrated calendar + gamification" },
             { school: "Duke Blue Devil", stat: "1,800 mentorship matches/yr", method: "Up from 200 — 89% satisfaction" },
@@ -195,10 +195,10 @@ export default function SLUAlumniCaseStudy() {
 
       {/* CHAPTER 03 — SOLUTION */}
       <RevealBlock>
-      <section className="max-w-5xl mx-auto px-6 mb-32">
+      <section className="max-w-5xl mx-auto px-6 mb-20 md:mb-24">
         <div className="max-w-3xl">
           <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">Chapter 03</p>
-          <h2 className="text-3xl md:text-5xl font-bold mb-12" style={{ fontFamily: "var(--font-heading)" }}>
+          <h2 className="text-2xl md:text-4xl font-bold mb-8 md:mb-10" style={{ fontFamily: "var(--font-heading)" }}>
             The solution
           </h2>
         </div>
@@ -230,18 +230,18 @@ export default function SLUAlumniCaseStudy() {
 
       {/* CHAPTER 04 — DESIGN DECISIONS */}
       <RevealBlock>
-      <section className="max-w-3xl mx-auto px-6 mb-32">
+      <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
         <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">Chapter 04</p>
-        <h2 className="text-3xl md:text-5xl font-bold mb-6" style={{ fontFamily: "var(--font-heading)" }}>
+        <h2 className="text-2xl md:text-4xl font-bold mb-6" style={{ fontFamily: "var(--font-heading)" }}>
           Design decisions worth naming
           <span className="block text-zinc-600">(and what I rejected)</span>
         </h2>
-        <p className="text-lg text-zinc-300 leading-relaxed mb-16">
+        <p className="text-base md:text-lg text-zinc-300 leading-relaxed mb-12 md:mb-14">
           I used MoSCoW prioritization to protect scope across 8 weeks. Three features
           reached the cut list.
         </p>
 
-        <div className="space-y-10">
+        <div className="space-y-6 md:space-y-8">
           {[
             {
               decision: "Role-aware UI over a single unified interface",
@@ -284,12 +284,12 @@ export default function SLUAlumniCaseStudy() {
 
       {/* CHAPTER 05 — OUTCOMES */}
       <RevealBlock>
-      <section className="max-w-3xl mx-auto px-6 mb-32">
+      <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
         <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">Chapter 05</p>
-        <h2 className="text-3xl md:text-5xl font-bold mb-12" style={{ fontFamily: "var(--font-heading)" }}>
+        <h2 className="text-2xl md:text-4xl font-bold mb-8 md:mb-10" style={{ fontFamily: "var(--font-heading)" }}>
           Outcomes
         </h2>
-        <div className="grid sm:grid-cols-2 gap-4 mb-16">
+        <div className="grid sm:grid-cols-2 gap-4 mb-12 md:mb-14">
           {[
             { stat: "12,000+", label: "Alumni profiles in unified database" },
             { stat: "262", label: "Events tracked with real-time RSVP" },
@@ -320,9 +320,9 @@ export default function SLUAlumniCaseStudy() {
 
       {/* CHAPTER 06 — WHAT I'D TEST NEXT */}
       <RevealBlock>
-      <section className="max-w-3xl mx-auto px-6 mb-32">
+      <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
         <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">Chapter 06</p>
-        <h2 className="text-3xl md:text-5xl font-bold mb-12" style={{ fontFamily: "var(--font-heading)" }}>
+        <h2 className="text-2xl md:text-4xl font-bold mb-8 md:mb-10" style={{ fontFamily: "var(--font-heading)" }}>
           What I&apos;d test next
         </h2>
         <div className="space-y-8">

@@ -1,18 +1,28 @@
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Quote } from "lucide-react";
 import { RevealBlock } from "../../components/MotionPattern";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Portfolio UX Case Study — Harsha Asapu",
+  title: "Portfolio v3 — Harsha Asapu",
   description:
-    "How I designed and built my own portfolio across three phases — from a static site to an AI-powered, mobile-first product design showcase.",
+    "v3 was not a redesign. It was a response to specific hiring signal feedback. How restraint, motion hierarchy, and mobile-first structure reshaped the site.",
 };
+
+const CHAPTERS = [
+  { num: "01", label: "The pattern break" },
+  { num: "02", label: "Restraint" },
+  { num: "03", label: "Motion" },
+  { num: "04", label: "Mobile first" },
+  { num: "05", label: "The site as a tool" },
+  { num: "06", label: "What people said" },
+  { num: "07", label: "What shifted" },
+];
 
 export default function PortfolioCaseStudy() {
   return (
-    <main className="min-h-screen bg-[#0a0a0a] pt-32 text-zinc-200">
-      {/* Case-study actions */}
+    <main className="min-h-screen bg-[#0a0a0a] pt-24 text-zinc-200">
+      {/* Fixed back button */}
       <div className="fixed left-4 top-4 z-50">
         <Link
           href="/#projects"
@@ -23,447 +33,497 @@ export default function PortfolioCaseStudy() {
         </Link>
       </div>
 
+      {/* Fixed chapter chip (top-right) — desktop only, so mobile nav owns bottom-right */}
+      <div className="fixed right-4 top-4 z-50 hidden md:block">
+        <div className="rounded-full border border-white/10 bg-zinc-950/88 px-4 py-2.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-emerald-300/80 shadow-2xl shadow-black/35 backdrop-blur-xl">
+          Portfolio · v3
+        </div>
+      </div>
+
       {/* HERO */}
       <RevealBlock>
-      <section className="max-w-5xl mx-auto px-6 pt-20 pb-16">
-        <p className="text-xs tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-6">
-          Case Study &middot; 2024&ndash;2025
-        </p>
-        <h1
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight"
-          style={{ fontFamily: "var(--font-heading)" }}
-        >
-          Portfolio
-          <br />
-          <span className="text-zinc-500">Three phases.</span>
-          <br />
-          One signal.
-        </h1>
-        <p className="mt-8 max-w-2xl text-lg md:text-xl text-zinc-400 leading-relaxed">
-          Designing your own portfolio is the hardest brief. No client, no
-          constraints, no deadline. This is how I went from a static page to a
-          production system with a live AI chatbot, draggable UI, and a design
-          language built from scratch.
-        </p>
-
-        <div className="mt-12 flex flex-wrap gap-x-12 gap-y-6 pt-8 border-t border-white/10">
-          {[
-            { label: "Role", value: "Designer + Engineer" },
-            { label: "Stack", value: "Next.js · TypeScript · Framer Motion · OpenAI" },
-            { label: "Timeline", value: "2024 – Present" },
-            { label: "Status", value: "Phase 3 — Live" },
-          ].map((m) => (
-            <div key={m.label}>
-              <p className="text-[10px] tracking-widest text-zinc-600 font-semibold uppercase mb-1">
-                {m.label}
-              </p>
-              <p className="text-sm text-zinc-200">{m.value}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-      </RevealBlock>
-
-      {/* PHASE OVERVIEW */}
-      <RevealBlock>
-      <section className="max-w-5xl mx-auto px-6 mb-32">
-        <div className="grid sm:grid-cols-3 gap-4">
-          {[
-            {
-              phase: "Phase 1",
-              title: "Ship something",
-              year: "2024",
-              color: "text-zinc-400",
-              border: "border-white/10",
-              body: "Static Next.js site. Standard layout. Projects listed, no interactions, no personality. A resume in webpage form.",
-            },
-            {
-              phase: "Phase 2",
-              title: "Build the identity",
-              year: "2024",
-              color: "text-blue-400",
-              border: "border-blue-500/20",
-              body: "Dark theme, Framer Motion animations, starfield background. RAG chatbot introduced — the differentiator that made recruiters stop and ask questions.",
-            },
-            {
-              phase: "Phase 3",
-              title: "Make it a product",
-              year: "2025",
-              color: "text-emerald-400",
-              border: "border-emerald-500/20",
-              body: "Full mobile redesign. Draggable chat widget. Editorial typography system. Deep case studies. Skills pipeline. Every component rebuilt from first principles.",
-            },
-          ].map((p) => (
-            <div
-              key={p.phase}
-              className={"rounded-2xl border bg-white/[0.02] p-6 " + p.border}
+        <section className="max-w-5xl mx-auto px-6 pt-12 md:pt-16 pb-10 md:pb-12">
+          <p className="text-xs tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-6">
+            Case Study · v3
+          </p>
+          <h1
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight"
+            style={{ fontFamily: "var(--font-heading)" }}
+          >
+            The rebuild
+            <br />
+            that answered{" "}
+            <span
+              className="italic text-emerald-400"
+              style={{ fontFamily: "var(--font-serif)", fontWeight: 400 }}
             >
-              <div className="flex items-center justify-between mb-4">
-                <p className={"text-[10px] tracking-widest font-semibold uppercase " + p.color}>
-                  {p.phase}
-                </p>
-                <p className="text-[10px] text-zinc-600">{p.year}</p>
-              </div>
-              <h3
-                className="text-lg font-semibold text-white mb-3"
-                style={{ fontFamily: "var(--font-heading)" }}
-              >
-                {p.title}
-              </h3>
-              <p className="text-sm text-zinc-400 leading-relaxed">{p.body}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-      </RevealBlock>
+              specific
+            </span>{" "}
+            feedback.
+          </h1>
+          <p className="mt-6 max-w-2xl text-base md:text-lg text-zinc-400 leading-relaxed">
+            v2 shipped and worked. Then two signals came in. Hiring managers
+            filter on quantified real impact and systems thinking. Portfolio
+            reviewers said the site read like every other designer&apos;s. v3
+            was a response, not a refresh.
+          </p>
 
-      {/* CHAPTER 01 — THE PROBLEM WITH PORTFOLIOS */}
-      <RevealBlock>
-      <section className="max-w-3xl mx-auto px-6 mb-32">
-        <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
-          Chapter 01
-        </p>
-        <h2
-          className="text-3xl md:text-5xl font-bold mb-12"
-          style={{ fontFamily: "var(--font-heading)" }}
-        >
-          The brief nobody gives you
-        </h2>
-        <div className="space-y-6 text-lg text-zinc-300 leading-relaxed">
-          <p>
-            Most portfolios are a list of projects with screenshots. They answer
-            the question &ldquo;what did you work on?&rdquo; but not &ldquo;how
-            do you think?&rdquo; or &ldquo;can you actually build things?&rdquo;
-          </p>
-          <p>
-            My positioning — Product Designer who codes — needed a portfolio
-            that proved both halves of that claim without saying either out loud.
-            The site had to be the evidence, not the assertion.
-          </p>
-          <p>
-            Phase 1 shipped something. It didn&apos;t say anything. By the time
-            I was in my final semester at SLU, I knew the site needed to do more
-            than list work &mdash; it needed to be work.
-          </p>
-          <p className="text-zinc-400 italic">
-            The constraint that focused everything: a recruiter should be able to
-            understand my design thinking in under 90 seconds, without reading a
-            word of copy.
-          </p>
-        </div>
-      </section>
-      </RevealBlock>
-
-      {/* CHAPTER 02 — PHASE 1 */}
-      <RevealBlock>
-      <section className="max-w-3xl mx-auto px-6 mb-32">
-        <p className="text-[11px] tracking-[0.2em] text-zinc-500 font-semibold uppercase mb-4">
-          Chapter 02 &mdash; Phase 1
-        </p>
-        <h2
-          className="text-3xl md:text-5xl font-bold mb-6"
-          style={{ fontFamily: "var(--font-heading)" }}
-        >
-          Ship something.
-          <span className="block text-zinc-600">Anything.</span>
-        </h2>
-        <div className="space-y-6 text-lg text-zinc-300 leading-relaxed mb-12">
-          <p>
-            Phase 1 was a standard Next.js portfolio. Light theme, projects
-            listed in a grid, a contact form, a resume download. Nothing wrong
-            with it. Nothing memorable about it either.
-          </p>
-          <p>
-            The problem wasn&apos;t technical — it was positional. The site
-            looked like every other designer&apos;s portfolio. Inter font, white
-            background, subtle shadows. It communicated &ldquo;I know
-            Figma&rdquo; and stopped there.
-          </p>
-        </div>
-
-        {/* What was wrong */}
-        <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-8">
-          <p className="text-[10px] tracking-widest text-zinc-500 font-semibold uppercase mb-5">
-            What Phase 1 didn&apos;t do
-          </p>
-          <div className="space-y-3">
+          <div className="mt-8 md:mt-10 flex flex-wrap gap-x-12 gap-y-6 pt-6 border-t border-white/10">
             {[
-              "No personality — could have been anyone's portfolio",
-              "No proof of frontend capability — just a list of claims",
-              "No differentiation — identical visual language to 10,000 other portfolios",
-              "No memorable moment — nothing a recruiter would screenshot or share",
-            ].map((item) => (
-              <div key={item} className="flex items-start gap-3">
-                <span className="flex-shrink-0 mt-1 h-4 w-4 rounded-full border border-red-500/30 bg-red-500/10 flex items-center justify-center text-red-400 text-[9px]">
-                  &times;
-                </span>
-                <span className="text-sm text-zinc-400">{item}</span>
+              { label: "Role", value: "Designer + Engineer" },
+              {
+                label: "Stack",
+                value: "Next.js · TypeScript · Framer Motion · OpenAI",
+              },
+              { label: "Timeline", value: "Nov 2025 – Present" },
+              { label: "Status", value: "v3 — Live" },
+            ].map((m) => (
+              <div key={m.label}>
+                <p className="text-[10px] tracking-widest text-zinc-600 font-semibold uppercase mb-1">
+                  {m.label}
+                </p>
+                <p className="text-sm text-zinc-200">{m.value}</p>
               </div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
       </RevealBlock>
 
-      {/* CHAPTER 03 — PHASE 2 */}
+      {/* CHAPTER MAP — reader orientation, replaces the phase grid */}
       <RevealBlock>
-      <section className="max-w-3xl mx-auto px-6 mb-32">
-        <p className="text-[11px] tracking-[0.2em] text-blue-400/80 font-semibold uppercase mb-4">
-          Chapter 03 &mdash; Phase 2
-        </p>
-        <h2
-          className="text-3xl md:text-5xl font-bold mb-6"
-          style={{ fontFamily: "var(--font-heading)" }}
-        >
-          Build the identity.
-          <span className="block text-zinc-600">Find the signal.</span>
-        </h2>
-        <div className="space-y-6 text-lg text-zinc-300 leading-relaxed mb-16">
-          <p>
-            Phase 2 started with a single decision: dark canvas, because it
-            forces every element to earn its place. Light themes hide weak
-            design behind whitespace. Dark themes expose it.
-          </p>
-          <p>
-            The starfield background came next &mdash; not as decoration but as
-            a statement about depth. Shooting stars on scroll. A site that
-            moves the moment you land on it communicates interaction design
-            before you&apos;ve read a word.
-          </p>
-          <p>
-            The RAG chatbot was the real Phase 2 decision. I built a custom AI
-            assistant trained on my portfolio content &mdash; projects, process,
-            experience &mdash; using OpenAI embeddings and GPT-4.1-mini. Ask it
-            &ldquo;what&apos;s his strongest project&rdquo; and it answers from
-            the case studies. Ask it &ldquo;can he code&rdquo; and it explains
-            the stack.
-          </p>
-          <p className="text-zinc-400 italic pl-6 border-l-2 border-blue-500/30">
-            The chatbot became the most-mentioned feature in every recruiter
-            conversation. It proved the technical claim without requiring anyone
-            to read a skills list.
-          </p>
-        </div>
-
-        <div className="grid sm:grid-cols-2 gap-4">
-          {[
-            {
-              label: "Typography",
-              value: "Bricolage Grotesque for headings — editorial weight without aggression. Pinyon Script for the name signature — the one moment of personality that contrasts everything else.",
-            },
-            {
-              label: "Motion system",
-              value: "Framer Motion throughout. Scroll-tied parallax on motion pieces. Staggered entrance animations on every section. Nothing decorative — every animation carries meaning.",
-            },
-            {
-              label: "RAG chatbot",
-              value: "8 markdown knowledge files covering full career narrative, case studies, and UX process. Embeddings via OpenAI text-embedding-3-small. GPT-4.1-mini as the model.",
-            },
-            {
-              label: "Design language",
-              value: "Dark Depth: #0a0a0a canvas, indigo accents, hairlines not shadows. Editorial restraint over maximalism. Every spacing decision made deliberately.",
-            },
-          ].map((d) => (
-            <div
-              key={d.label}
-              className="rounded-xl border border-white/10 bg-white/[0.02] p-5"
-            >
-              <p className="text-[10px] tracking-widest text-blue-400/80 font-semibold uppercase mb-2">
-                {d.label}
-              </p>
-              <p className="text-sm text-zinc-400 leading-relaxed">{d.value}</p>
+        <section className="max-w-5xl mx-auto px-6 mb-16 md:mb-20">
+          <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-5 md:p-6">
+            <p className="text-[10px] tracking-widest text-emerald-400/80 font-semibold uppercase mb-4">
+              What&apos;s in this case study
+            </p>
+            <div className="grid grid-cols-2 gap-x-6 gap-y-2 md:grid-cols-4">
+              {CHAPTERS.map((c) => (
+                <a
+                  key={c.num}
+                  href={`#chapter-${c.num}`}
+                  className="group flex items-baseline gap-2 text-sm text-zinc-400 transition-colors hover:text-white"
+                >
+                  <span className="text-[10px] font-mono text-emerald-400/60 group-hover:text-emerald-300">
+                    {c.num}
+                  </span>
+                  <span>{c.label}</span>
+                </a>
+              ))}
             </div>
-          ))}
-        </div>
-      </section>
+          </div>
+
+          <p className="mt-6 max-w-2xl text-sm text-zinc-500 italic leading-relaxed">
+            v3 is not the third redesign. It is the first version built around
+            external hiring signal instead of internal taste.
+          </p>
+        </section>
       </RevealBlock>
 
-      {/* CHAPTER 04 — PHASE 3 */}
+      {/* CHAPTER 01 — THE PATTERN BREAK */}
       <RevealBlock>
-      <section className="max-w-3xl mx-auto px-6 mb-32">
-        <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
-          Chapter 04 &mdash; Phase 3
-        </p>
-        <h2
-          className="text-3xl md:text-5xl font-bold mb-6"
-          style={{ fontFamily: "var(--font-heading)" }}
+        <section
+          id="chapter-01"
+          className="max-w-3xl mx-auto px-6 mb-20 md:mb-24 scroll-mt-32"
         >
-          Make it a product.
-          <span className="block text-zinc-600">Treat every pixel as shipped.</span>
-        </h2>
-        <div className="space-y-6 text-lg text-zinc-300 leading-relaxed mb-16">
-          <p>
-            Phase 3 started when I realized the site worked on desktop and
-            broke on mobile. Not visually — functionally. The chat widget
-            blocked tap targets. The project cards didn&apos;t scroll. The
-            navigation didn&apos;t account for thumb reach zones.
+          <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
+            Chapter 01
           </p>
-          <p>
-            Mobile-first meant rebuilding every component from scratch with
-            375px as the primary viewport. Not adding responsive overrides to a
-            desktop design &mdash; actually designing mobile first, then
-            extending upward.
-          </p>
-          <p>
-            The draggable chat widget came from a real UX problem: the FAB was
-            covering content on certain screen sizes. The solution &mdash; let
-            the user move it &mdash; was also a demonstration of Framer Motion
-            capability. Corner-snap on release. Position persists in
-            localStorage. Chat panel repositions based on which corner the FAB
-            sits in so it never clips off-screen.
-          </p>
-          <p className="text-zinc-400 italic pl-6 border-l-2 border-emerald-500/30">
-            Every component in Phase 3 was written as if it would ship in a
-            production product. Not portfolio code. Product code.
-          </p>
-        </div>
+          <h2
+            className="text-2xl md:text-4xl font-bold mb-8 md:mb-10"
+            style={{ fontFamily: "var(--font-heading)" }}
+          >
+            The pattern break
+          </h2>
+          <div className="space-y-5 text-base md:text-lg text-zinc-300 leading-relaxed">
+            <p>
+              v2 already had the dark canvas. Already had the RAG chatbot.
+              Already had motion. It shipped. It read fine.
+            </p>
+            <p>
+              Then real feedback arrived. Chris Vitas, formerly Amazon, wrote
+              back with a diagnosis. Hiring managers filter on two things.
+              Quantified real world impact. Systems thinking that scales.
+              Speculative case studies pattern match to didn&apos;t ship, risky
+              hire.
+            </p>
+            <p>
+              A separate round of portfolio reviews said the site felt
+              indistinguishable from every other designer&apos;s dark themed
+              portfolio. External pattern match risk. Internal
+              indistinguishability. Two problems, one diagnosis. The site was
+              decorated, not designed.
+            </p>
+            <p className="text-zinc-400 italic">
+              v3 was a response to a specific hiring signal problem. Not a
+              taste refresh.
+            </p>
+          </div>
+        </section>
+      </RevealBlock>
 
-        {/* Phase 3 component list */}
-        <div className="space-y-4">
-          <p className="text-[10px] tracking-widest text-zinc-500 font-semibold uppercase mb-6">
-            What was rebuilt in Phase 3
+      {/* CHAPTER 02 — RESTRAINT */}
+      <RevealBlock>
+        <section
+          id="chapter-02"
+          className="max-w-3xl mx-auto px-6 mb-20 md:mb-24 scroll-mt-32"
+        >
+          <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
+            Chapter 02
           </p>
-          {[
-            {
-              component: "ChatWidget",
-              detail: "Draggable with corner-snap. Position persists in localStorage. Panel repositions based on FAB corner. All original animations preserved — shimmer, pulse rings, sparkle, alive thoughts.",
-            },
-            {
-              component: "MobileNav",
-              detail: "Full-depth drawer with profile photo, Pinyon Script signature, open-to-work pill, live time, and social row. z-[60] to stay above chatbot.",
-            },
-            {
-              component: "Projects",
-              detail: "Desktop: 2-column Starbucks-style hero cards stacked vertically. Mobile: 85vh tall Tinder-style scroll cards. Single action row — no duplicate CTA buttons.",
-            },
-            {
-              component: "Skills",
-              detail: "Desktop horizontal carousel with hover-to-reveal project context. Mobile vertical stacked phases with 2-col chip grid. Framer Motion color animation bug fixed.",
-            },
-            {
-              component: "Experience",
-              detail: "Scroll-tied vertical timeline. Sticky left context panel on desktop. Current role animated dot pulse. Spring-physics card hover.",
-            },
-            {
-              component: "SplashLoader",
-              detail: "First-visit gate with Pinyon Script name reveal and portal transition into the main site.",
-            },
-          ].map((c, i) => (
-            <div key={i} className="flex gap-5 border-t border-white/8 pt-5">
-              <div className="flex-shrink-0 w-32">
+          <h2
+            className="text-2xl md:text-4xl font-bold mb-8 md:mb-10"
+            style={{ fontFamily: "var(--font-heading)" }}
+          >
+            Restraint as the senior signal
+          </h2>
+          <div className="space-y-5 text-base md:text-lg text-zinc-300 leading-relaxed mb-10">
+            <p>
+              The bar was never make it prettier. The bar was read as someone
+              already thinking at the level of the role.
+            </p>
+            <p>
+              That meant restraint over decoration. Hierarchy over surface.
+              Every motion earning its place. Every visual element defensible
+              under a senior review.
+            </p>
+            <p>
+              Concretely. Compact typography scale, one step down at every
+              breakpoint. Section spacing tightened by twenty five percent.
+              One visual anchor per section instead of five. Copy compressed to
+              the shortest form that still carried the idea. Cover images
+              shrunk from full width to hero width. Nothing full bleed unless
+              the content demanded it.
+            </p>
+            <p className="text-zinc-400 italic">
+              The site got smaller. It communicated more.
+            </p>
+          </div>
+
+          {/* Metric callouts */}
+          <div className="grid grid-cols-3 gap-3 md:gap-4">
+            {[
+              { value: "25%", label: "Tighter section rhythm" },
+              { value: "1 step", label: "Down on every H1 breakpoint" },
+              { value: "0", label: "New features added" },
+            ].map((m) => (
+              <div
+                key={m.label}
+                className="rounded-xl border border-emerald-500/15 bg-emerald-500/[0.02] p-4 md:p-5"
+              >
+                <p className="text-lg md:text-2xl font-bold text-emerald-300 leading-none">
+                  {m.value}
+                </p>
+                <p className="mt-2 text-[10px] md:text-xs text-zinc-500 leading-tight">
+                  {m.label}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+      </RevealBlock>
+
+      {/* CHAPTER 03 — MOTION */}
+      <RevealBlock>
+        <section
+          id="chapter-03"
+          className="max-w-3xl mx-auto px-6 mb-20 md:mb-24 scroll-mt-32"
+        >
+          <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
+            Chapter 03
+          </p>
+          <h2
+            className="text-2xl md:text-4xl font-bold mb-8 md:mb-10"
+            style={{ fontFamily: "var(--font-heading)" }}
+          >
+            Motion as hierarchy signal
+          </h2>
+          <div className="space-y-5 text-base md:text-lg text-zinc-300 leading-relaxed mb-10">
+            <p>
+              Eight seconds. That is what a recruiter gives before deciding
+              whether to keep reading.
+            </p>
+            <p>
+              v2 treated every section equally in motion. Every card pulsed.
+              Every arrow nudged. Every accent shimmered. Ambient decoration
+              everywhere, meaning nowhere.
+            </p>
+            <p>v3 gates motion by role.</p>
+            <p>
+              Shipped cards pulse. Live status signal, real work. Concept cards
+              sit still. Arrows nudge once on scroll entry, then quiet. Never
+              on loop. Never competing.
+            </p>
+            <p>
+              The resume icon in the mobile nav is the only elevated element
+              in the whole navigation. Rose accent, one pulse on page load,
+              then rest. One next action, not five competing ones.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-5 md:p-6">
+            <p className="text-[10px] tracking-widest text-emerald-400/80 font-semibold uppercase mb-3">
+              The single question every motion decision now answers
+            </p>
+            <p
+              className="text-base md:text-lg text-zinc-200 leading-relaxed"
+              style={{ fontFamily: "var(--font-serif)" }}
+            >
+              What does this communicate that the still frame cannot?
+            </p>
+          </div>
+        </section>
+      </RevealBlock>
+
+      {/* CHAPTER 04 — MOBILE FIRST */}
+      <RevealBlock>
+        <section
+          id="chapter-04"
+          className="max-w-3xl mx-auto px-6 mb-20 md:mb-24 scroll-mt-32"
+        >
+          <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
+            Chapter 04
+          </p>
+          <h2
+            className="text-2xl md:text-4xl font-bold mb-8 md:mb-10"
+            style={{ fontFamily: "var(--font-heading)" }}
+          >
+            Mobile first, inverted
+          </h2>
+          <div className="space-y-5 text-base md:text-lg text-zinc-300 leading-relaxed mb-10">
+            <p>
+              Most designers design on desktop and squish to mobile. That is a
+              tell.
+            </p>
+            <p>
+              v3 inverted the flow. Every compact rule was written for mobile
+              first. Desktop inherited what mobile could carry.
+            </p>
+          </div>
+
+          {/* What changed on mobile — grid */}
+          <div className="space-y-3">
+            {[
+              {
+                area: "Case study cards",
+                change:
+                  "Tall vertical tiles rebuilt as short wide horizontal ones. Two to three fit on a phone screen. Thumb reach respected.",
+              },
+              {
+                area: "MobileNav",
+                change:
+                  "Resume icon moved to guided left position. RAG chatbot moved right. Active state glow matched the desktop nav exactly so both read as one product.",
+              },
+              {
+                area: "Hero centering",
+                change:
+                  "Rewritten to respect the fixed mobile nav overlay. Section min height minus nav footprint. No dead scroll space below the socials.",
+              },
+              {
+                area: "Cover images",
+                change:
+                  "Shrunk to match hero text width. What felt full bleed and heavy on desktop now reads as intentional.",
+              },
+            ].map((row) => (
+              <div
+                key={row.area}
+                className="grid grid-cols-[110px_1fr] gap-4 border-t border-white/8 pt-4 md:grid-cols-[160px_1fr]"
+              >
                 <p
                   className="text-sm font-semibold text-white"
                   style={{ fontFamily: "var(--font-heading)" }}
                 >
-                  {c.component}
+                  {row.area}
+                </p>
+                <p className="text-sm text-zinc-400 leading-relaxed">
+                  {row.change}
                 </p>
               </div>
-              <p className="text-sm text-zinc-400 leading-relaxed">{c.detail}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+            ))}
+          </div>
+        </section>
       </RevealBlock>
 
-      {/* CHAPTER 05 — DECISIONS */}
+      {/* CHAPTER 05 — THE SITE AS A TOOL */}
       <RevealBlock>
-      <section className="max-w-3xl mx-auto px-6 mb-32">
-        <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
-          Chapter 05
-        </p>
-        <h2
-          className="text-3xl md:text-5xl font-bold mb-12"
-          style={{ fontFamily: "var(--font-heading)" }}
+        <section
+          id="chapter-05"
+          className="max-w-3xl mx-auto px-6 mb-20 md:mb-24 scroll-mt-32"
         >
-          Design decisions worth naming
-        </h2>
-
-        <div className="space-y-10">
-          {[
-            {
-              title: "Restraint signals seniority",
-              body: "Every time I was tempted to add another animation, another gradient, another feature — I asked whether it served the content or served my ego. Maximalism signals effort. Restraint signals judgment. The portfolio is an argument for the latter.",
-            },
-            {
-              title: "The chatbot is the portfolio",
-              body: "Most portfolios ask recruiters to read. The RAG chatbot lets them ask. &ldquo;What&apos;s his strongest project?&rdquo; &ldquo;Can he work in a design system?&rdquo; &ldquo;Is he available?&rdquo; Every answer is grounded in real content, not hallucination. That&apos;s a product decision, not a gimmick.",
-            },
-            {
-              title: "Mobile-first isn&apos;t a checkbox",
-              body: "Phase 2 had responsive classes applied to a desktop design. Phase 3 started at 375px and built up. The difference is not cosmetic — it&apos;s structural. The project cards are entirely different components on mobile vs desktop, not the same component with overrides.",
-            },
-            {
-              title: "The draggable widget is a UX proof",
-              body: "A fixed FAB covering content is a UX failure. Letting the user relocate it is the correct solution. The implementation &mdash; Framer Motion drag with corner-snap and localStorage persistence &mdash; is also a live demonstration of interaction design capability. One feature, two jobs.",
-            },
-          ].map((d, i) => (
-            <div key={i}>
-              <h3
-                className="text-xl md:text-2xl font-semibold text-white mb-3"
-                style={{ fontFamily: "var(--font-heading)" }}
-                dangerouslySetInnerHTML={{ __html: d.title }}
-              />
-              <p
-                className="text-lg text-zinc-400 leading-relaxed"
-                dangerouslySetInnerHTML={{ __html: d.body }}
-              />
-            </div>
-          ))}
-        </div>
-      </section>
+          <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
+            Chapter 05
+          </p>
+          <h2
+            className="text-2xl md:text-4xl font-bold mb-8 md:mb-10"
+            style={{ fontFamily: "var(--font-heading)" }}
+          >
+            The site as a tool
+          </h2>
+          <div className="space-y-5 text-base md:text-lg text-zinc-300 leading-relaxed">
+            <p>
+              The RAG chatbot is the strongest single feature. It absorbs what
+              the About section cannot. Follow up questions.
+            </p>
+            <p>
+              v2&apos;s About chips opened the chatbot. But the input stayed
+              empty. The recruiter had to retype the question. Curiosity died
+              in the gap.
+            </p>
+            <p>
+              v3 wires the chips to pre fill the input. One tap goes from
+              About to a loaded question. The recruiter edits or hits enter.
+            </p>
+            <p>
+              The chat bubble itself drags anywhere on the screen. Not corner
+              only. iOS AssistiveTouch behavior. Snap to the nearest edge, keep
+              the other axis wherever you dropped it. Position persists across
+              reloads.
+            </p>
+            <p className="text-zinc-400 italic">
+              Because a recruiter reading a long form case study should not
+              have to reach for a button stuck in the wrong corner.
+            </p>
+          </div>
+        </section>
       </RevealBlock>
 
-      {/* CHAPTER 06 — WHAT'S NEXT */}
+      {/* CHAPTER 06 — WHAT PEOPLE SAID */}
       <RevealBlock>
-      <section className="max-w-3xl mx-auto px-6 mb-32">
-        <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
-          Chapter 06
-        </p>
-        <h2
-          className="text-3xl md:text-5xl font-bold mb-12"
-          style={{ fontFamily: "var(--font-heading)" }}
+        <section
+          id="chapter-06"
+          className="max-w-3xl mx-auto px-6 mb-20 md:mb-24 scroll-mt-32"
         >
-          What&apos;s next
-        </h2>
+          <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
+            Chapter 06
+          </p>
+          <h2
+            className="text-2xl md:text-4xl font-bold mb-8 md:mb-10"
+            style={{ fontFamily: "var(--font-heading)" }}
+          >
+            What people said
+          </h2>
+          <p className="mb-10 text-base md:text-lg text-zinc-300 leading-relaxed">
+            v3 was not self directed. Every structural decision traces back to
+            specific feedback from people whose opinion moves hiring outcomes.
+          </p>
 
-        <div className="space-y-8">
-          {[
-            "High-fidelity Figma wireframes for each case study — replacing the current image placeholders with screens designed to the same editorial standard as the case study writing.",
-            "SLU Alumni Connect and AI Resume Editor case study screens — both projects have live deployments that deserve proper visual documentation.",
-            "RAG bot voice refinement — the system prompt needs tightening so the bot responds in my voice, not a generic assistant voice.",
-            "Phase 4 will be defined by whatever problem Phase 3 reveals. The portfolio is a product. Products iterate.",
-          ].map((item, i) => (
-            <div key={i} className="flex gap-4">
-              <span className="flex-shrink-0 text-emerald-400/60 text-2xl leading-none">
-                &rarr;
-              </span>
-              <p className="text-lg text-zinc-400 leading-relaxed">{item}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+          {/* Quote block 1 */}
+          <figure className="mb-8 rounded-2xl border border-emerald-500/15 bg-emerald-500/[0.03] p-6 md:p-8">
+            <Quote
+              size={20}
+              className="mb-4 text-emerald-400/50"
+              aria-hidden
+            />
+            <blockquote
+              className="text-lg md:text-xl leading-relaxed text-zinc-100"
+              style={{ fontFamily: "var(--font-serif)" }}
+            >
+              A flashy case study for a brand like Starbucks isn&apos;t going
+              to be as interesting to an Amazon hiring manager as real work
+              for a smaller client that had a meaningful impact on their
+              business.
+            </blockquote>
+            <figcaption className="mt-5 text-xs font-semibold uppercase tracking-[0.18em] text-emerald-300/80">
+              Chris Vitas, Principal UX Designer, formerly Amazon
+            </figcaption>
+          </figure>
+
+          {/* Quote block 2 — Vasudha */}
+          <figure className="mb-10 rounded-2xl border border-blue-500/15 bg-blue-500/[0.03] p-6 md:p-8">
+            <Quote
+              size={20}
+              className="mb-4 text-blue-400/50"
+              aria-hidden
+            />
+            <blockquote
+              className="text-lg md:text-xl leading-relaxed text-zinc-100"
+              style={{ fontFamily: "var(--font-serif)" }}
+            >
+              Designers do everything end to end here, so showing all the
+              things would be beneficial.
+            </blockquote>
+            <figcaption className="mt-5 text-xs font-semibold uppercase tracking-[0.18em] text-blue-300/80">
+              Vasudha Singh, UX Designer at AWS Solutions
+            </figcaption>
+          </figure>
+
+          <p className="text-base md:text-lg text-zinc-300 leading-relaxed">
+            Every case study was reordered around this feedback. Real shipped
+            work leads. BuiltinTech, NRI Wellbeing, Resume Tailor, and this
+            portfolio itself sit in positions one through four. Speculative
+            work is present but ranked below.
+          </p>
+        </section>
+      </RevealBlock>
+
+      {/* CHAPTER 07 — WHAT SHIFTED */}
+      <RevealBlock>
+        <section
+          id="chapter-07"
+          className="max-w-3xl mx-auto px-6 mb-20 md:mb-24 scroll-mt-32"
+        >
+          <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
+            Chapter 07
+          </p>
+          <h2
+            className="text-2xl md:text-4xl font-bold mb-8 md:mb-10"
+            style={{ fontFamily: "var(--font-heading)" }}
+          >
+            What shifted
+          </h2>
+          <div className="space-y-5 text-base md:text-lg text-zinc-300 leading-relaxed">
+            <p>
+              v3 shipped in November 2025. Too early to claim causal outcomes
+              on interview volume or offer velocity.
+            </p>
+            <p>What is measurable now.</p>
+          </div>
+
+          <ul className="mt-6 space-y-3">
+            {[
+              "Three new real client case studies added to shipped work.",
+              "Every section on mobile fits its content without dead scroll space.",
+              "Every design decision from v2 to v3 is documented and defensible under senior review.",
+            ].map((item) => (
+              <li
+                key={item}
+                className="flex gap-3 text-base md:text-lg text-zinc-300 leading-relaxed"
+              >
+                <span
+                  className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-400"
+                  aria-hidden
+                />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+
+          <p className="mt-8 text-base md:text-lg text-zinc-400 leading-relaxed italic">
+            The rest of the signal — interviews, referrals, offers — is what
+            v3 is now watching for.
+          </p>
+        </section>
       </RevealBlock>
 
       {/* CLOSING */}
       <RevealBlock>
-      <section className="max-w-3xl mx-auto px-6 pb-32 pt-16 border-t border-white/10">
-        <p className="text-[11px] tracking-[0.2em] text-zinc-500 font-semibold uppercase mb-4">
-          Live
-        </p>
-        <a
-          href="https://harshaasapu.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group block"
-        >
-          <p
-            className="text-3xl md:text-4xl font-bold text-zinc-300 group-hover:text-white transition-colors"
-            style={{ fontFamily: "var(--font-heading)" }}
-          >
-            harshaasapu.com &rarr;
+        <section className="max-w-3xl mx-auto px-6 pb-32 pt-16 border-t border-white/10">
+          <p className="text-[11px] tracking-[0.2em] text-zinc-500 font-semibold uppercase mb-4">
+            Live
           </p>
-        </a>
-      </section>
+          <a
+            href="https://harshaasapu.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group block"
+          >
+            <p
+              className="text-3xl md:text-4xl font-bold text-zinc-300 group-hover:text-white transition-colors"
+              style={{ fontFamily: "var(--font-heading)" }}
+            >
+              harshaasapu.com &rarr;
+            </p>
+          </a>
+        </section>
       </RevealBlock>
     </main>
   );

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function ResumeTailorCaseStudy() {
   return (
-    <main className="min-h-screen bg-[#0a0a0a] pt-32 text-zinc-200">
+    <main className="min-h-screen bg-[#0a0a0a] pt-24 text-zinc-200">
       {/* Case-study actions */}
       <div className="fixed left-4 top-4 z-50">
         <Link
@@ -50,23 +50,23 @@ export default function ResumeTailorCaseStudy() {
 
       {/* HERO */}
       <RevealBlock>
-      <section className="max-w-5xl mx-auto px-6 pt-20 pb-16">
+      <section className="max-w-5xl mx-auto px-6 pt-12 md:pt-16 pb-10 md:pb-12">
         <p className="text-xs tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-6">
           Case Study · 2026
         </p>
         <h1
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight"
           style={{ fontFamily: "var(--font-heading)" }}
         >
           Resume Tailor
         </h1>
-        <p className="mt-8 max-w-2xl text-lg md:text-xl text-zinc-400 leading-relaxed">
+        <p className="mt-6 max-w-2xl text-base md:text-lg text-zinc-400 leading-relaxed">
           A tool for people who write their own resumes. Rebuilt from a
           Streamlit prototype into a real product. The story of what a
           maker&apos;s tool actually needs, and what I threw away to get there.
         </p>
 
-        <div className="mt-12 flex flex-wrap gap-x-12 gap-y-6 pt-8 border-t border-white/10">
+        <div className="mt-8 md:mt-10 flex flex-wrap gap-x-12 gap-y-6 pt-6 border-t border-white/10">
           {[
             { label: "Role", value: "Product Designer & Frontend Engineer" },
             { label: "Timeframe", value: "2 weeks" },
@@ -89,7 +89,7 @@ export default function ResumeTailorCaseStudy() {
 
       {/* COVER IMAGE */}
       <RevealBlock>
-      <section className="max-w-7xl mx-auto px-6 mb-32">
+      <section className="max-w-5xl mx-auto px-6 mb-20 md:mb-24">
         <div className="rounded-2xl overflow-hidden border border-white/10">
           <Image
             src="/projects/resume-tailor-cover.png"
@@ -105,17 +105,17 @@ export default function ResumeTailorCaseStudy() {
 
       {/* CHAPTER 01 — THE PROBLEM */}
       <RevealBlock>
-      <section className="max-w-3xl mx-auto px-6 mb-32">
+      <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
         <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
           Chapter 01
         </p>
         <h2
-          className="text-3xl md:text-5xl font-bold mb-12"
+          className="text-2xl md:text-4xl font-bold mb-8 md:mb-10"
           style={{ fontFamily: "var(--font-heading)" }}
         >
           Identified the real break
         </h2>
-        <div className="space-y-6 text-lg text-zinc-300 leading-relaxed">
+        <div className="space-y-6 text-base md:text-lg text-zinc-300 leading-relaxed">
           <p>
             The original AI Resume Editor was a Streamlit prototype. It worked.
             It matched resumes to job descriptions, generated tailored bullets,
@@ -137,7 +137,7 @@ export default function ResumeTailorCaseStudy() {
 
       {/* COLD-START IMAGE */}
       <RevealBlock>
-      <section className="max-w-4xl mx-auto px-6 mb-12">
+      <section className="max-w-4xl mx-auto px-6 mb-8 md:mb-10">
         <div className="rounded-2xl overflow-hidden border border-white/10 bg-white">
           <Image
             src="/case-studies/resume-tailor/cold-start.png"
@@ -155,8 +155,8 @@ export default function ResumeTailorCaseStudy() {
       </RevealBlock>
 
       <RevealBlock>
-      <section className="max-w-3xl mx-auto px-6 mb-32">
-        <div className="space-y-6 text-lg text-zinc-300 leading-relaxed">
+      <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
+        <div className="space-y-6 text-base md:text-lg text-zinc-300 leading-relaxed">
           <p>
             Job seekers don&apos;t bookmark a tool for later. They open it
             once, in the middle of an application, with a JD open in another
@@ -173,29 +173,29 @@ export default function ResumeTailorCaseStudy() {
 
       {/* CHAPTER 02 — WHAT SURVIVED */}
       <RevealBlock>
-      <section className="max-w-5xl mx-auto px-6 mb-32">
+      <section className="max-w-5xl mx-auto px-6 mb-20 md:mb-24">
         <div className="max-w-3xl">
           <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
             Chapter 02
           </p>
           <h2
-            className="text-3xl md:text-5xl font-bold mb-12"
+            className="text-2xl md:text-4xl font-bold mb-8 md:mb-10"
             style={{ fontFamily: "var(--font-heading)" }}
           >
             What survived the rewrite
           </h2>
-          <p className="text-lg text-zinc-300 leading-relaxed mb-6">
+          <p className="text-base md:text-lg text-zinc-300 leading-relaxed mb-6">
             A rewrite is a chance to throw away the parts that were only there
             because they were easy. I went through the old app and asked one
             question of every feature: would I add this again from scratch?
           </p>
-          <p className="text-lg text-zinc-400 italic leading-relaxed mb-12">
+          <p className="text-lg text-zinc-400 italic leading-relaxed mb-8 md:mb-10">
             A maker&apos;s tool shouldn&apos;t ask the user to know things they
             don&apos;t need to know.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 mb-16">
+        <div className="grid md:grid-cols-2 gap-6 mb-12 md:mb-14">
           <div className="rounded-2xl overflow-hidden border border-white/10">
             <Image
               src="/case-studies/resume-tailor/old-mvp.png"
@@ -288,12 +288,12 @@ export default function ResumeTailorCaseStudy() {
 
       {/* CHAPTER 03 — DECISIONS */}
       <RevealBlock>
-      <section className="max-w-3xl mx-auto px-6 mb-32">
+      <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
         <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
           Chapter 03
         </p>
         <h2
-          className="text-3xl md:text-5xl font-bold mb-12"
+          className="text-2xl md:text-4xl font-bold mb-8 md:mb-10"
           style={{ fontFamily: "var(--font-heading)" }}
         >
           Decisions that earned
@@ -333,18 +333,18 @@ export default function ResumeTailorCaseStudy() {
 
       {/* CHAPTER 04 — THE MATCH MOMENT */}
       <RevealBlock>
-      <section className="max-w-5xl mx-auto px-6 mb-32">
+      <section className="max-w-5xl mx-auto px-6 mb-20 md:mb-24">
         <div className="max-w-3xl">
           <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
             Chapter 04
           </p>
           <h2
-            className="text-3xl md:text-5xl font-bold mb-12"
+            className="text-2xl md:text-4xl font-bold mb-8 md:mb-10"
             style={{ fontFamily: "var(--font-heading)" }}
           >
             The match moment
           </h2>
-          <p className="text-lg text-zinc-300 leading-relaxed mb-12">
+          <p className="text-base md:text-lg text-zinc-300 leading-relaxed mb-8 md:mb-10">
             The single screen that justifies the whole product. Score on the
             left, covered keywords in green, missing keywords in amber,
             specific suggestions below. The recruiter&apos;s brain rendered as
@@ -385,18 +385,18 @@ export default function ResumeTailorCaseStudy() {
 
       {/* CHAPTER 05 — THE BUILD JOURNEY */}
       <RevealBlock>
-      <section className="max-w-3xl mx-auto px-6 mb-32">
+      <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
         <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
           Chapter 05
         </p>
         <h2
-          className="text-3xl md:text-5xl font-bold mb-6"
+          className="text-2xl md:text-4xl font-bold mb-6"
           style={{ fontFamily: "var(--font-heading)" }}
         >
           The build journey
           <span className="block text-zinc-600">(with the bruises)</span>
         </h2>
-        <p className="text-lg text-zinc-300 leading-relaxed mb-16">
+        <p className="text-base md:text-lg text-zinc-300 leading-relaxed mb-12 md:mb-14">
           Most designer case studies show the polished frames and hide the
           debugging. The honest version of shipping a real product is that
           half the time goes into infrastructure problems that have nothing
@@ -441,18 +441,18 @@ export default function ResumeTailorCaseStudy() {
 
       {/* CHAPTER 06 — WHAT SHIPS */}
       <RevealBlock>
-      <section className="max-w-5xl mx-auto px-6 mb-32">
+      <section className="max-w-5xl mx-auto px-6 mb-20 md:mb-24">
         <div className="max-w-3xl">
           <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
             Chapter 06
           </p>
           <h2
-            className="text-3xl md:text-5xl font-bold mb-6"
+            className="text-2xl md:text-4xl font-bold mb-6"
             style={{ fontFamily: "var(--font-heading)" }}
           >
             What ships
           </h2>
-          <p className="text-lg text-zinc-400 leading-relaxed mb-12">
+          <p className="text-lg text-zinc-400 leading-relaxed mb-8 md:mb-10">
             Three things ship. Each one designed so the person using the tool
             sees the receipts, not just the verdict.
           </p>
@@ -485,18 +485,18 @@ export default function ResumeTailorCaseStudy() {
 
       {/* CHAPTER 07 — WHAT'S NEXT */}
       <RevealBlock>
-      <section className="max-w-3xl mx-auto px-6 mb-32">
+      <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
         <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
           Chapter 07
         </p>
         <h2
-          className="text-3xl md:text-5xl font-bold mb-12"
+          className="text-2xl md:text-4xl font-bold mb-8 md:mb-10"
           style={{ fontFamily: "var(--font-heading)" }}
         >
           What I&apos;d test next
         </h2>
 
-        <div className="space-y-8 text-lg text-zinc-300 leading-relaxed">
+        <div className="space-y-8 text-base md:text-lg text-zinc-300 leading-relaxed">
           <p>
             <strong className="text-white">Telemetry on bridgeable gaps.</strong>{" "}
             Across many users, which JD keywords are most often legitimately
@@ -531,7 +531,7 @@ export default function ResumeTailorCaseStudy() {
         </div>
 
         <div className="mt-20 pt-12 border-t border-white/10">
-          <p className="text-lg text-zinc-300 leading-relaxed italic">
+          <p className="text-base md:text-lg text-zinc-300 leading-relaxed italic">
             A tool for other people to create with has to keep proving it
             deserves the space on their screen. Resume Tailor is one rewrite
             into that proof. The next round is already in the backlog.
@@ -657,7 +657,7 @@ function ScreenSection({
   featured?: boolean;
 }) {
   return (
-    <div className="mb-24">
+    <div className="mb-16 md:mb-20">
       <div className="grid md:grid-cols-2 gap-12 items-center">
         <div>
           <p

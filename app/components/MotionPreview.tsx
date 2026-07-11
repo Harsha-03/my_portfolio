@@ -30,7 +30,7 @@ function MotionTile({
       className={
         "group relative block w-full transform-gpu overflow-hidden rounded-[1.65rem] border bg-zinc-950 shadow-2xl shadow-black/35 transition-[border-color,transform] duration-300 hover:-translate-y-1 " +
         (active ? "border-blue-400/40" : "border-white/10 hover:border-white/25") +
-        (large ? " h-[460px] xl:h-[520px]" : " h-[235px]")
+        (large ? " h-[235px] md:h-[460px] xl:h-[520px]" : " h-[235px]")
       }
     >
       <motion.video

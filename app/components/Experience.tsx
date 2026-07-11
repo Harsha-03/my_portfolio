@@ -259,7 +259,7 @@ export default function Experience() {
                       damping: 24,
                     }}
                     className="rounded-2xl border border-white/[0.08]
-                               bg-white/[0.03] px-4 py-5 sm:px-5 md:px-6
+                               bg-white/[0.03] px-3.5 py-3.5 sm:px-5 sm:py-5 md:px-6
                                transition-colors duration-200"
                   >
                     {/* Header */}
@@ -288,7 +288,7 @@ export default function Experience() {
                     {/* Current badge */}
                     {exp.current && (
                       <motion.div
-                        className="mt-3"
+                        className="mt-2"
                         initial={{ opacity: 0, scale: 0.96 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
@@ -307,7 +307,7 @@ export default function Experience() {
 
                     {/* Highlights */}
                     <motion.ul
-                      className="mt-4 space-y-2.5 md:space-y-2"
+                      className="mt-3 space-y-1.5 md:space-y-2"
                       variants={sectionVariant}
                       initial="hidden"
                       whileInView="show"
@@ -357,7 +357,7 @@ export default function Experience() {
           position: relative;
           display: flex;
           flex-direction: column;
-          gap: 2.25rem;
+          gap: 1.5rem;
         }
 
         .experience-track::before {
