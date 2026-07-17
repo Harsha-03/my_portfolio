@@ -218,7 +218,7 @@ export default function Hero() {
 
           <BlurText
             as="h1"
-            text="a UX Designer building products that actually ship."
+            text="an Interaction Designer building products that actually ship."
             delay={70}
             duration={0.7}
             startDelay={0.35}
@@ -279,7 +279,7 @@ export default function Hero() {
               <p>
                 <span className="text-emerald-400">Exploring:</span>{" "}
                 <TextType
-                  text="Interaction design for tools that let others create."
+                  text="Interaction design for real-world decisions people make in seconds."
                   typingSpeed={15}
                   startDelay={1.0}
                   showCursor
@@ -301,7 +301,7 @@ export default function Hero() {
               <p>
                 <span className="text-emerald-400">Reading:</span>{" "}
                 <TextType
-                  text="Don Norman on discoverability, and every YouTube Effects designer's Medium."
+                  text="Don Norman on discoverability, and the Design Bootcamp interaction craft archive."
                   typingSpeed={15}
                   startDelay={2.75}
                   showCursor
