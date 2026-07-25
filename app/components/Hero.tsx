@@ -290,7 +290,7 @@ export default function Hero() {
               <p>
                 <span className="text-emerald-400">Recent:</span>{" "}
                 <TextType
-                  text="Shipped portfolio v3, published two pieces in Design Bootcamp."
+                  text="Shipping Phoenix AI to production — six design decisions in two weeks."
                   typingSpeed={15}
                   startDelay={1.8}
                   showCursor
@@ -319,12 +319,19 @@ export default function Hero() {
             className="mt-6 flex flex-wrap items-center justify-center gap-3 md:mt-8 md:gap-4"
           >
             <motion.a
-              href="#about"
+              href="#projects"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById("projects")?.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start",
+                });
+              }}
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
               className="group inline-flex items-center gap-2 rounded-xl bg-red-500 px-4 py-2.5 text-xs font-semibold text-white transition-colors hover:bg-red-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-400/60 md:text-sm md:px-5 md:py-3"
             >
-              Meet Me
+              My Work
               <motion.span
                 className="inline-block"
                 initial={{ x: 0 }}
@@ -347,6 +354,39 @@ export default function Hero() {
             </motion.div>
           </motion.div>
         </motion.div>
+
+        {/* Scroll indicator — signals "there's more below" without adding weight */}
+        <motion.a
+          href="#about"
+          onClick={(e) => {
+            e.preventDefault();
+            document.getElementById("about")?.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }}
+          initial={{ opacity: 0, y: -8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: smoothEase, delay: 4.4 }}
+          className="pointer-events-auto absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-[10px] tracking-[0.2em] font-medium text-zinc-500 uppercase transition-colors hover:text-emerald-400/80 focus:outline-none focus-visible:text-emerald-400"
+          aria-label="Scroll to Meet Me"
+        >
+          <span className="pl-[0.2em]">Meet Me</span>
+          <motion.span
+            aria-hidden="true"
+            animate={{ y: [0, 4, 0] }}
+            transition={{
+              duration: 1.8,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="text-emerald-400/60"
+          >
+            <svg width="10" height="14" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5 1V12M5 12L9 8M5 12L1 8" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </motion.span>
+        </motion.a>
       </div>
     </section>
   );

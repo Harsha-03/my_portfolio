@@ -22,6 +22,41 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    slug: "phoenix-ai",
+    title: "Phoenix AI — Six Decisions in Two Weeks",
+    shortDescription:
+      "Sole design owner on a live AI health platform. Direct ship authority. Six documented reframes. Live at phoenix-cdreams.org.",
+    video: "/projects/phoenix-ai-preview.mp4",
+    tags: ["Live Product", "AI Health", "Design System", "Interaction Design"],
+    caseStudy: "/case-studies/phoenix-ai",
+    demo: "https://phoenix-cdreams.org",
+    status: "Live",
+    year: "2026",
+    featured: true,
+    overview:
+      "Sole design owner on Phoenix AI, an AI-powered health optimization platform (biomarker data, wearable signals, ML-driven health scores and longevity insights). Over two weeks, shipped a full dashboard redesign, brand cohesion overhaul, and cross-platform navigation consolidation to production. Every ticket came in with either no spec or a one-line brief: 'your call, do whatever you think is best.' Ship authority direct to production. No PMs. No approval gates.",
+    role: "Sole Product & Interaction Designer",
+    timeframe: "2 weeks intensive · Feb 2026",
+    platform: "Web + Mobile",
+    tools: ["Figma", "React", "TypeScript", "Tailwind", "shadcn/ui", "Supabase"],
+    problems: [
+      "Every ticket landed with either no spec or one line of context; every judgment call was mine",
+      "Two conflicting brand palettes in production from people senior to me, no reconciliation process",
+      "Three overlapping navigation systems across desktop and mobile pointing to the same destinations",
+      "Layout bug misdiagnosed as a state bug; users reported cards visually expanding in sync",
+      "Platform felt visually static; motion brief was 'add subtle premium animations'",
+    ],
+    solutions: [
+      "Reframed a badge request into an IA overhaul: grouped 14 biomarkers by domain, added scoring transparency summary and popover, killed full-row status washes for a 3px left border + status pill",
+      "Reconciled brand palettes without escalation: derived the entire dark mode from the branding lead's navy, mapped all tokens in index.css, documented reasoning after shipping",
+      "Diagnosed auto-rows-fr as the real cause of the 'shared state' bug; replaced inline Collapsible with a shadcn Sheet (side sheet desktop, bottom sheet mobile) with staggered entrance animations",
+      "Deleted the top tab row and mobile bottom nav, consolidated into a single sidebar system. Navigation surface reduced by 60%. No items lost",
+      "Built a named motion vocabulary tied to health metaphors: phoenixFadeUp, phoenixBreathe, phoenixDrawIn, phoenixHamburgerHint, phoenixDotPulse — all respect prefers-reduced-motion",
+      "Three stacked discoverability signals on the mobile hamburger (Menu icon swap, primary-color dot, breathing pulse + nudge) all removed permanently after first tap via localStorage",
+    ],
+  },
+
+  {
     slug: "builtintech-delivery",
     title: "BuiltinTech Client Delivery System",
     shortDescription:

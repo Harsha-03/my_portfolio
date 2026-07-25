@@ -23,13 +23,14 @@ import { RevealBlock, SectionLabel } from "./MotionPattern";
 
 /* — Card display order (top to bottom) — */
 const CASE_STUDY_ORDER = [
+  "phoenix-ai",
   "builtintech-delivery",
   "nri-wellbeing",
+  "starbucks-mobile-order",
+  "slu-alumni-connect",
   "resume-tailor",
   "portfolio",
-  "starbucks-mobile-order",
   "lifeos",
-  "slu-alumni-connect",
 ];
 
 type IconName = "zap" | "clock" | "layers" | "rocket" | "check" | "badge";
@@ -46,6 +47,19 @@ type CardData = {
 };
 
 const CARD_COPY: Record<string, CardData> = {
+  "phoenix-ai": {
+    wordmark: "Phoenix AI",
+    tags: ["Live Product", "AI Health", "Design System"],
+    headline: "Six decisions in two weeks. Every ticket said 'your call.'",
+    description:
+      "Sole design owner on a live AI health platform. Direct ship authority to production. No PMs. No approval gates. Six documented reframes — from a badge request that became an IA overhaul, to a layout bug that looked like a state bug. Live at phoenix-cdreams.org.",
+    metrics: [
+      { value: "6", label: "Documented reframes", icon: "layers" },
+      { value: "Live", label: "Ship authority to prod", icon: "rocket" },
+    ],
+    bg: "#0A1A14",
+    accent: "#34D399",
+  },
   "builtintech-delivery": {
     wordmark: "BuiltinTech",
     tags: ["Client Work", "Systems Design", "Delivery"],
@@ -467,19 +481,27 @@ function CaseStudyCard({
                 />
               </div>
 
-              <button
-                type="button"
-                onClick={(event) => {
-                  event.stopPropagation();
-                  handleOpen();
-                }}
-                className="group/cta inline-flex w-fit items-center gap-1.5 rounded-full border border-white/15 bg-white px-3 py-1.5 text-[11px] font-semibold text-zinc-950 transition-transform hover:scale-[1.02] active:scale-[0.98]"
-              >
-                {hasCaseStudy ? "View Case Study" : "View Details"}
-                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-zinc-950 text-white transition-transform group-hover/cta:translate-x-0.5">
-                  {hasCaseStudy ? <ArrowRight size={11} /> : <Lock size={10} />}
-                </span>
-              </button>
+              <div className="group/cta-wrap relative w-fit">
+                {/* Back pill — sits behind, offset down-right */}
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute left-1 top-1 h-full w-full rounded-full bg-black"
+                />
+                {/* Front pill — the actual button, slides down-right on hover (press-in) */}
+                <button
+                  type="button"
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    handleOpen();
+                  }}
+                  className="group/cta relative inline-flex w-fit items-center gap-2 rounded-full bg-white px-4 py-2 text-[11px] font-semibold text-black transition-transform duration-200 ease-out group-hover/cta-wrap:translate-x-1 group-hover/cta-wrap:translate-y-1 active:translate-x-1 active:translate-y-1"
+                >
+                  {hasCaseStudy ? "View Case Study" : "View Details"}
+                  <span className="flex h-5 w-5 items-center justify-center rounded-full bg-black text-white transition-transform group-hover/cta:translate-x-0.5">
+                    {hasCaseStudy ? <ArrowRight size={11} /> : <Lock size={10} />}
+                  </span>
+                </button>
+              </div>
             </div>
           </div>
         </div>

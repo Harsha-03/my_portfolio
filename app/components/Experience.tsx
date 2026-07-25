@@ -7,17 +7,17 @@ import type { Variants } from "framer-motion";
 const EXPERIENCES = [
   {
     id: "phoenix-ai-cdf",
-    role: "UI/UX Designer · Volunteer",
+    role: "UI/UX Designer",
     company: "Phoenix AI · Community Dreams Foundation",
     period: "Feb 2026 – Present",
     location: "Remote, USA",
     current: true,
     highlights: [
-      "Designing UI/UX across three healthcare products under Community Dreams Foundation, with Phoenix AI as the lead platform.",
-      "Phoenix AI brings wearable, sleep, activity, step, and lab-report data into one healthcare tracking experience that turns raw inputs into actionable insights.",
-      "Improving the existing platform and mobile app with a final polish layer — clearer screens, more cohesive flows, stronger state visibility, and product-quality UI before launch.",
-      "Building brand cohesion across the platform, mobile app, website, LinkedIn, Instagram, and other digital surfaces so the product feels like one trusted healthcare system.",
-      "Creating low- and high-fidelity Figma flows, prototypes, UI direction, motion/interaction ideas, and async design reviews through Slack with the team.",
+      "Sole design owner on Phoenix AI, a live AI-powered health platform (biomarker data, wearable signals, ML-driven health scores and longevity insights) with direct ship authority to production.",
+      "Two weeks in: shipped a full dashboard redesign, brand cohesion overhaul, and cross-platform navigation consolidation — every ticket landed with either no spec or a one-line brief.",
+      "Built a named motion vocabulary tied to health metaphors (phoenixFadeUp, phoenixBreathe, phoenixDrawIn) — all respect prefers-reduced-motion — instead of adding generic hover decoration.",
+      "Reconciled two conflicting brand palettes (branding lead vs. engineering) into a single navy-anchored dark-mode token system in index.css, without escalation. Reconciliation is now the standard.",
+      "Design leadership across three healthcare products: Figma flows, prototypes, motion/interaction system, and async reviews through Slack. No PMs in the loop. No approval gates.",
     ],
   },
   {
@@ -28,11 +28,10 @@ const EXPERIENCES = [
     location: "India",
     current: false,
     highlights: [
-      "Co-founded an IT services startup and owned end-to-end design for 10+ paid client web products — discovery, wireframes, responsive UI, implementation, deployment, and post-launch iteration.",
-      "Translated unstructured client briefs into practical user flows, page hierarchies, and component-driven interfaces that could actually be built and shipped.",
-      "Personally handled the design-to-build bridge on client projects, which meant balancing UX clarity, client expectations, technical constraints, and delivery timelines.",
-      "Drove a large part of client acquisition through direct outreach, scoping conversations, and trust-building before the design work even started.",
-      "Recruited and guided KL University interns through live project workflows, giving them real delivery responsibilities instead of simulated tasks.",
+      "Shipped 10+ consumer web products in 12 months across four verticals (construction, minerals, fitness, infrastructure) — same designer, discovery through post-launch, no handoff friction.",
+      "3–4 week ship cycles as the norm, not the exception. A repeatable intake → IA → design → build → deploy → handoff pattern replaced one-off custom work.",
+      "Translated ambiguous briefs into interaction models and reusable component libraries — second and third projects in the same vertical shipped faster than the first.",
+      "Drove 80% of new client acquisition through direct outreach and scoping before design work started; recruited and mentored 12 KL University interns on live client workflows.",
     ],
   },
   {
@@ -57,10 +56,10 @@ const EXPERIENCES = [
     location: "India",
     current: false,
     highlights: [
-      "Designed and shipped nriwellbeing.com end-to-end for an ISO-certified services company, taking the project from zero-to-one across design, structure, and frontend implementation.",
-      "Owned information architecture across 10+ service categories including property, healthcare, logistics, financial, and NRI support services.",
-      "Created a service-first homepage hierarchy so first-time visitors could quickly understand what the company offered and find the right service without prior context.",
-      "Learned that good UX is not just visual polish — it is the clarity that helps people understand a business, trust it, and take the next step.",
+      "Designed and shipped nriwellbeing.com end-to-end for an ISO-certified services company. Still in production 4+ years later. Zero redesigns needed — the IA decisions held.",
+      "Owned information architecture across 10+ service categories (property, healthcare, logistics, financial, NRI support services), with contact routing to the right team on each page.",
+      "Service-first homepage hierarchy: category cards in the customer's language above the fold, company story below. First-time visitors — often family members finding services for parents in India — could identify the right offering in under 30 seconds.",
+      "First zero-to-one production project. Confirmed that IA decisions made early determine whether a site needs redesigning every 18 months, or runs unchanged for years.",
     ],
   },
 ];

@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { RevealBlock } from "../../components/MotionPattern";
+import FourStateCycler from "../../components/FourStateCycler";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -74,6 +75,9 @@ export default function StarbucksCaseStudy() {
         </div>
       </section>
       </RevealBlock>
+
+      {/* FOUR-STATE LIVE ARTIFACT — the case study argument, visualized */}
+      <FourStateCycler />
 
       {/* COVER IMAGE */}
       <RevealBlock>

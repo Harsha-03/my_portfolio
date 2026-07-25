@@ -122,9 +122,9 @@ Important note: AI Resume Editor was the earlier Streamlit prototype. It later e
 - Designed one reusable state card across multiple contexts
 - Published on Behance: behance.net/gallery/250629345
 
-**Feb 2026 – Present | Community Dreams Foundation | UI/UX Designer | Volunteer**
+**Feb 2026 – Present | Community Dreams Foundation | UI/UX Designer**
 
-- Current active UX role on the DreamStream platform
+- Current active UX role. Sole design owner on Phoenix AI (phoenix-cdreams.org), a live AI-powered health platform. Ship authority direct to production.
 - Designing end-to-end user experiences in Figma
 - Creating wireframes, prototypes, and high-fidelity UI
 - Collaborating with PMs and developers in an Agile, Slack-based remote workflow

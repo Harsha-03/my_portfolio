@@ -350,13 +350,20 @@ export default function ChatWidget() {
     if (!question || loading) return;
     setLoading(true);
     setError(null);
+
+    // Snapshot history BEFORE adding current question — that's what the API needs
+    const history = messages.map((m) => ({
+      role: m.role,
+      content: m.content,
+    }));
+
     setMessages((m) => [...m, { id: uid(), role: "user", content: question }]);
     setInput("");
     try {
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ question }),
+        body: JSON.stringify({ question, history }),
       });
       if (!res.ok) throw new Error();
       const data = await res.json();
@@ -441,7 +448,7 @@ export default function ChatWidget() {
             (isLeft ? "items-start" : "items-end")
           }
         >
-        {/* Initial nudge */}
+        {/* Initial nudge — absolutely positioned above the pill so it doesn't push the pill down */}
         <AnimatePresence>
           {nudge && !open && !isDragging && (
             <motion.div
@@ -449,14 +456,17 @@ export default function ChatWidget() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 6, scale: 0.95 }}
               transition={{ duration: 0.25 }}
-              className="max-w-[220px] rounded-2xl bg-zinc-800 border border-white/10 px-4 py-2 text-sm text-zinc-200 shadow-xl"
+              className={
+                "absolute bottom-full mb-2 max-w-[220px] rounded-2xl bg-zinc-800 border border-white/10 px-4 py-2 text-sm text-zinc-200 shadow-xl " +
+                (isLeft ? "left-0" : "right-0")
+              }
             >
               {"\uD83D\uDC4B"} Ask me anything about Harsha
             </motion.div>
           )}
         </AnimatePresence>
 
-        {/* Rotating thoughts */}
+        {/* Rotating thoughts — absolutely positioned above the pill so it doesn't push the pill down */}
         <AnimatePresence>
           {thought && !nudge && !open && !isDragging && (
             <motion.div
@@ -464,7 +474,10 @@ export default function ChatWidget() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 8, scale: 0.93 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
-              className="max-w-[210px] rounded-2xl bg-zinc-900/95 border border-blue-500/20 px-3.5 py-2 text-xs text-blue-300 shadow-[0_4px_20px_rgba(59,130,246,0.15)] backdrop-blur"
+              className={
+                "absolute bottom-full mb-2 max-w-[210px] rounded-2xl bg-zinc-900/95 border border-blue-500/20 px-3.5 py-2 text-xs text-blue-300 shadow-[0_4px_20px_rgba(59,130,246,0.15)] backdrop-blur " +
+                (isLeft ? "left-0" : "right-0")
+              }
             >
               <span className="flex items-center gap-1.5">
                 <motion.span

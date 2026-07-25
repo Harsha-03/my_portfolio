@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { RevealBlock } from "../../components/MotionPattern";
 import type { Metadata } from "next";
@@ -73,17 +72,17 @@ export default function NRIWellbeingCaseStudy() {
         </section>
       </RevealBlock>
 
-      {/* COVER IMAGE */}
+      {/* COVER VIDEO */}
       <RevealBlock>
         <section className="max-w-5xl mx-auto px-6 mb-20 md:mb-24">
           <div className="rounded-2xl overflow-hidden border border-white/10">
-            <Image
-              src="/projects/nri-wellbeing-cover.png"
-              alt="NRI Wellbeing Services homepage with service first grid"
-              width={3840}
-              height={2160}
+            <video
+              src="/projects/nri-wellbeing-preview.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
               className="w-full h-auto"
-              priority
             />
           </div>
         </section>
@@ -208,20 +207,7 @@ export default function NRIWellbeingCaseStudy() {
         </section>
       </RevealBlock>
 
-      {/* Video placeholder */}
-      <RevealBlock>
-        <section className="max-w-4xl mx-auto px-6 mb-20 md:mb-24">
-          <div className="rounded-2xl overflow-hidden border border-white/10 bg-zinc-900 aspect-video flex items-center justify-center">
-            <p className="text-zinc-500 text-sm">
-              [ 90 second walkthrough video ]
-            </p>
-          </div>
-          <p className="mt-4 text-sm text-zinc-500 italic text-center">
-            nriwellbeing.com walkthrough. Service first grid, category pages,
-            routed contact.
-          </p>
-        </section>
-      </RevealBlock>
+      {/* Chapter divider — no video placeholder */}
 
       {/* CHAPTER 05 — What this shows */}
       <RevealBlock>

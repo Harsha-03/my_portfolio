@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Send } from "lucide-react";
 import { RevealBlock, ScrollSentence, SectionLabel, smoothEase } from "./MotionPattern";
@@ -76,6 +77,18 @@ function RagArrow() {
 }
 
 export default function About() {
+  const [askInput, setAskInput] = useState("");
+
+  const submitAsk = () => {
+    const value = askInput.trim();
+    if (!value) return;
+    const ev = new CustomEvent("open-chat-widget", {
+      detail: { prompt: value },
+    });
+    window.dispatchEvent(ev);
+    setAskInput("");
+  };
+
   return (
     <section id="about" className="relative py-6 md:py-24" style={{ position: "relative" }}>
       <div className="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
@@ -129,15 +142,15 @@ export default function About() {
 
           <div className="space-y-6 md:col-span-7">
             <p className="text-sm leading-relaxed text-zinc-300 md:text-base">
-              <ScrollSentence text="I'm a UX Designer based in Reno, Nevada. I finished my MS in Information Systems at Saint Louis University in December 2025, and I'm currently on OPT looking for my next role." />
+              <ScrollSentence text="I'm an Interaction Designer based in Reno, Nevada. Recent MS in Information Systems from Saint Louis University. Open to relocate." />
             </p>
 
             <p className="text-sm leading-relaxed text-zinc-400 md:text-base">
-              <ScrollSentence text="My path went from building client products at a startup I co-founded in India, through graduate systems work at SLU, to UX design at a nonprofit. Across all of it, the pattern was the same: find where the experience actually breaks, define the problem clearly, design a solution, ship it, keep going." />
+              <ScrollSentence text="My path went from co-founding a design studio in India (10+ shipped products across 4 verticals), through graduate systems work at SLU, to interaction design at Community Dreams Foundation. Across all of it, the pattern was the same: find where the experience actually breaks, define the problem clearly, design a solution, ship it, keep going." />
             </p>
 
             <p className="text-sm leading-relaxed text-zinc-400 md:text-base">
-              <ScrollSentence text="Right now I'm the UI/UX Designer at Community Dreams Foundation. Alongside that, I ship self-initiated product work: Starbucks Mobile Order, LifeOS, and Resume Tailor." />
+              <ScrollSentence text="Right now I'm the sole design owner on Phoenix AI — a live AI-powered health platform with direct ship authority to production. Alongside that, I publish interaction craft essays in Design Bootcamp and ship self-initiated product work: Resume Tailor, LifeOS, and the Missing State case study." />
             </p>
 
             <motion.blockquote
@@ -170,12 +183,43 @@ export default function About() {
                 This site is trained on every project, every role, and every design decision I could remember. Ask it anything.
               </p>
 
+              {/* Inline chat input — dispatches to the floating widget */}
+              <div className="mt-6 flex items-center gap-2 rounded-full border border-white/10 bg-zinc-950/60 pl-4 pr-1.5 py-1.5 backdrop-blur-sm focus-within:border-emerald-400/40 focus-within:bg-zinc-950/80 transition-colors">
+                <input
+                  type="text"
+                  value={askInput}
+                  onChange={(e) => setAskInput(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      e.preventDefault();
+                      submitAsk();
+                    }
+                  }}
+                  placeholder="Ask about a project, a role, or a design decision..."
+                  className="flex-1 bg-transparent text-sm text-zinc-100 placeholder:text-zinc-500 focus:outline-none md:text-base"
+                  aria-label="Ask my portfolio anything"
+                />
+                <button
+                  type="button"
+                  onClick={submitAsk}
+                  disabled={!askInput.trim()}
+                  aria-label="Send question"
+                  className="group/send flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-500 text-zinc-950 transition-all hover:bg-emerald-400 disabled:cursor-not-allowed disabled:bg-zinc-700 disabled:text-zinc-500"
+                >
+                  <Send size={13} className="transition-transform group-hover/send:translate-x-0.5 group-disabled/send:translate-x-0" />
+                </button>
+              </div>
+
+              <p className="mt-3 text-[11px] text-zinc-500">
+                Or try one of these:
+              </p>
+
               {/* Chip buttons */}
-              <div className="mt-6 flex flex-wrap gap-2">
+              <div className="mt-3 flex flex-wrap gap-2">
                 {[
                   "What's your design process?",
-                  "Tell me about BuiltinTech",
-                  "Why the four-state Starbucks model?",
+                  "Tell me about Phoenix AI",
+                  "How does your work relate to real-world interfaces?",
                   "What tools do you use?",
                   "What roles are you targeting?",
                 ].map((q) => (

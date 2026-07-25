@@ -3,14 +3,14 @@
 ## Overview
 
 NRI Wellbeing Services was Harsha's first end-to-end production project.
+He designed and shipped nriwellbeing.com for an ISO-certified services company
+in 2022.
 
-He worked as a UI/UX Designer and Frontend Developer Intern, designing and building
-nriwellbeing.com for an ISO-certified services company. This role gave him early
-ownership across information architecture, responsive UI, frontend implementation,
-and real-world service communication.
+The site is still in production 4+ years later. Zero redesigns needed. The
+information architecture decisions held.
 
-This experience became the foundation for his product design mindset: clarity first,
-then interface, then execution.
+For a first production project, that longevity is the most important signal:
+the IA choices made in 2022 have survived every business change since.
 
 ---
 
@@ -24,117 +24,56 @@ then interface, then execution.
 
 ---
 
-## Core Responsibilities
+## The Core IA Decision
 
-- Designed and built nriwellbeing.com end-to-end
-- Structured information architecture across 10+ service categories
-- Created a service-first homepage hierarchy for first-time visitors
-- Designed responsive layouts for desktop and mobile users
-- Implemented frontend pages and UI sections for production use
-- Organized content around property, healthcare, logistics, financial, and support services
-- Balanced business communication with user clarity
+NRI Wellbeing Services offered 10+ service categories across property,
+healthcare, logistics, financial, and general NRI support services. First-time
+visitors — often family members finding services for parents in India — had 30
+seconds and a specific need, not time to read who the company was.
 
----
+The IA decision was simple and unusual for the era: **services above the fold,
+company story below.**
 
-## Design Challenge
+Rather than forcing users to read long company descriptions first, the site
+helped users identify the right service category quickly in the customer's
+own language. Each category got a dedicated page with contact routing to the
+right team.
 
-NRI Wellbeing Services offered multiple service categories, but the challenge was clarity.
-
-A first-time visitor needed to quickly understand:
-
-- what the company offers
-- which service category fits their need
-- how to navigate from a broad service list to a specific action
-- why the company could be trusted
-
-The design problem was not just visual layout. It was information organization.
-
-Harsha had to turn a wide service offering into a clear website structure that users
-could scan and understand without already knowing how the company worked.
+That decision — service-first, story-second — is the one that has held
+unchanged for four years.
 
 ---
 
-## Information Architecture
+## What Shipped
 
-The project required organizing 10+ service areas into a clearer structure.
-
-Service categories included areas such as:
-
-- property support
-- healthcare support
-- logistics assistance
-- financial services
-- general NRI support services
-
-The main IA decision was to make the homepage service-first instead of company-first.
-
-Rather than forcing users to read long company descriptions first, the site needed to
-help users identify the right service quickly.
-
----
-
-## UI/UX Responsibilities
-
-Harsha worked on:
-
-- page structure
-- homepage hierarchy
-- service section organization
-- responsive layout decisions
-- content grouping
-- basic visual design
-- navigation clarity
-- frontend implementation
-
-This was an early project, but it introduced him to a core UX principle he still uses:
-
-Good design reduces the amount of explanation a user needs before taking action.
-
----
-
-## Frontend Implementation
-
-Harsha also implemented the website frontend, making this his first project where
-he owned both the design decisions and the code that shipped.
-
-The project helped him understand:
-
-- how layout decisions affect development
-- how responsive UI works in practice
-- how content-heavy service websites need clear hierarchy
-- how design decisions must survive real browser constraints
-- how shipped work differs from classroom or practice projects
+- Service-first homepage with 10+ category cards, one line each
+- Dedicated page per category with contact routing to the right team
+- Responsive layouts for desktop and mobile
+- Frontend implementation (HTML/CSS/JS) — Harsha's first project owning both
+  the design decisions and the code that shipped
+- Site went live in 2022 and has run unchanged since
 
 ---
 
 ## Why This Role Matters
 
-This experience matters because it was Harsha's first real production ownership.
+For a first zero-to-one production project, the longevity is the point.
 
-It showed him that design is not only about screens. Design also includes:
+Most sites get redesigned every 18 months because the IA didn't survive
+contact with real users, real content, or real business changes. nriwellbeing.com
+has run for 4+ years without a redesign. That's proof that the IA decisions
+made at the beginning were the right ones — not because they were polished,
+but because they solved the actual visitor problem.
 
-- structuring unclear information
-- helping users make decisions faster
-- translating business services into user-facing language
-- building trust through clarity
-- shipping something real that people can use
-
-This role directly influenced his later work at Areksoft Technologies, BuiltinTech,
-and his transition into product design.
+This experience taught Harsha the principle he still uses: **IA decisions
+made early determine whether a site needs redesigning every 18 months or runs
+unchanged for years.**
 
 ---
 
 ## Career Impact
 
-NRI Wellbeing Services gave Harsha his first proof that he could take an unclear
-business problem and turn it into a working digital experience.
-
-It helped him build confidence in:
-
-- UI/UX design
-- frontend development
-- service website structure
-- responsive implementation
-- end-to-end ownership
-
-This was the starting point of his design-plus-build path.
+NRI Wellbeing Services gave Harsha his first proof that he could take an
+unclear business problem and turn it into a working digital experience that
+holds up over time. It became the foundation for his product design mindset:
+clarity first, then interface, then execution.

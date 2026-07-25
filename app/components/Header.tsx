@@ -7,6 +7,7 @@ import { ArrowUpRight, Download } from "lucide-react";
 
 const NAV_ITEMS = [
   { id: "projects", label: "My Work" },
+  { id: "motion", label: "Motion" },
   { id: "writing", label: "Writing" },
   { id: "contact", label: "Contact" },
 ];
@@ -168,8 +169,8 @@ export default function Header() {
                 ? "rgba(255,255,255,0.13)"
                 : "rgba(255,255,255,0.10)",
               boxShadow: expanded
-                ? "0 12px 42px rgba(0,0,0,0.42)"
-                : "0 10px 30px rgba(0,0,0,0.34)",
+                ? "0 12px 42px rgba(0,0,0,0.42), 0 0 0 1px rgba(255,255,255,0.06), 0 0 48px rgba(255,255,255,0.08)"
+                : "0 10px 30px rgba(0,0,0,0.34), 0 0 0 1px rgba(255,255,255,0.05), 0 0 36px rgba(255,255,255,0.06)",
             }}
             transition={morph}
             style={{ borderRadius: 999 }}
@@ -249,6 +250,8 @@ export default function Header() {
                       type="button"
                       onClick={() => handleNav(item.id)}
                       whileTap={{ scale: 0.96 }}
+                      whileHover={isActive ? undefined : { letterSpacing: "0.05em" }}
+                      transition={{ duration: 0.22, ease: "easeOut" }}
                       className={
                         "relative flex items-center rounded-full px-3 py-1.5 text-xs whitespace-nowrap transition-colors " +
                         (isActive
@@ -262,8 +265,7 @@ export default function Header() {
                           className="absolute inset-0 rounded-full"
                           style={{
                             background:
-                              "radial-gradient(circle at 50% 50%, rgba(148,163,184,0.20) 0%, rgba(100,116,139,0.13) 48%, rgba(100,116,139,0.03) 75%)",
-                            boxShadow: "0 0 14px rgba(100,116,139,0.24)",
+                              "radial-gradient(circle at 50% 50%, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.08) 45%, rgba(255,255,255,0.02) 72%, transparent 92%)",
                           }}
                           transition={{
                             type: "spring",
@@ -294,9 +296,11 @@ export default function Header() {
               className="shrink-0 overflow-hidden"
               style={{ pointerEvents: !compactMode ? "auto" : "none" }}
             >
-              <span className="inline-flex items-center gap-1 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[11px] font-medium text-zinc-200 hover:border-blue-400/40 hover:bg-blue-500/10 hover:text-blue-300 transition-colors whitespace-nowrap">
+              <span className="group/resume inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white px-3 py-1 text-[11px] font-semibold text-zinc-950 transition-transform hover:scale-[1.03] active:scale-[0.98] whitespace-nowrap">
                 Resume
-                <ArrowUpRight size={11} />
+                <span className="flex h-4 w-4 items-center justify-center rounded-full bg-zinc-950 text-white transition-transform group-hover/resume:translate-x-0.5">
+                  <ArrowUpRight size={10} />
+                </span>
               </span>
             </motion.a>
           </motion.div>
