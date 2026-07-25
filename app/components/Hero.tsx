@@ -290,7 +290,7 @@ export default function Hero() {
               <p>
                 <span className="text-emerald-400">Recent:</span>{" "}
                 <TextType
-                  text="Shipping Phoenix AI to production — six design decisions in two weeks."
+                  text="Shipping Phoenix AI to production, six design decisions in two weeks."
                   typingSpeed={15}
                   startDelay={1.8}
                   showCursor

@@ -133,7 +133,7 @@ export default function MotionPreview() {
                 Motion Design
               </h2>
               <p className="mt-3 max-w-xl text-sm leading-relaxed text-zinc-500 md:text-base">
-                Short-form motion pieces — type, brand, and concept work where timing earns its place.
+                Short-form motion pieces, type, brand, and concept work where timing earns its place.
               </p>
             </div>
 

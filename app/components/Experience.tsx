@@ -14,8 +14,8 @@ const EXPERIENCES = [
     current: true,
     highlights: [
       "Sole design owner on Phoenix AI, a live AI-powered health platform (biomarker data, wearable signals, ML-driven health scores and longevity insights) with direct ship authority to production.",
-      "Two weeks in: shipped a full dashboard redesign, brand cohesion overhaul, and cross-platform navigation consolidation — every ticket landed with either no spec or a one-line brief.",
-      "Built a named motion vocabulary tied to health metaphors (phoenixFadeUp, phoenixBreathe, phoenixDrawIn) — all respect prefers-reduced-motion — instead of adding generic hover decoration.",
+      "Two weeks in: shipped a full dashboard redesign, brand cohesion overhaul, and cross-platform navigation consolidation, every ticket landed with either no spec or a one-line brief.",
+      "Built a named motion vocabulary tied to health metaphors (phoenixFadeUp, phoenixBreathe, phoenixDrawIn) all respect prefers-reduced-motion instead of adding generic hover decoration.",
       "Reconciled two conflicting brand palettes (branding lead vs. engineering) into a single navy-anchored dark-mode token system in index.css, without escalation. Reconciliation is now the standard.",
       "Design leadership across three healthcare products: Figma flows, prototypes, motion/interaction system, and async reviews through Slack. No PMs in the loop. No approval gates.",
     ],
@@ -28,9 +28,9 @@ const EXPERIENCES = [
     location: "India",
     current: false,
     highlights: [
-      "Shipped 10+ consumer web products in 12 months across four verticals (construction, minerals, fitness, infrastructure) — same designer, discovery through post-launch, no handoff friction.",
+      "Shipped 10+ consumer web products in 12 months across four verticals (construction, minerals, fitness, infrastructure) same designer, discovery through post-launch, no handoff friction.",
       "3–4 week ship cycles as the norm, not the exception. A repeatable intake → IA → design → build → deploy → handoff pattern replaced one-off custom work.",
-      "Translated ambiguous briefs into interaction models and reusable component libraries — second and third projects in the same vertical shipped faster than the first.",
+      "Translated ambiguous briefs into interaction models and reusable component libraries, second and third projects in the same vertical shipped faster than the first.",
       "Drove 80% of new client acquisition through direct outreach and scoping before design work started; recruited and mentored 12 KL University interns on live client workflows.",
     ],
   },

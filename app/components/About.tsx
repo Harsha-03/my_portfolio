@@ -150,7 +150,7 @@ export default function About() {
             </p>
 
             <p className="text-sm leading-relaxed text-zinc-400 md:text-base">
-              <ScrollSentence text="Right now I'm the sole design owner on Phoenix AI — a live AI-powered health platform with direct ship authority to production. Alongside that, I publish interaction craft essays in Design Bootcamp and ship self-initiated product work: Resume Tailor, LifeOS, and the Missing State case study." />
+              <ScrollSentence text="Right now I'm the sole design owner on Phoenix AI, a live AI-powered health platform with direct ship authority to production. Alongside that, I publish interaction craft essays in Design Bootcamp and ship self-initiated product work: Resume Tailor, LifeOS, and the Missing State case study." />
             </p>
 
             <motion.blockquote
