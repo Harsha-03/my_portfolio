@@ -56,9 +56,9 @@ const EXPERIENCES = [
     location: "India",
     current: false,
     highlights: [
-      "Designed and shipped nriwellbeing.com end-to-end for an ISO-certified services company. Still in production 4+ years later. Zero redesigns needed — the IA decisions held.",
+      "Designed and shipped nriwellbeing.com end-to-end for an ISO-certified services company. Still in production 4+ years later. Zero redesigns needed, the IA decisions held.",
       "Owned information architecture across 10+ service categories (property, healthcare, logistics, financial, NRI support services), with contact routing to the right team on each page.",
-      "Service-first homepage hierarchy: category cards in the customer's language above the fold, company story below. First-time visitors — often family members finding services for parents in India — could identify the right offering in under 30 seconds.",
+      "Service-first homepage hierarchy: category cards in the customer's language above the fold, company story below. First-time visitors often family members finding services for parents in India could identify the right offering in under 30 seconds.",
       "First zero-to-one production project. Confirmed that IA decisions made early determine whether a site needs redesigning every 18 months, or runs unchanged for years.",
     ],
   },

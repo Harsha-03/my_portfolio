@@ -557,7 +557,7 @@ export default function Projects() {
 
   return (
     <section id="projects" className="relative py-12 md:py-24">
-      <div className="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
+      <div className="container">
         <RevealBlock>
           <SectionLabel>Case Studies</SectionLabel>
 
@@ -576,7 +576,7 @@ export default function Projects() {
           </div>
         </RevealBlock>
 
-        <div className="mt-8 grid gap-3 md:mt-14 md:grid-cols-2 md:gap-5">
+        <div className="mt-8 grid gap-3 md:mt-14 md:grid-cols-3 md:gap-5">
           {caseStudies.map((project, index) => (
             <CaseStudyCard
               key={project.slug}

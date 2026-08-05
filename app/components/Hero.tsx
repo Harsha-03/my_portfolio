@@ -1,8 +1,8 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
-import type { TargetAndTransition, Variants } from "framer-motion";
+import type { Variants } from "framer-motion";
 import { Github, Linkedin, Instagram, ArrowRight } from "lucide-react";
 import { useState } from "react";
 import BlurText from "./BlurText";
@@ -66,13 +66,15 @@ const socialItemVariant: Variants = {
   show: { opacity: 1, y: 0, scale: 1, transition: { type: "spring", stiffness: 320, damping: 22 } },
 };
 
+type SocialVariant = "badge" | "ring" | "flash" | "underline" | "cursor";
+
 type SocialDef = {
   label: string;
   href: string;
   icon: (size: number) => ReactNode;
   brandColor: string;
   hoverBg: string;
-  hoverAnim: TargetAndTransition;
+  variant: SocialVariant;
 };
 
 const SOCIALS: SocialDef[] = [
@@ -82,7 +84,7 @@ const SOCIALS: SocialDef[] = [
     icon: (s) => <Github size={s} />,
     brandColor: "#e2e8f0",
     hoverBg: "#24292e",
-    hoverAnim: { y: [-2, 2, -2, 0], scale: 1.15 },
+    variant: "badge",
   },
   {
     label: "LinkedIn",
@@ -90,7 +92,7 @@ const SOCIALS: SocialDef[] = [
     icon: (s) => <Linkedin size={s} />,
     brandColor: "#0A66C2",
     hoverBg: "#0A66C2",
-    hoverAnim: { y: [-2, 2, -2, 0], scale: 1.15 },
+    variant: "ring",
   },
   {
     label: "Instagram",
@@ -98,7 +100,7 @@ const SOCIALS: SocialDef[] = [
     icon: (s) => <Instagram size={s} />,
     brandColor: "#ee2a7b",
     hoverBg: "linear-gradient(135deg,#f9ce34,#ee2a7b,#6228d7)",
-    hoverAnim: { y: [-2, 2, -2, 0], scale: 1.15 },
+    variant: "flash",
   },
   {
     label: "Behance",
@@ -106,7 +108,7 @@ const SOCIALS: SocialDef[] = [
     icon: (s) => <BehanceIcon size={s} />,
     brandColor: "#1769FF",
     hoverBg: "#1769FF",
-    hoverAnim: { scale: [1, 1.25, 1.1, 1.2], x: [0, 2, -2, 0] },
+    variant: "underline",
   },
   {
     label: "Medium",
@@ -114,12 +116,15 @@ const SOCIALS: SocialDef[] = [
     icon: (s) => <MediumIcon size={s} />,
     brandColor: "#e2e8f0",
     hoverBg: "#000000",
-    hoverAnim: { y: [-2, 2, -2, 0], scale: 1.15 },
+    variant: "cursor",
   },
 ];
 
 function SocialButton({ social }: { social: SocialDef }) {
   const [hovered, setHovered] = useState(false);
+  const reduced = useReducedMotion();
+  // Bump this on each hover so the same variant re-animates every time
+  const [playToken, setPlayToken] = useState(0);
 
   return (
     <motion.a
@@ -128,17 +133,22 @@ function SocialButton({ social }: { social: SocialDef }) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={social.label}
-      onHoverStart={() => setHovered(true)}
+      onHoverStart={() => {
+        setHovered(true);
+        setPlayToken((n) => n + 1);
+      }}
       onHoverEnd={() => setHovered(false)}
-      whileHover={social.hoverAnim}
-      whileTap={{ scale: 0.92 }}
-      transition={{ duration: 0.4, ease: "easeInOut" }}
+      whileTap={{ scale: 0.94 }}
+      transition={{ duration: 0.2, ease: "easeOut" }}
       className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl ring-1 ring-white/10 hover:ring-white/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30 md:h-11 md:w-11"
     >
+      {/* Background fill */}
       <span
         className="absolute inset-0 rounded-xl transition-all duration-200"
         style={{ background: hovered ? social.hoverBg : "rgb(24,24,27)" }}
       />
+
+      {/* Icon */}
       <span
         className="relative z-10 transition-colors duration-200"
         style={{ color: hovered ? "#ffffff" : social.brandColor }}
@@ -146,6 +156,76 @@ function SocialButton({ social }: { social: SocialDef }) {
         {social.icon(17)}
       </span>
 
+      {/* Per-icon micro-animation overlays */}
+      {!reduced && (
+        <AnimatePresence>
+          {hovered && social.variant === "badge" && (
+            <motion.span
+              key={`badge-${playToken}`}
+              aria-hidden
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: [0, 1.2, 1], opacity: [0, 1, 1] }}
+              exit={{ opacity: 0, transition: { duration: 0.15 } }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              className="pointer-events-none absolute right-1.5 top-1.5 z-20 h-1.5 w-1.5 rounded-full bg-emerald-400"
+              style={{ boxShadow: "0 0 6px rgba(52,211,153,0.9)" }}
+            />
+          )}
+
+          {hovered && social.variant === "ring" && (
+            <motion.span
+              key={`ring-${playToken}`}
+              aria-hidden
+              initial={{ scale: 0.85, opacity: 0.7 }}
+              animate={{ scale: 1.3, opacity: 0 }}
+              transition={{ duration: 0.55, ease: "easeOut" }}
+              className="pointer-events-none absolute inset-0 z-20 rounded-xl"
+              style={{ boxShadow: "0 0 0 2px rgba(255,255,255,0.55)" }}
+            />
+          )}
+
+          {hovered && social.variant === "flash" && (
+            <motion.span
+              key={`flash-${playToken}`}
+              aria-hidden
+              initial={{ scale: 0.2, opacity: 0 }}
+              animate={{ scale: 1.6, opacity: [0, 0.55, 0] }}
+              transition={{ duration: 0.45, ease: "easeOut" }}
+              className="pointer-events-none absolute inset-0 z-20 rounded-xl"
+              style={{
+                background:
+                  "radial-gradient(circle, rgba(255,255,255,0.9), rgba(255,255,255,0) 60%)",
+              }}
+            />
+          )}
+
+          {hovered && social.variant === "underline" && (
+            <motion.span
+              key={`underline-${playToken}`}
+              aria-hidden
+              initial={{ scaleX: 0, opacity: 0.9 }}
+              animate={{ scaleX: 1, opacity: 1 }}
+              exit={{ opacity: 0, transition: { duration: 0.15 } }}
+              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              className="pointer-events-none absolute bottom-1.5 left-2 right-2 z-20 h-[1.5px] origin-left rounded-full bg-white/90"
+            />
+          )}
+
+          {hovered && social.variant === "cursor" && (
+            <motion.span
+              key={`cursor-${playToken}`}
+              aria-hidden
+              initial={{ opacity: 0 }}
+              animate={{ opacity: [0, 1, 0, 1, 0, 1] }}
+              exit={{ opacity: 0, transition: { duration: 0.1 } }}
+              transition={{ duration: 0.9, times: [0, 0.15, 0.35, 0.55, 0.75, 1] }}
+              className="pointer-events-none absolute bottom-1.5 right-1.5 z-20 h-2 w-[1.5px] rounded-[1px] bg-white/95"
+            />
+          )}
+        </AnimatePresence>
+      )}
+
+      {/* Label tooltip */}
       <AnimatePresence>
         {hovered && (
           <motion.span
@@ -153,7 +233,7 @@ function SocialButton({ social }: { social: SocialDef }) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 4 }}
             transition={{ duration: 0.15 }}
-            className="pointer-events-none absolute -bottom-8 left-1/2 z-20 -translate-x-1/2 whitespace-nowrap rounded-md border border-white/10 bg-zinc-950/90 px-2 py-1 text-[10px] tracking-wide text-zinc-300 backdrop-blur"
+            className="pointer-events-none absolute -bottom-8 left-1/2 z-30 -translate-x-1/2 whitespace-nowrap rounded-md border border-white/10 bg-zinc-950/90 px-2 py-1 text-[10px] tracking-wide text-zinc-300 backdrop-blur"
           >
             {social.label}
           </motion.span>
@@ -164,6 +244,7 @@ function SocialButton({ social }: { social: SocialDef }) {
 }
 
 export default function Hero() {
+  const reducedMotion = useReducedMotion();
   return (
     <section id="home" className="relative">
       <div className="relative flex min-h-[100svh] flex-col items-center justify-center px-4 pt-20 pb-36 md:min-h-[calc(100vh-5rem)] md:py-24">
@@ -329,11 +410,43 @@ export default function Hero() {
               }}
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              className="group inline-flex items-center gap-2 rounded-xl bg-red-500 px-4 py-2.5 text-xs font-semibold text-white transition-colors hover:bg-red-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-400/60 md:text-sm md:px-5 md:py-3"
+              className="group relative inline-flex items-center gap-2 overflow-hidden rounded-xl px-4 py-2.5 text-xs font-semibold text-white transition-colors focus:outline-none focus-visible:ring-2 md:text-sm md:px-5 md:py-3"
+              style={{
+                backgroundColor: "#f76a63",
+                boxShadow: "0 6px 22px -8px rgba(247,106,99,0.55)",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLElement).style.backgroundColor = "#ea564f";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLElement).style.backgroundColor = "#f76a63";
+              }}
             >
-              My Work
+              {/* Shimmer sweep — diagonal light band on a slow loop */}
+              {!reducedMotion && (
+                <motion.span
+                  aria-hidden
+                  className="pointer-events-none absolute inset-y-0 z-0"
+                  style={{
+                    width: "40%",
+                    background:
+                      "linear-gradient(115deg, transparent 0%, rgba(255,255,255,0.38) 50%, transparent 100%)",
+                    filter: "blur(2px)",
+                  }}
+                  initial={{ x: "-160%" }}
+                  animate={{ x: "320%" }}
+                  transition={{
+                    duration: 1.6,
+                    ease: "easeInOut",
+                    repeat: Infinity,
+                    repeatDelay: 3.2,
+                  }}
+                />
+              )}
+
+              <span className="relative z-10">My Work</span>
               <motion.span
-                className="inline-block"
+                className="relative z-10 inline-block"
                 initial={{ x: 0 }}
                 whileHover={{ x: 3 }}
                 transition={{ type: "spring", stiffness: 400 }}

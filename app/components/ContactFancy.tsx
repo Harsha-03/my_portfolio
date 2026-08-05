@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState, type ReactNode } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import {
   ArrowRight,
   Check,
@@ -51,38 +51,149 @@ function MediumIcon({ size = 20 }: { size?: number }) {
   );
 }
 
-const SOCIALS = [
+type SocialVariant = "badge" | "ring" | "flash" | "underline" | "cursor";
+
+const SOCIALS: Array<{
+  label: string;
+  href: string;
+  icon: ReactNode;
+  className: string;
+  variant: SocialVariant;
+}> = [
   {
     label: "GitHub",
     href: "https://github.com/Harsha-03",
     icon: <Github size={19} />,
     className: "hover:text-white",
+    variant: "badge",
   },
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/harsha-asapu/",
     icon: <Linkedin size={19} />,
     className: "text-blue-400 hover:text-blue-300",
+    variant: "ring",
   },
   {
     label: "Instagram",
     href: "https://www.instagram.com/rewire.harsha/",
     icon: <Instagram size={19} />,
     className: "text-pink-400 hover:text-pink-300",
+    variant: "flash",
   },
   {
     label: "Behance",
     href: "https://www.behance.net/harshaasapu",
     icon: <BehanceIcon size={19} />,
     className: "text-blue-400 hover:text-blue-300",
+    variant: "underline",
   },
   {
     label: "Medium",
     href: "https://medium.com/@harshaasapu.b",
     icon: <MediumIcon size={20} />,
     className: "hover:text-white",
+    variant: "cursor",
   },
 ];
+
+function ContactSocialButton({
+  social,
+}: {
+  social: (typeof SOCIALS)[number];
+}) {
+  const [hovered, setHovered] = useState(false);
+  const reduced = useReducedMotion();
+  const [playToken, setPlayToken] = useState(0);
+
+  return (
+    <motion.a
+      href={social.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={social.label}
+      title={social.label}
+      onHoverStart={() => {
+        setHovered(true);
+        setPlayToken((n) => n + 1);
+      }}
+      onHoverEnd={() => setHovered(false)}
+      whileTap={{ scale: 0.95 }}
+      transition={{ duration: 0.2, ease: "easeOut" }}
+      className={`relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-white/[0.05] text-zinc-300 shadow-lg shadow-black/20 transition-colors hover:border-white/20 hover:bg-white/[0.08] ${social.className}`}
+    >
+      <span className="relative z-10">{social.icon}</span>
+
+      {!reduced && (
+        <AnimatePresence>
+          {hovered && social.variant === "badge" && (
+            <motion.span
+              key={`badge-${playToken}`}
+              aria-hidden
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: [0, 1.2, 1], opacity: [0, 1, 1] }}
+              exit={{ opacity: 0, transition: { duration: 0.15 } }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              className="pointer-events-none absolute right-1.5 top-1.5 z-20 h-1.5 w-1.5 rounded-full bg-emerald-400"
+              style={{ boxShadow: "0 0 6px rgba(52,211,153,0.9)" }}
+            />
+          )}
+
+          {hovered && social.variant === "ring" && (
+            <motion.span
+              key={`ring-${playToken}`}
+              aria-hidden
+              initial={{ scale: 0.85, opacity: 0.7 }}
+              animate={{ scale: 1.3, opacity: 0 }}
+              transition={{ duration: 0.55, ease: "easeOut" }}
+              className="pointer-events-none absolute inset-0 z-20 rounded-xl"
+              style={{ boxShadow: "0 0 0 2px rgba(96,165,250,0.6)" }}
+            />
+          )}
+
+          {hovered && social.variant === "flash" && (
+            <motion.span
+              key={`flash-${playToken}`}
+              aria-hidden
+              initial={{ scale: 0.2, opacity: 0 }}
+              animate={{ scale: 1.6, opacity: [0, 0.55, 0] }}
+              transition={{ duration: 0.45, ease: "easeOut" }}
+              className="pointer-events-none absolute inset-0 z-20 rounded-xl"
+              style={{
+                background:
+                  "radial-gradient(circle, rgba(255,255,255,0.9), rgba(255,255,255,0) 60%)",
+              }}
+            />
+          )}
+
+          {hovered && social.variant === "underline" && (
+            <motion.span
+              key={`underline-${playToken}`}
+              aria-hidden
+              initial={{ scaleX: 0, opacity: 0.9 }}
+              animate={{ scaleX: 1, opacity: 1 }}
+              exit={{ opacity: 0, transition: { duration: 0.15 } }}
+              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              className="pointer-events-none absolute bottom-1.5 left-2 right-2 z-20 h-[1.5px] origin-left rounded-full bg-blue-400/90"
+            />
+          )}
+
+          {hovered && social.variant === "cursor" && (
+            <motion.span
+              key={`cursor-${playToken}`}
+              aria-hidden
+              initial={{ opacity: 0 }}
+              animate={{ opacity: [0, 1, 0, 1, 0, 1] }}
+              exit={{ opacity: 0, transition: { duration: 0.1 } }}
+              transition={{ duration: 0.9, times: [0, 0.15, 0.35, 0.55, 0.75, 1] }}
+              className="pointer-events-none absolute bottom-1.5 right-1.5 z-20 h-2 w-[1.5px] rounded-[1px] bg-white/95"
+            />
+          )}
+        </AnimatePresence>
+      )}
+    </motion.a>
+  );
+}
 
 function Field({ children }: { children: ReactNode }) {
   return (
@@ -273,20 +384,7 @@ export default function ContactFancy() {
                 <div className="border-t border-white/10 pt-5">
                   <div className="flex flex-wrap gap-3">
                     {SOCIALS.map((social) => (
-                      <motion.a
-                        key={social.label}
-                        href={social.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={social.label}
-                        title={social.label}
-                        whileHover={{ y: -4, scale: 1.06 }}
-                        whileTap={{ scale: 0.95 }}
-                        transition={{ type: "spring", stiffness: 380, damping: 22 }}
-                        className={`flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.05] text-zinc-300 shadow-lg shadow-black/20 transition-colors hover:border-white/20 hover:bg-white/[0.08] ${social.className}`}
-                      >
-                        {social.icon}
-                      </motion.a>
+                      <ContactSocialButton key={social.label} social={social} />
                     ))}
                   </div>
                 </div>
