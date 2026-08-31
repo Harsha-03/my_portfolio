@@ -17,7 +17,7 @@ type View = "email" | "form";
 type Status = "idle" | "submitting" | "success" | "error";
 
 const FORMSPREE = "https://formspree.io/f/xzzvnzvw";
-const EMAIL = "sriharshaasapu48@gmail.com";
+const EMAIL = "harshaasapu.b@gmail.com";
 
 const inputClass = `w-full rounded-xl bg-white/5 border border-white/10
   px-4 py-3 text-sm text-zinc-200 placeholder:text-zinc-600

@@ -299,7 +299,7 @@ export default function Hero() {
 
           <BlurText
             as="h1"
-            text="an Interaction Designer building products that actually ship."
+            text="a Product Designer building products that actually ship."
             delay={70}
             duration={0.7}
             startDelay={0.35}
@@ -360,7 +360,7 @@ export default function Hero() {
               <p>
                 <span className="text-emerald-400">Exploring:</span>{" "}
                 <TextType
-                  text="Interaction design for real-world decisions people make in seconds."
+                  text="How small design patterns absorb complexity across a product at scale."
                   typingSpeed={15}
                   startDelay={1.0}
                   showCursor
@@ -371,7 +371,7 @@ export default function Hero() {
               <p>
                 <span className="text-emerald-400">Recent:</span>{" "}
                 <TextType
-                  text="Shipping Phoenix AI to production, six design decisions in two weeks."
+                  text="Shipping Phoenix AI to production alongside PM and engineering."
                   typingSpeed={15}
                   startDelay={1.8}
                   showCursor
@@ -382,7 +382,7 @@ export default function Hero() {
               <p>
                 <span className="text-emerald-400">Reading:</span>{" "}
                 <TextType
-                  text="Don Norman on discoverability, and the Design Bootcamp interaction craft archive."
+                  text="Don Norman on discoverability, and the Nielsen Norman archive on enterprise UX."
                   typingSpeed={15}
                   startDelay={2.75}
                   showCursor
@@ -465,6 +465,46 @@ export default function Hero() {
                 <SocialButton key={s.label} social={s} />
               ))}
             </motion.div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: smoothEase, delay: 4.1 }}
+            className="mt-5 flex justify-center md:mt-6"
+          >
+            <button
+              type="button"
+              onClick={() => {
+                if (typeof window !== "undefined") {
+                  window.dispatchEvent(new CustomEvent("open-chat-widget"));
+                }
+              }}
+              className="group inline-flex items-center gap-2 rounded-full border border-blue-400/20 bg-blue-400/5 px-3.5 py-1.5 text-xs text-zinc-400 transition-colors hover:border-blue-400/40 hover:bg-blue-400/10 hover:text-zinc-200"
+              aria-label="Open Harsha's AI portfolio chat"
+            >
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="text-blue-400/70"
+                aria-hidden
+              >
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+              </svg>
+              <span>Ask my AI portfolio anything</span>
+              <span
+                aria-hidden
+                className="text-blue-400/70 transition-transform group-hover:translate-x-0.5"
+              >
+                →
+              </span>
+            </button>
           </motion.div>
         </motion.div>
 

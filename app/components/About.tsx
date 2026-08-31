@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Send } from "lucide-react";
 import { RevealBlock, ScrollSentence, SectionLabel, smoothEase } from "./MotionPattern";
 
-const EMAIL = "sriharshaasapu48@gmail.com";
+const EMAIL = "harshaasapu.b@gmail.com";
 
 function RagArrow() {
   return (
