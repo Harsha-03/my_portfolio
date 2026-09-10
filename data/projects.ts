@@ -26,6 +26,7 @@ export const projects: Project[] = [
     title: "Phoenix AI — Six Decisions in Two Weeks",
     shortDescription:
       "Sole design owner on a live AI health platform. Direct ship authority. Six documented reframes. Live at phoenix-cdreams.org.",
+    image: "/projects/phoenix-ai-cover.webp",
     video: "/projects/phoenix-ai-preview.mp4",
     tags: ["Live Product", "AI Health", "Design System", "Interaction Design"],
     caseStudy: "/case-studies/phoenix-ai",
@@ -61,7 +62,7 @@ export const projects: Project[] = [
     title: "BuiltinTech Client Delivery System",
     shortDescription:
       "Shipped 10+ client products in 12 months. Same intake to ship pattern across construction, minerals, fitness, and infrastructure verticals.",
-    image: "/projects/builtintech-cover.png",
+    image: "/projects/builtintech-cover.webp",
     video: "/projects/builtintech-preview.mp4",
     tags: ["Client Work", "Systems Design", "Delivery", "Frontend"],
     caseStudy: "/case-studies/builtintech-delivery",
@@ -92,7 +93,7 @@ export const projects: Project[] = [
     title: "NRI Wellbeing Services",
     shortDescription:
       "Service first IA for 10+ service categories at an ISO certified company. Live at nriwellbeing.com since 2022.",
-    image: "/projects/nri-wellbeing-cover.png",
+    image: "/projects/nri-wellbeing-cover.webp",
     video: "/projects/nri-wellbeing-preview.mp4",
     tags: ["UI/UX", "IA", "Service Website", "Frontend"],
     caseStudy: "/case-studies/nri-wellbeing",
@@ -123,6 +124,7 @@ export const projects: Project[] = [
     title: "Resume Tailor",
     shortDescription:
       "A tool for people who write their own resumes. Honest scoring, no invented experience. Live at resumetailor-liart.vercel.app.",
+    image: "/projects/resume-tailor-cover.webp",
     video: "/projects/resume-tailor-preview.mp4",
     tags: ["AI Product", "UX", "Shipped"],
     caseStudy: "/case-studies/resume-tailor",
@@ -155,6 +157,7 @@ export const projects: Project[] = [
     title: "Portfolio",
     shortDescription:
       "A portfolio treated as a product, not a static page. RAG chatbot trained on 8 knowledge files answers recruiter questions inline.",
+    image: "/projects/portfolio-cover.webp",
     video: "/projects/portfolio-preview.mp4",
     tags: ["Product", "RAG", "Interaction Design"],
     caseStudy: "/case-studies/portfolio",
@@ -245,6 +248,7 @@ export const projects: Project[] = [
     title: "SLU Alumni Connect",
     shortDescription:
       "Role based dashboards for 4 user types across a 12k+ alumni ecosystem. FERPA compliant scope. Design phase.",
+    image: "/projects/slu-alumni-connect-cover.webp",
     video: "/projects/slu-alumni-connect-preview.mp4",
     tags: ["Concept", "Multi Role", "Platform"],
     caseStudy: "/case-studies/slu-alumni-connect",

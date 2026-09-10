@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { motion, useReducedMotion } from "framer-motion";
@@ -185,6 +185,7 @@ function ProjectMedia({
   sizes,
   className,
   mediaQuery,
+  active,
 }: {
   project: Project;
   wordmark: string;
@@ -192,10 +193,13 @@ function ProjectMedia({
   sizes: string;
   className: string;
   mediaQuery: string;
+  active: boolean;
 }) {
   const reduceMotion = useReducedMotion();
   const [videoFailed, setVideoFailed] = useState(false);
   const [matchesViewport, setMatchesViewport] = useState(false);
+  const [canHover, setCanHover] = useState(false);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
     const media = window.matchMedia(mediaQuery);
@@ -207,13 +211,40 @@ function ProjectMedia({
     return () => media.removeEventListener("change", updateMatch);
   }, [mediaQuery]);
 
-  if (project.video && matchesViewport && !videoFailed) {
+  // Only pointers that can actually hover ever get a video element. Touch
+  // devices fall through to the still poster below.
+  useEffect(() => {
+    const pointer = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const updatePointer = () => setCanHover(pointer.matches);
+
+    updatePointer();
+    pointer.addEventListener("change", updatePointer);
+
+    return () => pointer.removeEventListener("change", updatePointer);
+  }, []);
+
+  // Hover or keyboard focus drives playback. Pausing holds the current frame
+  // so the card never snaps back to the poster on the way out.
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (active) {
+      void video.play().catch(() => {});
+    } else {
+      video.pause();
+    }
+  }, [active]);
+
+  const playable = canHover && !reduceMotion;
+
+  if (project.video && matchesViewport && !videoFailed && playable) {
     return (
       <video
         key={project.video}
-        autoPlay={!reduceMotion}
+        ref={videoRef}
         muted
-        loop={!reduceMotion}
+        loop
         playsInline
         preload="metadata"
         poster={project.image}
@@ -259,6 +290,8 @@ function CaseStudyCard({
   index: number;
   onOpen: (project: Project) => void;
 }) {
+  const [mediaActive, setMediaActive] = useState(false);
+
   const copy = CARD_COPY[project.slug];
   const hasCaseStudy = isInternalCaseStudy(project.caseStudy);
   const isShipped = project.status === "Shipped";
@@ -293,6 +326,10 @@ function CaseStudyCard({
         role="button"
         tabIndex={0}
         aria-label={`Open case study: ${project.title}`}
+        onMouseEnter={() => setMediaActive(true)}
+        onMouseLeave={() => setMediaActive(false)}
+        onFocus={() => setMediaActive(true)}
+        onBlur={() => setMediaActive(false)}
         initial={{ y: 0, boxShadow: "0 0 0 rgba(0,0,0,0)" }}
         whileHover={{
           y: -4,
@@ -317,6 +354,7 @@ function CaseStudyCard({
               sizes="96px"
               className="h-full w-full object-cover transition-transform duration-[500ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
               mediaQuery="(max-width: 767px)"
+              active={mediaActive}
             />
           </div>
 
@@ -430,6 +468,7 @@ function CaseStudyCard({
               sizes="45vw"
               className="h-full w-full object-cover transition-all duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04] group-hover:brightness-105"
               mediaQuery="(min-width: 768px)"
+              active={mediaActive}
             />
           </div>
 
