@@ -233,7 +233,7 @@ function SocialButton({ social }: { social: SocialDef }) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 4 }}
             transition={{ duration: 0.15 }}
-            className="pointer-events-none absolute -bottom-8 left-1/2 z-30 -translate-x-1/2 whitespace-nowrap rounded-md border border-white/10 bg-zinc-950/90 px-2 py-1 text-[10px] tracking-wide text-zinc-300 backdrop-blur"
+            className="pointer-events-none absolute -bottom-8 left-1/2 z-30 whitespace-nowrap [translate:-50%_0] rounded-md border border-white/10 bg-zinc-950/90 px-2 py-1 text-[10px] tracking-wide text-zinc-300 backdrop-blur"
           >
             {social.label}
           </motion.span>
