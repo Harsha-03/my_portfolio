@@ -311,7 +311,7 @@ function CaseStudyCard({
 
   const copy = CARD_COPY[project.slug];
   const hasCaseStudy = isInternalCaseStudy(project.caseStudy);
-  const isShipped = project.status === "Shipped";
+  const isShipped = project.status === "Shipped" || project.status === "Live";
 
   if (!copy) return null;
 
