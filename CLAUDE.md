@@ -81,7 +81,6 @@ Core diagnosis: case studies list fixes, they don't tell a story. Nobody reading
 
 * Level signal mismatch: portfolio currently signals mid-level, I apply entry-level. Unresolved whether to dial down portfolio or target mid-level roles.
 * Presentation deck for interviews: separate artifact from the website (Figma or Keynote). Not started.
-* RAG chatbot production bug: currently returns "Something went wrong" on harshaasapu.com. Root cause: unknown, likely OpenAI env var or credit issue on Vercel. See "Debugging the RAG chatbot" section below.
 
 ## Standing rules for how you work with me
 
@@ -111,7 +110,7 @@ Core diagnosis: case studies list fixes, they don't tell a story. Nobody reading
 
 ### Current
 
-Homepage lists 8 case studies mixed together: Phoenix AI, BuiltinTech, NRI Wellbeing, Starbucks, SLU Alumni Connect, Resume Tailor, harshaasapu.com meta-case study, LifeOS. Motion is mixed in. Auto-cycling images on card previews.
+Homepage lists 7 case studies, directly under the Hero, in this order: Phoenix AI, SLU Alumni Connect, BuiltinTech, NRI Wellbeing, Starbucks, Resume Tailor, LifeOS. The harshaasapu.com meta-case study card is cut from the homepage; its page still exists at `/case-studies/portfolio`. Motion is mixed in.
 
 ### Target
 
@@ -129,7 +128,7 @@ Case Studies section moves directly after Hero. Nothing between.
 * `app/components/Projects.tsx` — source of truth for the homepage cards. `CASE_STUDY_ORDER` decides which cards appear and in what order; removing a slug hides the card without touching its case study page. `CARD_COPY` holds everything a card visibly says: wordmark, headline, description, metrics, tags, and colors. Card order and card copy are content decisions. Ask before editing.
 * `data/projects.ts` — project metadata, not homepage order or card copy. Its array order and `featured` flags are ignored by the homepage. The homepage reads only the title (accessibility labels), preview media (`image`, `video`), live and code links, status, and case study route from it. The remaining fields (overview, role, problems, solutions, tools) feed the project detail modal. Ask before editing.
 * `embeddings.json` — RAG chatbot knowledge base, 4.5MB. When case study content changes materially, this must be regenerated using the ingestion script in `scripts/`. Never edit by hand.
-* `app/api/chat/route.ts` — RAG chatbot backend. Currently broken on production. See debugging section.
+* `app/api/chat/route.ts` — RAG chatbot backend. Was broken on production due to exhausted OpenAI credits; restored after topping up. See debugging section.
 * `.env.local` — never commit, never expose. If you need to check a value, ask me to read it out.
 * `public/cv.pdf` — needs the latest resume. Ask before assuming which version is current.
 
@@ -169,7 +168,7 @@ Do not jump phases. Confirm completion of Phase 1 before touching Phase 2 conten
 
 ## Debugging the RAG chatbot
 
-Currently broken on `harshaasapu.com` — returns `"Something went wrong while processing your request."` This exact string is hard-coded in `app/api/chat/route.ts` in the catch block. Something inside the try block throws.
+Was broken on production due to exhausted OpenAI credits — restored after topping up. Set the $2 low-balance alert to prevent recurrence. When the chatbot fails, it returns `"Something went wrong while processing your request."` This exact string is hard-coded in `app/api/chat/route.ts` in the catch block. Something inside the try block throws.
 
 Last outage (September 2026), root cause: exhausted OpenAI credits. The embedding call returned `429 insufficient_quota` (`credit_balance_exhausted`), and the catch block flattened it into the generic message. The key, code, env vars, and `embeddings.json` were all fine. A 401 means a bad or revoked key; a 429 with `insufficient_quota` means billing.
 
