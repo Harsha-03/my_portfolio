@@ -424,7 +424,7 @@ export default function Hero() {
                 (e.currentTarget as HTMLElement).style.backgroundColor = "#f76a63";
               }}
             >
-              {/* Shimmer sweep — diagonal light band on a slow loop */}
+              {/* Shimmer sweep - diagonal light band on a slow loop */}
               {!reducedMotion && (
                 <motion.span
                   aria-hidden
@@ -510,7 +510,7 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Scroll indicator — signals "there's more below" without adding weight */}
+        {/* Scroll indicator - signals "there's more below" without adding weight */}
         <motion.a
           href="#projects"
           onClick={(e) => {

@@ -16,7 +16,7 @@ import ProjectCaseStudy from "./ProjectCaseStudy";
 import { projects, type Project } from "@/data/projects";
 import { RevealBlock, SectionLabel } from "./MotionPattern";
 
-/* — Card display order (top to bottom) — */
+/* Card display order (top to bottom) */
 const CASE_STUDY_ORDER = [
   "phoenix-ai",
   "slu-alumni-connect",
@@ -27,7 +27,7 @@ const CASE_STUDY_ORDER = [
   "lifeos",
 ];
 
-/* — Industry filter chips, left to right. Homepage-only; card copy stays in CARD_COPY — */
+/* Industry filter chips, left to right. Homepage-only; card copy stays in CARD_COPY */
 const CASE_STUDY_CATEGORIES = {
   all: { label: "All", slugs: CASE_STUDY_ORDER },
   client: {
@@ -212,7 +212,7 @@ function ProjectMedia({
   );
 }
 
-/* — Individual card — */
+/* Individual card */
 function CaseStudyCard({
   project,
   index,
@@ -273,9 +273,9 @@ function CaseStudyCard({
         style={{ willChange: "transform" }}
         className="group relative h-full overflow-hidden rounded-xl border border-white/10 bg-zinc-950/60 p-2.5 outline-none transition-colors duration-300 hover:border-white/20 hover:bg-zinc-950/80 focus-visible:ring-2 focus-visible:ring-white/30 cursor-pointer md:p-4"
       >
-        {/* — MOBILE: short-wide horizontal layout — */}
+        {/* MOBILE: short-wide horizontal layout */}
         <div className="flex items-stretch gap-3 md:hidden">
-          {/* Thumbnail — left */}
+          {/* Thumbnail - left */}
           <div
             className="relative h-[96px] w-[96px] shrink-0 overflow-hidden rounded-lg"
             style={{ backgroundColor: copy.bg }}
@@ -291,7 +291,7 @@ function CaseStudyCard({
             />
           </div>
 
-          {/* Content — right */}
+          {/* Content - right */}
           <div className="flex min-w-0 flex-1 flex-col justify-between py-0.5">
             {/* Wordmark row */}
             <div className="flex items-center gap-1.5">
@@ -355,9 +355,9 @@ function CaseStudyCard({
           </div>
         </div>
 
-        {/* — DESKTOP: existing vertical layout — */}
+        {/* DESKTOP: existing vertical layout */}
         <div className="hidden md:block">
-          {/* Header row — wordmark left, tags right */}
+          {/* Header row - wordmark left, tags right */}
           <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
             <div className="flex items-center gap-1.5 text-xs font-semibold text-white">
               {isShipped ? (
@@ -448,12 +448,12 @@ function CaseStudyCard({
               </div>
 
               <div className="group/cta-wrap relative w-fit">
-                {/* Back pill — sits behind, offset down-right */}
+                {/* Back pill - sits behind, offset down-right */}
                 <span
                   aria-hidden="true"
                   className="pointer-events-none absolute left-1 top-1 h-full w-full rounded-full bg-black"
                 />
-                {/* Front pill — the actual button, slides down-right on hover (press-in) */}
+                {/* Front pill - the actual button, slides down-right on hover (press-in) */}
                 <button
                   type="button"
                   onClick={(event) => {
@@ -500,7 +500,7 @@ function ActionLink({
   );
 }
 
-/* — Industry filter chips — */
+/* Industry filter chips */
 function FilterChips({
   active,
   onChange,
@@ -551,7 +551,7 @@ function FilterChips({
   );
 }
 
-/* — Main export — */
+/* Main export */
 export default function Projects() {
   const router = useRouter();
   const reduceMotion = useReducedMotion();

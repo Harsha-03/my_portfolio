@@ -100,7 +100,7 @@ export default function ProjectCard({ project, onOpen }: Props) {
           </div>
         )}
 
-        {/* Push CTA row to bottom — matches Starbucks card pattern */}
+        {/* Push CTA row to bottom - matches Starbucks card pattern */}
         <div className="mt-auto pt-5 flex items-center justify-between">
           {/* Primary CTA: "Read case study →" (mirrors Starbucks hero card) */}
           <div className="flex items-center gap-2 text-sm text-zinc-300 group-hover:text-white transition-colors">
@@ -114,7 +114,7 @@ export default function ProjectCard({ project, onOpen }: Props) {
             </motion.span>
           </div>
 
-          {/* Secondary external icons — small, no labels, no overlap with primary */}
+          {/* Secondary external icons - small, no labels, no overlap with primary */}
           <div className="flex items-center gap-2" onClick={(e) => e.stopPropagation()}>
             {project.demo && (
               <a

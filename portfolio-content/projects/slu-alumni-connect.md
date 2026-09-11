@@ -1,4 +1,4 @@
-# SLU Alumni Connect — Graduate Frontend Project
+# SLU Alumni Connect: Graduate Frontend Project
 
 ## Overview
 

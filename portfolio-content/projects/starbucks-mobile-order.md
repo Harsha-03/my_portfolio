@@ -1,4 +1,4 @@
-# Starbucks Mobile Order Redesign — UX Case Study
+# Starbucks Mobile Order Redesign: UX Case Study
 
 ## Overview
 
@@ -19,7 +19,7 @@ Published on Behance: behance.net/gallery/250629345/Starbucks-Mobile-Order-Redes
 
 ## The Problem
 
-The Starbucks app shows "Preparing" — a single state that hides everything happening behind the counter. It looks the same at minute one as it does at minute ten.
+The Starbucks app shows "Preparing": a single state that hides everything happening behind the counter. It looks the same at minute one as it does at minute ten.
 
 In October 2024, incoming Starbucks CEO Brian Niccol named mobile order pickup a turnaround priority on his first earnings call, citing inaccurate wait times and store congestion. Within weeks, the item limit was cut from 15 to 12, and Niccol called the barista-to-customer handoff "the moment of truth."
 
@@ -29,7 +29,7 @@ The user-facing version of that problem: no visibility into whether your drink i
 
 ## The Insight
 
-Users don't want a faster app. They want accurate truth about a specific moment — when the barista actually starts their drink.
+Users don't want a faster app. They want accurate truth about a specific moment: when the barista actually starts their drink.
 
 That moment doesn't exist in the current product. The redesign builds it.
 
@@ -39,18 +39,18 @@ That moment doesn't exist in the current product. The redesign builds it.
 
 Three ideas were killed before designing:
 
-1. **GPS-triggered pickup notification** — defeats mobile ordering entirely. The drink only starts when you're near the store, which means you're back in the queue.
+1. **GPS-triggered pickup notification**: defeats mobile ordering entirely. The drink only starts when you're near the store, which means you're back in the queue.
 
-2. **Queue position counter (Domino's-style)** — Starbucks operations are parallel, not single-file. A barista works three drinks simultaneously across two espresso machines. A literal queue counter would lie.
+2. **Queue position counter (Domino's-style)**: Starbucks operations are parallel, not single-file. A barista works three drinks simultaneously across two espresso machines. A literal queue counter would lie.
 
-3. **Live barista cam** — over-engineered, privacy-violating, and the camera doesn't tell you when your drink starts.
+3. **Live barista cam**: over-engineered, privacy-violating, and the camera doesn't tell you when your drink starts.
 
 ---
 
 ## The Four-State Model
 
 ### State 01: In Queue
-Real context: "2 drinks ahead of yours." Progress bar at 25%. No urgency — just confidence.
+Real context: "2 drinks ahead of yours." Progress bar at 25%. No urgency. Just confidence.
 
 ### State 02: Being Made Now
 The screen that didn't exist before. "Maya started your macchiato." Live ripple animation around the drink card. The brewing moment, named and humanized.
@@ -69,7 +69,7 @@ Amber, not red. Gentle nudge. Free remake offer. The app's job is to keep the cu
 - **Cream backgrounds (#F2F0EB):** Warms the entire app. Editorial restraint over digital sterility.
 - **Hairlines, not shadows:** Every card sits on a 1px black-at-6% border.
 - **Soft state language:** "Waiting on the counter" not "Order late." Amber, not red.
-- **Single state card:** One reusable component carries the status story across four screens. Layout never changes — only the eyebrow, headline, and accent color.
+- **Single state card:** One reusable component carries the status story across four screens. Layout never changes: only the eyebrow, headline, and accent color.
 
 ---
 
@@ -77,14 +77,14 @@ Amber, not red. Gentle nudge. Free remake offer. The app's job is to keep the cu
 
 Frame 2 → Frame 3 is the only transition that earns animation. When the barista taps "started," the screen morphs: eyebrow rewrites from IN QUEUE to BEING MADE NOW, the progress bar fills, and three concentric green rings pulse outward. Smart Animate handles all of it.
 
-Every other transition is a quiet fade. The brewing moment is the only one that moves — because it's the only one that matters.
+Every other transition is a quiet fade. The brewing moment is the only one that moves, because it's the only one that matters.
 
 ---
 
 ## What I'd Test Next
 
-- Real barista hardware latency — does the POS event fire in under 5 seconds?
-- Sentiment when the Waiting state hits — amber has to feel like Starbucks cares, not like a grade
+- Real barista hardware latency: does the POS event fire in under 5 seconds?
+- Sentiment when the Waiting state hits: amber has to feel like Starbucks cares, not like a grade
 - Whether the four-state model holds for drive-thru and in-store orders
 
 ---

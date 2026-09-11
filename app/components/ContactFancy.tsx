@@ -330,7 +330,7 @@ export default function ContactFancy() {
                 className="space-y-6"
               >
                 <p className="text-sm text-zinc-400">
-                  Reach me directly — I typically respond within 24 hours.
+                  Reach me directly. I typically respond within 24 hours.
                 </p>
 
                 <div className="flex flex-wrap items-center gap-3">

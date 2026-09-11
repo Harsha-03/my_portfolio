@@ -1,4 +1,4 @@
-# NRI Wellbeing Services — UI/UX Designer & Frontend Developer Intern
+# NRI Wellbeing Services: UI/UX Designer & Frontend Developer Intern
 
 ## Overview
 
@@ -28,7 +28,7 @@ the IA choices made in 2022 have survived every business change since.
 
 NRI Wellbeing Services offered 10+ service categories across property,
 healthcare, logistics, financial, and general NRI support services. First-time
-visitors — often family members finding services for parents in India — had 30
+visitors (often family members finding services for parents in India) had 30
 seconds and a specific need, not time to read who the company was.
 
 The IA decision was simple and unusual for the era: **services above the fold,
@@ -39,7 +39,7 @@ helped users identify the right service category quickly in the customer's
 own language. Each category got a dedicated page with contact routing to the
 right team.
 
-That decision — service-first, story-second — is the one that has held
+That decision (service-first, story-second) is the one that has held
 unchanged for four years.
 
 ---
@@ -49,7 +49,7 @@ unchanged for four years.
 - Service-first homepage with 10+ category cards, one line each
 - Dedicated page per category with contact routing to the right team
 - Responsive layouts for desktop and mobile
-- Frontend implementation (HTML/CSS/JS) — Harsha's first project owning both
+- Frontend implementation (HTML/CSS/JS): Harsha's first project owning both
   the design decisions and the code that shipped
 - Site went live in 2022 and has run unchanged since
 
@@ -62,7 +62,7 @@ For a first zero-to-one production project, the longevity is the point.
 Most sites get redesigned every 18 months because the IA didn't survive
 contact with real users, real content, or real business changes. nriwellbeing.com
 has run for 4+ years without a redesign. That's proof that the IA decisions
-made at the beginning were the right ones — not because they were polished,
+made at the beginning were the right ones, not because they were polished,
 but because they solved the actual visitor problem.
 
 This experience taught Harsha the principle he still uses: **IA decisions

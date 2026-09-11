@@ -1,4 +1,4 @@
-# Phoenix AI — Six Decisions in Two Weeks
+# Phoenix AI: Six Decisions in Two Weeks
 
 ## Overview
 
@@ -25,18 +25,18 @@ Every ticket landed with either no spec or a one-line brief: "your call, do
 whatever you think is best." No PMs in the loop. No wireframes handed down.
 Direct ship authority to production. No approval gates.
 
-The thesis of the case study: **ambiguity in tickets is not a blocker — it's
+The thesis of the case study: **ambiguity in tickets is not a blocker. It's
 a design opportunity.** Every judgment call, every subtraction, every
 reframing is documented as evidence.
 
 ---
 
-## Decision 1 — Badge Request Became an IA Overhaul
+## Decision 1: Badge Request Became an IA Overhaul
 
 The product lead requested a small badge on the Biomarkers page showing which
 markers fed the overall health score. One-line Slack message.
 
-Harsha shipped the badge — "Used for Score" — but sitting with the page,
+Harsha shipped the badge ("Used for Score"), but sitting with the page,
 realized the ticket was misdiagnosing the actual user problem. Users weren't
 confused about _which_ markers were scored. They were confused about _why_.
 
@@ -48,7 +48,7 @@ Redesign shipped:
 - Added an info popover explaining why some markers aren't scored (model
   validation gaps, missing reference ranges)
 - Killed the full-row colored status washes and replaced them with a 3px
-  colored left border + small status pill on the right — same status
+  colored left border + small status pill on the right: same status
   information, five times more scannable
 
 The ticket said "add a badge." What shipped was an information hierarchy
@@ -56,7 +56,7 @@ that solved the actual user question.
 
 ---
 
-## Decision 2 — Reconciled Two Conflicting Brand Palettes Without Escalation
+## Decision 2: Reconciled Two Conflicting Brand Palettes Without Escalation
 
 The branding lead provided a brand hex palette. The engineering team had a
 different HSL-based palette already in production. Two competing color systems
@@ -72,7 +72,7 @@ Nobody flagged it. The reconciliation is now the standard.
 
 ---
 
-## Decision 3 — Diagnosed a Layout Bug That Looked Like a State Bug
+## Decision 3: Diagnosed a Layout Bug That Looked Like a State Bug
 
 Users reported that clicking "View details" on any one domain card visually
 expanded every card in the row. Standard React assumption: shared state
@@ -80,7 +80,7 @@ across card instances. But the local useState was correctly scoped per-card.
 
 The actual cause: the grid used Tailwind's auto-rows-fr for equal row heights.
 When one card expanded, its row stretched, and every card in that row
-visually grew with it. **Not a state bug — a layout bug pretending to be a
+visually grew with it. **Not a state bug. A layout bug pretending to be a
 state bug.**
 
 The fix wasn't a state fix. It was an interaction pattern redesign:
@@ -96,7 +96,7 @@ Matches the drill-down pattern used by Apple Health, Whoop, and Oura.
 
 ---
 
-## Decision 4 — Aggressive Navigation Subtraction
+## Decision 4: Aggressive Navigation Subtraction
 
 Original state: dashboard had five nav items in a top tab row (Data / Labs /
 Supplements / Upload / Profile) AND a sidebar with the same five items
@@ -119,7 +119,7 @@ surface reduced by 60%.
 
 ---
 
-## Decision 5 — Progressive Disclosure on the Mobile Hamburger
+## Decision 5: Progressive Disclosure on the Mobile Hamburger
 
 After deleting the mobile bottom nav, the hamburger became the only entry
 point to navigation on mobile. But first-time users often miss the standard
@@ -143,17 +143,17 @@ Discoverable for new users. Invisible for returning users. Zero permanent UI noi
 
 ---
 
-## Decision 6 — Motion System Anchored to Health Metaphors
+## Decision 6: Motion System Anchored to Health Metaphors
 
 The platform felt visually static. The brief was "add subtle premium animations."
 Harsha declined to add generic hover effects and instead built a small named
 motion vocabulary tied to health metaphors:
 
-- **phoenixFadeUp** — content rises 8px on entrance with cubic-bezier(0.2, 0.8, 0.2, 1) (natural deceleration)
-- **phoenixBreathe** — 3s ease-in-out scale + opacity cycle on the score card sparkle icon (breathing metaphor for a health app)
-- **phoenixDrawIn** — 0.9s left-anchored scaleX on progress bars (fills in like a measurement completing)
-- **phoenixHamburgerHint** — 8s translate + glow cycle on the hamburger until first tap
-- **phoenixDotPulse** — 2s scale/opacity pulse on the dot indicator
+- **phoenixFadeUp**: content rises 8px on entrance with cubic-bezier(0.2, 0.8, 0.2, 1) (natural deceleration)
+- **phoenixBreathe**: 3s ease-in-out scale + opacity cycle on the score card sparkle icon (breathing metaphor for a health app)
+- **phoenixDrawIn**: 0.9s left-anchored scaleX on progress bars (fills in like a measurement completing)
+- **phoenixHamburgerHint**: 8s translate + glow cycle on the hamburger until first tap
+- **phoenixDotPulse**: 2s scale/opacity pulse on the dot indicator
 
 All animations respect prefers-reduced-motion via a shared media query.
 Staggered animation-delays applied via inline styles for entrance sequences.
@@ -186,7 +186,7 @@ layer.
 ## What I'd Do Differently
 
 The initial dark mode palette went through two iterations before landing on
-the branding lead's navy. Should have gotten brand clarity earlier — a single
+the branding lead's navy. Should have gotten brand clarity earlier: a single
 30-minute conversation with the branding lead in week one would have saved
 the first iteration entirely. Lesson: when two token systems are visibly in
 conflict, get the reconciliation conversation on the calendar before shipping

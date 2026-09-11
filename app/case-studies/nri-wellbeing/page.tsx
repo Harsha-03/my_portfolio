@@ -4,7 +4,7 @@ import { RevealBlock } from "../../components/MotionPattern";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "NRI Wellbeing Services — Harsha Asapu",
+  title: "NRI Wellbeing Services: Harsha Asapu",
   description:
     "ISO certified services company. 10+ service categories organized around a service first IA that lets first time visitors find the right offering in 30 seconds. Live at nriwellbeing.com since 2022.",
 };
@@ -173,7 +173,7 @@ export default function NRIWellbeingCaseStudy() {
         </section>
       </RevealBlock>
 
-      {/* CHAPTER 04 — What shipped */}
+      {/* CHAPTER 04 - What shipped */}
       <RevealBlock>
         <section className="max-w-3xl mx-auto px-6 mb-12 md:mb-14">
           <p className="text-[11px] tracking-[0.2em] text-cyan-400/80 font-semibold uppercase mb-4">
@@ -207,9 +207,9 @@ export default function NRIWellbeingCaseStudy() {
         </section>
       </RevealBlock>
 
-      {/* Chapter divider — no video placeholder */}
+      {/* Chapter divider - no video placeholder */}
 
-      {/* CHAPTER 05 — What this shows */}
+      {/* CHAPTER 05 - What this shows */}
       <RevealBlock>
         <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
           <p className="text-[11px] tracking-[0.2em] text-cyan-400/80 font-semibold uppercase mb-4">

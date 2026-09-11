@@ -1,8 +1,8 @@
-# LifeOS — Product Design Case Study
+# LifeOS: Product Design Case Study
 
 ## Overview
 
-LifeOS is a self-initiated product design case study — a behavioral productivity system designed for students and early-career professionals aged 20–28. The project ran from January 2026 to March 2026.
+LifeOS is a self-initiated product design case study: a behavioral productivity system designed for students and early-career professionals aged 20–28. The project ran from January 2026 to March 2026.
 
 The thesis: continued engagement comes from adaptation, not motivation.
 
@@ -21,10 +21,10 @@ The thesis: continued engagement comes from adaptation, not motivation.
 Most productivity tools track activity but don't help with the harder work: deciding what matters, recovering when plans break, and learning from the gap between what you planned and what actually happened.
 
 Research findings across early users:
-1. Planning abandonment mid-week — users disengage once plans break, not once motivation disappears
-2. Guilt-driven avoidance — missing tasks causes guilt, guilt causes users to stop opening the app entirely
-3. Overplanning vs execution gap — users create more plans than their real week can absorb
-4. Lack of reflection — users rarely review past weeks, repeating the same planning mistakes
+1. Planning abandonment mid-week: users disengage once plans break, not once motivation disappears
+2. Guilt-driven avoidance: missing tasks causes guilt, guilt causes users to stop opening the app entirely
+3. Overplanning vs execution gap: users create more plans than their real week can absorb
+4. Lack of reflection: users rarely review past weeks, repeating the same planning mistakes
 
 ---
 
@@ -44,7 +44,7 @@ Continued engagement comes from adaptation, not motivation. Users don't need mor
 
 ### Layer 02: Action (Daily Execution)
 - Focused view of today's actions
-- Every task must link to a weekly priority — no orphan to-dos
+- Every task must link to a weekly priority: no orphan to-dos
 - Flexible execution based on capacity
 - Skipped tasks deferred, not punished
 
@@ -55,7 +55,7 @@ Continued engagement comes from adaptation, not motivation. Users don't need mor
 
 ### Layer 04: Learning (Insights)
 - Surfaces behavioral patterns after 3–4 weeks of real data
-- Honest empty state — no fake intelligence on day one
+- Honest empty state: no fake intelligence on day one
 - Pattern types: Pattern, Blocker, Trend
 - Suggested Adjustments recommend, never override
 
@@ -84,11 +84,11 @@ Why: fake patterns on day one erode trust. The honest empty state is the correct
 ## Screens Designed
 
 1. Cover
-2. Daily Execution — Desktop
-3. Daily Execution — Mobile
-4. Weekly Review — Desktop
-5. Insights — Patterns (populated state)
-6. Insights — Empty State
+2. Daily Execution: Desktop
+3. Daily Execution: Mobile
+4. Weekly Review: Desktop
+5. Insights: Patterns (populated state)
+6. Insights: Empty State
 7. System Architecture Diagram
 
 ---

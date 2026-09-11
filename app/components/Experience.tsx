@@ -152,7 +152,7 @@ export default function Experience() {
     >
       <div className="container">
         <div className="experience-grid grid grid-cols-1 gap-8 items-start md:gap-10">
-          {/* LEFT — sticky context */}
+          {/* LEFT - sticky context */}
           <motion.div
             className="experience-left"
             initial={{ opacity: 0, x: -22 }}
@@ -193,7 +193,7 @@ export default function Experience() {
               transition={{ duration: 0.45, delay: 0.16 }}
             >
               From healthcare product work at Phoenix AI to co-founding a startup,
-              client delivery, and production websites — a timeline of real work,
+              client delivery, and production websites: a timeline of real work,
               shipped systems, and hands-on UX practice.
             </motion.p>
 
@@ -217,7 +217,7 @@ export default function Experience() {
             </motion.div>
           </motion.div>
 
-          {/* RIGHT — vertical timeline */}
+          {/* RIGHT - vertical timeline */}
           <motion.div
             className="experience-right relative pb-32 md:pb-0"
             variants={sectionVariant}

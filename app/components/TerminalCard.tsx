@@ -69,14 +69,14 @@ export default function TerminalCard() {
           <Line prompt="$" text="whoami" />
           <TypedBlock
             strings={[
-              `<span class='text-brand font-semibold'>Baba Sriharsha Asapu</span> — frontend-focused engineer (MIS @ SLU) building thoughtful, accessible products.`,
+              `<span class='text-brand font-semibold'>Baba Sriharsha Asapu</span>, frontend-focused engineer (MIS @ SLU) building thoughtful, accessible products.`,
             ]}
           />
 
           <Line prompt="$" text="projects" />
           <TypedBlock
             strings={[
-              `• <a href="#projects" class="underline decoration-dotted hover:no-underline">AI Resume Editor</a> — tailoring, match scores, cover letters.`,
+              `• <a href="#projects" class="underline decoration-dotted hover:no-underline">AI Resume Editor</a>: tailoring, match scores, cover letters.`,
               `• Next up: <span class='opacity-80'>Coming soon…</span>`,
             ]}
           />
@@ -84,7 +84,7 @@ export default function TerminalCard() {
           <Line prompt="$" text="education" />
           <TypedBlock
             strings={[
-              `• Saint Louis University — MS in Information Systems`,
+              `• Saint Louis University, MS in Information Systems`,
               `• B.Tech in Computer Science Engineering`,
             ]}
           />

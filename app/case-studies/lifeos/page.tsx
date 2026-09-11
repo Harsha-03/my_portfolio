@@ -5,9 +5,9 @@ import { RevealBlock } from "../../components/MotionPattern";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "LifeOS — Harsha Asapu",
+  title: "LifeOS: Harsha Asapu",
   description:
-    "A productivity system built on adaptation, not motivation. Four layers that turn reflection into the input — not the failure.",
+    "A productivity system built on adaptation, not motivation. Four layers that turn reflection into the input, not the failure.",
 };
 
 export default function LifeOSCaseStudy() {
@@ -38,7 +38,7 @@ export default function LifeOSCaseStudy() {
         </h1>
         <p className="mt-6 max-w-2xl text-base md:text-lg text-zinc-400 leading-relaxed">
           A productivity system built on adaptation, not motivation. Four layers
-          that turn reflection into the input &mdash; not the failure.
+          that turn reflection into the input, not the failure.
         </p>
 
         <div className="mt-8 md:mt-10 flex flex-wrap gap-x-12 gap-y-6 pt-6 border-t border-white/10">
@@ -75,7 +75,7 @@ export default function LifeOSCaseStudy() {
       </section>
       </RevealBlock>
 
-      {/* CHAPTER 01 — THE PROBLEM */}
+      {/* CHAPTER 01 - THE PROBLEM */}
       <RevealBlock>
       <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
         <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
@@ -136,7 +136,7 @@ export default function LifeOSCaseStudy() {
       </section>
       </RevealBlock>
 
-      {/* CHAPTER 02 — RESEARCH */}
+      {/* CHAPTER 02 - RESEARCH */}
       <RevealBlock>
       <section className="max-w-5xl mx-auto px-6 mb-20 md:mb-24">
         <div className="max-w-3xl">
@@ -215,7 +215,7 @@ export default function LifeOSCaseStudy() {
           </blockquote>
           <p className="mt-8 text-lg text-zinc-400 leading-relaxed pl-8">
             Users don&apos;t need more features. They need a system that expects
-            plans to break and treats that as normal data &mdash; not failure.
+            plans to break and treats that as normal data, not failure.
             The insight reframed the design challenge: stop optimizing for
             completion, start designing for recovery.
           </p>
@@ -223,7 +223,7 @@ export default function LifeOSCaseStudy() {
       </section>
       </RevealBlock>
 
-      {/* CHAPTER 03 — SYSTEM ARCHITECTURE */}
+      {/* CHAPTER 03 - SYSTEM ARCHITECTURE */}
       <RevealBlock>
       <section className="max-w-5xl mx-auto px-6 mb-20 md:mb-24">
         <div className="max-w-3xl">
@@ -238,7 +238,7 @@ export default function LifeOSCaseStudy() {
           </h2>
           <p className="text-base md:text-lg text-zinc-300 leading-relaxed mb-8 md:mb-10">
             The system is built around a closed loop. Each layer feeds the next.
-            Insights from past weeks reshape future planning &mdash; so the
+            Insights from past weeks reshape future planning, so the
             system adapts as you do.
           </p>
         </div>
@@ -271,7 +271,7 @@ export default function LifeOSCaseStudy() {
               num: "03",
               layer: "Feedback Layer",
               title: "Reflection",
-              body: "Lightweight check-ins capture friction, energy, and blockers as data &mdash; not failure.",
+              body: "Lightweight check-ins capture friction, energy, and blockers as data, not failure.",
             },
             {
               num: "04",
@@ -304,7 +304,7 @@ export default function LifeOSCaseStudy() {
       </section>
       </RevealBlock>
 
-      {/* CHAPTER 04 — THE SCREENS */}
+      {/* CHAPTER 04 - THE SCREENS */}
       <RevealBlock>
       <section className="max-w-5xl mx-auto px-6 mb-20 md:mb-24">
         <div className="max-w-3xl">
@@ -320,20 +320,20 @@ export default function LifeOSCaseStudy() {
         </div>
 
         <ScreenSection
-          eyebrow="Daily Execution &mdash; Desktop"
+          eyebrow="Daily Execution: Desktop"
           eyebrowColor="text-emerald-400"
           title="Today&apos;s focus, not today&apos;s list"
-          description="The Daily Execution view shows weekly priorities at the top at all times. Every task must be linked to one of them &mdash; no orphan to-dos. Skipping a task marks it deferred, not failed. The system records the signal for the weekly review."
+          description="The Daily Execution view shows weekly priorities at the top at all times. Every task must be linked to one of them: no orphan to-dos. Skipping a task marks it deferred, not failed. The system records the signal for the weekly review."
           image="/case-studies/lifeos/daily-execution-desktop.png"
           imageWidth={2800}
           imageHeight={1800}
         />
 
         <ScreenSection
-          eyebrow="Daily Execution &mdash; Mobile"
+          eyebrow="Daily Execution: Mobile"
           eyebrowColor="text-emerald-400"
           title="Same logic, smaller surface"
-          description="The mobile view condenses the same priority-linked structure into a scannable format. Weekly focus stays pinned at the top. The date and day are large &mdash; grounding the user in the present moment rather than the full backlog."
+          description="The mobile view condenses the same priority-linked structure into a scannable format. Weekly focus stays pinned at the top. The date and day are large, grounding the user in the present moment rather than the full backlog."
           image="/case-studies/lifeos/daily-execution-mobile.png"
           imageWidth={750}
           imageHeight={1624}
@@ -344,7 +344,7 @@ export default function LifeOSCaseStudy() {
           eyebrow="Weekly Review"
           eyebrowColor="text-emerald-400"
           title="The recovery mechanism"
-          description="Last week&apos;s priorities show neutral status: Completed, Partial, or Skipped &mdash; no streaks, no red warnings. Reflection prompts are intentionally open: what worked, what didn&apos;t, what got in the way. The Reality Check field reframes missed goals as context, not failure. Then: set next week&apos;s 1&ndash;3 priorities and commit."
+          description="Last week&apos;s priorities show neutral status: Completed, Partial, or Skipped. No streaks, no red warnings. Reflection prompts are intentionally open: what worked, what didn&apos;t, what got in the way. The Reality Check field reframes missed goals as context, not failure. Then: set next week&apos;s 1&ndash;3 priorities and commit."
           image="/case-studies/lifeos/weekly-review.png"
           imageWidth={2800}
           imageHeight={3600}
@@ -352,20 +352,20 @@ export default function LifeOSCaseStudy() {
         />
 
         <ScreenSection
-          eyebrow="Insights &mdash; Patterns"
+          eyebrow="Insights: Patterns"
           eyebrowColor="text-emerald-400"
           title="Behavioral patterns, not performance scores"
-          description="Insights surface recurring friction points &mdash; midweek overload, low energy after late nights, health goals skipped first during busy weeks. These are qualitative pattern cards, not charts or completion percentages. Suggested Adjustments recommend without overriding. The user keeps full agency."
+          description="Insights surface recurring friction points: midweek overload, low energy after late nights, health goals skipped first during busy weeks. These are qualitative pattern cards, not charts or completion percentages. Suggested Adjustments recommend without overriding. The user keeps full agency."
           image="/case-studies/lifeos/insights-patterns.png"
           imageWidth={2800}
           imageHeight={2200}
         />
 
         <ScreenSection
-          eyebrow="Insights &mdash; Empty State"
+          eyebrow="Insights: Empty State"
           eyebrowColor="text-zinc-500"
           title="Honest before it&apos;s useful"
-          description="The empty state doesn&apos;t fake intelligence. It tells you directly: patterns emerge after 3&ndash;4 weeks of weekly reviews. Until then, focus on the work &mdash; the data will follow. No placeholder cards, no artificial encouragement. Just honest design."
+          description="The empty state doesn&apos;t fake intelligence. It tells you directly: patterns emerge after 3&ndash;4 weeks of weekly reviews. Until then, focus on the work. The data will follow. No placeholder cards, no artificial encouragement. Just honest design."
           image="/case-studies/lifeos/insights-empty.png"
           imageWidth={2800}
           imageHeight={1800}
@@ -373,7 +373,7 @@ export default function LifeOSCaseStudy() {
       </section>
       </RevealBlock>
 
-      {/* CHAPTER 05 — DESIGN DECISIONS */}
+      {/* CHAPTER 05 - DESIGN DECISIONS */}
       <RevealBlock>
       <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
         <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
@@ -396,7 +396,7 @@ export default function LifeOSCaseStudy() {
             {
               decision: "Weekly focus capped at 1&ndash;3 priorities",
               rejected: "Full task list or Eisenhower matrix",
-              why: "Users experience decision fatigue and guilt with long lists. The hard cap isn&apos;t a limitation &mdash; it&apos;s the product. If everything matters, nothing does.",
+              why: "Users experience decision fatigue and guilt with long lists. The hard cap isn&apos;t a limitation. It&apos;s the product. If everything matters, nothing does.",
               risk: "May oversimplify genuinely complex weeks.",
             },
             {
@@ -408,7 +408,7 @@ export default function LifeOSCaseStudy() {
             {
               decision: "Capacity-based daily planning, not fixed task quotas",
               rejected: "Time-blocking only or fixed daily completion requirements",
-              why: "Users described difficulty executing plans due to work shifts, classes, and mental fatigue &mdash; not lack of motivation. The system needed to bend around real life, not against it.",
+              why: "Users described difficulty executing plans due to work shifts, classes, and mental fatigue, not lack of motivation. The system needed to bend around real life, not against it.",
               risk: "Capacity estimation may feel subjective to some users.",
             },
             {
@@ -453,7 +453,7 @@ export default function LifeOSCaseStudy() {
       </section>
       </RevealBlock>
 
-      {/* CHAPTER 06 — WHAT I'D TEST NEXT */}
+      {/* CHAPTER 06 - WHAT I'D TEST NEXT */}
       <RevealBlock>
       <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
         <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
@@ -468,10 +468,10 @@ export default function LifeOSCaseStudy() {
 
         <div className="space-y-8">
           {[
-            "Whether users find the weekly review helpful or burdensome. The current flow has five steps — testing whether users want to skip reflection when busy is critical before shipping.",
+            "Whether users find the weekly review helpful or burdensome. The current flow has five steps. Testing whether users want to skip reflection when busy is critical before shipping.",
             "Capacity-based framing in daily planning. Does &ldquo;how much capacity do you have today?&rdquo; land as useful, or does it feel too abstract for daily use?",
             "The 3–4 week threshold for Insights. Does the honest empty state retain users through that window, or does it read as broken? A progress indicator might bridge the gap.",
-            "Whether the 1–3 priority cap creates enough constraint without feeling limiting. Some weeks are genuinely complex — the system needs a release valve or a clear rationale for power users.",
+            "Whether the 1–3 priority cap creates enough constraint without feeling limiting. Some weeks are genuinely complex. The system needs a release valve or a clear rationale for power users.",
           ].map((item, i) => (
             <div key={i} className="flex gap-4">
               <span className="flex-shrink-0 text-emerald-400/60 text-2xl leading-none">

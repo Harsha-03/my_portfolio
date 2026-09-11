@@ -105,7 +105,7 @@ export default function FourStateCycler() {
           </p>
         </div>
 
-        {/* State card frame — fixed height to prevent layout shift on state change */}
+        {/* State card frame - fixed height to prevent layout shift on state change */}
         <div className="relative min-h-[280px] md:min-h-[240px]">
           <AnimatePresence mode="wait">
             <motion.div
@@ -116,7 +116,7 @@ export default function FourStateCycler() {
               transition={{ duration: 0.55, ease: smoothEase }}
               className={`relative overflow-hidden rounded-2xl border ${current.border} bg-zinc-950/60 p-6 md:p-8`}
             >
-              {/* Left border accent — the reusable state card signature */}
+              {/* Left border accent - the reusable state card signature */}
               <motion.div
                 initial={{ scaleY: 0 }}
                 animate={{ scaleY: 1 }}

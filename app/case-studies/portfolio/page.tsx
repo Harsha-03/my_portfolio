@@ -4,7 +4,7 @@ import { RevealBlock } from "../../components/MotionPattern";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Portfolio v3 — Harsha Asapu",
+  title: "Portfolio v3: Harsha Asapu",
   description:
     "v3 was not a redesign. It was a response to specific hiring signal feedback. How restraint, motion hierarchy, and mobile-first structure reshaped the site.",
 };
@@ -33,7 +33,7 @@ export default function PortfolioCaseStudy() {
         </Link>
       </div>
 
-      {/* Fixed chapter chip (top-right) — desktop only, so mobile nav owns bottom-right */}
+      {/* Fixed chapter chip (top-right) - desktop only, so mobile nav owns bottom-right */}
       <div className="fixed right-4 top-4 z-50 hidden md:block">
         <div className="rounded-full border border-white/10 bg-zinc-950/88 px-4 py-2.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-emerald-300/80 shadow-2xl shadow-black/35 backdrop-blur-xl">
           Portfolio · v3
@@ -76,7 +76,7 @@ export default function PortfolioCaseStudy() {
                 value: "Next.js · TypeScript · Framer Motion · OpenAI",
               },
               { label: "Timeline", value: "Nov 2025 – Present" },
-              { label: "Status", value: "v3 — Live" },
+              { label: "Status", value: "v3 · Live" },
             ].map((m) => (
               <div key={m.label}>
                 <p className="text-[10px] tracking-widest text-zinc-600 font-semibold uppercase mb-1">
@@ -89,7 +89,7 @@ export default function PortfolioCaseStudy() {
         </section>
       </RevealBlock>
 
-      {/* CHAPTER MAP — reader orientation, replaces the phase grid */}
+      {/* CHAPTER MAP - reader orientation, replaces the phase grid */}
       <RevealBlock>
         <section className="max-w-5xl mx-auto px-6 mb-16 md:mb-20">
           <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-5 md:p-6">
@@ -119,7 +119,7 @@ export default function PortfolioCaseStudy() {
         </section>
       </RevealBlock>
 
-      {/* CHAPTER 01 — THE PATTERN BREAK */}
+      {/* CHAPTER 01 - THE PATTERN BREAK */}
       <RevealBlock>
         <section
           id="chapter-01"
@@ -161,7 +161,7 @@ export default function PortfolioCaseStudy() {
         </section>
       </RevealBlock>
 
-      {/* CHAPTER 02 — RESTRAINT */}
+      {/* CHAPTER 02 - RESTRAINT */}
       <RevealBlock>
         <section
           id="chapter-02"
@@ -222,7 +222,7 @@ export default function PortfolioCaseStudy() {
         </section>
       </RevealBlock>
 
-      {/* CHAPTER 03 — MOTION */}
+      {/* CHAPTER 03 - MOTION */}
       <RevealBlock>
         <section
           id="chapter-03"
@@ -274,7 +274,7 @@ export default function PortfolioCaseStudy() {
         </section>
       </RevealBlock>
 
-      {/* CHAPTER 04 — MOBILE FIRST */}
+      {/* CHAPTER 04 - MOBILE FIRST */}
       <RevealBlock>
         <section
           id="chapter-04"
@@ -300,7 +300,7 @@ export default function PortfolioCaseStudy() {
             </p>
           </div>
 
-          {/* What changed on mobile — grid */}
+          {/* What changed on mobile - grid */}
           <div className="space-y-3">
             {[
               {
@@ -343,7 +343,7 @@ export default function PortfolioCaseStudy() {
         </section>
       </RevealBlock>
 
-      {/* CHAPTER 05 — THE SITE AS A TOOL */}
+      {/* CHAPTER 05 - THE SITE AS A TOOL */}
       <RevealBlock>
         <section
           id="chapter-05"
@@ -386,7 +386,7 @@ export default function PortfolioCaseStudy() {
         </section>
       </RevealBlock>
 
-      {/* CHAPTER 06 — WHAT PEOPLE SAID */}
+      {/* CHAPTER 06 - WHAT PEOPLE SAID */}
       <RevealBlock>
         <section
           id="chapter-06"
@@ -427,7 +427,7 @@ export default function PortfolioCaseStudy() {
             </figcaption>
           </figure>
 
-          {/* Quote block 2 — Vasudha */}
+          {/* Quote block 2 - Vasudha */}
           <figure className="mb-10 rounded-2xl border border-blue-500/15 bg-blue-500/[0.03] p-6 md:p-8">
             <Quote
               size={20}
@@ -455,7 +455,7 @@ export default function PortfolioCaseStudy() {
         </section>
       </RevealBlock>
 
-      {/* CHAPTER 07 — WHAT SHIFTED */}
+      {/* CHAPTER 07 - WHAT SHIFTED */}
       <RevealBlock>
         <section
           id="chapter-07"
@@ -498,7 +498,7 @@ export default function PortfolioCaseStudy() {
           </ul>
 
           <p className="mt-8 text-base md:text-lg text-zinc-400 leading-relaxed italic">
-            The rest of the signal — interviews, referrals, offers — is what
+            The rest of the signal (interviews, referrals, offers) is what
             v3 is now watching for.
           </p>
         </section>

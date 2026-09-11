@@ -1,4 +1,4 @@
-# UX Design Process — Harsha Asapu
+# UX Design Process: Harsha Asapu
 
 ## Overview
 
@@ -39,7 +39,7 @@ and self-directed products, with a consistent emphasis on shipped, verifiable ou
 
 ### 5. Usability Testing & Iteration
 
-- Test with real users — minimum 10–20 for meaningful vulnerability discovery
+- Test with real users: minimum 10–20 for meaningful vulnerability discovery
 - Document patterns, blockers, and friction points
 - Iterate based on observed behavior, not assumptions
 - Has tested his own RAG portfolio assistant with 10–20 users to find response gaps
@@ -85,5 +85,5 @@ Figma but are impractical to ship.
 
 ## Current Learning
 
-- Google UX Design Certificate — Foundations of User Experience (Coursera, in progress)
+- Google UX Design Certificate: Foundations of User Experience (Coursera, in progress)
 - A/B Testing course (Udacity, in progress)

@@ -1,4 +1,4 @@
-# BuiltinTech — Co-Founder, Product Designer & Frontend Engineer
+# BuiltinTech: Co-Founder, Product Designer & Frontend Engineer
 
 ## Overview
 
@@ -27,12 +27,12 @@ between design and engineering because Harsha owned both.
 3–4 week ship cycles were the norm, not the exception. A six-step pattern
 replaced custom scoping on every project:
 
-1. **Intake** — client brief, requirement discovery, scoping
-2. **IA** — service-first hierarchy applied across every vertical
-3. **Design** — Figma flows, page structures, component patterns
-4. **Build** — HTML/CSS/JS/Flask implementation
-5. **Deploy** — Vercel deployment, DNS, SSL
-6. **Handoff** — client walkthrough, editable content, ongoing support
+1. **Intake**: client brief, requirement discovery, scoping
+2. **IA**: service-first hierarchy applied across every vertical
+3. **Design**: Figma flows, page structures, component patterns
+4. **Build**: HTML/CSS/JS/Flask implementation
+5. **Deploy**: Vercel deployment, DNS, SSL
+6. **Handoff**: client walkthrough, editable content, ongoing support
 
 Reusable component patterns meant the second and third projects in the same
 vertical shipped faster than the first. Featured client Dharani Minerals
@@ -46,8 +46,8 @@ shipped end-to-end in 2023.
 - **80% of new client acquisition** driven directly by Harsha (cold outreach,
   storefront visits, scoping conversations before design work began)
 - **12 KL University interns** recruited and mentored on live client
-  workflows — real delivery responsibilities, not simulated tasks
-- **Zero handoff friction** — same designer on discovery, design, and build
+  workflows: real delivery responsibilities, not simulated tasks
+- **Zero handoff friction**: same designer on discovery, design, and build
 
 ---
 
@@ -65,12 +65,12 @@ shipped end-to-end in 2023.
 
 ## What This Experience Built
 
-- **Velocity** — the ability to ship a real consumer web product in 3–4 weeks
-- **Volume tolerance** — 10+ concurrent client relationships without dropping
+- **Velocity**: the ability to ship a real consumer web product in 3–4 weeks
+- **Volume tolerance**: 10+ concurrent client relationships without dropping
   design quality
-- **End-to-end ownership** — comfortable owning discovery, design, build,
+- **End-to-end ownership**: comfortable owning discovery, design, build,
   deploy, and handoff without a team safety net
-- **Systems thinking** — the intake-to-ship pattern is a systems-level
+- **Systems thinking**: the intake-to-ship pattern is a systems-level
   design decision, not a workflow accident
 
 ---

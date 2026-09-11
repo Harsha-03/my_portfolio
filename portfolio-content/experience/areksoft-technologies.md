@@ -1,4 +1,4 @@
-# Areksoft Technologies — Early Engineering Experience
+# Areksoft Technologies: Early Engineering Experience
 
 ## Overview
 
