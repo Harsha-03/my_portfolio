@@ -24,9 +24,10 @@ export interface Project {
 export const projects: Project[] = [
   {
     slug: "phoenix-ai",
-    title: "Phoenix AI — Six Decisions in Two Weeks",
+    title: "Phoenix AI",
     shortDescription:
-      "Sole design owner on a live AI health platform. Direct ship authority. Six documented reframes. Live at phoenix-cdreams.org.",
+      "Biomarker users couldn't tell which of 14 markers drove their score. Now they can, in one glance. Live at phoenix-cdreams.org.",
+    metric: "60% reduction in navigation surface area, no items lost",
     image: "/projects/phoenix-ai-cover.webp",
     video: "/projects/phoenix-ai-preview.mp4",
     tags: ["Live Product", "AI Health", "Design System", "Interaction Design"],
@@ -62,7 +63,8 @@ export const projects: Project[] = [
     slug: "builtintech-delivery",
     title: "BuiltinTech Client Delivery System",
     shortDescription:
-      "Shipped 10+ client products in 12 months. Same intake to ship pattern across construction, minerals, fitness, and infrastructure verticals.",
+      "Local businesses needed real sites fast, without agency budgets. We delivered 10+ across four verticals in 12 months.",
+    metric: "10+ products shipped in 12 months, 80% client acquisition driven",
     image: "/projects/builtintech-cover.webp",
     video: "/projects/builtintech-preview.mp4",
     tags: ["Client Work", "Systems Design", "Delivery", "Frontend"],
@@ -93,7 +95,8 @@ export const projects: Project[] = [
     slug: "nri-wellbeing",
     title: "NRI Wellbeing Services",
     shortDescription:
-      "Service first IA for 10+ service categories at an ISO certified company. Live at nriwellbeing.com since 2022.",
+      "Family members had 30 seconds to find the right service for a parent in India. So services went above the fold, not company history.",
+    metric: "Live since 2022, unchanged",
     image: "/projects/nri-wellbeing-cover.webp",
     video: "/projects/nri-wellbeing-preview.mp4",
     tags: ["UI/UX", "IA", "Service Website", "Frontend"],
@@ -124,7 +127,8 @@ export const projects: Project[] = [
     slug: "resume-tailor",
     title: "Resume Tailor",
     shortDescription:
-      "A tool for people who write their own resumes. Honest scoring, no invented experience. Live at resumetailor-liart.vercel.app.",
+      "AI resume tools over-flatter and hide the real gap. This one shows it before rewriting a word. Files never leave the browser.",
+    metric: "Shipped in 2 weeks, local-first parsing",
     image: "/projects/resume-tailor-cover.webp",
     video: "/projects/resume-tailor-preview.mp4",
     tags: ["AI Product", "UX", "Shipped"],
@@ -188,7 +192,8 @@ export const projects: Project[] = [
     slug: "starbucks-mobile-order",
     title: "Starbucks Mobile Order Redesign",
     shortDescription:
-      "One reusable state card, four downstream surfaces. A component pattern that would scale to 40+ store types without UI re architecture.",
+      "The Starbucks app shows a single 'Preparing' state that hides everything. Four discrete states tied to real barista actions replace it. One reusable state card across four surfaces.",
+    metric: "Concept — Starbucks CEO named mobile pickup a priority in Oct 2024 earnings call",
     image: "/projects/starbucks-cover.png",
     tags: ["Concept", "Interaction", "State Design"],
     caseStudy: "/case-studies/starbucks-mobile-order",
@@ -218,7 +223,8 @@ export const projects: Project[] = [
     slug: "lifeos",
     title: "LifeOS",
     shortDescription:
-      "One dashboard scales 1 to 30 habits without UI re architecture. A four layer behavioral loop that assumes plans will change.",
+      "Productivity tools treat users as the problem. LifeOS treats reflection as the input, not the failure. One dashboard scales 1 to 30 habits.",
+    metric: "Concept — four-layer behavioral loop for the 20-28 age cohort",
     image: "/projects/lifeos-cover.png",
     tags: ["Concept", "Behavioral UX", "Product"],
     caseStudy: "/case-studies/lifeos",
@@ -248,14 +254,16 @@ export const projects: Project[] = [
     slug: "slu-alumni-connect",
     title: "SLU Alumni Connect",
     shortDescription:
-      "Role based dashboards for 4 user types across a 12k+ alumni ecosystem. FERPA compliant scope. Design phase.",
+      "Students, alumni, mentors, and admins needed different answers from the same platform. Role-based clarity solved for all four.",
+    metric: "Designed for 12k+ alumni ecosystem, FERPA compliant",
     image: "/projects/slu-alumni-connect-cover.webp",
     video: "/projects/slu-alumni-connect-preview.mp4",
     tags: ["Concept", "Multi Role", "Platform"],
     caseStudy: "/case-studies/slu-alumni-connect",
-    status: "Design scope",
+    demo: "https://slu-alumni-connect-main.vercel.app/",
+    status: "Live",
     year: "2025",
-    featured: false,
+    featured: true,
     overview:
       "Students, alumni, mentors, and admins needed different answers from the same system. The design challenge was clarity by role. FERPA compliant scope, role based dashboards, designed platform architecture.",
     role: "Product Designer",
