@@ -52,16 +52,19 @@ export default function PhoenixAICaseStudy() {
             <span className="text-emerald-400/90">Six decisions</span> in two weeks.
           </h1>
           <p className="mt-6 max-w-2xl text-base md:text-lg text-zinc-400 leading-relaxed">
-            Phoenix AI is a live health platform that turns wearable and
-            biomarker data into a personalized health score. The people using
-            it are trying to understand what their body is telling them: which
-            markers matter, why their score moved, what to do next.
+            Users of Phoenix AI open the app and see 14 biomarkers and a health
+            score. Which markers matter, why the score moved, what to do next:
+            none of that was clear from the biomarkers page. People were reading
+            numbers without knowing which ones were pulling the score up or
+            down.
           </p>
           <p className="mt-4 max-w-2xl text-base md:text-lg text-zinc-400 leading-relaxed">
-            I was the only designer on a team of five engineers and a PM on
-            loan from another product. Most decisions had to ship in the same
-            week they landed. This case study walks through six of them, and
-            one where I got it wrong.
+            I looked at the data, talked through the problem with the PM and
+            engineers, and shipped a redesign that grouped markers by domain and
+            made scoring transparent at a glance. Once the approach was signed
+            off, I could push straight to production without per-screen
+            re-approvals. That workflow is what this case study assumes
+            throughout.
           </p>
 
           <div className="mt-8 md:mt-10 flex flex-wrap gap-x-12 gap-y-6 pt-6 border-t border-white/10">
@@ -590,13 +593,12 @@ export default function PhoenixAICaseStudy() {
           </h2>
           <div className="space-y-5 text-base md:text-lg text-zinc-300 leading-relaxed">
             <p>
-              Working as the only designer meant every decision was mine, but so
-              was every mistake. There was no design lead to bounce off, no
-              second set of eyes on the tradeoffs, no one to tell me when I was
-              building for edge cases instead of the median user. I built my own
-              decision framework as I went. It worked more often than not, but
-              the misses were expensive. I&apos;d want a design partner earlier
-              next time.
+              On a lean team, the loop between decision and ship was tight. The
+              PM read the problem before I designed for it, the engineers read
+              the cost before I finalized. What I got that most junior designers
+              do not get is the space between: problem framing to shipped
+              screens was mine to hold. I learned where I could hold it well and
+              where I needed to ask sooner.
             </p>
             <p>
               The initial dark mode palette went through two iterations
