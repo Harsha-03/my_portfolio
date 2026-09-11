@@ -193,7 +193,7 @@ export const projects: Project[] = [
     title: "Starbucks Mobile Order Redesign",
     shortDescription:
       "'Preparing' hides whether the drink is queued, being made, or sitting cold.",
-    metric: "Concept — Starbucks CEO named mobile pickup a priority in Oct 2024 earnings call",
+    metric: "Concept. Starbucks CEO named mobile pickup a priority in Oct 2024 earnings call.",
     image: "/projects/starbucks-cover.png",
     tags: ["Concept", "Interaction", "State Design"],
     caseStudy: "/case-studies/starbucks-mobile-order",
@@ -224,7 +224,7 @@ export const projects: Project[] = [
     title: "LifeOS",
     shortDescription:
       "Productivity tools treat the user as the problem, not the plan.",
-    metric: "Concept — four-layer behavioral loop for the 20-28 age cohort",
+    metric: "Concept. Four-layer behavioral loop for the 20-28 age cohort.",
     image: "/projects/lifeos-cover.png",
     tags: ["Concept", "Behavioral UX", "Product"],
     caseStudy: "/case-studies/lifeos",
