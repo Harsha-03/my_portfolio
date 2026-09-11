@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import {
   ArrowRight,
   ExternalLink,
@@ -31,6 +31,23 @@ const CASE_STUDY_ORDER = [
   "resume-tailor",
   "lifeos",
 ];
+
+/* — Industry filter chips, left to right. Homepage-only; card copy stays in CARD_COPY — */
+const CASE_STUDY_CATEGORIES = {
+  all: { label: "All", slugs: CASE_STUDY_ORDER },
+  client: {
+    label: "Client & Agency Work",
+    slugs: ["builtintech-delivery", "nri-wellbeing"],
+  },
+  health: { label: "Health & Life Sciences", slugs: ["phoenix-ai"] },
+  education: { label: "Education", slugs: ["slu-alumni-connect"] },
+  consumer: {
+    label: "Consumer",
+    slugs: ["resume-tailor", "starbucks-mobile-order", "lifeos"],
+  },
+} satisfies Record<string, { label: string; slugs: string[] }>;
+
+type CategoryKey = keyof typeof CASE_STUDY_CATEGORIES;
 
 type IconName = "zap" | "clock" | "layers" | "rocket" | "check" | "badge";
 
@@ -572,10 +589,63 @@ function ActionLink({
   );
 }
 
+/* — Industry filter chips — */
+function FilterChips({
+  active,
+  onChange,
+}: {
+  active: CategoryKey;
+  onChange: (key: CategoryKey) => void;
+}) {
+  const reduceMotion = useReducedMotion();
+
+  return (
+    <div
+      role="group"
+      aria-label="Filter case studies by industry"
+      className="mt-8 flex flex-wrap gap-2 md:mt-14"
+    >
+      {(Object.keys(CASE_STUDY_CATEGORIES) as CategoryKey[]).map((key) => {
+        const isActive = key === active;
+
+        return (
+          <button
+            key={key}
+            type="button"
+            aria-pressed={isActive}
+            onClick={() => onChange(key)}
+            className={`relative rounded-full border px-3.5 py-1.5 text-xs transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30 ${
+              isActive
+                ? "border-transparent text-white"
+                : "border-zinc-800 text-zinc-500 hover:text-zinc-400"
+            }`}
+          >
+            {isActive && (
+              <motion.span
+                layoutId="case-study-filter-active"
+                aria-hidden
+                className="absolute -inset-px rounded-full border border-white/20 bg-white/10"
+                transition={
+                  reduceMotion
+                    ? { duration: 0 }
+                    : { type: "spring", stiffness: 380, damping: 32 }
+                }
+              />
+            )}
+            <span className="relative">{CASE_STUDY_CATEGORIES[key].label}</span>
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
 /* — Main export — */
 export default function Projects() {
   const router = useRouter();
+  const reduceMotion = useReducedMotion();
   const [activeProject, setActiveProject] = useState<Project | null>(null);
+  const [activeCategory, setActiveCategory] = useState<CategoryKey>("all");
 
   const caseStudies = useMemo(
     () =>
@@ -583,6 +653,10 @@ export default function Projects() {
         projects.find((project) => project.slug === slug),
       ).filter((project): project is Project => Boolean(project)),
     [],
+  );
+
+  const visibleCaseStudies = caseStudies.filter((project) =>
+    CASE_STUDY_CATEGORIES[activeCategory].slugs.includes(project.slug),
   );
 
   function openProject(project: Project) {
@@ -614,15 +688,27 @@ export default function Projects() {
           </div>
         </RevealBlock>
 
-        <div className="mt-8 grid gap-3 md:mt-14 md:grid-cols-3 md:gap-5">
-          {caseStudies.map((project, index) => (
-            <CaseStudyCard
-              key={project.slug}
-              project={project}
-              index={index}
-              onOpen={openProject}
-            />
-          ))}
+        <FilterChips active={activeCategory} onChange={setActiveCategory} />
+
+        <div className="relative mt-4 grid gap-3 md:mt-6 md:grid-cols-3 md:gap-5">
+          <AnimatePresence mode="popLayout" initial={false}>
+            {visibleCaseStudies.map((project, index) => (
+              <motion.div
+                key={project.slug}
+                layout={reduceMotion ? false : "position"}
+                initial={{ opacity: 0, scale: reduceMotion ? 1 : 0.92 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: reduceMotion ? 1 : 0.92 }}
+                transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <CaseStudyCard
+                  project={project}
+                  index={index}
+                  onOpen={openProject}
+                />
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </div>
       </div>
 
