@@ -26,7 +26,7 @@ export const projects: Project[] = [
     slug: "phoenix-ai",
     title: "Phoenix AI",
     shortDescription:
-      "Biomarker users couldn't tell which of 14 markers drove their score. Now they can, in one glance. Live at phoenix-cdreams.org.",
+      "Biomarker users couldn't tell which of 14 markers drove their score. Now they can.",
     metric: "60% reduction in navigation surface area, no items lost",
     image: "/projects/phoenix-ai-cover.webp",
     video: "/projects/phoenix-ai-preview.mp4",
@@ -63,7 +63,7 @@ export const projects: Project[] = [
     slug: "builtintech-delivery",
     title: "BuiltinTech Client Delivery System",
     shortDescription:
-      "Local businesses needed real sites fast, without agency budgets. We delivered 10+ across four verticals in 12 months.",
+      "Local businesses needed real sites fast, without agency budgets.",
     metric: "10+ products shipped in 12 months, 80% client acquisition driven",
     image: "/projects/builtintech-cover.webp",
     video: "/projects/builtintech-preview.mp4",
@@ -95,7 +95,7 @@ export const projects: Project[] = [
     slug: "nri-wellbeing",
     title: "NRI Wellbeing Services",
     shortDescription:
-      "Family members had 30 seconds to find the right service for a parent in India. So services went above the fold, not company history.",
+      "Family members had 30 seconds to find the right service for a parent in India.",
     metric: "Live since 2022, unchanged",
     image: "/projects/nri-wellbeing-cover.webp",
     video: "/projects/nri-wellbeing-preview.mp4",
@@ -127,7 +127,7 @@ export const projects: Project[] = [
     slug: "resume-tailor",
     title: "Resume Tailor",
     shortDescription:
-      "AI resume tools over-flatter and hide the real gap. This one shows it before rewriting a word.",
+      "AI resume tools over-flatter. This one shows the gap before rewriting a word.",
     metric: "Shipped in 2 weeks · Files never leave the browser",
     image: "/projects/resume-tailor-cover.webp",
     video: "/projects/resume-tailor-preview.mp4",
@@ -192,8 +192,8 @@ export const projects: Project[] = [
     slug: "starbucks-mobile-order",
     title: "Starbucks Mobile Order Redesign",
     shortDescription:
-      "'Preparing' hides everything — whether the drink is queued, being made, or sitting cold. Four discrete states replace it.",
-    metric: "Concept — Starbucks CEO named mobile pickup a priority in Oct 2024 earnings call",
+      "'Preparing' hides whether the drink is queued, being made, or sitting cold.",
+    metric: "Concept. Starbucks CEO named mobile pickup a priority in Oct 2024 earnings call.",
     image: "/projects/starbucks-cover.png",
     tags: ["Concept", "Interaction", "State Design"],
     caseStudy: "/case-studies/starbucks-mobile-order",
@@ -223,8 +223,8 @@ export const projects: Project[] = [
     slug: "lifeos",
     title: "LifeOS",
     shortDescription:
-      "Productivity tools treat users as the problem. LifeOS treats reflection as the input, not the failure.",
-    metric: "Concept — four-layer behavioral loop for the 20-28 age cohort",
+      "Productivity tools treat the user as the problem, not the plan.",
+    metric: "Concept. Four-layer behavioral loop for the 20-28 age cohort.",
     image: "/projects/lifeos-cover.png",
     tags: ["Concept", "Behavioral UX", "Product"],
     caseStudy: "/case-studies/lifeos",
@@ -254,7 +254,7 @@ export const projects: Project[] = [
     slug: "slu-alumni-connect",
     title: "SLU Alumni Connect",
     shortDescription:
-      "Four user types, one platform, different answers each. Role-based clarity solved for all four.",
+      "Four user types on one platform, each needing different answers.",
     metric: "Designed for 12k+ alumni ecosystem, FERPA compliant",
     image: "/projects/slu-alumni-connect-cover.webp",
     video: "/projects/slu-alumni-connect-preview.mp4",
