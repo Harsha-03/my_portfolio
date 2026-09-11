@@ -171,6 +171,10 @@ Do not jump phases. Confirm completion of Phase 1 before touching Phase 2 conten
 
 Currently broken on `harshaasapu.com` — returns `"Something went wrong while processing your request."` This exact string is hard-coded in `app/api/chat/route.ts` in the catch block. Something inside the try block throws.
 
+Last outage (September 2026), root cause: exhausted OpenAI credits. The embedding call returned `429 insufficient_quota` (`credit_balance_exhausted`), and the catch block flattened it into the generic message. The key, code, env vars, and `embeddings.json` were all fine. A 401 means a bad or revoked key; a 429 with `insufficient_quota` means billing.
+
+Prevent a repeat: set a low-balance alert on the OpenAI dashboard (Settings → Limits, alert at $2) so you get an email before the balance hits zero.
+
 Diagnostic order:
 
 1. Check Vercel Functions → Logs for `❌ Chat API crash:` entries. The error object printed after names the exact failure.
