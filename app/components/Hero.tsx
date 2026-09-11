@@ -247,7 +247,7 @@ export default function Hero() {
   const reducedMotion = useReducedMotion();
   return (
     <section id="home" className="relative">
-      <div className="relative flex min-h-[100svh] flex-col items-center justify-center px-4 pt-20 pb-36 md:min-h-[calc(100vh-5rem)] md:py-24">
+      <div className="relative flex min-h-[100svh] flex-col items-center justify-center px-4 pt-20 pb-36 md:min-h-[calc(100vh-5rem)] md:pt-3 md:pb-24">
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
