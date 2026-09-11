@@ -37,13 +37,13 @@ export const projects: Project[] = [
     year: "2026",
     featured: true,
     overview:
-      "Sole design owner on Phoenix AI, an AI-powered health optimization platform (biomarker data, wearable signals, ML-driven health scores and longevity insights). Over two weeks, shipped a full dashboard redesign, brand cohesion overhaul, and cross-platform navigation consolidation to production. Every ticket came in with either no spec or a one-line brief: 'your call, do whatever you think is best.' Ship authority direct to production. No PMs. No approval gates.",
-    role: "Sole Product & Interaction Designer",
+      "Phoenix AI is a live health platform that turns wearable and biomarker data into a personalized health score. Over two weeks I shipped a full dashboard redesign, brand cohesion overhaul, and cross-platform navigation consolidation. I was the only designer on the team, working alongside five engineers and a PM on loan from another product.",
+    role: "Product Designer",
     timeframe: "2 weeks intensive · Feb 2026",
     platform: "Web + Mobile",
     tools: ["Figma", "React", "TypeScript", "Tailwind", "shadcn/ui", "Supabase"],
     problems: [
-      "Every ticket landed with either no spec or one line of context; every judgment call was mine",
+      "Tickets landed with either no spec or one line of context; the team was small enough that decisions had to ship the same week they arrived",
       "Two conflicting brand palettes in production from people senior to me, no reconciliation process",
       "Three overlapping navigation systems across desktop and mobile pointing to the same destinations",
       "Layout bug misdiagnosed as a state bug; users reported cards visually expanding in sync",
