@@ -126,7 +126,8 @@ Case Studies section moves directly after Hero. Nothing between.
 ## Files that need special care
 
 * `app/components/Hero.tsx` — H1 and tagline are locked. Confirm before any change to hero content.
-* `data/projects.ts` — source of truth for what appears on the homepage. Card headlines, descriptions, and order are content decisions. Ask before editing.
+* `app/components/Projects.tsx` — source of truth for the homepage cards. `CASE_STUDY_ORDER` decides which cards appear and in what order; removing a slug hides the card without touching its case study page. `CARD_COPY` holds everything a card visibly says: wordmark, headline, description, metrics, tags, and colors. Card order and card copy are content decisions. Ask before editing.
+* `data/projects.ts` — project metadata, not homepage order or card copy. Its array order and `featured` flags are ignored by the homepage. The homepage reads only the title (accessibility labels), preview media (`image`, `video`), live and code links, status, and case study route from it. The remaining fields (overview, role, problems, solutions, tools) feed the project detail modal. Ask before editing.
 * `embeddings.json` — RAG chatbot knowledge base, 4.5MB. When case study content changes materially, this must be regenerated using the ingestion script in `scripts/`. Never edit by hand.
 * `app/api/chat/route.ts` — RAG chatbot backend. Currently broken on production. See debugging section.
 * `.env.local` — never commit, never expose. If you need to check a value, ask me to read it out.
@@ -169,6 +170,10 @@ Do not jump phases. Confirm completion of Phase 1 before touching Phase 2 conten
 ## Debugging the RAG chatbot
 
 Currently broken on `harshaasapu.com` — returns `"Something went wrong while processing your request."` This exact string is hard-coded in `app/api/chat/route.ts` in the catch block. Something inside the try block throws.
+
+Last outage (September 2026), root cause: exhausted OpenAI credits. The embedding call returned `429 insufficient_quota` (`credit_balance_exhausted`), and the catch block flattened it into the generic message. The key, code, env vars, and `embeddings.json` were all fine. A 401 means a bad or revoked key; a 429 with `insufficient_quota` means billing.
+
+Prevent a repeat: set a low-balance alert on the OpenAI dashboard (Settings → Limits, alert at $2) so you get an email before the balance hits zero.
 
 Diagnostic order:
 

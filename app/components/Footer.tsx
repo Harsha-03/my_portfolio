@@ -9,7 +9,7 @@ export default function Footer() {
     <footer className="relative min-h-[46vh] overflow-hidden" aria-label="Footer">
       <div className="pointer-events-none absolute inset-0">
         <motion.div
-          className="absolute left-1/2 top-[38%] h-px w-[86vw] -translate-x-1/2 bg-gradient-to-r from-transparent via-white/10 to-transparent"
+          className="absolute inset-x-0 top-[38%] mx-auto h-px w-[86vw] bg-gradient-to-r from-transparent via-white/10 to-transparent"
           initial={{ scaleX: 0, opacity: 0 }}
           whileInView={{ scaleX: 1, opacity: 1 }}
           viewport={{ once: true, amount: 0.35 }}
