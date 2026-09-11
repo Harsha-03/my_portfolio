@@ -96,12 +96,12 @@ export default function ProjectCaseStudy({ project, onClose }: Props) {
                     {project.status && (
                       <span className={`inline-flex items-center gap-1.5 rounded-full
                                        px-2.5 py-0.5 text-[11px] font-medium
-                                       ${project.status === "Shipped"
+                                       ${(project.status === "Shipped" || project.status === "Live")
                                          ? "bg-emerald-500/15 text-emerald-400 border border-emerald-500/20"
                                          : "bg-amber-500/15 text-amber-400 border border-amber-500/20"
                                        }`}>
                         <span className={`h-1.5 w-1.5 rounded-full
-                          ${project.status === "Shipped" ? "bg-emerald-400" : "bg-amber-400 animate-pulse"}`} />
+                          ${(project.status === "Shipped" || project.status === "Live") ? "bg-emerald-400" : "bg-amber-400 animate-pulse"}`} />
                         {project.status}
                       </span>
                     )}
