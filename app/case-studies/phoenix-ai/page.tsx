@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Phoenix AI — Six Decisions in Two Weeks — Harsha Asapu",
   description:
-    "Sole design owner on a live AI health platform. Every ticket said 'your call.' Six documented reframes, shipped to production, no approval gates.",
+    "Phoenix AI case study: reframing biomarker discoverability, reconciling brand palettes, and collapsing three nav systems into one on a live health platform.",
 };
 
 export default function PhoenixAICaseStudy() {
@@ -66,7 +66,7 @@ export default function PhoenixAICaseStudy() {
 
           <div className="mt-8 md:mt-10 flex flex-wrap gap-x-12 gap-y-6 pt-6 border-t border-white/10">
             {[
-              { label: "Role", value: "Sole Design Owner" },
+              { label: "Role", value: "Product Designer" },
               { label: "Timeframe", value: "2 weeks intensive" },
               { label: "Platform", value: "Web · Mobile" },
               { label: "Stack", value: "React · TypeScript · Tailwind · shadcn/ui · Supabase" },
@@ -92,22 +92,16 @@ export default function PhoenixAICaseStudy() {
             className="text-2xl md:text-3xl font-bold leading-tight mb-6"
             style={{ fontFamily: "var(--font-heading)" }}
           >
-            The brief was &quot;your call.&quot;
+            Context.
           </h2>
           <div className="space-y-5 text-base md:text-lg text-zinc-300 leading-relaxed">
-            <p>
-              Phoenix is a live AI health optimization platform. Biomarker
-              data, wearable signals, machine-learning models feeding
-              personalized health scores, supplement recommendations, and
-              longevity insights. Real users. Production traffic.
-            </p>
             <p>
               I own the design system, dashboard architecture, brand
               cohesion, motion system, and every visible surface. Two weeks
               in, tickets stopped arriving as specs. They started arriving as
               one-line Slack messages: <em>add a badge</em>,{" "}
               <em>make it feel more premium</em>, <em>fix the card
-              expansion</em>. No wireframes handed down. No PM in the loop.
+              expansion</em>. No wireframes handed down.
             </p>
             <p className="text-emerald-400/90 font-medium">
               The thesis: ambiguity in tickets is not a blocker. It is a
@@ -115,7 +109,8 @@ export default function PhoenixAICaseStudy() {
               for.
             </p>
             <p>
-              Every judgment call below is documented as evidence. What the
+              Every decision below is documented with what it responded to
+              and why. What the
               ticket said. What the actual user problem was. What I shipped.
               Why it was the right call.
             </p>
@@ -572,9 +567,9 @@ export default function PhoenixAICaseStudy() {
                 reduced-motion support.
               </li>
               <li>
-                All work shipped directly to production via Lovable with ship
-                authority. No approval gates. No design reviews. Judgment
-                calls made and defended.
+                All work shipped directly to production via Lovable. Decisions
+                were made in-thread with the engineering team and defended
+                when tested.
               </li>
             </ul>
           </div>
@@ -610,7 +605,7 @@ export default function PhoenixAICaseStudy() {
               shipping, and re-deriving.
             </p>
             <p>
-              Ship authority is a real gift. The cost of using it well is
+              That much autonomy is a real gift. The cost of using it well is
               spending five extra minutes upfront asking the question that
               would have saved the second iteration.
             </p>
