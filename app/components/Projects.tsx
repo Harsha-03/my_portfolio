@@ -9,6 +9,7 @@ import {
   ExternalLink,
   Github,
   Lock,
+  Target,
   Zap,
   Clock,
   Layers,
@@ -404,16 +405,21 @@ function CaseStudyCard({
 
             {/* Headline */}
             <h3
-              className="mt-1 line-clamp-2 text-[13px] font-bold leading-snug text-white"
+              className="mt-1 text-[13px] font-bold leading-snug text-white"
               style={{ fontFamily: "var(--font-heading)" }}
             >
-              {copy.headline}
+              {project.shortDescription}
             </h3>
 
-            {/* Description + arrow */}
+            {/* Metric + arrow */}
             <div className="mt-1 flex items-end justify-between gap-2">
-              <p className="line-clamp-1 flex-1 text-[10px] leading-relaxed text-zinc-500">
-                {copy.description}
+              <p className="flex flex-1 items-start gap-1 text-[10px] leading-relaxed text-zinc-500">
+                {project.metric && (
+                  <>
+                    <Target aria-hidden className="mt-0.5 h-2.5 w-2.5 shrink-0" />
+                    {project.metric}
+                  </>
+                )}
               </p>
               <motion.span
                 className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/[0.04] text-zinc-300"
@@ -494,33 +500,22 @@ function CaseStudyCard({
               className="text-base font-bold leading-snug text-white md:text-lg"
               style={{ fontFamily: "var(--font-heading)" }}
             >
-              {copy.headline}
+              {project.shortDescription}
             </h3>
 
-            <p className="mt-2 text-xs leading-relaxed text-zinc-400 line-clamp-3">
-              {copy.description}
-            </p>
+            {project.metric && (
+              <>
+                <div className="my-4 border-t border-white/10" />
 
-            <div className="my-4 border-t border-white/10" />
-
-            <div className="grid grid-cols-2 gap-3">
-              {copy.metrics.map((metric, i) => (
-                <div key={i} className="flex flex-col gap-0.5">
-                  <div style={{ color: copy.accent }}>
-                    {iconFor(metric.icon, "h-3.5 w-3.5")}
-                  </div>
-                  <div
-                    className="text-sm font-bold leading-tight"
-                    style={{ color: copy.accent }}
-                  >
-                    {metric.value}
-                  </div>
-                  <div className="text-[10px] leading-tight text-zinc-500">
-                    {metric.label}
-                  </div>
-                </div>
-              ))}
-            </div>
+                <p className="flex items-start gap-1.5 text-[11px] leading-snug text-zinc-400">
+                  <Target
+                    aria-hidden
+                    className="mt-px h-3.5 w-3.5 shrink-0 text-zinc-500"
+                  />
+                  {project.metric}
+                </p>
+              </>
+            )}
 
             <div className="mt-5 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
               <div className="flex flex-wrap items-center gap-1.5">
