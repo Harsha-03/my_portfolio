@@ -2,6 +2,7 @@ export interface Project {
   slug: string;
   title: string;
   shortDescription: string;
+  metric?: string;
   image?: string;
   video?: string;
   tags?: string[];
