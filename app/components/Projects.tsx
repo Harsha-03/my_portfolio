@@ -589,10 +589,62 @@ function ActionLink({
   );
 }
 
+/* — Industry filter chips — */
+function FilterChips({
+  active,
+  onChange,
+}: {
+  active: CategoryKey;
+  onChange: (key: CategoryKey) => void;
+}) {
+  const reduceMotion = useReducedMotion();
+
+  return (
+    <div
+      role="group"
+      aria-label="Filter case studies by industry"
+      className="mt-8 flex flex-wrap gap-2 md:mt-14"
+    >
+      {(Object.keys(CASE_STUDY_CATEGORIES) as CategoryKey[]).map((key) => {
+        const isActive = key === active;
+
+        return (
+          <button
+            key={key}
+            type="button"
+            aria-pressed={isActive}
+            onClick={() => onChange(key)}
+            className={`relative rounded-full border px-3.5 py-1.5 text-xs transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30 ${
+              isActive
+                ? "border-transparent text-white"
+                : "border-zinc-800 text-zinc-500 hover:text-zinc-400"
+            }`}
+          >
+            {isActive && (
+              <motion.span
+                layoutId="case-study-filter-active"
+                aria-hidden
+                className="absolute -inset-px rounded-full border border-white/20 bg-white/10"
+                transition={
+                  reduceMotion
+                    ? { duration: 0 }
+                    : { type: "spring", stiffness: 380, damping: 32 }
+                }
+              />
+            )}
+            <span className="relative">{CASE_STUDY_CATEGORIES[key].label}</span>
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
 /* — Main export — */
 export default function Projects() {
   const router = useRouter();
   const [activeProject, setActiveProject] = useState<Project | null>(null);
+  const [activeCategory, setActiveCategory] = useState<CategoryKey>("all");
 
   const caseStudies = useMemo(
     () =>
@@ -631,7 +683,9 @@ export default function Projects() {
           </div>
         </RevealBlock>
 
-        <div className="mt-8 grid gap-3 md:mt-14 md:grid-cols-3 md:gap-5">
+        <FilterChips active={activeCategory} onChange={setActiveCategory} />
+
+        <div className="mt-4 grid gap-3 md:mt-6 md:grid-cols-3 md:gap-5">
           {caseStudies.map((project, index) => (
             <CaseStudyCard
               key={project.slug}
