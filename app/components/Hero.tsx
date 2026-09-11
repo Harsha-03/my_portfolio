@@ -521,7 +521,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: smoothEase, delay: 4.4 }}
-          className="pointer-events-auto absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-[10px] tracking-[0.2em] font-medium text-zinc-500 uppercase transition-colors hover:text-emerald-400/80 focus:outline-none focus-visible:text-emerald-400"
+          className="pointer-events-auto absolute bottom-8 inset-x-0 mx-auto flex w-fit flex-col items-center gap-1.5 text-[10px] tracking-[0.2em] font-medium text-zinc-500 uppercase transition-colors hover:text-emerald-400/80 focus:outline-none focus-visible:text-emerald-400"
           aria-label="Scroll to Case Studies"
         >
           <span className="pl-[0.2em]">Case Studies</span>
