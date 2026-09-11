@@ -140,7 +140,7 @@ function SocialButton({ social }: { social: SocialDef }) {
       onHoverEnd={() => setHovered(false)}
       whileTap={{ scale: 0.94 }}
       transition={{ duration: 0.2, ease: "easeOut" }}
-      className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl ring-1 ring-white/10 hover:ring-white/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30 md:h-11 md:w-11"
+      className="relative flex h-10 w-10 items-center justify-center rounded-xl ring-1 ring-white/10 hover:ring-white/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30 md:h-11 md:w-11"
     >
       {/* Background fill */}
       <span
@@ -156,8 +156,9 @@ function SocialButton({ social }: { social: SocialDef }) {
         {social.icon(17)}
       </span>
 
-      {/* Per-icon micro-animation overlays */}
+      {/* Per-icon micro-animation overlays, clipped to the button here (not on the button itself) so the label tooltip can sit below it */}
       {!reduced && (
+        <span aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden rounded-xl">
         <AnimatePresence>
           {hovered && social.variant === "badge" && (
             <motion.span
@@ -223,6 +224,7 @@ function SocialButton({ social }: { social: SocialDef }) {
             />
           )}
         </AnimatePresence>
+        </span>
       )}
 
       {/* Label tooltip */}
