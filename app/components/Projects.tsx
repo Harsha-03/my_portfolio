@@ -29,7 +29,6 @@ const CASE_STUDY_ORDER = [
   "nri-wellbeing",
   "starbucks-mobile-order",
   "resume-tailor",
-  "portfolio",
   "lifeos",
 ];
 
