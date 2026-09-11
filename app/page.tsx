@@ -13,9 +13,9 @@ export default function HomePage() {
     <main className="relative">
       <Hero />
       <SectionDivider />
-      <About />
-      <SectionDivider />
       <Projects />
+      <SectionDivider />
+      <About />
       <SectionDivider />
       <MotionPreview />
       <SectionDivider />

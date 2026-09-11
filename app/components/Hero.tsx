@@ -510,10 +510,10 @@ export default function Hero() {
 
         {/* Scroll indicator — signals "there's more below" without adding weight */}
         <motion.a
-          href="#about"
+          href="#projects"
           onClick={(e) => {
             e.preventDefault();
-            document.getElementById("about")?.scrollIntoView({
+            document.getElementById("projects")?.scrollIntoView({
               behavior: "smooth",
               block: "start",
             });
@@ -522,9 +522,9 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: smoothEase, delay: 4.4 }}
           className="pointer-events-auto absolute bottom-8 inset-x-0 mx-auto flex w-fit flex-col items-center gap-1.5 text-[10px] tracking-[0.2em] font-medium text-zinc-500 uppercase transition-colors hover:text-emerald-400/80 focus:outline-none focus-visible:text-emerald-400"
-          aria-label="Scroll to Meet Me"
+          aria-label="Scroll to Case Studies"
         >
-          <span className="pl-[0.2em]">Meet Me</span>
+          <span className="pl-[0.2em]">Case Studies</span>
           <motion.span
             aria-hidden="true"
             animate={{ y: [0, 4, 0] }}

@@ -24,12 +24,11 @@ import { RevealBlock, SectionLabel } from "./MotionPattern";
 /* — Card display order (top to bottom) — */
 const CASE_STUDY_ORDER = [
   "phoenix-ai",
+  "slu-alumni-connect",
   "builtintech-delivery",
   "nri-wellbeing",
   "starbucks-mobile-order",
-  "slu-alumni-connect",
   "resume-tailor",
-  "portfolio",
   "lifeos",
 ];
 
