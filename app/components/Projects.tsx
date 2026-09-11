@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import {
   ArrowRight,
   ExternalLink,
@@ -643,6 +643,7 @@ function FilterChips({
 /* — Main export — */
 export default function Projects() {
   const router = useRouter();
+  const reduceMotion = useReducedMotion();
   const [activeProject, setActiveProject] = useState<Project | null>(null);
   const [activeCategory, setActiveCategory] = useState<CategoryKey>("all");
 
@@ -652,6 +653,10 @@ export default function Projects() {
         projects.find((project) => project.slug === slug),
       ).filter((project): project is Project => Boolean(project)),
     [],
+  );
+
+  const visibleCaseStudies = caseStudies.filter((project) =>
+    CASE_STUDY_CATEGORIES[activeCategory].slugs.includes(project.slug),
   );
 
   function openProject(project: Project) {
@@ -685,15 +690,25 @@ export default function Projects() {
 
         <FilterChips active={activeCategory} onChange={setActiveCategory} />
 
-        <div className="mt-4 grid gap-3 md:mt-6 md:grid-cols-3 md:gap-5">
-          {caseStudies.map((project, index) => (
-            <CaseStudyCard
-              key={project.slug}
-              project={project}
-              index={index}
-              onOpen={openProject}
-            />
-          ))}
+        <div className="relative mt-4 grid gap-3 md:mt-6 md:grid-cols-3 md:gap-5">
+          <AnimatePresence mode="popLayout" initial={false}>
+            {visibleCaseStudies.map((project, index) => (
+              <motion.div
+                key={project.slug}
+                layout={reduceMotion ? false : "position"}
+                initial={{ opacity: 0, scale: reduceMotion ? 1 : 0.92 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: reduceMotion ? 1 : 0.92 }}
+                transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <CaseStudyCard
+                  project={project}
+                  index={index}
+                  onOpen={openProject}
+                />
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </div>
       </div>
 
