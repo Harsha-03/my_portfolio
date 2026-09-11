@@ -1,4 +1,4 @@
-# Airline Performance Tracker — Operational Intelligence Dashboard (Power BI + Forecasting)
+# Airline Performance Tracker: Operational Intelligence Dashboard (Power BI + Forecasting)
 
 ## Overview
 
@@ -194,4 +194,4 @@ This turned raw aviation data into operational intelligence.
 
 ## Why This Project Matters
 
-This project shows how I turn messy data into structured systems that drive decisions. It also informs how I design data-aware user interfaces later in my work—focusing on clarity, workflow, and correct metrics rather than “pretty visuals.”
+This project shows how I turn messy data into structured systems that drive decisions. It also informs how I design data-aware user interfaces later in my work, focusing on clarity, workflow, and correct metrics rather than “pretty visuals.”

@@ -294,7 +294,7 @@ export default function ChatWidget() {
     if (open) setTimeout(() => inputRef.current?.focus(), 300);
   }, [open]);
 
-  /* initial nudge — once per session at 5s */
+  /* initial nudge - once per session at 5s */
   useEffect(() => {
     const seen = sessionStorage.getItem("chat_nudge_seen");
     if (seen) return;
@@ -306,7 +306,7 @@ export default function ChatWidget() {
     return () => clearTimeout(t);
   }, []);
 
-  /* persistent rotating thoughts — every 20s while chat is closed */
+  /* persistent rotating thoughts - every 20s while chat is closed */
   useEffect(() => {
     if (open) return;
     const interval = setInterval(() => {
@@ -351,7 +351,7 @@ export default function ChatWidget() {
     setLoading(true);
     setError(null);
 
-    // Snapshot history BEFORE adding current question — that's what the API needs
+    // Snapshot history BEFORE adding current question - that's what the API needs
     const history = messages.map((m) => ({
       role: m.role,
       content: m.content,
@@ -414,7 +414,7 @@ export default function ChatWidget() {
   return (
     <>
       {/* ── Draggable FAB container ── */}
-      {/* Fixed overlay container — provides positioned parent for the draggable.
+      {/* Fixed overlay container - provides positioned parent for the draggable.
           pointer-events: none so it doesn't intercept clicks on the page;
           the draggable child re-enables them via pointer-events: auto. */}
       <div
@@ -448,7 +448,7 @@ export default function ChatWidget() {
             (isLeft ? "items-start" : "items-end")
           }
         >
-        {/* Initial nudge — absolutely positioned above the pill so it doesn't push the pill down */}
+        {/* Initial nudge - absolutely positioned above the pill so it doesn't push the pill down */}
         <AnimatePresence>
           {nudge && !open && !isDragging && (
             <motion.div
@@ -466,7 +466,7 @@ export default function ChatWidget() {
           )}
         </AnimatePresence>
 
-        {/* Rotating thoughts — absolutely positioned above the pill so it doesn't push the pill down */}
+        {/* Rotating thoughts - absolutely positioned above the pill so it doesn't push the pill down */}
         <AnimatePresence>
           {thought && !nudge && !open && !isDragging && (
             <motion.div

@@ -1,4 +1,4 @@
-# Portfolio Website — UX Case Study
+# Portfolio Website: UX Case Study
 
 ## Overview
 
@@ -13,7 +13,7 @@ The portfolio itself is a live, shipped product and his primary UX case study.
 
 ## Context
 
-The portfolio is visited by users under time pressure — hiring managers, designers,
+The portfolio is visited by users under time pressure: hiring managers, designers,
 engineers, and collaborators who need to quickly understand who Harsha is,
 what he does, and what he has built.
 
@@ -40,7 +40,7 @@ Users struggled to quickly understand Harsha's role, experience, and credibility
 
 - Help users understand role and focus within the first 10 seconds
 - Reduce cognitive load by simplifying layout, motion, and hierarchy
-- Present projects as shipped, verifiable work — not concepts
+- Present projects as shipped, verifiable work, not concepts
 - Balance personality with clarity, avoiding visual gimmicks
 
 ---
@@ -69,7 +69,7 @@ Single-page navigation chosen to:
 
 ---
 
-## Interaction Design — Trust & Verification
+## Interaction Design: Trust & Verification
 
 **Interaction Problem:** Traditional portfolios rely on self-written descriptions,
 forcing users to hunt through sections to verify claims.

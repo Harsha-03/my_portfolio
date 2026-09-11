@@ -51,7 +51,7 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: "Harsha Asapu",
   description:
-    "UX Designer building products that actually ship. UI/UX and Product Design work — Starbucks, LifeOS, SLU Alumni Connect, Resume Tailor.",
+    "UX Designer building products that actually ship. UI/UX and Product Design work: Starbucks, LifeOS, SLU Alumni Connect, Resume Tailor.",
   keywords: [
     "UX Designer",
     "UI/UX Designer",
@@ -80,7 +80,7 @@ export const metadata: Metadata = {
         url: "https://harshaasapu.com/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Harsha Asapu — UX Designer",
+        alt: "Harsha Asapu, UX Designer",
       },
     ],
   },

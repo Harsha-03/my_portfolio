@@ -6,7 +6,7 @@ import FourStateCycler from "../../components/FourStateCycler";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Starbucks Mobile Order Redesign — Harsha Asapu",
+  title: "Starbucks Mobile Order Redesign: Harsha Asapu",
   description:
     'A four-state model that replaces "Preparing" with real-time visibility tied to actual barista actions.',
 };
@@ -76,7 +76,7 @@ export default function StarbucksCaseStudy() {
       </section>
       </RevealBlock>
 
-      {/* FOUR-STATE LIVE ARTIFACT — the case study argument, visualized */}
+      {/* FOUR-STATE LIVE ARTIFACT - the case study argument, visualized */}
       <FourStateCycler />
 
       {/* COVER IMAGE */}
@@ -95,7 +95,7 @@ export default function StarbucksCaseStudy() {
       </section>
       </RevealBlock>
 
-      {/* CHAPTER 01 — THE PROBLEM */}
+      {/* CHAPTER 01 - THE PROBLEM */}
       <RevealBlock>
       <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
         <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
@@ -112,7 +112,7 @@ export default function StarbucksCaseStudy() {
             In October 2024, on his first earnings call as Starbucks CEO, Brian
             Niccol laid out three near-term initiatives for the mobile ordering
             system, including a new algorithm to enable accurate pickup times.
-            He named mobile order pickup as a priority for the turnaround —
+            He named mobile order pickup as a priority for the turnaround,
             citing inaccurate wait times and the congestion mobile orders
             create inside stores.
           </p>
@@ -125,7 +125,7 @@ export default function StarbucksCaseStudy() {
             The user-facing version of that problem is a single ambiguous state
             in the Starbucks app:{" "}
             <strong className="text-white">Preparing</strong>. It hides
-            everything — whether your drink is queued behind two others, being
+            everything: whether your drink is queued behind two others, being
             made right now, sitting cold on the counter, or about to be started.
             The status looks the same at minute one as it does at minute ten.
           </p>
@@ -136,7 +136,7 @@ export default function StarbucksCaseStudy() {
       </section>
       </RevealBlock>
 
-      {/* CHAPTER 02 — RESEARCH → INSIGHT */}
+      {/* CHAPTER 02 - RESEARCH → INSIGHT */}
       <RevealBlock>
       <section className="max-w-5xl mx-auto px-6 mb-20 md:mb-24">
         <div className="max-w-3xl">
@@ -159,14 +159,14 @@ export default function StarbucksCaseStudy() {
         <div className="rounded-2xl overflow-hidden border border-white/10 mb-6">
           <Image
             src="/case-studies/starbucks/figjam.png"
-            alt="FigJam research board — current journey, pain points, and rejected ideas"
+            alt="FigJam research board: current journey, pain points, and rejected ideas"
             width={2880}
             height={1620}
             className="w-full h-auto"
           />
         </div>
         <p className="text-sm text-zinc-500 italic max-w-3xl">
-          Problem framing in FigJam — current user journey, pain points across
+          Problem framing in FigJam: current user journey, pain points across
           the mobile order experience, and the four ideas considered (three
           rejected, one kept).
         </p>
@@ -181,11 +181,11 @@ export default function StarbucksCaseStudy() {
             style={{ fontFamily: "var(--font-heading)" }}
           >
             Users don&apos;t want a faster app. They want accurate truth about
-            a specific moment — when the barista actually starts their drink.
+            a specific moment: when the barista actually starts their drink.
           </blockquote>
           <p className="mt-8 text-lg text-zinc-400 leading-relaxed pl-8">
             That moment doesn&apos;t exist in the current product. So the
-            redesign builds it — replacing the single &quot;Preparing&quot;
+            redesign builds it, replacing the single &quot;Preparing&quot;
             state with four discrete states tied to real barista actions.
           </p>
         </div>
@@ -226,7 +226,7 @@ export default function StarbucksCaseStudy() {
       </section>
       </RevealBlock>
 
-      {/* CHAPTER 03 — REJECTED IDEAS */}
+      {/* CHAPTER 03 - REJECTED IDEAS */}
       <RevealBlock>
       <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
         <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
@@ -250,7 +250,7 @@ export default function StarbucksCaseStudy() {
             {
               title: "GPS-triggered pickup notification",
               reason:
-                'Tempting because it sounds smart. Killed because it defeats the entire premise of mobile ordering — "skip the line." If the drink only starts when you\'re near the store, you\'re back in the queue.',
+                'Tempting because it sounds smart. Killed because it defeats the entire premise of mobile ordering: "skip the line." If the drink only starts when you\'re near the store, you\'re back in the queue.',
             },
             {
               title: "Queue position counter, Domino's-tracker style",
@@ -260,7 +260,7 @@ export default function StarbucksCaseStudy() {
             {
               title: "Live barista cam",
               reason:
-                "Killed in 90 seconds. Over-engineered, privacy-violating, and the camera doesn't tell you when your drink starts — it just looks busy.",
+                "Killed in 90 seconds. Over-engineered, privacy-violating, and the camera doesn't tell you when your drink starts. It just looks busy.",
             },
           ].map((idea, i) => (
             <div key={i} className="flex gap-6">
@@ -289,7 +289,7 @@ export default function StarbucksCaseStudy() {
       </section>
       </RevealBlock>
 
-      {/* CHAPTER 04 — THE 5 SCREENS */}
+      {/* CHAPTER 04 - THE 5 SCREENS */}
       <RevealBlock>
       <section className="max-w-5xl mx-auto px-6 mb-20 md:mb-24">
         <div className="max-w-3xl">
@@ -305,7 +305,7 @@ export default function StarbucksCaseStudy() {
         </div>
 
         <ScreenSection
-          eyebrow="State 0 — Before"
+          eyebrow="State 0: Before"
           eyebrowColor="text-zinc-500"
           title="Current (Broken)"
           description='A faithful rebuild of the existing Starbucks state. One progress bar, three steps, a single ambiguous "Preparing" status that hides everything happening behind the counter.'
@@ -343,7 +343,7 @@ export default function StarbucksCaseStudy() {
       </section>
       </RevealBlock>
 
-      {/* CHAPTER 05 — THE MOTION MOMENT */}
+      {/* CHAPTER 05 - THE MOTION MOMENT */}
       <RevealBlock>
       <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
         <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
@@ -393,7 +393,7 @@ export default function StarbucksCaseStudy() {
       </section>
       </RevealBlock>
 
-      {/* CHAPTER 06 — DESIGN DECISIONS */}
+      {/* CHAPTER 06 - DESIGN DECISIONS */}
       <RevealBlock>
       <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
         <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
@@ -426,7 +426,7 @@ export default function StarbucksCaseStudy() {
             },
             {
               title: "A single state card",
-              body: "One reusable component carries the status story across four screens. The eyebrow, headline, and accent color shift — the layout doesn&rsquo;t. Information design through restraint, not through new features.",
+              body: "One reusable component carries the status story across four screens. The eyebrow, headline, and accent color shift. The layout doesn&rsquo;t. Information design through restraint, not through new features.",
             },
           ].map((d, i) => (
             <div key={i}>
@@ -446,7 +446,7 @@ export default function StarbucksCaseStudy() {
       </section>
       </RevealBlock>
 
-      {/* CHAPTER 07 — WHAT I'D TEST NEXT */}
+      {/* CHAPTER 07 - WHAT I'D TEST NEXT */}
       <RevealBlock>
       <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
         <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
@@ -462,7 +462,7 @@ export default function StarbucksCaseStudy() {
         <div className="space-y-8">
           {[
             "Real barista hardware. This design assumes a POS event fires the moment a drink starts. Is that latency under 5 seconds? Worth measuring before shipping.",
-            'Sentiment when "Waiting" hits. The amber state has to feel like Starbucks cares — not like Starbucks is grading the customer\'s punctuality.',
+            'Sentiment when "Waiting" hits. The amber state has to feel like Starbucks cares, not like Starbucks is grading the customer\'s punctuality.',
             "Whether the four-state model holds for drive-thru and in-store orders, or whether it's mobile-only.",
           ].map((item, i) => (
             <div key={i} className="flex gap-4">

@@ -1,4 +1,4 @@
-# Data & Analytics — Foundational Exposure
+# Data & Analytics: Foundational Exposure
 
 ## Context
 

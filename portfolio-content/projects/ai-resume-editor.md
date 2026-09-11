@@ -1,4 +1,4 @@
-# Resume Tailor — AI Resume Tailoring Product
+# Resume Tailor: AI Resume Tailoring Product
 
 ## Overview
 

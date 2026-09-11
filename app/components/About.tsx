@@ -183,7 +183,7 @@ export default function About() {
                 This site is trained on every project, every role, and every design decision I could remember. Ask it anything.
               </p>
 
-              {/* Inline chat input — dispatches to the floating widget */}
+              {/* Inline chat input - dispatches to the floating widget */}
               <div className="mt-6 flex items-center gap-2 rounded-full border border-white/10 bg-zinc-950/60 pl-4 pr-1.5 py-1.5 backdrop-blur-sm focus-within:border-emerald-400/40 focus-within:bg-zinc-950/80 transition-colors">
                 <input
                   type="text"

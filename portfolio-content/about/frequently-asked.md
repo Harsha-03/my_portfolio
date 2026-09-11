@@ -1,4 +1,4 @@
-# Frequently Asked — Direct Answers for Recruiters
+# Frequently Asked: Direct Answers for Recruiters
 
 This file contains direct, factual answers to common recruiter questions.
 
@@ -8,10 +8,10 @@ This file contains direct, factual answers to common recruiter questions.
 
 Harsha is actively open to the following roles:
 
-- **Interaction Designer** — his current preferred title, aligned with his hero
+- **Interaction Designer**: his current preferred title, aligned with his hero
   positioning and Phoenix AI work
-- **Product Designer** — end-to-end IC design work
-- **UI/UX Designer** — full-stack design roles at all levels
+- **Product Designer**: end-to-end IC design work
+- **UI/UX Designer**: full-stack design roles at all levels
 - **Senior Product Designer / Senior UI/UX Designer** where scope supports it
 - **Design Engineer** where the role has a strong design core and light frontend
 - **Web Designer / Frontend Designer** for consumer web products
@@ -65,7 +65,7 @@ areas that recur across his work.
 ## Location and Work Authorization
 
 - **Based in:** Reno, Nevada, USA
-- **Open to relocate:** Yes — Bay Area, Seattle, NYC, San Diego, Salt Lake
+- **Open to relocate:** Yes, Bay Area, Seattle, NYC, San Diego, Salt Lake
   City, or other US metros
 - **Remote:** Yes, comfortable with remote-first companies
 - **Hybrid:** Yes, comfortable with hybrid schedules
@@ -82,7 +82,7 @@ areas that recur across his work.
 - Framer (portfolio, motion prototypes)
 - Adobe Creative Suite (visual production)
 
-**Build stack (working knowledge — used to ship shipped work):**
+**Build stack (working knowledge, used to ship shipped work):**
 
 - Next.js
 - TypeScript
@@ -117,15 +117,15 @@ areas that recur across his work.
 
 Harsha has hands-on design system experience across three shipped products:
 
-- **Phoenix AI** — owns the entire design system (dashboard architecture,
+- **Phoenix AI**: owns the entire design system (dashboard architecture,
   brand cohesion, motion system, cross-platform tokens). Reconciled two
   conflicting brand palettes (branding lead + engineering) into a single
   navy-anchored dark-mode token system in index.css.
-- **BuiltinTech** — reusable component patterns across 4 verticals meant
+- **BuiltinTech**: reusable component patterns across 4 verticals meant
   second and third projects in each vertical inherited working systems from
   the first. Not a formal design system, but a shipped component library
   reused across 10+ products.
-- **shadcn/ui at Phoenix AI** — extended and adapted the shadcn Sheet
+- **shadcn/ui at Phoenix AI**: extended and adapted the shadcn Sheet
   component for cross-platform side-switching (desktop right sheet, mobile
   bottom sheet, auto-switch via matchMedia).
 
@@ -146,7 +146,7 @@ across his shipped work:
 3. **Prototype the reframe.** Figma flows, low-fi first, then interactive.
 4. **Ship it.** Ship authority is earned by defending decisions with clear
    reasoning, not by asking for approval.
-5. **Document the decision.** Every reframe gets written down — as a case
+5. **Document the decision.** Every reframe gets written down: as a case
    study, a Medium post, or a Slack message to the team.
 6. **Iterate on real usage.** No design decision is final. Post-launch
    iteration is where the real learning happens.
@@ -159,7 +159,7 @@ Harsha publishes interaction craft writing in **Design Bootcamp** on Medium.
 
 Selected pieces:
 
-- "The Starbucks app says 'Preparing.' That word is the bug." (Jun 2026) —
+- "The Starbucks app says 'Preparing.' That word is the bug." (Jun 2026):
   the framing behind the Missing State case study
 - "The hardest part of UX isn't the user. It's the person paying you." (Jul 2026)
 - Plus ongoing craft essays on kitchen taps, TV remotes, discoverability, and
@@ -167,7 +167,7 @@ Selected pieces:
 
 Full series: medium.com/@harshaasapu.b
 
-He also has a Motion gallery on the portfolio: harshaasapu.com/motion —
+He also has a Motion gallery on the portfolio: harshaasapu.com/motion,
 short-form motion where timing carries the idea (Ted Drewes concrete in
 motion, Nike Displayed, McLaren Delta).
 
@@ -183,7 +183,7 @@ Being direct about scope is a senior signal. Harsha is:
 - **Not** deeply experienced in enterprise B2B workflow design
 - **Not** deeply experienced in speech-first / voice-only interfaces
 - **Not** deeply experienced in geospatial / GIS / cartography
-- **Not** looking for pure UI-polish or pixel-execution roles — he wants
+- **Not** looking for pure UI-polish or pixel-execution roles. He wants
   end-to-end design ownership
 
 ---
@@ -191,7 +191,7 @@ Being direct about scope is a senior signal. Harsha is:
 ## Portfolio Structure
 
 Harsha's portfolio is treated as a product, not a static page. The site itself
-is a case study — Next.js + TypeScript + Framer Motion + a custom RAG
+is a case study: Next.js + TypeScript + Framer Motion + a custom RAG
 chatbot trained on 8 knowledge files. Recruiters can ask the chatbot follow-up
 questions inline instead of hunting for information across LinkedIn, Behance,
 Medium, and GitHub.
@@ -200,7 +200,7 @@ Case study order (top to bottom):
 
 1. Phoenix AI (current, live, ship authority)
 2. BuiltinTech Client Delivery System (velocity + volume)
-3. NRI Wellbeing (longevity — 4+ years live)
+3. NRI Wellbeing (longevity, 4+ years live)
 4. Missing State Case Study (fulfillment state modeling)
 5. SLU Alumni Connect (institutional-scale platform)
 6. Resume Tailor (AI product with honest scoring)

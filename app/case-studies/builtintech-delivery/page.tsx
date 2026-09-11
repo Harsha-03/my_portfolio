@@ -4,7 +4,7 @@ import { RevealBlock } from "../../components/MotionPattern";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "BuiltinTech Client Delivery System — Harsha Asapu",
+  title: "BuiltinTech Client Delivery System: Harsha Asapu",
   description:
     "Cofounded BuiltinTech and delivered 10+ paid client products in 12 months across four verticals. The scale came from a repeatable delivery pattern, not one off custom work.",
 };
@@ -154,7 +154,7 @@ export default function BuiltinTechCaseStudy() {
         </section>
       </RevealBlock>
 
-      {/* CHAPTER 03 — Delivery pattern */}
+      {/* CHAPTER 03 - Delivery pattern */}
       <RevealBlock>
         <section className="max-w-3xl mx-auto px-6 mb-16 md:mb-20">
           <p className="text-[11px] tracking-[0.2em] text-amber-400/80 font-semibold uppercase mb-4">
@@ -227,7 +227,7 @@ export default function BuiltinTechCaseStudy() {
         </section>
       </RevealBlock>
 
-      {/* CHAPTER 04 — Featured client */}
+      {/* CHAPTER 04 - Featured client */}
       <RevealBlock>
         <section className="max-w-3xl mx-auto px-6 mb-12 md:mb-14">
           <p className="text-[11px] tracking-[0.2em] text-amber-400/80 font-semibold uppercase mb-4">
@@ -254,7 +254,7 @@ export default function BuiltinTechCaseStudy() {
         </section>
       </RevealBlock>
 
-      {/* Chapter divider — no video placeholder */}
+      {/* Chapter divider - no video placeholder */}
 
       <RevealBlock>
         <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
@@ -285,7 +285,7 @@ export default function BuiltinTechCaseStudy() {
         </section>
       </RevealBlock>
 
-      {/* CHAPTER 05 — Other client work */}
+      {/* CHAPTER 05 - Other client work */}
       <RevealBlock>
         <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
           <p className="text-[11px] tracking-[0.2em] text-amber-400/80 font-semibold uppercase mb-4">
@@ -334,7 +334,7 @@ export default function BuiltinTechCaseStudy() {
         </section>
       </RevealBlock>
 
-      {/* CHAPTER 06 — What this shows */}
+      {/* CHAPTER 06 - What this shows */}
       <RevealBlock>
         <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
           <p className="text-[11px] tracking-[0.2em] text-amber-400/80 font-semibold uppercase mb-4">

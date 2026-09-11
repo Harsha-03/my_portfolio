@@ -1,4 +1,4 @@
-# Community Dreams Foundation — UI/UX Designer
+# Community Dreams Foundation: UI/UX Designer
 
 ## Overview
 
@@ -33,7 +33,7 @@ Two weeks in, Harsha had shipped a full dashboard redesign, brand cohesion
 overhaul, and cross-platform navigation consolidation on a live product with
 real users.
 
-The thesis of the role: ambiguity in tickets is not a blocker — it's a design
+The thesis of the role: ambiguity in tickets is not a blocker. It's a design
 opportunity. Every judgment call, every subtraction, every reframing gets
 documented and defended.
 
@@ -44,8 +44,8 @@ documented and defended.
 ### 1. Badge request became an information architecture overhaul
 
 The product lead requested a small badge on the Biomarkers page showing which
-markers fed the overall health score. Harsha shipped the badge — "Used for
-Score" — but sitting with the page, realized the ticket was misdiagnosing the
+markers fed the overall health score. Harsha shipped the badge ("Used for
+Score"), but sitting with the page, realized the ticket was misdiagnosing the
 actual user problem. Users weren't confused about _which_ markers were scored.
 They were confused about _why_.
 
@@ -53,7 +53,7 @@ Redesign shipped: grouped all 14 biomarkers by domain (Metabolic,
 Cardiovascular, Inflammation), added a summary at the top ("8 of 14 used for
 your score"), added an info popover explaining why some markers aren't scored,
 and killed the full-row colored status washes in favor of a 3px colored left
-border + small status pill on the right — five times more scannable.
+border + small status pill on the right: five times more scannable.
 
 ### 2. Reconciled two conflicting brand palettes without escalation
 
@@ -75,7 +75,7 @@ card instances. But the local useState was correctly scoped per-card.
 
 The actual cause: the grid used Tailwind's auto-rows-fr for equal row heights.
 When one card expanded, its row stretched, and every card in that row visually
-grew with it. Not a state bug — a layout bug pretending to be one.
+grew with it. Not a state bug. A layout bug pretending to be one.
 
 The fix wasn't a state fix. It was an interaction pattern redesign: replaced
 the inline Collapsible with a shadcn Sheet component (side sheet on desktop,
@@ -101,7 +101,7 @@ point to navigation on mobile. But first-time users often miss the standard
 sidebar trigger icon.
 
 Solution shipped: three stacked discoverability signals, all disappearing
-after first tap — swapped the icon for a standard 3-line Menu icon, added a
+after first tap: swapped the icon for a standard 3-line Menu icon, added a
 primary-color dot indicator (unread-notification pattern), layered a 2-second
 breathing pulse on the dot + an 8-second nudge animation on the whole icon.
 All three signals removed permanently after first tap, persisted via
@@ -113,11 +113,11 @@ permanent UI noise.
 The brief was "add subtle premium animations." Harsha declined to add generic
 hover effects and instead built a small named motion vocabulary:
 
-- **phoenixFadeUp** — content rises 8px on entrance with cubic-bezier(0.2, 0.8, 0.2, 1)
-- **phoenixBreathe** — 3s ease-in-out scale + opacity cycle on the score card sparkle (breathing metaphor for a health app)
-- **phoenixDrawIn** — 0.9s left-anchored scaleX on progress bars (fills like a measurement completing)
-- **phoenixHamburgerHint** — 8s translate + glow cycle on the hamburger until first tap
-- **phoenixDotPulse** — 2s scale/opacity pulse on the dot indicator
+- **phoenixFadeUp**: content rises 8px on entrance with cubic-bezier(0.2, 0.8, 0.2, 1)
+- **phoenixBreathe**: 3s ease-in-out scale + opacity cycle on the score card sparkle (breathing metaphor for a health app)
+- **phoenixDrawIn**: 0.9s left-anchored scaleX on progress bars (fills like a measurement completing)
+- **phoenixHamburgerHint**: 8s translate + glow cycle on the hamburger until first tap
+- **phoenixDotPulse**: 2s scale/opacity pulse on the dot indicator
 
 All animations respect prefers-reduced-motion. The system is small, named,
 and semantically meaningful. Not a decoration layer.

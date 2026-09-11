@@ -179,7 +179,7 @@ export default function Skills() {
       style={{ position: "relative" }}
     >
       <div className="mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-8">
-        {/* THE STACK — LogoLoop */}
+        {/* THE STACK - LogoLoop */}
         <div>
           <RevealBlock>
             <SectionLabel>The Stack</SectionLabel>

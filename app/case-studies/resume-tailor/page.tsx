@@ -5,7 +5,7 @@ import { RevealBlock } from "../../components/MotionPattern";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Resume Tailor — Harsha Asapu",
+  title: "Resume Tailor: Harsha Asapu",
   description:
     "A tool for people who write their own resumes. Rebuilt from a Streamlit prototype into a real product. What survived, what didn't, and why.",
 };
@@ -103,7 +103,7 @@ export default function ResumeTailorCaseStudy() {
       </section>
       </RevealBlock>
 
-      {/* CHAPTER 01 — THE PROBLEM */}
+      {/* CHAPTER 01 - THE PROBLEM */}
       <RevealBlock>
       <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
         <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
@@ -171,7 +171,7 @@ export default function ResumeTailorCaseStudy() {
       </section>
       </RevealBlock>
 
-      {/* CHAPTER 02 — WHAT SURVIVED */}
+      {/* CHAPTER 02 - WHAT SURVIVED */}
       <RevealBlock>
       <section className="max-w-5xl mx-auto px-6 mb-20 md:mb-24">
         <div className="max-w-3xl">
@@ -286,7 +286,7 @@ export default function ResumeTailorCaseStudy() {
       </section>
       </RevealBlock>
 
-      {/* CHAPTER 03 — DECISIONS */}
+      {/* CHAPTER 03 - DECISIONS */}
       <RevealBlock>
       <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
         <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
@@ -331,7 +331,7 @@ export default function ResumeTailorCaseStudy() {
       </section>
       </RevealBlock>
 
-      {/* CHAPTER 04 — THE MATCH MOMENT */}
+      {/* CHAPTER 04 - THE MATCH MOMENT */}
       <RevealBlock>
       <section className="max-w-5xl mx-auto px-6 mb-20 md:mb-24">
         <div className="max-w-3xl">
@@ -383,7 +383,7 @@ export default function ResumeTailorCaseStudy() {
       </section>
       </RevealBlock>
 
-      {/* CHAPTER 05 — THE BUILD JOURNEY */}
+      {/* CHAPTER 05 - THE BUILD JOURNEY */}
       <RevealBlock>
       <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
         <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
@@ -439,7 +439,7 @@ export default function ResumeTailorCaseStudy() {
       </section>
       </RevealBlock>
 
-      {/* CHAPTER 06 — WHAT SHIPS */}
+      {/* CHAPTER 06 - WHAT SHIPS */}
       <RevealBlock>
       <section className="max-w-5xl mx-auto px-6 mb-20 md:mb-24">
         <div className="max-w-3xl">
@@ -483,7 +483,7 @@ export default function ResumeTailorCaseStudy() {
       </section>
       </RevealBlock>
 
-      {/* CHAPTER 07 — WHAT'S NEXT */}
+      {/* CHAPTER 07 - WHAT'S NEXT */}
       <RevealBlock>
       <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
         <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
@@ -578,7 +578,7 @@ export default function ResumeTailorCaseStudy() {
   );
 }
 
-/* — Subcomponents — */
+/* Subcomponents */
 
 function Decision({
   number,

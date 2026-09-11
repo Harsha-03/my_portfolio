@@ -4,7 +4,7 @@ import { RevealBlock } from "../../components/MotionPattern";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Phoenix AI — Six Decisions in Two Weeks — Harsha Asapu",
+  title: "Phoenix AI, Six Decisions in Two Weeks: Harsha Asapu",
   description:
     "Phoenix AI case study: reframing biomarker discoverability, reconciling brand palettes, and collapsing three nav systems into one on a live health platform.",
 };
@@ -82,7 +82,7 @@ export default function PhoenixAICaseStudy() {
         </section>
       </RevealBlock>
 
-      {/* CHAPTER 01 — THE BRIEF */}
+      {/* CHAPTER 01 - THE BRIEF */}
       <RevealBlock>
         <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
           <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
@@ -118,7 +118,7 @@ export default function PhoenixAICaseStudy() {
         </section>
       </RevealBlock>
 
-      {/* CHAPTER 02 — DECISION 1 */}
+      {/* CHAPTER 02 - DECISION 1 */}
       <RevealBlock>
         <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
           <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
@@ -137,7 +137,7 @@ export default function PhoenixAICaseStudy() {
               overall health score. One-line Slack message.
             </p>
             <p>
-              I shipped the badge — <em>&quot;Used for Score&quot;</em> — but
+              I shipped the badge (<em>&quot;Used for Score&quot;</em>), but
               sitting with the page, the ticket was misdiagnosing the actual
               user problem. Users weren&apos;t confused about <em>which</em>{" "}
               markers were scored. They were confused about{" "}
@@ -146,8 +146,8 @@ export default function PhoenixAICaseStudy() {
             <p className="text-zinc-400 font-medium">What shipped:</p>
             <ul className="space-y-3 pl-5 list-disc marker:text-emerald-400/60">
               <li>
-                Grouped all 14 biomarkers by domain — Metabolic,
-                Cardiovascular, Inflammation — so the categorization itself
+                Grouped all 14 biomarkers by domain (Metabolic,
+                Cardiovascular, Inflammation) so the categorization itself
                 taught users the health-scoring model.
               </li>
               <li>
@@ -174,7 +174,7 @@ export default function PhoenixAICaseStudy() {
         </section>
       </RevealBlock>
 
-      {/* CHAPTER 03 — DECISION 2 */}
+      {/* CHAPTER 03 - DECISION 2 */}
       <RevealBlock>
         <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
           <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
@@ -220,7 +220,7 @@ export default function PhoenixAICaseStudy() {
         </section>
       </RevealBlock>
 
-      {/* CHAPTER 04 — DECISION 3 */}
+      {/* CHAPTER 04 - DECISION 3 */}
       <RevealBlock>
         <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
           <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
@@ -291,7 +291,7 @@ export default function PhoenixAICaseStudy() {
         </section>
       </RevealBlock>
 
-      {/* CHAPTER 05 — DECISION 4 */}
+      {/* CHAPTER 05 - DECISION 4 */}
       <RevealBlock>
         <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
           <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
@@ -341,7 +341,7 @@ export default function PhoenixAICaseStudy() {
         </section>
       </RevealBlock>
 
-      {/* CHAPTER 06 — DECISION 5 */}
+      {/* CHAPTER 06 - DECISION 5 */}
       <RevealBlock>
         <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
           <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
@@ -363,10 +363,10 @@ export default function PhoenixAICaseStudy() {
               Rejected solutions:
             </p>
             <ul className="space-y-2 pl-5 list-disc marker:text-red-400/60">
-              <li>Making the icon larger — nags returning users.</li>
-              <li>Adding a persistent label — adds visual weight.</li>
+              <li>Making the icon larger: nags returning users.</li>
+              <li>Adding a persistent label: adds visual weight.</li>
               <li>
-                Making the sidebar visible by default — defeats the purpose
+                Making the sidebar visible by default: defeats the purpose
                 of a drawer.
               </li>
             </ul>
@@ -385,7 +385,7 @@ export default function PhoenixAICaseStudy() {
               </li>
               <li>
                 Small primary-color dot on the top-right corner of the
-                hamburger — borrowing the unread-notification pattern.
+                hamburger, borrowing the unread-notification pattern.
               </li>
               <li>
                 Two-second breathing pulse on the dot plus an eight-second
@@ -408,7 +408,7 @@ export default function PhoenixAICaseStudy() {
         </section>
       </RevealBlock>
 
-      {/* CHAPTER 07 — DECISION 6 — MOTION SYSTEM */}
+      {/* CHAPTER 07 - DECISION 6 - MOTION SYSTEM */}
       <RevealBlock>
         <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
           <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
@@ -490,7 +490,7 @@ export default function PhoenixAICaseStudy() {
         </section>
       </RevealBlock>
 
-      {/* CHAPTER 08 — CRAFT DETAILS */}
+      {/* CHAPTER 08 - CRAFT DETAILS */}
       <RevealBlock>
         <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
           <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
@@ -536,7 +536,7 @@ export default function PhoenixAICaseStudy() {
         </section>
       </RevealBlock>
 
-      {/* CHAPTER 09 — WHAT SHIPPED */}
+      {/* CHAPTER 09 - WHAT SHIPPED */}
       <RevealBlock>
         <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
           <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">
@@ -555,7 +555,7 @@ export default function PhoenixAICaseStudy() {
                 mode.
               </li>
               <li>
-                Navigation surface area reduced by ~60% — three systems
+                Navigation surface area reduced by ~60%: three systems
                 collapsed into one.
               </li>
               <li>
@@ -576,7 +576,7 @@ export default function PhoenixAICaseStudy() {
         </section>
       </RevealBlock>
 
-      {/* CHAPTER 10 — WHAT I'D DO DIFFERENTLY */}
+      {/* CHAPTER 10 - WHAT I'D DO DIFFERENTLY */}
       <RevealBlock>
         <section className="max-w-3xl mx-auto px-6 mb-24 md:mb-32">
           <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">

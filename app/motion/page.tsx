@@ -166,7 +166,7 @@ export default function MotionGalleryPage() {
           </h1>
 
           <p className="mx-auto mt-5 max-w-2xl text-sm md:text-base leading-relaxed text-zinc-400">
-            Short-form motion pieces — type, brand, and concept work where timing
+            Short-form motion pieces: type, brand, and concept work where timing
             carries the idea. Each piece is a study in what moves, what stays
             still, and why.
           </p>

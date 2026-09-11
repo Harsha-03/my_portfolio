@@ -54,7 +54,7 @@ export const projects: Project[] = [
       "Reconciled brand palettes without escalation: derived the entire dark mode from the branding lead's navy, mapped all tokens in index.css, documented reasoning after shipping",
       "Diagnosed auto-rows-fr as the real cause of the 'shared state' bug; replaced inline Collapsible with a shadcn Sheet (side sheet desktop, bottom sheet mobile) with staggered entrance animations",
       "Deleted the top tab row and mobile bottom nav, consolidated into a single sidebar system. Navigation surface reduced by 60%. No items lost",
-      "Built a named motion vocabulary tied to health metaphors: phoenixFadeUp, phoenixBreathe, phoenixDrawIn, phoenixHamburgerHint, phoenixDotPulse — all respect prefers-reduced-motion",
+      "Built a named motion vocabulary tied to health metaphors: phoenixFadeUp, phoenixBreathe, phoenixDrawIn, phoenixHamburgerHint, phoenixDotPulse. All respect prefers-reduced-motion",
       "Three stacked discoverability signals on the mobile hamburger (Menu icon swap, primary-color dot, breathing pulse + nudge) all removed permanently after first tap via localStorage",
     ],
   },

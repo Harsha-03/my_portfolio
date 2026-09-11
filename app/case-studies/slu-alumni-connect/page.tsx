@@ -5,7 +5,7 @@ import { RevealBlock } from "../../components/MotionPattern";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "SLU Alumni Connect — Harsha Asapu",
+  title: "SLU Alumni Connect: Harsha Asapu",
   description:
     "A production-ready alumni engagement platform built to replace fragmented spreadsheets with role-based dashboards for students, alumni, mentors, and administrators.",
 };
@@ -100,7 +100,7 @@ export default function SLUAlumniCaseStudy() {
       </section>
       </RevealBlock>
 
-      {/* CHAPTER 01 — THE PROBLEM */}
+      {/* CHAPTER 01 - THE PROBLEM */}
       <RevealBlock>
       <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
         <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">Chapter 01</p>
@@ -133,7 +133,7 @@ export default function SLUAlumniCaseStudy() {
         <div className="mt-16 grid sm:grid-cols-3 gap-4">
           {[
             { who: "Students", pain: "No structured way to find and connect with relevant alumni mentors in their field" },
-            { who: "Alumni", pain: "No channel to volunteer as mentors or update their profile — sporadic generic emails only" },
+            { who: "Alumni", pain: "No channel to volunteer as mentors or update their profile. Sporadic generic emails only" },
             { who: "Admins", pain: "Fragmented data across multiple systems made it impossible to measure engagement or allocate resources" },
           ].map((s) => (
             <div key={s.who} className="rounded-2xl border border-white/10 bg-white/[0.02] p-6">
@@ -145,7 +145,7 @@ export default function SLUAlumniCaseStudy() {
       </section>
       </RevealBlock>
 
-      {/* CHAPTER 02 — RESEARCH */}
+      {/* CHAPTER 02 - RESEARCH */}
       <RevealBlock>
       <section className="max-w-5xl mx-auto px-6 mb-20 md:mb-24">
         <div className="max-w-3xl">
@@ -164,7 +164,7 @@ export default function SLUAlumniCaseStudy() {
         <div className="grid sm:grid-cols-3 gap-4 mb-12 md:mb-14">
           {[
             { school: "U. of Michigan", stat: "45% annual engagement", method: "Integrated calendar + gamification" },
-            { school: "Duke Blue Devil", stat: "1,800 mentorship matches/yr", method: "Up from 200 — 89% satisfaction" },
+            { school: "Duke Blue Devil", stat: "1,800 mentorship matches/yr", method: "Up from 200, 89% satisfaction" },
             { school: "MIT Alumni App", stat: "78,000 active users", method: "62% growth in under-35 donors" },
           ].map((b) => (
             <div key={b.school} className="rounded-xl border border-white/10 bg-white/[0.02] p-5">
@@ -182,10 +182,10 @@ export default function SLUAlumniCaseStudy() {
             className="text-2xl md:text-4xl font-bold leading-[1.2] text-white border-l-2 border-emerald-500/50 pl-8"
             style={{ fontFamily: "var(--font-heading)" }}
           >
-            The platform needed to serve four completely different users from one codebase &mdash; without cognitive overload for any of them.
+            The platform needed to serve four completely different users from one codebase, without cognitive overload for any of them.
           </blockquote>
           <p className="mt-8 text-lg text-zinc-400 leading-relaxed pl-8">
-            Role-based access wasn&apos;t just a technical requirement &mdash; it was the
+            Role-based access wasn&apos;t just a technical requirement. It was the
             core UX principle. Every stakeholder gets exactly what they need and nothing
             they don&apos;t. Students see mentors. Admins see metrics. Alumni see impact.
           </p>
@@ -193,7 +193,7 @@ export default function SLUAlumniCaseStudy() {
       </section>
       </RevealBlock>
 
-      {/* CHAPTER 03 — SOLUTION */}
+      {/* CHAPTER 03 - SOLUTION */}
       <RevealBlock>
       <section className="max-w-5xl mx-auto px-6 mb-20 md:mb-24">
         <div className="max-w-3xl">
@@ -207,7 +207,7 @@ export default function SLUAlumniCaseStudy() {
           <ModuleSection
             eyebrow="Module 01"
             title="Alumni Directory"
-            description="Searchable, filterable database of 12,000+ alumni profiles. Students filter by industry, graduation year, employer, and location — solving the mentor discovery problem in one view. No more email chains, no more manual spreadsheet searches."
+            description="Searchable, filterable database of 12,000+ alumni profiles. Students filter by industry, graduation year, employer, and location, solving the mentor discovery problem in one view. No more email chains, no more manual spreadsheet searches."
           />
           <ModuleSection
             eyebrow="Module 02"
@@ -217,18 +217,18 @@ export default function SLUAlumniCaseStudy() {
           <ModuleSection
             eyebrow="Module 03"
             title="Events & RSVP"
-            description="Centralized event management replacing dispersed email and department website listings. Real-time RSVP with attendance tracking. Admins see participation trends across 262 events and 4,747 RSVP records. Networking mixers consistently drove 2.3x higher RSVP rates than webinars — surfaced through analytics."
+            description="Centralized event management replacing dispersed email and department website listings. Real-time RSVP with attendance tracking. Admins see participation trends across 262 events and 4,747 RSVP records. Networking mixers consistently drove 2.3x higher RSVP rates than webinars, surfaced through analytics."
           />
           <ModuleSection
             eyebrow="Module 04"
             title="Admin Analytics Dashboard"
-            description="KPI visibility that didn't exist before: total registered users, monthly active users, active mentorships, RSVP conversion, and donation totals — all in one view. Replaced manual reconciliation across disconnected systems with a single source of truth."
+            description="KPI visibility that didn't exist before: total registered users, monthly active users, active mentorships, RSVP conversion, and donation totals, all in one view. Replaced manual reconciliation across disconnected systems with a single source of truth."
           />
         </div>
       </section>
       </RevealBlock>
 
-      {/* CHAPTER 04 — DESIGN DECISIONS */}
+      {/* CHAPTER 04 - DESIGN DECISIONS */}
       <RevealBlock>
       <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
         <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">Chapter 04</p>
@@ -246,22 +246,22 @@ export default function SLUAlumniCaseStudy() {
             {
               decision: "Role-aware UI over a single unified interface",
               rejected: "One dashboard for all user types",
-              why: "A single interface serving students, alumni, mentors, and admins would have created cognitive overload for everyone. Role-based access means each user sees only what&apos;s relevant — students don&apos;t see admin KPIs; admins don&apos;t see the mentorship request flow meant for students.",
+              why: "A single interface serving students, alumni, mentors, and admins would have created cognitive overload for everyone. Role-based access means each user sees only what&apos;s relevant: students don&apos;t see admin KPIs; admins don&apos;t see the mentorship request flow meant for students.",
             },
             {
               decision: "Synthetic data for privacy-safe development",
               rejected: "Using real SLU alumni records for testing",
-              why: "12,000 records generated via Python — realistic distributions for graduation years, employment status, location, and engagement scores — without exposing any real alumni identity. FERPA compliance built in from day one, not retrofitted.",
+              why: "12,000 records generated via Python (realistic distributions for graduation years, employment status, location, and engagement scores) without exposing any real alumni identity. FERPA compliance built in from day one, not retrofitted.",
             },
             {
               decision: "JSON fixtures over live database for the prototype",
               rejected: "Full PostgreSQL + Prisma from week 1",
-              why: "A live database in week 1 would have blocked frontend progress while backend schema was still evolving. JSON fixtures let UI and data work in parallel. The architecture is Prisma-ready — migration is a swap, not a rebuild.",
+              why: "A live database in week 1 would have blocked frontend progress while backend schema was still evolving. JSON fixtures let UI and data work in parallel. The architecture is Prisma-ready: migration is a swap, not a rebuild.",
             },
             {
               decision: "MoSCoW to cut AI recommendations and gamification",
               rejected: "AI-powered mentor matching, badges, streaks",
-              why: "Both features sounded compelling and would have consumed 30%+ of remaining sprint time. The core problem — fragmented data and no structured mentorship flow — didn&apos;t need AI to be solved. Deferred to Phase 2.",
+              why: "Both features sounded compelling and would have consumed 30%+ of remaining sprint time. The core problem (fragmented data and no structured mentorship flow) didn&apos;t need AI to be solved. Deferred to Phase 2.",
             },
           ].map((d, i) => (
             <div key={i} className="border-t border-white/8 pt-10">
@@ -282,7 +282,7 @@ export default function SLUAlumniCaseStudy() {
       </section>
       </RevealBlock>
 
-      {/* CHAPTER 05 — OUTCOMES */}
+      {/* CHAPTER 05 - OUTCOMES */}
       <RevealBlock>
       <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
         <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">Chapter 05</p>
@@ -305,9 +305,9 @@ export default function SLUAlumniCaseStudy() {
 
         <div className="space-y-8">
           {[
-            "Alumni with 75%+ profile completeness showed 3.2x higher mentorship participation and 2.1x higher event attendance — early engagement predicts long-term engagement.",
-            "Alumni in active mentorship relationships gave 2.7x more often than those who weren&apos;t — mentorship drives philanthropic connection.",
-            "Networking mixers drove 2.3x higher RSVP rates than webinars — surfaced directly from the analytics dashboard, invisible before this platform.",
+            "Alumni with 75%+ profile completeness showed 3.2x higher mentorship participation and 2.1x higher event attendance. Early engagement predicts long-term engagement.",
+            "Alumni in active mentorship relationships gave 2.7x more often than those who weren&apos;t. Mentorship drives philanthropic connection.",
+            "Networking mixers drove 2.3x higher RSVP rates than webinars, surfaced directly from the analytics dashboard, invisible before this platform.",
           ].map((item, i) => (
             <div key={i} className="flex gap-4">
               <span className="flex-shrink-0 text-emerald-400/60 text-2xl leading-none">&rarr;</span>
@@ -318,7 +318,7 @@ export default function SLUAlumniCaseStudy() {
       </section>
       </RevealBlock>
 
-      {/* CHAPTER 06 — WHAT I'D TEST NEXT */}
+      {/* CHAPTER 06 - WHAT I'D TEST NEXT */}
       <RevealBlock>
       <section className="max-w-3xl mx-auto px-6 mb-20 md:mb-24">
         <p className="text-[11px] tracking-[0.2em] text-emerald-400/80 font-semibold uppercase mb-4">Chapter 06</p>
@@ -327,10 +327,10 @@ export default function SLUAlumniCaseStudy() {
         </h2>
         <div className="space-y-8">
           {[
-            "Real user testing with 50–100 pilot users — specifically whether the role-based dashboard reduces cognitive load for students vs admins, or whether they still encounter features meant for the other group.",
-            "Mentor matching algorithm quality — the current system is rule-based (industry, skills, availability). Testing whether alumni satisfaction ratings actually correlate with those match criteria before investing in ML.",
-            "Profile completion nudges — given that 75%+ completeness predicts 3.2x higher engagement, a targeted onboarding flow that gets users past that threshold is the highest-leverage UX investment.",
-            "Migration from JSON fixtures to PostgreSQL + Prisma — the architecture supports it; the question is whether the data model holds up under real-world edge cases.",
+            "Real user testing with 50–100 pilot users: specifically whether the role-based dashboard reduces cognitive load for students vs admins, or whether they still encounter features meant for the other group.",
+            "Mentor matching algorithm quality: the current system is rule-based (industry, skills, availability). Testing whether alumni satisfaction ratings actually correlate with those match criteria before investing in ML.",
+            "Profile completion nudges: given that 75%+ completeness predicts 3.2x higher engagement, a targeted onboarding flow that gets users past that threshold is the highest-leverage UX investment.",
+            "Migration from JSON fixtures to PostgreSQL + Prisma: the architecture supports it; the question is whether the data model holds up under real-world edge cases.",
           ].map((item, i) => (
             <div key={i} className="flex gap-4">
               <span className="flex-shrink-0 text-emerald-400/60 text-2xl leading-none">&rarr;</span>
