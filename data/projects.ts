@@ -127,8 +127,8 @@ export const projects: Project[] = [
     slug: "resume-tailor",
     title: "Resume Tailor",
     shortDescription:
-      "AI resume tools over-flatter and hide the real gap. This one shows it before rewriting a word. Files never leave the browser.",
-    metric: "Shipped in 2 weeks, local-first parsing",
+      "AI resume tools over-flatter and hide the real gap. This one shows it before rewriting a word.",
+    metric: "Shipped in 2 weeks · Files never leave the browser",
     image: "/projects/resume-tailor-cover.webp",
     video: "/projects/resume-tailor-preview.mp4",
     tags: ["AI Product", "UX", "Shipped"],
@@ -192,7 +192,7 @@ export const projects: Project[] = [
     slug: "starbucks-mobile-order",
     title: "Starbucks Mobile Order Redesign",
     shortDescription:
-      "The Starbucks app shows a single 'Preparing' state that hides everything. Four discrete states tied to real barista actions replace it. One reusable state card across four surfaces.",
+      "'Preparing' hides everything — whether the drink is queued, being made, or sitting cold. Four discrete states replace it.",
     metric: "Concept — Starbucks CEO named mobile pickup a priority in Oct 2024 earnings call",
     image: "/projects/starbucks-cover.png",
     tags: ["Concept", "Interaction", "State Design"],
@@ -223,7 +223,7 @@ export const projects: Project[] = [
     slug: "lifeos",
     title: "LifeOS",
     shortDescription:
-      "Productivity tools treat users as the problem. LifeOS treats reflection as the input, not the failure. One dashboard scales 1 to 30 habits.",
+      "Productivity tools treat users as the problem. LifeOS treats reflection as the input, not the failure.",
     metric: "Concept — four-layer behavioral loop for the 20-28 age cohort",
     image: "/projects/lifeos-cover.png",
     tags: ["Concept", "Behavioral UX", "Product"],
@@ -254,7 +254,7 @@ export const projects: Project[] = [
     slug: "slu-alumni-connect",
     title: "SLU Alumni Connect",
     shortDescription:
-      "Students, alumni, mentors, and admins needed different answers from the same platform. Role-based clarity solved for all four.",
+      "Four user types, one platform, different answers each. Role-based clarity solved for all four.",
     metric: "Designed for 12k+ alumni ecosystem, FERPA compliant",
     image: "/projects/slu-alumni-connect-cover.webp",
     video: "/projects/slu-alumni-connect-preview.mp4",
