@@ -32,6 +32,23 @@ const CASE_STUDY_ORDER = [
   "lifeos",
 ];
 
+/* — Industry filter chips, left to right. Homepage-only; card copy stays in CARD_COPY — */
+const CASE_STUDY_CATEGORIES = {
+  all: { label: "All", slugs: CASE_STUDY_ORDER },
+  client: {
+    label: "Client & Agency Work",
+    slugs: ["builtintech-delivery", "nri-wellbeing"],
+  },
+  health: { label: "Health & Life Sciences", slugs: ["phoenix-ai"] },
+  education: { label: "Education", slugs: ["slu-alumni-connect"] },
+  consumer: {
+    label: "Consumer",
+    slugs: ["resume-tailor", "starbucks-mobile-order", "lifeos"],
+  },
+} satisfies Record<string, { label: string; slugs: string[] }>;
+
+type CategoryKey = keyof typeof CASE_STUDY_CATEGORIES;
+
 type IconName = "zap" | "clock" | "layers" | "rocket" | "check" | "badge";
 
 type CardData = {
