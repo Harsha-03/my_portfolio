@@ -10,12 +10,6 @@ import {
   Github,
   Lock,
   Target,
-  Zap,
-  Clock,
-  Layers,
-  Rocket,
-  CheckCircle,
-  BadgeCheck,
 } from "lucide-react";
 
 import ProjectCaseStudy from "./ProjectCaseStudy";
@@ -50,14 +44,9 @@ const CASE_STUDY_CATEGORIES = {
 
 type CategoryKey = keyof typeof CASE_STUDY_CATEGORIES;
 
-type IconName = "zap" | "clock" | "layers" | "rocket" | "check" | "badge";
-
 type CardData = {
   wordmark: string;
   tags: string[];
-  headline: string;
-  description: string;
-  metrics: { value: string; label: string; icon: IconName }[];
   bg: string;
   accent: string;
   isConcept?: boolean;
@@ -67,78 +56,36 @@ const CARD_COPY: Record<string, CardData> = {
   "phoenix-ai": {
     wordmark: "Phoenix AI",
     tags: ["Live Product", "AI Health", "Design System"],
-    headline: "Six decisions in two weeks. Every ticket said 'your call.'",
-    description:
-      "Sole design owner on a live AI health platform. Direct ship authority to production. No PMs. No approval gates. Six documented reframes — from a badge request that became an IA overhaul, to a layout bug that looked like a state bug. Live at phoenix-cdreams.org.",
-    metrics: [
-      { value: "6", label: "Documented reframes", icon: "layers" },
-      { value: "Live", label: "Ship authority to prod", icon: "rocket" },
-    ],
     bg: "#0A1A14",
     accent: "#34D399",
   },
   "builtintech-delivery": {
     wordmark: "BuiltinTech",
     tags: ["Client Work", "Systems Design", "Delivery"],
-    headline: "10+ client products, 4 verticals, one delivery pattern.",
-    description:
-      "Cofounded BuiltinTech in 2023. Drove 80% of client acquisition. Built a repeatable intake to ship pipeline across construction, minerals, fitness, and infrastructure clients.",
-    metrics: [
-      { value: "10+", label: "Products shipped", icon: "rocket" },
-      { value: "4", label: "Verticals delivered", icon: "layers" },
-    ],
     bg: "#1A1512",
     accent: "#F59E0B",
   },
   "nri-wellbeing": {
     wordmark: "NRI Wellbeing",
     tags: ["Service Site", "IA", "Frontend"],
-    headline: "Services above the fold. Company story below.",
-    description:
-      "ISO certified services company with 10+ categories. First time visitors needed to find the right service in 30 seconds without reading company history first. Live at nriwellbeing.com since 2022.",
-    metrics: [
-      { value: "Since 2022", label: "Live 4+ years", icon: "badge" },
-      { value: "10+", label: "Service categories", icon: "layers" },
-    ],
     bg: "#0F1F26",
     accent: "#22D3EE",
   },
   "resume-tailor": {
     wordmark: "Resume Tailor",
     tags: ["AI Product", "UX", "Shipped"],
-    headline: "A tool for people who write their own resumes.",
-    description:
-      "AI resume tools lose credibility when they over flatter or fabricate. This product makes the gap visible before it rewrites anything. Honest scoring, real ATS checks, files never leave the browser.",
-    metrics: [
-      { value: "8", label: "Deterministic ATS checks", icon: "check" },
-      { value: "Local first", label: "Files never leave browser", icon: "zap" },
-    ],
     bg: "#292524",
     accent: "#FCD34D",
   },
   portfolio: {
     wordmark: "harshaasapu.com",
     tags: ["Product", "RAG", "Interaction Design"],
-    headline: "A portfolio treated as a product, not a static page.",
-    description:
-      "Recruiters scan fast. The site has to prove role, judgment, shipped work, and credibility before asking anyone to dig deeper. Grounded RAG assistant, restrained motion, shipped proof.",
-    metrics: [
-      { value: "8", label: "RAG knowledge files", icon: "layers" },
-      { value: "3", label: "Shipped iterations", icon: "rocket" },
-    ],
     bg: "#0B0F1A",
     accent: "#93C5FD",
   },
   "starbucks-mobile-order": {
     wordmark: "Starbucks",
     tags: ["Concept", "Interaction", "State Design"],
-    headline: "One reusable state card, four downstream surfaces.",
-    description:
-      "The wait was not the real problem. The anxiety came from not knowing whether the drink was queued, being made, ready, or forgotten. A single reusable state card absorbed all four surfaces. CEO independently named mobile pickup a priority in the Oct 2024 earnings call.",
-    metrics: [
-      { value: "1", label: "Reusable state card", icon: "layers" },
-      { value: "4", label: "Downstream surfaces", icon: "clock" },
-    ],
     bg: "#1E3932",
     accent: "#8FD6BD",
     isConcept: true,
@@ -146,27 +93,13 @@ const CARD_COPY: Record<string, CardData> = {
   lifeos: {
     wordmark: "LifeOS",
     tags: ["Concept", "Behavioral UX", "Product"],
-    headline: "One dashboard scales 1 to 30 habits, no UI re architecture.",
-    description:
-      "Most tools punish people when plans break. LifeOS assumes the week will change and turns that gap into feedback instead of failure. The interaction pattern absorbs volume without new components.",
-    metrics: [
-      { value: "1 to 30", label: "Habits, same UI", icon: "layers" },
-      { value: "4", label: "Layer behavioral loop", icon: "zap" },
-    ],
     bg: "#1E1B4B",
     accent: "#A5B4FC",
     isConcept: true,
   },
   "slu-alumni-connect": {
     wordmark: "SLU Alumni Connect",
-    tags: ["Concept", "Multi Role", "Platform"],
-    headline: "Four user roles, one platform, no confusion.",
-    description:
-      "Students, alumni, mentors, and admins needed different answers from the same system. The design challenge was clarity by role. FERPA compliant scope, role based dashboards.",
-    metrics: [
-      { value: "4", label: "User roles", icon: "layers" },
-      { value: "FERPA", label: "Compliant scope", icon: "badge" },
-    ],
+    tags: ["Live Product", "Multi Role", "Platform"],
     bg: "#13294B",
     accent: "#93C5FD",
     isConcept: true,
@@ -176,24 +109,6 @@ const CARD_COPY: Record<string, CardData> = {
 function isInternalCaseStudy(url?: string) {
   return Boolean(url && url.startsWith("/") && !url.endsWith(".pdf"));
 }
-
-function iconFor(name: IconName, className = "h-4 w-4") {
-  switch (name) {
-    case "zap":
-      return <Zap className={className} />;
-    case "clock":
-      return <Clock className={className} />;
-    case "layers":
-      return <Layers className={className} />;
-    case "rocket":
-      return <Rocket className={className} />;
-    case "check":
-      return <CheckCircle className={className} />;
-    case "badge":
-      return <BadgeCheck className={className} />;
-  }
-}
-
 
 function ProjectMedia({
   project,
