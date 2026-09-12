@@ -37,13 +37,13 @@ export const projects: Project[] = [
     year: "2026",
     featured: true,
     overview:
-      "Phoenix AI is a live health platform that turns wearable and biomarker data into a personalized health score. Over two weeks I shipped a full dashboard redesign, brand cohesion overhaul, and cross-platform navigation consolidation. I was the only designer on the team, working alongside five engineers and a PM on loan from another product.",
+      "Phoenix AI is a live health platform that turns wearable and biomarker data into a personalized health score. Over two weeks I shipped a full dashboard redesign, brand cohesion overhaul, and cross-platform navigation consolidation. I worked with a PM who reviewed the approach, and five engineers who built alongside me.",
     role: "Product Designer",
     timeframe: "2 weeks intensive · Feb 2026",
     platform: "Web + Mobile",
     tools: ["Figma", "React", "TypeScript", "Tailwind", "shadcn/ui", "Supabase"],
     problems: [
-      "Tickets landed with either no spec or one line of context; the team was small enough that decisions had to ship the same week they arrived",
+      "Tickets landed with either no spec or one line of context, so the first job was diagnosing what each one was really asking for",
       "Two conflicting brand palettes in production from people senior to me, no reconciliation process",
       "Three overlapping navigation systems across desktop and mobile pointing to the same destinations",
       "Layout bug misdiagnosed as a state bug; users reported cards visually expanding in sync",
