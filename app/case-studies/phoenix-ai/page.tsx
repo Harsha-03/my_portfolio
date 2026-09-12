@@ -99,7 +99,7 @@ export default function PhoenixAICaseStudy() {
           </h2>
           <div className="space-y-5 text-base md:text-lg text-zinc-300 leading-relaxed">
             <p>
-              I own the design system, dashboard architecture, brand
+              I work across the design system, dashboard architecture, brand
               cohesion, motion system, and every visible surface. Two weeks
               in, tickets stopped arriving as specs. They started arriving as
               one-line Slack messages: <em>add a badge</em>,{" "}
@@ -570,9 +570,9 @@ export default function PhoenixAICaseStudy() {
                 reduced-motion support.
               </li>
               <li>
-                All work shipped directly to production via Lovable. Decisions
-                were made in-thread with the engineering team and defended
-                when tested.
+                All work shipped to production via Lovable once the PM signed
+                off on the approach. Decisions were made in-thread with the
+                engineering team and defended when tested.
               </li>
             </ul>
           </div>
@@ -607,9 +607,9 @@ export default function PhoenixAICaseStudy() {
               shipping, and re-deriving.
             </p>
             <p>
-              That much autonomy is a real gift. The cost of using it well is
-              spending five extra minutes upfront asking the question that
-              would have saved the second iteration.
+              The cost of a loop that tight is that a wrong call ships fast.
+              Five extra minutes upfront asking the question would have saved
+              the second iteration.
             </p>
             <p className="text-emerald-400/90 font-medium pt-2">
               Faster isn&apos;t the point. Deciding once is.
